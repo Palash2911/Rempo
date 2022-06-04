@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Otpactivity">
+    tools:context=".otpactivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -48,24 +48,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-    <in.aabhasjindal.otptextview.OtpTextView
-        android:id="@+id/otp_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="20dp"
-        android:textColor="#000"
-        app:bar_enabled="true"
-        app:bar_height="2dp"
-        app:height="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:length="6"
-        app:otp_text_size="24dp"
-        app:width="40dp" />
 
     <Button
         android:id="@+id/verifyotp"
