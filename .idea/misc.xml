@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+<<<<<<< Updated upstream
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/No-Broker-Clone/app/src/main/res/layout/activity_bottomtablayout.xml" value="0.13333333333333333" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/No-Broker-Clone/app/src/main/res/layout/activity_main.xml" value="0.1578125" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/No-Broker-Clone/app/src/main/res/layout/property_card.xml" value="0.117578125" />
+=======
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/drawable-v24/ic_baseline_arrow_forward_ios_24.xml" value="0.1" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/drawable-v24/ic_baseline_bookmark_24.xml" value="0.1" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/drawable-v24/ic_baseline_call_24.xml" value="0.1" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/drawable-v24/ic_baseline_check_24.xml" value="0.1" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/drawable-v24/ic_baseline_circle_24.xml" value="0.1" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/drawable-v24/ic_baseline_home_24.xml" value="0.1" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/drawable-v24/ic_baseline_info_24.xml" value="0.1" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/drawable-v24/ic_baseline_location_searching_24.xml" value="0.1" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/drawable-v24/ic_baseline_logout_24.xml" value="0.1" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/drawable-v24/ic_baseline_person2.xml" value="0.1" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/drawable-v24/ic_baseline_person_24.xml" value="0.1" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/drawable-v24/rec2.xml" value="0.1" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/drawable-v24/rectangle.xml" value="0.1" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/layout/activity_aadharotp.xml" value="0.1" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/layout/activity_aadharverified.xml" value="0.1" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/layout/activity_blankactivity.xml" value="0.1" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/layout/activity_bottomtab.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/layout/activity_main.xml" value="0.1578125" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/layout/activity_otpactivity.xml" value="0.13333333333333333" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/layout/activity_profile.xml" value="0.1" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/layout/activity_uploadaadhar.xml" value="0.1" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/layout/fragment_aboutus.xml" value="0.1" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/layout/fragment_bookmark.xml" value="0.1" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/layout/fragment_contactus.xml" value="0.1" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/layout/fragment_editprofile.xml" value="0.1" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/layout/fragment_homepage.xml" value="0.1" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/layout/fragment_morefragment.xml" value="0.1578125" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/layout/fragment_notifications.xml" value="0.1578125" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/layout/fragment_plotpage.xml" value="0.1" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/layout/fragment_propertypage.xml" value="0.1" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/layout/property_card.xml" value="0.1" />
+        <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
+>>>>>>> Stashed changes
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

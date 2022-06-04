@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Propmart</string>
+    <string name="title_activity_bottomtab">Bottomtab</string>
+    <string name="title_Location">Location</string>
+    <string name="title_Hompage">Hompage</string>
+    <string name="title_Bookmarks">Bookmarks</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="more">More</string>
+</resources>
