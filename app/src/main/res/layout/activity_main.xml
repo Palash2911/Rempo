@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:layout_marginEnd="200dp"
-        android:fontFamily="serif-monospace"
+        android:fontFamily="@font/roboto"
         android:text="Phone Number"
         android:textSize="18sp"
         android:textStyle="bold"

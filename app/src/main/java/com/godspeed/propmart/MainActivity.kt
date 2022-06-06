@@ -33,14 +33,14 @@ class MainActivity : AppCompatActivity() {
             db.collection("Users").document(auth.currentUser!!.uid).get()
                 .addOnCompleteListener{task2->
                     if(task2.result?.exists() == true){
-                        val intent = Intent(this, Otpactivity::class.java)
+                        val intent = Intent(this, Bottomtab::class.java)
                         val num = "9619142911"
                         intent.putExtra("Number", num)
                         startActivity(intent)
                         finish()
                         Toast.makeText(this, "Welcome Back Champion !! ", Toast.LENGTH_SHORT).show()
                     } else {
-                        val intent = Intent(this, ContactsContract.Profile::class.java)
+                        val intent = Intent(this, Profile::class.java)
                         startActivity(intent)
                         finish()
                     }
@@ -98,7 +98,6 @@ class MainActivity : AppCompatActivity() {
 
         override fun onVerificationFailed(e: FirebaseException) {
             Log.w(TAG, "onVerificationFailed", e)
-
             if (e is FirebaseAuthInvalidCredentialsException) {
                 Toast.makeText(applicationContext, "Invalid Request! Contact Developer!", Toast.LENGTH_SHORT).show()
             } else if (e is FirebaseTooManyRequestsException) {
@@ -124,16 +123,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
-
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     db.collection("Users").document(auth.currentUser!!.uid).get()
                         .addOnCompleteListener{task2->
                             if(task2.result?.exists() == true){
+                                Log.d("OTP23", credential.toString())
                                 val intent = Intent(this, Otpactivity::class.java)
-                                val num = "9619142911"
-                                intent.putExtra("Number", num)
+                                intent.putExtra("OTP", credential.toString())
                                 startActivity(intent)
                                 finish()
                                 Toast.makeText(this, "Welcome Champion !! ", Toast.LENGTH_SHORT).show()

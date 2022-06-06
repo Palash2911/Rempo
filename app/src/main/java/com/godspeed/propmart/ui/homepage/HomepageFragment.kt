@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.godspeed.propmart.databinding.FragmentLocationpageBinding
+import com.godspeed.propmart.databinding.FragmentHomepageBinding
 
 class HompageFragment : Fragment() {
 
-    private var _binding: FragmentLocationpageBinding? = null
+    private var _binding: FragmentHomepageBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -25,7 +25,7 @@ class HompageFragment : Fragment() {
         val HompageViewModel =
             ViewModelProvider(this).get(HompageViewModel::class.java)
 
-        _binding = FragmentLocationpageBinding.inflate(inflater, container, false)
+        _binding = FragmentHomepageBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textHompage

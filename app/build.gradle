@@ -77,10 +77,9 @@ dependencies {
     implementation "androidx.room:room-ktx:2.4.2"
 
     // Coroutines
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
-
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
     // OTP VIEW
-    // implementation 'com.github.aabhasr1:OtpView:v1.1.2-ktx'
-   // implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+//    implementation 'com.github.aabhasr1:OtpView:v1.1.2-ktx'
+    // implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
