@@ -34,8 +34,6 @@ class MainActivity : AppCompatActivity() {
                 .addOnCompleteListener{task2->
                     if(task2.result?.exists() == true){
                         val intent = Intent(this, Bottomtab::class.java)
-                        val num = "9619142911"
-                        intent.putExtra("Number", num)
                         startActivity(intent)
                         finish()
                         Toast.makeText(this, "Welcome Back Champion !! ", Toast.LENGTH_SHORT).show()
@@ -111,14 +109,12 @@ class MainActivity : AppCompatActivity() {
             verificationId: String,
             token: PhoneAuthProvider.ForceResendingToken
         ) {
-            // The SMS verification code has been sent to the provided phone number, we
-            // now need to ask the user to enter the code and then construct a credential
-            // by combining the code with a verification ID.
+
             Log.d(TAG, "onCodeSent:$verificationId")
             Toast.makeText(this@MainActivity, "OTP Sent Successfully!", Toast.LENGTH_SHORT).show()
-            // Save verification ID and resending token so we can use them later
+
             storedVerificationId = verificationId
-//            resendToken = token
+
         }
     }
 
@@ -129,14 +125,13 @@ class MainActivity : AppCompatActivity() {
                     db.collection("Users").document(auth.currentUser!!.uid).get()
                         .addOnCompleteListener{task2->
                             if(task2.result?.exists() == true){
-                                Log.d("OTP23", credential.toString())
                                 val intent = Intent(this, Otpactivity::class.java)
-                                intent.putExtra("OTP", credential.toString())
+                                intent.putExtra("OTP", credential.smsCode.toString())
                                 startActivity(intent)
                                 finish()
                                 Toast.makeText(this, "Welcome Champion !! ", Toast.LENGTH_SHORT).show()
                             } else {
-                                val intent = Intent(this, Otpactivity::class.java)
+                                val intent = Intent(this, Profile::class.java)
                                 startActivity(intent)
                                 finish()
                             }

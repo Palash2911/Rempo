@@ -23,6 +23,7 @@ class Profile : AppCompatActivity() {
         setContentView(R.layout.activity_profile)
 
         binding = ActivityProfileBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
 
         binding.saveprofile.setOnClickListener {
