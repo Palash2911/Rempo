@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:orientation="vertical">
 
         <TextView
@@ -34,7 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="95dp"
         android:layout_marginEnd="20dp"
         android:orientation="vertical">
 
@@ -75,6 +75,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/contactusll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="15dp"
@@ -111,6 +112,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/aboutusll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="15dp"
@@ -191,7 +193,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="380dp"
+        android:layout_marginTop="370dp"
         android:layout_marginEnd="30dp"
         android:orientation="vertical">
 
