@@ -9,8 +9,7 @@ import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.godspeed.propmart.R
 import com.godspeed.propmart.databinding.FragmentMorefragmentBinding
-import com.godspeed.propmart.databinding.FragmentBookmarksBinding
-import com.godspeed.propmart.ui.Bookmarks.BookmarksViewModel
+
 
 
 class Morefragment : Fragment() {
@@ -31,10 +30,10 @@ class Morefragment : Fragment() {
         _binding = FragmentMorefragmentBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textMore
-        moreViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+//        val textView: TextView = binding.textMore
+//        moreViewModel.text.observe(viewLifecycleOwner) {
+//            textView.text = it
+//        }
         return root
     }
 
