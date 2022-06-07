@@ -5,11 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.godspeed.propmart.Adapters.PropertyCardAdapter
+import com.godspeed.propmart.Models.PropertyCardModel
 import com.godspeed.propmart.databinding.FragmentHomepageBinding
+import com.google.firebase.firestore.FirebaseFirestore
+
 
 class HompageFragment : Fragment() {
+    private lateinit var adapter: PropertyCardAdapter;
+    private lateinit var cards:MutableList<PropertyCardModel>
+    private lateinit var firestore: FirebaseFirestore;
+
+
 
     private var _binding: FragmentHomepageBinding? = null
 
@@ -25,13 +37,34 @@ class HompageFragment : Fragment() {
         val HompageViewModel =
             ViewModelProvider(this).get(HompageViewModel::class.java)
 
+        cards = ArrayList<PropertyCardModel>();
+        adapter = PropertyCardAdapter(requireActivity(),cards);
+        firestore = FirebaseFirestore.getInstance();
         _binding = FragmentHomepageBinding.inflate(inflater, container, false)
+
         val root: View = binding.root
 
-        val textView: TextView = binding.textHompage
-        HompageViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        binding.layoutRecyclerView.layoutManager = LinearLayoutManager(requireContext(),
+        RecyclerView.VERTICAL,false);
+        binding.layoutRecyclerView.adapter = adapter;
+
+        firestore.collection("Layouts").get().addOnSuccessListener{
+            it.documents.iterator().forEach { documentSnapshot ->
+                val title:String = documentSnapshot.get("title") as String;
+                val seller:String = documentSnapshot.get("sellerName") as String;
+                val totalPlots:Long = documentSnapshot.get("totalPlots") as Long;
+                val address:String = documentSnapshot.get("address") as String;
+
+               val card:PropertyCardModel =
+                   PropertyCardModel(documentSnapshot.id.toString(),
+                       title,seller,address,"",totalPlots);
+
+                cards.add(card);
+            }
+
+            adapter.notifyDataSetChanged();
         }
+
         return root
     }
 

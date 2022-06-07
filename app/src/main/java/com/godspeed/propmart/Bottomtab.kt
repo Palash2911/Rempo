@@ -29,7 +29,7 @@ class Bottomtab : AppCompatActivity() {
                 R.id.navigation_Location, R.id.navigation_Hompage, R.id.navigation_Bookmarks
             )
         )
-        setupActionBarWithNavController(navController, appBarConfiguration)
+//        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
 }
