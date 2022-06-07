@@ -21,7 +21,7 @@ class BookmarksFragment : Fragment() {
 
     private val db = Firebase.firestore
     private var _binding: FragmentBookmarkBinding? = null
-
+    lateinit var bookmarklist: MutableList<Int>
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -35,12 +35,22 @@ class BookmarksFragment : Fragment() {
         _binding = FragmentBookmarkBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        // change sample_uid to auth_id
 //        db.collection("Users").document("sample_uid")
 //            .collection("saved").get().addOnSuccessListener { snapshot ->
 //                for (layout in snapshot) {
-//                    _binding!!.textView6.text = layout["time"].toString()
+//                    bookmarklist.add(Integer.parseInt(layout["layout_Id"].toString()))
 //                }
 //            }
+//        db.collection("Layouts").get().addOnSuccessListener { snapshot ->
+//            for(layout in snapshot)
+//            {
+//                if(bookmarklist.get(0) == layout["layout_Id"])
+//                {
+//                    add to list
+//                }
+//            }
+//        }
         return root
     }
 
