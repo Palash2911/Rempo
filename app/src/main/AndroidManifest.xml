@@ -14,18 +14,21 @@
         android:theme="@style/Theme.Propmart"
         tools:targetApi="31">
         <activity
+            android:name=".Bidplaced"
+            android:exported="false" />
+        <activity
             android:name=".PropertyPageActivity"
             android:exported="false"
-            android:parentActivityName=".Bottomtab"/>
+            android:parentActivityName=".Bottomtab" />
         <activity
             android:name=".Editprofile"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".Aadharverified"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".Uploadaadhar"
             android:exported="false" />
@@ -34,8 +37,7 @@
             android:exported="false" />
         <activity
             android:name=".Bottomtab"
-            android:exported="true"
-            android:label="@string/title_activity_bottomtab">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
