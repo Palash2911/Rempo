@@ -42,7 +42,6 @@ class Otpactivity : AppCompatActivity() {
                         val intent = Intent(this, Bottomtab::class.java)
                         startActivity(intent)
                         finish()
-                        Toast.makeText(this, "Welcome Back Champion !! ", Toast.LENGTH_SHORT).show()
                     } else {
                         val intent = Intent(this, Profile::class.java)
                         startActivity(intent)
@@ -50,7 +49,9 @@ class Otpactivity : AppCompatActivity() {
                     }
                 }
         } else {
-            Toast.makeText(this, "Welcome Champion !! ", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 
@@ -147,7 +148,6 @@ class Otpactivity : AppCompatActivity() {
                                 val intent = Intent(this, Bottomtab::class.java)
                                 startActivity(intent)
                                 finish()
-                                Toast.makeText(this, "Welcome Champion !! ", Toast.LENGTH_SHORT).show()
                             } else {
                                 val intent = Intent(this, Profile::class.java)
                                 intent.putExtra("Profile", false.toString())

@@ -19,7 +19,7 @@ class BookmarkViewPagerAdapter(private val myContext: Context, fm: FragmentManag
     override fun getItem(position: Int): Fragment {
         return when(position){
             0 -> {
-                Plotpage()
+                Savedfrag()
             }
             1 -> {
                 Bidsfrag()

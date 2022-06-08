@@ -27,7 +27,28 @@ class MainActivity : AppCompatActivity() {
     private lateinit var  messaging: FirebaseMessaging
     lateinit var phone: EditText
 
-
+    override fun onStart() {
+        super.onStart()
+        messaging = FirebaseMessaging.getInstance();
+        if (auth.currentUser != null) {
+            db.collection("Users").document(auth.currentUser!!.uid).get()
+                .addOnCompleteListener { task2 ->
+                    if (task2.result?.exists() == true) {
+                        val intent = Intent(this, Bottomtab::class.java)
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        val intent = Intent(this, Profile::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+                }
+        } else {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
