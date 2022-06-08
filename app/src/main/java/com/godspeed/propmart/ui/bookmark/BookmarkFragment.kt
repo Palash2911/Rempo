@@ -33,8 +33,7 @@ class BookmarksFragment : Fragment() {
 
         _binding!!.bookmarkvp.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(_binding!!.tabLayout))
 
-        _binding!!.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener
-        {
+        _binding!!.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 _binding!!.bookmarkvp.currentItem = tab!!.position
             }
@@ -44,9 +43,8 @@ class BookmarksFragment : Fragment() {
             }
 
             override fun onTabReselected(tab: TabLayout.Tab?) {
-
+                _binding!!.bookmarkvp.currentItem = tab!!.position
             }
-
         })
         return root
     }

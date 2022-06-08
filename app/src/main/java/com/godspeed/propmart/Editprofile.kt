@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.godspeed.propmart.databinding.ActivityEditprofileBinding
 import com.godspeed.propmart.databinding.ActivityProfileBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -31,7 +32,14 @@ class Editprofile : AppCompatActivity() {
             binding.dobedit.setText(snapshot["dob"] as String);
         }
         setContentView(binding.root)
-
+        setSupportActionBar(binding.toolbar2)
+        supportActionBar!!.title = "Edit Profile"
+        binding.toolbar2.navigationIcon = ContextCompat.getDrawable(this, R.drawable.ic_baseline_arrow_back_24)
+        binding.toolbar2.setNavigationOnClickListener {
+            val intent = Intent(this, Bottomtab::class.java)
+            startActivity(intent)
+            finish()
+        }
         binding.editprfbtn.setOnClickListener{
             editprf()
         }
