@@ -4,6 +4,7 @@ import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
@@ -61,8 +62,7 @@ class Profile : AppCompatActivity() {
         db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
             .set(profile).addOnCompleteListener{task->
                 if (task.isSuccessful){
-                    val intent = Intent(this, Bottomtab::class.java)
-                    intent.putExtra("Number", 9920063906)
+                    val intent = Intent(this, Profileverify::class.java)
                     startActivity(intent)
                     finish()
                     Toast.makeText(this, "Welcome Champion !! ", Toast.LENGTH_SHORT).show()

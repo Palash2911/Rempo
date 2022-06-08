@@ -196,13 +196,13 @@
         android:id="@+id/toolbar2"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="@color/reccolor"
         android:minHeight="?attr/actionBarSize"
         android:paddingStart="20dp"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:titleTextColor="#EFEEEE" />
+        app:titleTextColor="#131313" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
