@@ -20,6 +20,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.FcmBroadcastProcessor.reset
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.messaging.ktx.messaging
+import org.w3c.dom.Text
 import java.util.concurrent.TimeUnit
 
 class Otpactivity : AppCompatActivity() {
@@ -65,6 +66,17 @@ class Otpactivity : AppCompatActivity() {
         num = intent.extras?.get("Number").toString()
         val verify = findViewById<Button>(R.id.verifyotp)
         val editnum = findViewById<TextView>(R.id.editphoneno)
+        val resendotp = findViewById<TextView>(R.id.resendotp)
+
+        editnum.setOnClickListener{
+            auth.signOut()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        resendotp.setOnClickListener{
+            sendOtp()
+        }
         sendOtp()
 
         verify.setOnClickListener {
