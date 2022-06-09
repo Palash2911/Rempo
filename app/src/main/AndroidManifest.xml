@@ -30,7 +30,7 @@
             android:name=".Aadharverified"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Bottomtab"
             android:exported="false" />
         <activity
             android:name=".Uploadaadhar"
@@ -39,7 +39,7 @@
             android:name=".Profile"
             android:exported="false" />
         <activity
-            android:name=".Bottomtab"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

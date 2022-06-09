@@ -18,6 +18,7 @@ import java.time.LocalDateTime
 class Profile : AppCompatActivity() {
     private lateinit var binding: ActivityProfileBinding
     private val db = Firebase.firestore
+    var num: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +27,9 @@ class Profile : AppCompatActivity() {
         binding = ActivityProfileBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
+
+        num = intent.extras?.get("Number").toString()
+        binding.phone.text = num
 
         binding.saveprofile.setOnClickListener {
             submitProf()
@@ -36,10 +40,6 @@ class Profile : AppCompatActivity() {
         val profile:HashMap<String, Any> = HashMap()
         if(binding.nameprofile.text.isEmpty()){
             binding.nameprofile.error = "Name Required !!"
-            return
-        }
-        if(binding.phone.text.isEmpty()){
-            binding.phone.error = "Phone Number Required !!"
             return
         }
         if(binding.Email.text.isEmpty()){
@@ -59,17 +59,52 @@ class Profile : AppCompatActivity() {
         profile["profilePicture"] = "downloadurl"
         profile["Uid"] = Firebase.auth.uid.toString()
         profile["Verified"] = true
-        db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
-            .set(profile).addOnCompleteListener{task->
-                if (task.isSuccessful){
-                    val intent = Intent(this, Profileverify::class.java)
-                    startActivity(intent)
-                    finish()
-                    Toast.makeText(this, "Welcome Champion !! ", Toast.LENGTH_SHORT).show()
-                } else {
-                    Log.d(TAG, "Error saving profile! ", task.exception)
-                    Toast.makeText(applicationContext, "Something went wrong!!", Toast.LENGTH_SHORT).show()
+        var flag = true
+        var uid = ""
+        db.collection("Users").get().addOnSuccessListener { snapsnot->
+            for(users in snapsnot)
+            {
+                Log.d(TAG, users["Phone"].toString() )
+                if(profile["Phone"] == users["Phone"].toString())
+                {
+                    flag=false;
+                    uid = users["uid"].toString()
+                    break;
                 }
             }
+        }
+        if(flag==false)
+        {
+            db.collection("Users").document(uid)
+                .set(profile).addOnCompleteListener{task->
+                    if (task.isSuccessful){
+                        val intent = Intent(this, Profileverify::class.java)
+                        startActivity(intent)
+                        finish()
+                        Toast.makeText(this, "Welcome Champion !! ", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Log.d(TAG, "Error saving profile! ", task.exception)
+                        Toast.makeText(applicationContext, "Something went wrong!!", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            db.collection("Users").document(uid).update(uid, Firebase.auth.currentUser.toString())
+                .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully updated!") }
+                .addOnFailureListener { e -> Log.w(TAG, "Error updating document", e) }
+        }
+        else
+        {
+            db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
+                .set(profile).addOnCompleteListener{task->
+                    if (task.isSuccessful){
+                        val intent = Intent(this, Profileverify::class.java)
+                        startActivity(intent)
+                        finish()
+                        Toast.makeText(this, "Welcome Champion !! ", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Log.d(TAG, "Error saving profile! ", task.exception)
+                        Toast.makeText(applicationContext, "Something went wrong!!", Toast.LENGTH_SHORT).show()
+                    }
+                }
+        }
     }
 }

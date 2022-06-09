@@ -44,9 +44,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
         } else {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
+            Toast.makeText(this,"Welcome User !", Toast.LENGTH_SHORT).show()
         }
     }
 

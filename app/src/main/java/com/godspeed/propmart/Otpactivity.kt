@@ -49,10 +49,6 @@ class Otpactivity : AppCompatActivity() {
                         finish()
                     }
                 }
-        } else {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
         }
     }
 
@@ -67,7 +63,7 @@ class Otpactivity : AppCompatActivity() {
         val verify = findViewById<Button>(R.id.verifyotp)
         val editnum = findViewById<TextView>(R.id.editphoneno)
         val resendotp = findViewById<TextView>(R.id.resendotp)
-
+        binding.numbersent.text = "Please Enter the OTP we just sent on +91 " + num.substring(0, 1) + "*******" + num.substring(8);
         editnum.setOnClickListener{
             auth.signOut()
             val intent = Intent(this, MainActivity::class.java)
@@ -75,6 +71,7 @@ class Otpactivity : AppCompatActivity() {
         }
 
         resendotp.setOnClickListener{
+            Toast.makeText(this, "OTP RESENT SUCCESSFULLY!", Toast.LENGTH_SHORT).show()
             sendOtp()
         }
         sendOtp()
@@ -87,10 +84,12 @@ class Otpactivity : AppCompatActivity() {
 
     private fun verifyOtp(){
         if (binding.otpView.otp.toString().isEmpty() || binding.otpView.otp.toString().length < 6){
+            binding.otpView.showError()
             Toast.makeText(this, "Please enter valid 6 digit OTP!", Toast.LENGTH_SHORT).show()
             return
         }
         val otpNumber = binding.otpView.otp.toString()
+        Log.d("OTPnum", otpNumber)
         val credential = PhoneAuthProvider.getCredential(storedVerificationId, otpNumber)
         signInWithPhoneAuthCredential(credential)
     }
@@ -100,7 +99,7 @@ class Otpactivity : AppCompatActivity() {
             Toast.makeText(this, "Please enter valid phone number!", Toast.LENGTH_SHORT).show()
             return
         }
-        val phoneNumber = "+91 " + num.toString()
+        val phoneNumber = "+91 $num"
 
         val options = PhoneAuthOptions.newBuilder(auth)
             .setPhoneNumber(phoneNumber)
@@ -156,13 +155,16 @@ class Otpactivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     db.collection("Users").document(auth.currentUser!!.uid).get()
                         .addOnCompleteListener{task2->
-                            if(task2.result?.exists() == true){
+                            if(task2.result?.exists() == true ){
+                                binding.otpView.showSuccess()
+                                binding.otpView.setOTP(credential.smsCode.toString())
                                 val intent = Intent(this, Bottomtab::class.java)
                                 startActivity(intent)
                                 finish()
                             } else {
+                                binding.otpView.showSuccess()
                                 val intent = Intent(this, Profile::class.java)
-                                intent.putExtra("Profile", false.toString())
+                                intent.putExtra("Number", num)
                                 startActivity(intent)
                                 finish()
                             }
@@ -171,7 +173,7 @@ class Otpactivity : AppCompatActivity() {
                     // Sign in failed, display a message and update the UI
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {
-                        // The verification code entered was invalid
+                        binding.otpView.showError()
                         Toast.makeText(this, "Invalid code, Try Again!", Toast.LENGTH_SHORT).show()
                     } else {
                         Toast.makeText(this, "Something went wrong!", Toast.LENGTH_SHORT).show()
