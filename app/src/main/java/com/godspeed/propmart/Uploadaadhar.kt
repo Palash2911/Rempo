@@ -84,9 +84,12 @@ class Uploadaadhar : AppCompatActivity() {
     }
 
     private fun sendOtp(aadharNum:String) {
-        val intent:Intent = Intent(this,Aadharotp::class.java);
-        intent.putExtra("aadharNumber",aadharNum);
-        startActivity(intent);
+        firestore.collection("Users").document(auth.uid.toString())
+            .update("aadhar",aadharNum).addOnSuccessListener {
+                val intent:Intent = Intent(this,Aadharverified::class.java);
+                startActivity(intent);
+            }
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

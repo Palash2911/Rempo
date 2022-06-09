@@ -2,15 +2,12 @@ package com.godspeed.propmart.Adapters
 
 import android.content.Context
 import android.content.Intent
-import android.opengl.Visibility
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.godspeed.propmart.Adapters.PropertyCardAdapter.PropertyCardViewHolder
-import com.godspeed.propmart.Fragments.Propertypage
 import com.godspeed.propmart.Models.PropertyCardModel
 import com.godspeed.propmart.PropertyPageActivity
 import com.godspeed.propmart.databinding.PropertyCardBinding
@@ -18,7 +15,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
 
 class PropertyCardAdapter(val context:Context , val cards:List<PropertyCardModel>):
     RecyclerView.Adapter<PropertyCardViewHolder>() {
@@ -91,7 +87,10 @@ class PropertyCardAdapter(val context:Context , val cards:List<PropertyCardModel
 
 
                binding.map.setOnClickListener{
-                   //Opening Google Map Showing Location of Plot
+                   val intent:Intent = Intent(Intent.ACTION_VIEW);
+                   intent.setData(Uri.parse("geo:"+this.latitude+","+this.longitude));
+                   val chooser = Intent.createChooser(intent ,"Launch Map");
+                   context.startActivity(chooser);
                }
 
                binding.share.setOnClickListener{

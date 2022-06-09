@@ -54,11 +54,13 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
+    implementation 'com.google.android.material:material:1.6.1'
     implementation 'com.github.bumptech.glide:glide:4.13.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
     implementation 'com.google.firebase:firebase-messaging-ktx:23.0.5'
     implementation 'com.google.firebase:firebase-storage:20.0.1'
     implementation 'com.google.firebase:firebase-storage-ktx:20.0.1'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
     testImplementation 'junit:junit:'
     implementation("androidx.recyclerview:recyclerview-selection:1.1.0")
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
