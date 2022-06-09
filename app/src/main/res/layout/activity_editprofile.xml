@@ -4,31 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Profile">
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:fontFamily="@font/roboto"
-        android:text="Profile Details"
-        android:textSize="28sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    tools:context=".Editprofile">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="5dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2">
 
         <LinearLayout
             android:id="@+id/linearLayout2"
@@ -48,6 +36,7 @@
                 android:lineSpacingExtra="3sp"
                 android:text="Aadhar Number"
                 android:textSize="16sp"
+                android:textStyle="bold"
                 android:translationY="-1.69sp" />
 
             <TextView
@@ -80,10 +69,11 @@
                 android:lineSpacingExtra="3sp"
                 android:text="Name (as on Aadhar)"
                 android:textSize="16sp"
+                android:textStyle="bold"
                 android:translationY="-1.69sp" />
 
             <EditText
-                android:id="@+id/nameprofile"
+                android:id="@+id/nameprofileedit"
                 android:layout_width="283dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="12dp"
@@ -114,10 +104,11 @@
                 android:lineSpacingExtra="3sp"
                 android:text="Date of Birth"
                 android:textSize="16sp"
+                android:textStyle="bold"
                 android:translationY="-1.69sp" />
 
             <EditText
-                android:id="@+id/dob"
+                android:id="@+id/dobedit"
                 android:layout_width="283dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="12dp"
@@ -148,19 +139,22 @@
                 android:lineSpacingExtra="3sp"
                 android:text="Mobile Number"
                 android:textSize="16sp"
+                android:textStyle="bold"
                 android:translationY="-1.69sp" />
 
-            <TextView
-                android:id="@+id/phone"
+            <EditText
+                android:id="@+id/phoneedit"
                 android:layout_width="283dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/rectangle"
+                android:ems="10"
                 android:fontFamily="@font/roboto"
-                android:gravity="center_vertical"
+                android:hint="Enter Your Number"
+                android:inputType="number"
                 android:paddingStart="20dp"
-                android:text="1234567890"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                tools:ignore="TouchTargetSizeCheck" />
         </LinearLayout>
 
         <LinearLayout
@@ -180,10 +174,11 @@
                 android:lineSpacingExtra="3sp"
                 android:text="Mail - ID"
                 android:textSize="16sp"
+                android:textStyle="bold"
                 android:translationY="-1.69sp" />
 
             <EditText
-                android:id="@+id/Email"
+                android:id="@+id/Emailedit"
                 android:layout_width="283dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="12dp"
@@ -198,12 +193,12 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/saveprofile"
+            android:id="@+id/editprfbtn"
             android:layout_width="283dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:text="Create Profile"
+            android:text="Save"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
@@ -211,5 +206,18 @@
 
 
     </LinearLayout>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize"
+        android:paddingStart="20dp"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="#131313" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

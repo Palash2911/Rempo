@@ -17,16 +17,26 @@
             android:name=".SplashActivity"
             android:exported="false" />
         <activity
-            android:name=".BiddingActivity"
+            android:name=".Plotpage"
+            android:exported="false" />
+        <activity
+            android:name=".Profileverify"
+            android:exported="false" />
+        <activity
+            android:name=".Bidplaced"
             android:exported="false" />
         <activity
             android:name=".PropertyPageActivity"
+            android:exported="false"
+            android:parentActivityName=".Bottomtab" />
+        <activity
+            android:name=".Editprofile"
             android:exported="false" />
         <activity
             android:name=".Aadharverified"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Bottomtab"
             android:exported="false" />
         <activity
             android:name=".Uploadaadhar"
@@ -35,9 +45,8 @@
             android:name=".Profile"
             android:exported="false" />
         <activity
-            android:name=".Bottomtab"
-            android:exported="true"
-            android:label="@string/title_activity_bottomtab">
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
