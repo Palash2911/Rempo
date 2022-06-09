@@ -10,13 +10,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/namemoresetting"
             android:layout_width="125dp"
             android:layout_height="27dp"
+            android:fontFamily="@font/roboto"
             android:text="Name"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -25,6 +26,7 @@
             android:id="@+id/numbersetting"
             android:layout_width="140dp"
             android:layout_height="27dp"
+            android:fontFamily="@font/roboto"
             android:text="Phone Number"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -33,12 +35,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="110dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="105dp"
+        android:layout_marginEnd="35dp"
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/editprofilell"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="15dp"
@@ -59,6 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/roboto"
                 android:gravity="start|center_vertical"
                 android:text="Edit Profile"
                 android:textColor="#0B0B0B"
@@ -74,6 +78,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/contactusll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="15dp"
@@ -94,6 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/roboto"
                 android:gravity="start|center_vertical"
                 android:text="Contact Us"
                 android:textColor="#090909"
@@ -110,6 +116,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/aboutusll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="15dp"
@@ -131,6 +138,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/roboto"
                 android:gravity="start|center_vertical"
                 android:text="About Us"
                 android:textColor="#0C0C0C"
@@ -147,6 +155,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/logoutll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="15dp"
@@ -168,6 +177,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/roboto"
                 android:gravity="start|center_vertical"
                 android:text="Log Out"
                 android:textColor="#0C0C0C"
@@ -189,7 +199,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="380dp"
+        android:layout_marginTop="360dp"
         android:layout_marginEnd="30dp"
         android:orientation="vertical">
 
@@ -198,6 +208,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:fontFamily="@font/roboto"
             android:gravity="top"
             android:text="Rate Us"
             android:textSize="16sp"
@@ -208,6 +219,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:fontFamily="@font/roboto"
             android:gravity="top"
             android:text="Help &amp; Support"
             android:textSize="16sp"
@@ -218,6 +230,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:fontFamily="@font/roboto"
             android:gravity="top"
             android:text="Privacy Policy"
             android:textSize="16sp"

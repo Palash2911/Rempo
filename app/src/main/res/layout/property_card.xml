@@ -1,6 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:cardCornerRadius="8dp"
+        android:layout_marginTop="12dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@id/seperator"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:cardCornerRadius="8dp">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:id="@+id/plot_image"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/sample_refference"/>
+                </androidx.cardview.widget.CardView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="12dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Layout At Survey No. 35/3"
+                        android:textSize="18dp"
+                        android:textColor="@color/black"
+                        android:textFontWeight="500"
+                        android:layout_marginBottom="4dp"
+                        android:id="@+id/title"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14dp"
+                        android:text="By - VP Associates Pvt Ltd"
+                        android:textColor="#3F3F3F"
+                        android:layout_marginBottom="4dp"
+                        android:id="@+id/seller"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total Plots:"
+                            android:textColor="#91BE6D"
+                            android:textSize="12dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="78"
+                            android:textSize="12dp"
+                            android:textColor="#91BE6D"
+                            android:id="@+id/plot_count"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Haran tekdi, Near Samruddhi Mahamarga, Mehkar, Buldhana, 411234 "
+                        android:textColor="#211A1E"
+                        android:id="@+id/address"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e5e5e5"
+                android:id="@+id/seperator"
+                android:layout_above="@id/button_group"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:id="@+id/button_group"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                android:layout_marginLeft="5dp">
+
+                <ImageView
+                    android:padding="6dp"
+                    android:layout_width="114dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:visibility="visible"
+                    android:id="@+id/save"
+                    android:src="@drawable/bookmark"
+                    />
+                <ImageView
+                    android:padding="6dp"
+                    android:layout_width="114dp"
+                    android:id="@+id/saved"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/saved"
+                    android:visibility="gone"
+                    />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#E5E5E5"/>
+
+                <ImageView
+                    android:layout_width="114dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/map"
+                    android:padding="6dp"
+                    android:id="@+id/map"/>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#e5e5e5"/>
+
+                <ImageView
+                    android:layout_width="114dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/share"
+                    android:padding="6dp"
+                    android:id="@+id/share"
+                    android:layout_marginRight="5dp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
