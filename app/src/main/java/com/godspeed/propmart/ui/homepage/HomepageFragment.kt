@@ -54,10 +54,12 @@ class HompageFragment : Fragment() {
                 val seller:String = documentSnapshot.get("sellerName") as String;
                 val totalPlots:Long = documentSnapshot.get("totalPlots") as Long;
                 val address:String = documentSnapshot.get("address") as String;
+                val longitude:String = documentSnapshot.get("longitude") as String;
+                val latitude:String = documentSnapshot.get("latitude") as String;
 
                val card:PropertyCardModel =
                    PropertyCardModel(documentSnapshot.id.toString(),
-                       title,seller,address,"",totalPlots);
+                       title,seller,address,"",totalPlots,latitude,longitude);
 
                 cards.add(card);
             }

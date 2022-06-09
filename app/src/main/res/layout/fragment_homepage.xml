@@ -11,52 +11,68 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="@color/white">
 
             <ImageButton
+                android:id="@+id/imageButton"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:layout_gravity="center"
-                android:layout_marginLeft="16dp"
-                android:background="@drawable/arrow" />
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/arrow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="12dp"
-                android:layout_marginRight="150dp"
+                android:layout_marginStart="11dp"
+                android:layout_weight="0"
                 android:text="Layouts"
                 android:textColor="@color/black"
                 android:textFontWeight="600"
                 android:textSize="22dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageButton"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
+                android:id="@+id/filters"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_gravity="center"
-                android:padding="8dp"
-                android:layout_marginLeft="30dp"
-                android:src="@drawable/filter" />
+                android:padding="12dp"
+
+                android:src="@drawable/filter"
+                app:layout_constraintEnd_toStartOf="@+id/notifications"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
+                android:id="@+id/notifications"
                 android:layout_width="48dp"
+
                 android:layout_height="48dp"
+                android:layout_alignParentEnd="true"
                 android:layout_gravity="center"
-                android:padding="8dp"
-                android:src="@drawable/notifications" />
-        </LinearLayout>
+                android:padding="12dp"
+                android:src="@drawable/notifications"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/layout_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/toolbar"
-            android:id="@+id/layout_recycler_view"
             tools:listitem="@layout/property_card" />
 
     </RelativeLayout>
