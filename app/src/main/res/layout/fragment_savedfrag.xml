@@ -17,7 +17,7 @@
             android:layout_marginTop="90dp"
             android:fontFamily="@font/roboto"
             android:gravity="center"
-            android:text="No Saved Properties Yet !!"
+            android:text="Loading Your Saved Properties !"
             android:textSize="24sp"
             android:textStyle="bold"
             android:visibility="visible" />

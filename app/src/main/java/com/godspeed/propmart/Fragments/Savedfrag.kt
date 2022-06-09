@@ -63,6 +63,10 @@ class Savedfrag : Fragment() {
                 {
                     binding.savetext.visibility = GONE
                 }
+                else
+                {
+                    binding.savetext.text = "No Properties Saved Yet !!"
+                }
             }
             adapter.notifyDataSetChanged();
         }

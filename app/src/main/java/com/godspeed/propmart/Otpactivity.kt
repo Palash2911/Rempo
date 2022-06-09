@@ -44,9 +44,7 @@ class Otpactivity : AppCompatActivity() {
                         startActivity(intent)
                         finish()
                     } else {
-                        val intent = Intent(this, Profile::class.java)
-                        startActivity(intent)
-                        finish()
+                        auth.signOut()
                     }
                 }
         }
@@ -168,6 +166,8 @@ class Otpactivity : AppCompatActivity() {
                                 startActivity(intent)
                                 finish()
                             }
+                        }.addOnCanceledListener {
+                            Toast.makeText(this, "User not found !", Toast.LENGTH_SHORT).show()
                         }
                 } else {
                     // Sign in failed, display a message and update the UI
@@ -179,6 +179,8 @@ class Otpactivity : AppCompatActivity() {
                         Toast.makeText(this, "Something went wrong!", Toast.LENGTH_SHORT).show()
                     }
                 }
+            }.addOnCanceledListener {
+                Toast.makeText(this, "Some Error Occurred !", Toast.LENGTH_SHORT).show()
             }
     }
 
