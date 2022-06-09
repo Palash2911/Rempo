@@ -7,36 +7,52 @@
     tools:context=".ui.more.Morefragment">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/namemoresetting"
-            android:layout_width="125dp"
-            android:layout_height="27dp"
-            android:fontFamily="@font/roboto"
-            android:text="Name"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profileimg"
+            android:layout_width="100dp"
+            android:layout_height="101dp"
+            android:layout_margin="12dp"
+            android:layout_marginBottom="15dp"
+            android:visibility="visible"
+            tools:src="@drawable/ic_baseline_circle_24" />
 
-        <TextView
-            android:id="@+id/numbersetting"
-            android:layout_width="140dp"
-            android:layout_height="27dp"
-            android:fontFamily="@font/roboto"
-            android:text="Phone Number"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/namemoresetting"
+                android:layout_width="125dp"
+                android:layout_height="27dp"
+                android:fontFamily="@font/roboto"
+                android:text="Name"
+                android:textColor="#050505"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/numbersetting"
+                android:layout_width="140dp"
+                android:layout_height="27dp"
+                android:fontFamily="@font/roboto"
+                android:text="Phone Number"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="105dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="115dp"
         android:layout_marginEnd="35dp"
         android:orientation="vertical">
 
@@ -54,8 +70,9 @@
                 android:layout_width="5dp"
                 android:layout_height="20dp"
                 android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:src="@drawable/ic_baseline_person2" />
+                android:layout_marginEnd="20dp"
+                android:layout_weight="0.2"
+                android:src="@drawable/account_circle" />
 
             <TextView
                 android:id="@+id/edprofile"
@@ -71,7 +88,7 @@
             <ImageView
                 android:id="@+id/imageView4"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
+                android:layout_height="14dp"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
@@ -91,8 +108,9 @@
                 android:layout_width="5dp"
                 android:layout_height="20dp"
                 android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:src="@drawable/ic_baseline_call_24" />
+                android:layout_marginEnd="20dp"
+                android:layout_weight="0.2"
+                android:src="@drawable/account_circle" />
 
             <TextView
                 android:id="@+id/contact"
@@ -108,7 +126,7 @@
             <ImageView
                 android:id="@+id/imageView6"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
+                android:layout_height="14dp"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
@@ -130,8 +148,9 @@
                 android:layout_width="5dp"
                 android:layout_height="20dp"
                 android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:src="@drawable/ic_baseline_info_24" />
+                android:layout_marginEnd="20dp"
+                android:layout_weight="0.2"
+                android:src="@drawable/account_circle" />
 
             <TextView
                 android:id="@+id/info"
@@ -147,7 +166,7 @@
             <ImageView
                 android:id="@+id/imageView8"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
+                android:layout_height="14dp"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
@@ -169,8 +188,9 @@
                 android:layout_width="5dp"
                 android:layout_height="20dp"
                 android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:src="@drawable/ic_baseline_logout_24" />
+                android:layout_marginEnd="20dp"
+                android:layout_weight="0.2"
+                android:src="@drawable/account_circle" />
 
             <TextView
                 android:id="@+id/logout"
@@ -186,7 +206,7 @@
             <ImageView
                 android:id="@+id/imageView10"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
+                android:layout_height="14dp"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
@@ -199,7 +219,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="360dp"
+        android:layout_marginTop="380dp"
         android:layout_marginEnd="30dp"
         android:orientation="vertical">
 
@@ -211,8 +231,8 @@
             android:fontFamily="@font/roboto"
             android:gravity="top"
             android:text="Rate Us"
-            android:textSize="16sp"
-            android:textStyle="italic" />
+            android:textColor="#000000"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/help_suppor"
@@ -222,8 +242,8 @@
             android:fontFamily="@font/roboto"
             android:gravity="top"
             android:text="Help &amp; Support"
-            android:textSize="16sp"
-            android:textStyle="italic" />
+            android:textColor="#000000"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/privecy_pol"
@@ -233,8 +253,8 @@
             android:fontFamily="@font/roboto"
             android:gravity="top"
             android:text="Privacy Policy"
-            android:textSize="16sp"
-            android:textStyle="italic" />
+            android:textColor="#000000"
+            android:textSize="16sp" />
     </LinearLayout>
 
 </FrameLayout>

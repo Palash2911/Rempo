@@ -199,11 +199,12 @@ Mehkar, Buldhana, 411234"
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:tag=""/>
+                    android:tag="" />
             </RelativeLayout>
 
 

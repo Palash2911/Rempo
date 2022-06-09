@@ -28,9 +28,6 @@ class PropertyPageActivity : AppCompatActivity() {
     private lateinit var idList: ArrayList<String>;
     private lateinit var selectedId:String;
 
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPropertyPageBinding.inflate(layoutInflater)
@@ -46,6 +43,7 @@ class PropertyPageActivity : AppCompatActivity() {
         binding.title.text = intent.getStringExtra("title");
         binding.toolbarTitle.text = intent.getStringExtra("title");
         val layoutId:String = intent.getStringExtra("layoutId").toString();
+
         firebase.collection("Layouts").document(layoutId).get()
             .addOnSuccessListener { snapshot ->
                 binding.availablePlots.text = snapshot.get("availablePlots").toString()
@@ -108,7 +106,7 @@ class PropertyPageActivity : AppCompatActivity() {
                 binding.plotDropdown.error = "Please Select a Plot";
             }
             else{
-                val intent = Intent(this,BiddingActivity::class.java);
+                val intent = Intent(this, Plotpage::class.java);
                 intent.putExtra("plotId",selectedId);
                 intent.putExtra("layoutId",layoutId);
                 startActivity(intent);

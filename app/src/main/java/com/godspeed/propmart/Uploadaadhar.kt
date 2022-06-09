@@ -4,6 +4,8 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Button
 import android.widget.Toast
 import com.godspeed.propmart.databinding.ActivityUploadaadharBinding
 import com.google.android.material.snackbar.Snackbar
@@ -48,8 +50,9 @@ class Uploadaadhar : AppCompatActivity() {
             gallery.setAction(Intent.ACTION_GET_CONTENT);
             startActivityForResult(gallery,35);
         }
-
-        binding.proceedBtn.setOnClickListener{
+        val prbtn = findViewById<Button>(R.id.proceedBtn)
+        prbtn.setOnClickListener{
+            Log.d("Aadhar", "clicked")
             if(binding.aadharNumber.text.isNullOrEmpty() || binding.aadharNumber.text.length!=12){
                 binding.aadharNumber.setError("Please Enter an Valid Aadhar Number");
             }

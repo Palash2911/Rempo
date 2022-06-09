@@ -38,38 +38,37 @@ class Savedfrag : Fragment() {
         binding.saverv.adapter = adapter
 
         db.collection("Users").document("sample_uid").collection("saved")
-            .get().addOnSuccessListener { snapshot->
+            .get().addOnSuccessListener{ snapshot->
                 for(users in snapshot)
                 {
                     Log.d("Layout", users["layoutId"].toString())
-//                    savelist.add(users["layoutId"].toString())
+                    val title = users["title"].toString()
+                    val seller = users["sellerName"].toString()
+                    val totalPlots = users["totalPlots"].toString().toLong()
+                    val address = users["address"].toString()
+                    val longitude:String = users["longitude"] as String;
+                    val latitude:String = users["latitude"] as String;
+
+
+                    val card:PropertyCardModel =
+                        PropertyCardModel(users.id,
+                            title,seller,address,"",totalPlots,latitude,longitude);
+
+                    cards.add(card)
+                    Log.d("Lays", cards.size.toString())
                 }
-            }
-        db.collection("Layouts").get().addOnSuccessListener { snapshot->
-            for(layouts in snapshot)
-            {
-                val title = layouts["title"].toString()
-                val seller = layouts["sellerName"].toString()
-                val totalPlots = layouts["totalPlots"].toString()
-                val address = layouts["address"].toString()
-
-                val card:PropertyCardModel =
-                    PropertyCardModel(layouts.id.toString(),
-                        title,seller,address,"",totalPlots.toLong());
-
-                cards.add(card)
-                Log.d("Lays", cards.size.toString())
                 if(cards.size>0)
                 {
+                    binding.progressBar.visibility = GONE
                     binding.savetext.visibility = GONE
                 }
                 else
                 {
+                    binding.progressBar.visibility = GONE
                     binding.savetext.text = "No Properties Saved Yet !!"
                 }
+                adapter.notifyDataSetChanged();
             }
-            adapter.notifyDataSetChanged();
-        }
         return root
     }
 

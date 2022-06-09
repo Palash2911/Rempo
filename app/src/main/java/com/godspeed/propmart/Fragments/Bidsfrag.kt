@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -63,15 +64,17 @@ class Bidsfrag : Fragment() {
 
                             cards.add(card)
                             Log.d("Bid time", cards.toString())
-                            if(cards.size>0)
-                            {
-                                binding.bidstext.visibility = View.GONE
-                            }
-                            else
-                            {
-                                binding.bidstext.text = "No Properties with Bids Yet !!"
-                            }
                         adapter.notifyDataSetChanged();
+                    }
+                    if(cards.size>0)
+                    {
+                        binding.progressBar2.visibility = GONE
+                        binding.bidstext.visibility = GONE
+                    }
+                    else
+                    {
+                        binding.progressBar2.visibility = GONE
+                        binding.bidstext.text = "No Properties with Bids Yet !!"
                     }
                 }
             }

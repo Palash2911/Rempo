@@ -33,9 +33,12 @@ class SplashActivity : AppCompatActivity() {
                     finish();
                 }
                 else{
-                    val intent = Intent(this,Uploadaadhar::class.java);
+                    val intent = Intent(this,Bottomtab::class.java);
                     startActivity(intent);
                     finish();
+//                  val intent = Intent(this,Uploadaadhar::class.java);
+//                  startActivity(intent);
+//                  finish();
                 }
             }
         }
