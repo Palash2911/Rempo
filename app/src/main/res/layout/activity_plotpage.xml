@@ -60,6 +60,7 @@
                 android:id="@+id/bid_amount"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:background="@drawable/rectangle"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp" />
 

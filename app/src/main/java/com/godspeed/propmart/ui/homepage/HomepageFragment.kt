@@ -67,6 +67,12 @@ class HompageFragment : Fragment() {
             adapter.notifyDataSetChanged();
         }
 
+        binding.imageButton.setOnClickListener{
+            requireActivity().finish();
+        }
+
+
+
         return root
     }
 

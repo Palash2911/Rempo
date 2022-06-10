@@ -30,7 +30,7 @@
         android:gravity="top"
         android:text="Yohooo !"
         android:textColor="#040404"
-        android:textSize="24sp"
+        android:textSize="24dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -51,8 +51,7 @@
         android:fontFamily="@font/roboto"
         android:gravity="top"
         android:text="Your Bid Has Been Placed "
-        android:textSize="24sp"
-        android:textStyle="italic"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/yohooo" />

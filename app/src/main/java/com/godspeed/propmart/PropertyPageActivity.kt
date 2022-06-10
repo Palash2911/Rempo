@@ -114,6 +114,10 @@ class PropertyPageActivity : AppCompatActivity() {
 
         }
 
+        binding.backButton.setOnClickListener {
+            this.finish();
+        }
+
     }
 }
 

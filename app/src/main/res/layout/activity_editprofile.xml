@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,9 +9,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="5dp"
         android:orientation="vertical"
@@ -20,7 +20,9 @@
 
         <LinearLayout
             android:id="@+id/linearLayout2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -41,7 +43,7 @@
 
             <TextView
                 android:id="@+id/aadharfield"
-                android:layout_width="283dp"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/rectangle"
@@ -53,8 +55,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:orientation="vertical">
 
             <TextView
@@ -74,7 +78,7 @@
 
             <EditText
                 android:id="@+id/nameprofileedit"
-                android:layout_width="283dp"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/rectangle"
@@ -88,8 +92,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:orientation="vertical">
 
             <TextView
@@ -109,7 +115,7 @@
 
             <EditText
                 android:id="@+id/dobedit"
-                android:layout_width="283dp"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/rectangle"
@@ -123,8 +129,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:orientation="vertical">
 
             <TextView
@@ -144,7 +152,7 @@
 
             <EditText
                 android:id="@+id/phoneedit"
-                android:layout_width="283dp"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/rectangle"
@@ -158,8 +166,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:orientation="vertical">
 
             <TextView
@@ -179,7 +189,7 @@
 
             <EditText
                 android:id="@+id/Emailedit"
-                android:layout_width="283dp"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/rectangle"
@@ -192,20 +202,24 @@
                 tools:ignore="TouchTargetSizeCheck" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/editprfbtn"
-            android:layout_width="283dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:text="Save"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/by_continui" />
+
 
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/editprfbtn"
+        android:layout_width="match_parent"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:text="Save"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"

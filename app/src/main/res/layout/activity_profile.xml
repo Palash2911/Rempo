@@ -20,7 +20,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="6dp"
@@ -32,8 +33,10 @@
 
         <LinearLayout
             android:id="@+id/linearLayout2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:orientation="vertical">
 
             <TextView
@@ -52,7 +55,7 @@
 
             <TextView
                 android:id="@+id/aadharfield"
-                android:layout_width="283dp"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/rectangle"
@@ -64,8 +67,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:orientation="vertical">
 
             <TextView
@@ -84,7 +89,7 @@
 
             <EditText
                 android:id="@+id/nameprofile"
-                android:layout_width="283dp"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/rectangle"
@@ -98,8 +103,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:orientation="vertical">
 
             <TextView
@@ -118,7 +125,7 @@
 
             <EditText
                 android:id="@+id/dob"
-                android:layout_width="283dp"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/rectangle"
@@ -132,8 +139,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:orientation="vertical">
 
             <TextView
@@ -152,7 +161,7 @@
 
             <TextView
                 android:id="@+id/phone"
-                android:layout_width="283dp"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/rectangle"
@@ -164,8 +173,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:orientation="vertical">
 
             <TextView
@@ -184,7 +195,7 @@
 
             <EditText
                 android:id="@+id/Email"
-                android:layout_width="283dp"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/rectangle"
@@ -197,19 +208,19 @@
                 tools:ignore="TouchTargetSizeCheck" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/saveprofile"
-            android:layout_width="283dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:text="Create Profile"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/by_continui" />
-
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/saveprofile"
+        android:layout_width="283dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:text="Create Profile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintVertical_bias="0.713" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -52,7 +52,7 @@
         android:gravity="top"
         android:text="Your Profile has been Created !!"
         android:textSize="24sp"
-        android:textStyle="italic"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/yohooo" />
