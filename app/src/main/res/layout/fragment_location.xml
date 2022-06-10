@@ -99,15 +99,15 @@
                     android:textSize="22dp" />
 
                 <TextView
+                    android:id="@+id/locationnameuser"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Bruce Wayne"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textFontWeight="600"
                     android:textSize="24dp" />
             </LinearLayout>
-
 
         </LinearLayout>
 
@@ -182,12 +182,12 @@
         android:id="@+id/explore"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/search_layout"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="80dp"
         android:layout_marginRight="16dp"
         android:fontFamily="@font/roboto"
         android:text="Explore"
-        android:layout_marginBottom="50dp"
         android:textAllCaps="false"
         android:textSize="16dp" />
 

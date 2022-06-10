@@ -56,9 +56,9 @@
                     <ImageView
                         android:id="@+id/layout_map"
                         android:layout_width="match_parent"
-                        android:layout_height="473dp"
+                        android:layout_height="453dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/sample_refference" />
+                        android:src="@drawable/layoutimg" />
                 </androidx.cardview.widget.CardView>
 
                 <TextView
@@ -240,9 +240,6 @@ Mehkar, Buldhana, 411234"
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
-
-
-
 
                 <Button
                     android:layout_width="wrap_content"

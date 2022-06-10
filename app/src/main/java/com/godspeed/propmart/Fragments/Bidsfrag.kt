@@ -1,11 +1,13 @@
 package com.godspeed.propmart.Fragments
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -52,34 +54,34 @@ class Bidsfrag : Fragment() {
                 {
                     Log.d("Layout", users["layoutId"].toString())
 //                    savelist.add(users["layoutId"].toString())
-                    db.collection("Layouts").document(users["layoutId"] as String).get().addOnSuccessListener { snapshots->
-                            val title = snapshots["title"].toString()
-                            val seller = snapshots["sellerName"].toString()
-                            val bidamt = users["bidAmount"].toString()
-                            val plotno = users["plotNo"].toString()
+                    db.collection("Layouts").document(users["layoutId"] as String).get().addOnSuccessListener { snapshots ->
+                        val title = snapshots["title"].toString()
+                        val seller = snapshots["sellerName"].toString()
+                        val bidamt = users["bidAmount"].toString()
+                        val plotno = users["plotNo"].toString()
 
-                            val card:Bidscardmodel =
-                                Bidscardmodel(snapshots.id.toString(),
-                                    bidamt,seller,"",plotno,title);
+                        val card: Bidscardmodel =
+                            Bidscardmodel(
+                                snapshots.id.toString(),
+                                bidamt, seller, "", plotno, title
+                            );
 
-                            cards.add(card)
-                            Log.d("Bid time", cards.toString())
+                        cards.add(card)
                         adapter.notifyDataSetChanged();
                     }
                     if(cards.size>0)
                     {
+                        Log.d("Bid time", cards.size.toString())
                         binding.progressBar2.visibility = GONE
-                        binding.bidstext.visibility = GONE
                     }
                     else
                     {
+                        Log.d("Bid time", cards.size.toString())
                         binding.progressBar2.visibility = GONE
                         binding.bidstext.text = "No Properties with Bids Yet !!"
                     }
                 }
             }
-
-
         return root
     }
 

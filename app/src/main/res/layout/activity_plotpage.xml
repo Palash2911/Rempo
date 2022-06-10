@@ -60,9 +60,11 @@
                 android:id="@+id/bid_amount"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@drawable/rectangle"
                 android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp" />
+                android:layout_marginRight="16dp"
+                android:background="@drawable/rectangle"
+                android:paddingStart="20dp"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -151,7 +153,7 @@
             </LinearLayout>
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/warningplot"
+                android:id="@+id/warningplotdiv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
@@ -163,6 +165,7 @@
                 app:strokeWidth="1dp">
 
                 <TextView
+                    android:id="@+id/warningplot"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

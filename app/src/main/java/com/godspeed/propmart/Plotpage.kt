@@ -10,7 +10,6 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.core.content.ContentProviderCompat.requireContext
 import com.godspeed.propmart.databinding.ActivityPlotpageBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
@@ -30,7 +29,9 @@ class Plotpage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_plotpage)
 
-            _binding = ActivityPlotpageBinding.inflate(layoutInflater)
+        _binding = ActivityPlotpageBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         val layoutid = this.intent?.getStringExtra("Layout_Id")
         val plotid = "plot"+this.intent?.getStringExtra("Plot_Id")
         val totarea = findViewById<TextView>(R.id.area)

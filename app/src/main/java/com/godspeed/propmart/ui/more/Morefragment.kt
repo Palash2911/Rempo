@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.godspeed.propmart.Editprofile
 import com.godspeed.propmart.MainActivity
 import com.godspeed.propmart.R
@@ -49,11 +50,13 @@ class Morefragment : Fragment() {
                 binding.numbersetting.setText(snapshot["Phone"] as String);
                 profileuri = Uri.parse(snapshot["profilePicture"].toString())
         }
-        if(profileuri.toString() == "downloadUrl")
-        {
-            profileuri = Uri.EMPTY;
-        }
+
         storage = FirebaseStorage.getInstance();
+        val storageRef= storage.reference.child("Profile/" + auth.uid.toString())
+        Log.d("Image", storageRef.toString())
+        Glide.with(requireContext())
+            .load(storageRef).into(binding.profileimg)
+
         _binding!!.logoutll.setOnClickListener {
             auth.signOut()
             val intent = Intent(activity, MainActivity::class.java)
@@ -89,7 +92,7 @@ class Morefragment : Fragment() {
             Log.d("Hello", profileuri.toString())
             val storageRef= FirebaseStorage.getInstance().reference.child("Profile/" + auth.uid.toString())
             storageRef.putFile(profileuri).addOnSuccessListener { task ->
-                val profileimg:String = storageRef.child("Profile/"+ auth.uid.toString()).downloadUrl.toString();
+                val profileimg:String = task.storage.downloadUrl.toString();
                 Log.d("Hello2", profileimg.toString())
                 db.collection("Users").document(Firebase.auth.currentUser?.uid.toString()).update("profilePicture", profileimg)
                     .addOnSuccessListener {

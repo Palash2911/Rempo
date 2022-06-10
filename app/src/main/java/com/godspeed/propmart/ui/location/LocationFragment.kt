@@ -14,8 +14,10 @@ import com.bumptech.glide.Glide
 import com.godspeed.propmart.Adapters.PropertyCardAdapter
 import com.godspeed.propmart.Models.PropertyCardModel
 import com.godspeed.propmart.databinding.FragmentLocationBinding
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import com.google.firebase.ktx.Firebase
 
 class LocationFragment : Fragment() {
 
@@ -45,6 +47,10 @@ class LocationFragment : Fragment() {
         pDailog.setCancelable(false);
         pDailog.setMessage("Please Wait");
 
+        firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
+            .get().addOnSuccessListener { snapshot->
+                binding.locationnameuser.text = snapshot["Name"].toString()
+        }
         val profilePic = ""
 
         Glide.with(requireActivity())
@@ -57,8 +63,6 @@ class LocationFragment : Fragment() {
 
 
         binding.explore.setOnClickListener{
-
-
                 pDailog.show();
                 var query:Query = firestore.collection("Layouts");
                 if(binding.state.text.isNotBlank() && binding.district.text.isNotBlank() && binding.taluka.text.isNotBlank()){

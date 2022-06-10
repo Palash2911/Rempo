@@ -19,7 +19,7 @@
             android:gravity="center"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:visibility="visible" />
+            android:visibility="invisible" />
 
         <ProgressBar
             android:id="@+id/progressBar2"
