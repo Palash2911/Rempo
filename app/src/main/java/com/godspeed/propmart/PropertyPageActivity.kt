@@ -14,6 +14,7 @@ import com.godspeed.propmart.Models.DocumentModel
 import com.godspeed.propmart.databinding.ActivityPropertyPageBinding
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.util.*
@@ -62,7 +63,8 @@ class PropertyPageActivity : AppCompatActivity() {
 
         //Initializing Dropdown Select
         val plotRef:CollectionReference = firebase.collection("Layouts").document(layoutId).collection("plots");
-        plotRef.get().addOnSuccessListener {
+        val q: Query = plotRef.orderBy("index");
+        q.get().addOnSuccessListener {
             var list:ArrayList<String> = ArrayList<String>()
 
             it.documents.iterator().forEach { document ->
