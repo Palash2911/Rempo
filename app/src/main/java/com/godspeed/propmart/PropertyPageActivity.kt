@@ -14,6 +14,8 @@ import com.godspeed.propmart.Models.DocumentModel
 import com.godspeed.propmart.databinding.ActivityPropertyPageBinding
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
@@ -27,6 +29,7 @@ class PropertyPageActivity : AppCompatActivity() {
     private lateinit var plotList: ArrayList<String>;
     private lateinit var idList: ArrayList<String>;
     private lateinit var selectedId:String;
+    private val db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -106,10 +109,23 @@ class PropertyPageActivity : AppCompatActivity() {
                 binding.plotDropdown.error = "Please Select a Plot";
             }
             else{
-                val intent = Intent(this, Plotpage::class.java);
-                intent.putExtra("plotId",selectedId);
-                intent.putExtra("layoutId",layoutId);
-                startActivity(intent);
+                var availability: String
+                db.collection("Layouts").document("sample_layout")
+                    .collection("plots").document("plot" + binding.plotDropdown.text.toString().substring(5)).get().addOnSuccessListener { snapshot->
+                        availability = snapshot["available"].toString()
+                        if(availability=="true")
+                        {
+                            val intent = Intent(this, Plotpage::class.java);
+                            Log.d("drop", binding.plotDropdown.text.toString())
+                            intent.putExtra("plotId",binding.plotDropdown.text.toString());
+                            intent.putExtra("layoutId",layoutId);
+                            startActivity(intent);
+                        }
+                        else
+                        {
+                            Toast.makeText(this, "Plot Sold !!", Toast.LENGTH_SHORT).show()
+                        }
+                    }
             }
 
         }

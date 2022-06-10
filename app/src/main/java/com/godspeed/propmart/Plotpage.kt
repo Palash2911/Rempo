@@ -33,8 +33,8 @@ class Plotpage : AppCompatActivity() {
         _binding = ActivityPlotpageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val layoutid = this.intent?.getStringExtra("Layout_Id")
-        val plotid = "plot"+this.intent?.getStringExtra("Plot_Id")
+        val layoutid = this.intent?.getStringExtra("layoutId")
+        val plotid = "plot"+this.intent?.getStringExtra("plotId")?.substring(5)
         val totarea = findViewById<TextView>(R.id.area)
         val bidhead = findViewById<TextView>(R.id.plot_no)
         val rate = findViewById<TextView>(R.id.rate)
@@ -44,8 +44,9 @@ class Plotpage : AppCompatActivity() {
         val placebtn = findViewById<Button>(R.id.placebidbtn)
         val bidamt = findViewById<EditText>(R.id.bid_amount)
 
-        db.collection("Layouts").document("sample_layout").collection("plots").document("plot1").get().addOnSuccessListener { snapshot ->
-            bidhead.text = "Bid on Plot " + plotid.substring(4)
+        Log.d("plot", plotid.toString())
+        db.collection("Layouts").document("sample_layout").collection("plots").document(plotid).get().addOnSuccessListener { snapshot ->
+            bidhead.text = "Bid on Plot " + snapshot["title"].toString().substring(5)
             totarea.text =  snapshot["totalArea"].toString() + "Sq.m"
             desc.text = snapshot["description"].toString()
             rate.text = "Rate : " + snapshot["rate"].toString() + " Rs./sq.m"
