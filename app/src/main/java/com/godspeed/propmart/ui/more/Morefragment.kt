@@ -13,17 +13,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.godspeed.propmart.Editprofile
 import com.godspeed.propmart.MainActivity
-import com.godspeed.propmart.R
 import com.godspeed.propmart.databinding.FragmentMorefragmentBinding
-import com.godspeed.propmart.saveprofileimg
 import com.google.android.gms.tasks.OnFailureListener
-import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
 
 
 class Morefragment : Fragment() {
@@ -54,6 +50,7 @@ class Morefragment : Fragment() {
         storage = FirebaseStorage.getInstance();
         val storageRef= storage.reference.child("Profile/" + auth.uid.toString())
         Log.d("Image", storageRef.toString())
+
         Glide.with(requireContext())
             .load(storageRef).into(binding.profileimg)
 
