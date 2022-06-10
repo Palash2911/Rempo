@@ -5,6 +5,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View.GONE
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -45,12 +46,21 @@ class Plotpage : AppCompatActivity() {
 
         db.collection("Layouts").document("sample_layout").collection("plots").document("plot1").get().addOnSuccessListener { snapshot ->
             bidhead.text = "Bid on Plot " + plotid.substring(4)
-            totarea.text = "Total Area : " + snapshot["totalArea"].toString() + "Sq.m"
+            totarea.text =  snapshot["totalArea"].toString() + "Sq.m"
             desc.text = snapshot["description"].toString()
             rate.text = "Rate : " + snapshot["rate"].toString() + " Rs./sq.m"
             dim.text = snapshot["dimension"].toString()
             wp.text = "Current rate at this site is" + snapshot["rate"].toString() + "₹/sq.m. Kindly place your bid by considering current property rate"
             Log.d("Plot", snapshot["totalArea"].toString())
+        }
+
+        if(desc.text.toString() == "null" || desc.text.toString().isEmpty())
+        {
+            desc.visibility = GONE
+        }
+        if(dim.text.toString() == "null" || dim.text.toString().isEmpty())
+        {
+            dim.visibility = GONE
         }
 
         placebtn.setOnClickListener {

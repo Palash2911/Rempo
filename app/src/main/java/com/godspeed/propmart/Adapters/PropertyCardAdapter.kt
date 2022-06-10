@@ -3,6 +3,7 @@ package com.godspeed.propmart.Adapters
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,8 +14,10 @@ import com.godspeed.propmart.PropertyPageActivity
 import com.godspeed.propmart.databinding.PropertyCardBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 
 class PropertyCardAdapter(val context:Context , val cards:List<PropertyCardModel>):
     RecyclerView.Adapter<PropertyCardViewHolder>() {
@@ -56,11 +59,10 @@ class PropertyCardAdapter(val context:Context , val cards:List<PropertyCardModel
                binding.plotCount.text = this.totalPlots.toString();
 //               Glide.with(context).load(this.layoutImage).into(binding.plotImage);
 
-
-
                binding.save.setOnClickListener{
-                   firestore.collection("Users").document("sample_uid").collection("saved")
+                   firestore.collection("Users").document(Firebase.auth.currentUser.toString()).collection("saved")
                        .document(this.layoutId.toString()).set(card).addOnSuccessListener {
+                           Log.d("Saving", "Daddy")
                            binding.save.visibility = View.GONE;
                            binding.saved.visibility = View.VISIBLE;
                            Snackbar.make(binding.root,"Added to Bookmarks",Snackbar.LENGTH_LONG).show();
@@ -68,8 +70,9 @@ class PropertyCardAdapter(val context:Context , val cards:List<PropertyCardModel
                }
 
                binding.saved.setOnClickListener{
-                   firestore.collection("Users").document("sample_uid").collection("saved")
+                   firestore.collection("Users").document(Firebase.auth.currentUser.toString()).collection("saved")
                        .document(this.layoutId.toString()).delete().addOnSuccessListener {
+                           Log.d("Saving", "Daddy")
                            binding.saved.visibility = View.GONE;
                            binding.save.visibility = View.VISIBLE;
                            Snackbar.make(binding.root,"Removed from Bookmarks",Snackbar.LENGTH_LONG).show();
@@ -80,11 +83,8 @@ class PropertyCardAdapter(val context:Context , val cards:List<PropertyCardModel
                     val intent:Intent = Intent(context,PropertyPageActivity::class.java);
                     intent.putExtra("layoutId",this.layoutId);
                     intent.putExtra("title",this.title);
-
                     context.startActivity(intent);
                }
-
-
 
                binding.map.setOnClickListener{
                    val intent:Intent = Intent(Intent.ACTION_VIEW);

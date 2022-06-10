@@ -1,5 +1,6 @@
 package com.godspeed.propmart.ui.more
 
+import android.content.ContentValues
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -50,6 +51,8 @@ class Morefragment : Fragment() {
         storage = FirebaseStorage.getInstance();
         val storageRef= storage.reference.child("Profile/" + auth.uid.toString())
         Log.d("Image", storageRef.toString())
+
+
 
         Glide.with(requireContext())
             .load(storageRef).into(binding.profileimg)

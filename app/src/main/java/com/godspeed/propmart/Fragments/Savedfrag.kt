@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.godspeed.propmart.Adapters.PropertyCardAdapter
 import com.godspeed.propmart.Models.PropertyCardModel
 import com.godspeed.propmart.databinding.FragmentSavedfragBinding
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -36,8 +37,8 @@ class Savedfrag : Fragment() {
 
         binding.saverv.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         binding.saverv.adapter = adapter
-
-        db.collection("Users").document("sample_uid").collection("saved")
+        Log.d("Saved", Firebase.auth.currentUser.toString())
+        db.collection("Users").document(Firebase.auth.currentUser.toString()).collection("saved")
             .get().addOnSuccessListener{ snapshot->
                 for(users in snapshot)
                 {
@@ -48,7 +49,6 @@ class Savedfrag : Fragment() {
                     val address = users["address"].toString()
                     val longitude:String = users["longitude"] as String;
                     val latitude:String = users["latitude"] as String;
-
 
                     val card:PropertyCardModel =
                         PropertyCardModel(users.id,
