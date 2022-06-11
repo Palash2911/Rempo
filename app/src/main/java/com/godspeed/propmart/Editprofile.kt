@@ -1,10 +1,14 @@
 package com.godspeed.propmart
 
+import android.app.DatePickerDialog
 import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.Button
+import android.widget.DatePicker
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.godspeed.propmart.databinding.ActivityEditprofileBinding
@@ -13,12 +17,17 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.HashMap
 
 class Editprofile : AppCompatActivity() {
 
     private val auth = FirebaseAuth.getInstance()
     private lateinit var binding: ActivityEditprofileBinding
     private val db = Firebase.firestore
+    lateinit var datepick: Button
+    var cal = Calendar.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,10 +38,29 @@ class Editprofile : AppCompatActivity() {
             binding.nameprofileedit.setText(snapshot["Name"] as String);
             binding.phoneedit.setText(snapshot["Phone"] as String);
             binding.Emailedit.setText(snapshot["Email"] as String);
-            binding.dobedit.setText(snapshot["dob"] as String);
+            binding.dobbtn.setText(snapshot["dob"] as String);
         }
+        datepick = findViewById(R.id.dobbtn)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar2)
+
+        val dateSetListener =
+            DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                cal.set(Calendar.YEAR, year)
+                cal.set(Calendar.MONTH, monthOfYear)
+                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+                val myFormat = "MM/dd/yyyy" // mention the format you need
+                val sdf = SimpleDateFormat(myFormat, Locale.US)
+                binding.dobbtn.text = SimpleDateFormat("MM/dd/yyyy", Locale.US).format(cal.time)
+            }
+        binding.dobbtn.setOnClickListener {
+            Log.d("btn", SimpleDateFormat("MM/dd/yyyy", Locale.US).format(cal.time).toString())
+            DatePickerDialog(this, dateSetListener,
+                cal.get(Calendar.YEAR),
+                cal.get(Calendar.MONTH),
+                cal.get(Calendar.DAY_OF_MONTH)).show()
+        }
+
         supportActionBar!!.title = "Edit Profile"
         binding.toolbar2.navigationIcon = ContextCompat.getDrawable(this, R.drawable.ic_baseline_arrow_back_24)
         binding.toolbar2.setNavigationOnClickListener {
@@ -60,8 +88,8 @@ class Editprofile : AppCompatActivity() {
             binding.Emailedit.error = "Email Required !!"
             return
         }
-        if(binding.dobedit.text.isEmpty()){
-            binding.dobedit.error = "Date of Birth Required !!"
+        if(binding.dobbtn.text.isEmpty()){
+            binding.dobbtn.error = "Date of Birth Required !!"
             return
         }
         profile["Name"] = binding.nameprofileedit.text.toString()
@@ -69,7 +97,7 @@ class Editprofile : AppCompatActivity() {
         val num = profile["Number"]
         profile["Aadhar"] = binding.aadharfield.text.toString()
         profile["Email"] = binding.Emailedit.text.toString()
-        profile["dob"] = binding.dobedit.text.toString()
+        profile["dob"] = binding.dobbtn.text.toString()
         profile["profilePicture"] = "downloadurl"
         profile["Uid"] = Firebase.auth.uid.toString()
         profile["Verified"] = true

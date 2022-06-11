@@ -113,19 +113,15 @@
                 android:textStyle="bold"
                 android:translationY="-1.69sp" />
 
-            <EditText
-                android:id="@+id/dobedit"
+            <Button
+                android:id="@+id/dobbtn"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/rectangle"
-                android:ems="10"
-                android:fontFamily="@font/roboto"
-                android:hint="Enter Your Date of Birth"
-                android:inputType="date"
-                android:paddingStart="20dp"
-                android:textSize="16sp"
-                tools:ignore="TouchTargetSizeCheck" />
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:text="June 11 2022"
+                style="?android:spinnerStyle"/>
+
         </LinearLayout>
 
         <LinearLayout

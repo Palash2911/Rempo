@@ -1,35 +1,60 @@
 package com.godspeed.propmart
 
+import android.app.DatePickerDialog
 import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.util.Log
+import android.view.View
 import android.widget.Button
+import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.Toast
 import com.godspeed.propmart.databinding.ActivityProfileBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.text.SimpleDateFormat
 import java.time.LocalDateTime
+import java.util.*
+import kotlin.collections.HashMap
 
 class Profile : AppCompatActivity() {
     private lateinit var binding: ActivityProfileBinding
     private val db = Firebase.firestore
     var num: String = ""
+    lateinit var datepick: Button
+    var cal = Calendar.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
         binding = ActivityProfileBinding.inflate(layoutInflater)
-
+        datepick = findViewById(R.id.dobbtn2)
         setContentView(binding.root)
 
         num = intent.extras?.get("Number").toString()
         binding.phone.text = num
+
+        val dateSetListener =
+            DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                cal.set(Calendar.YEAR, year)
+                cal.set(Calendar.MONTH, monthOfYear)
+                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+                val myFormat = "MM/dd/yyyy" // mention the format you need
+                val sdf = SimpleDateFormat(myFormat, Locale.US)
+                binding.dobbtn2.text = SimpleDateFormat("MM/dd/yyyy", Locale.US).format(cal.time)
+            }
+
+        binding.dobbtn2.setOnClickListener {
+            DatePickerDialog(this, dateSetListener,
+                cal.get(Calendar.YEAR),
+                cal.get(Calendar.MONTH),
+                cal.get(Calendar.DAY_OF_MONTH)).show()
+        }
 
         binding.saveprofile.setOnClickListener {
             submitProf()
@@ -46,8 +71,8 @@ class Profile : AppCompatActivity() {
             binding.Email.error = "Email Required !!"
             return
         }
-        if(binding.dob.text.isEmpty()){
-            binding.dob.error = "Date of Birth Required !!"
+        if(binding.dobbtn2.text.isEmpty()){
+            binding.dobbtn2.error = "Date of Birth Required !!"
             return
         }
         profile["Name"] = binding.nameprofile.text.toString()
@@ -55,7 +80,7 @@ class Profile : AppCompatActivity() {
         val num = profile["Number"]
         profile["Aadhar"] = binding.aadharfield.text.toString()
         profile["Email"] = binding.Email.text.toString()
-        profile["dob"] = binding.dob.text.toString()
+        profile["dob"] = binding.dobbtn2.text.toString()
         profile["profilePicture"] = "downloadurl"
         profile["Uid"] = Firebase.auth.uid.toString()
         profile["Verified"] = true
@@ -105,6 +130,15 @@ class Profile : AppCompatActivity() {
                         Toast.makeText(applicationContext, "Something went wrong!!", Toast.LENGTH_SHORT).show()
                     }
                 }
+        }
+    }
+
+    fun openDatepicker(view: View) {
+        val dateSetListener = object : DatePickerDialog.OnDateSetListener {
+            override fun onDateSet(view: DatePicker, year: Int, monthOfYear: Int,
+                                   dayOfMonth: Int) {
+                datepick.text = year.toString() + monthOfYear.toString() + dayOfMonth.toString()
+            }
         }
     }
 }

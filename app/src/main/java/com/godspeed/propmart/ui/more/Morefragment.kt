@@ -62,14 +62,14 @@ class Morefragment : Fragment() {
             startActivity(intent)
         }
 
-        _binding!!.profileimg.setImageURI(profileuri)
-
-        _binding!!.profileimg.setOnClickListener {
-            val gallery = Intent();
-            gallery.setType("image/*");
-            gallery.setAction(Intent.ACTION_GET_CONTENT);
-            startActivityForResult(gallery,25);
-        }
+//        _binding!!.profileimg.setImageURI(profileuri)
+//
+//        _binding!!.profileimg.setOnClickListener {
+//            val gallery = Intent();
+//            gallery.setType("image/*");
+//            gallery.setAction(Intent.ACTION_GET_CONTENT);
+//            startActivityForResult(gallery,25);
+//        }
 
         db.collection("Users").document(Firebase.auth.currentUser?.uid.toString()).get().addOnSuccessListener { snapshot ->
             binding.namemoresetting.setText(snapshot["Name"] as String);
@@ -81,26 +81,6 @@ class Morefragment : Fragment() {
             startActivity(intent)
         }
         return root
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if(requestCode==25){
-            profileuri = data?.data!!
-            _binding!!.profileimg.setImageURI(data?.data!!);
-            Log.d("Hello", profileuri.toString())
-            val storageRef= FirebaseStorage.getInstance().reference.child("Profile/" + auth.uid.toString())
-            storageRef.putFile(profileuri).addOnSuccessListener { task ->
-                val profileimg:String = task.storage.downloadUrl.toString();
-                Log.d("Hello2", profileimg.toString())
-                db.collection("Users").document(Firebase.auth.currentUser?.uid.toString()).update("profilePicture", profileimg)
-                    .addOnSuccessListener {
-                        Toast.makeText(requireContext(), "Profile Image Added Successully !!", Toast.LENGTH_SHORT).show()
-                    }
-            }.addOnFailureListener(OnFailureListener { e ->
-                Log.d("Hello", e.message.toString())
-            })
-        }
     }
 
     override fun onDestroyView() {
