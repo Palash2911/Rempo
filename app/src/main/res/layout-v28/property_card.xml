@@ -61,7 +61,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="4dp"
-                        android:text="By - VP Associates Pvt Ltd"
+                        android:text="By - Annapoorna Associates"
                         android:textColor="#3F3F3F"
                         android:textFontWeight="400"
                         android:textSize="12dp" />

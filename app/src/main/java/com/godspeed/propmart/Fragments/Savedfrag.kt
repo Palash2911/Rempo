@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -37,6 +38,7 @@ class Savedfrag : Fragment() {
 
         binding.saverv.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         binding.saverv.adapter = adapter
+
         Log.d("Saved", Firebase.auth.currentUser.toString())
         db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
             .collection("saved")

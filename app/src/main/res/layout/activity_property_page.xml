@@ -52,7 +52,6 @@
                     android:layout_marginRight="16dp"
                     app:cardCornerRadius="10dp">
 
-
                     <ImageView
                         android:id="@+id/layout_map"
                         android:layout_width="match_parent"
@@ -250,12 +249,30 @@ Mehkar, Buldhana, 411234"
                     android:minWidth="100dp"
                     android:id="@+id/bid"
                     android:textAllCaps="false"/>
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/frame139947"
-                    android:layout_gravity="center"
-                    android:layout_weight="0.2"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/bookmarkpropertypage"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.2"
+                        android:src="@drawable/bookmark" />
+
+                    <ImageView
+                        android:id="@+id/bookmarksaved"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.2"
+                        android:src="@drawable/saved"
+                        android:visibility="gone" />
+                </LinearLayout>
 
             </LinearLayout>
 

@@ -9,8 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.godspeed.propmart.Adapters.PropertyCardAdapter.PropertyCardViewHolder
+import com.godspeed.propmart.Bottomtab
 import com.godspeed.propmart.Models.PropertyCardModel
 import com.godspeed.propmart.PropertyPageActivity
+import com.godspeed.propmart.databinding.FragmentHomepageBinding
 import com.godspeed.propmart.databinding.PropertyCardBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
@@ -54,8 +56,6 @@ class PropertyCardAdapter(val context:Context , val cards:List<PropertyCardModel
                            binding.save.visibility = View.GONE
                        }
                        Log.d("Layss",layoutId)
-               }.addOnFailureListener {
-
                }
                binding.title.text = this.title
                binding.address.text = this.address;
@@ -75,10 +75,9 @@ class PropertyCardAdapter(val context:Context , val cards:List<PropertyCardModel
                binding.saved.setOnClickListener{
                    firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString()).collection("saved")
                        .document(this.layoutId.toString()).delete().addOnSuccessListener {
-                           Log.d("Saving", "Daddy")
                            binding.saved.visibility = View.GONE;
                            binding.save.visibility = View.VISIBLE;
-                           Snackbar.make(binding.root,"Removed from Bookmarks, Refresh to see the change",Snackbar.LENGTH_LONG).show();
+                           Snackbar.make(binding.root,"Removed from Bookmarks, Visit Homepage to Update",Snackbar.LENGTH_LONG).show();
                        }
                }
 

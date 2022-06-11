@@ -4,6 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
@@ -12,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.godspeed.propmart.Adapters.DocumentAdapter
 import com.godspeed.propmart.Models.DocumentModel
 import com.godspeed.propmart.databinding.ActivityPropertyPageBinding
+import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
@@ -31,6 +36,7 @@ class PropertyPageActivity : AppCompatActivity() {
     private lateinit var idList: ArrayList<String>;
     private lateinit var selectedId:String;
     private val db = Firebase.firestore
+    val firestore: FirebaseFirestore = FirebaseFirestore.getInstance();
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -107,31 +113,44 @@ class PropertyPageActivity : AppCompatActivity() {
             adapter.notifyDataSetChanged();
         }
 
+        val docRef = firestore
+            .collection("Users/" + Firebase.auth.currentUser?.uid.toString() + "/saved")
+            .get().addOnSuccessListener { snapshot->
+                if(snapshot.isEmpty)
+                {
+                    binding.bookmarkpropertypage.visibility = VISIBLE
+                    binding.bookmarksaved.visibility = GONE
+                }
+                else {
+                    binding.bookmarkpropertypage.visibility = GONE
+                    binding.bookmarksaved.visibility = VISIBLE
+                }
+                Log.d("Layss",layoutId)
+            }
+
+
         binding.bid.setOnClickListener{
             if(binding.plotDropdown.text.toString() == "Select Plot"){
                 binding.plotDropdown.error = "Please Select a Plot";
             }
-            else{
+            else {
                 var availability: String
                 db.collection("Layouts").document(layoutId)
-                    .collection("plots").document("plot" + binding.plotDropdown.text.toString().substring(5))
-                    .get().addOnSuccessListener { snapshot->
+                    .collection("plots")
+                    .document("plot" + binding.plotDropdown.text.toString().substring(5))
+                    .get().addOnSuccessListener { snapshot ->
                         availability = snapshot["available"].toString()
-                        if(availability=="true")
-                        {
+                        if (availability == "true") {
                             val intent = Intent(this, Plotpage::class.java);
                             Log.d("drop", binding.plotDropdown.text.toString())
-                            intent.putExtra("plotId",binding.plotDropdown.text.toString());
-                            intent.putExtra("layoutId",layoutId);
+                            intent.putExtra("plotId", binding.plotDropdown.text.toString());
+                            intent.putExtra("layoutId", layoutId);
                             startActivity(intent);
-                        }
-                        else
-                        {
+                        } else {
                             Toast.makeText(this, "Plot Sold !!", Toast.LENGTH_SHORT).show()
                         }
                     }
             }
-
         }
 
         binding.backButton.setOnClickListener {
