@@ -73,6 +73,7 @@ class Plotpage : AppCompatActivity() {
             else
             {
                 val profile:HashMap<String, Any> = HashMap()
+                val Bids:HashMap<String, Any> = HashMap()
                 db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
                     .get().addOnSuccessListener{snapshot ->
                         profile["name"]=snapshot["Name"].toString()
@@ -81,6 +82,16 @@ class Plotpage : AppCompatActivity() {
                             FormatStyle.MEDIUM))
                         profile["time"]=current
                         profile["uid"]=Firebase.auth.currentUser?.uid.toString()
+
+                        Bids["bidAmount"]=bidamt.text.toString()
+                        Bids["layoutId"]=layoutid.toString()
+                        Bids["plotNo"]=plotid.substring(4)
+                        Bids["time"]=current
+                        db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
+                            .collection("bids").document(plotid.toString()).set(Bids).addOnCompleteListener {
+                                Toast.makeText(this, "Bid Placed", Toast.LENGTH_SHORT).show()
+                            }
+
                         db.collection("Layouts").document(layoutid.toString())
                             .collection("plots").document(plotid).collection("bids")
                             .document(Firebase.auth.currentUser?.uid.toString()).set(profile).addOnCompleteListener { task->

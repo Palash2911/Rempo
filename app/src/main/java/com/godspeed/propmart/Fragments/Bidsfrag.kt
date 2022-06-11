@@ -9,6 +9,7 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,6 +23,7 @@ import com.godspeed.propmart.databinding.FragmentBidsfragBinding
 import com.godspeed.propmart.databinding.FragmentBookmarkBinding
 import com.godspeed.propmart.ui.Bookmarks.BookmarksViewModel
 import com.google.android.material.tabs.TabLayout
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -48,13 +50,13 @@ class Bidsfrag : Fragment() {
             RecyclerView.VERTICAL,false);
         binding.bidsrv.adapter = adapter;
 
-        db.collection("Users").document("sample_uid").collection("bids")
-            .get().addOnSuccessListener { snapshot->
+        db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
+            .collection("bids").get().addOnSuccessListener { snapshot->
                 for(users in snapshot)
                 {
                     Log.d("Layout", users["layoutId"].toString())
-//                    savelist.add(users["layoutId"].toString())
-                    db.collection("Layouts").document(users["layoutId"] as String).get().addOnSuccessListener { snapshots ->
+                    db.collection("Layouts")
+                        .document(users["layoutId"] as String).get().addOnSuccessListener { snapshots ->
                         val title = snapshots["title"].toString()
                         val seller = snapshots["sellerName"].toString()
                         val bidamt = users["bidAmount"].toString()
@@ -67,20 +69,26 @@ class Bidsfrag : Fragment() {
                             );
 
                         cards.add(card)
+                            if(cards.size>0)
+                            {
+                                Log.d("Bid time", cards.size.toString())
+                                binding.progressBar2.visibility = GONE
+                                binding.bidstext.visibility = GONE
+                            }
+                            else
+                            {
+                                Log.d("Bid time", cards.size.toString())
+                                binding.progressBar2.visibility = GONE
+                                binding.bidstext.visibility = VISIBLE
+                                binding.bidstext.text = "No Properties with Bids Yet !!"
+                            }
                         adapter.notifyDataSetChanged();
-                    }
-                    if(cards.size>0)
-                    {
-                        Log.d("Bid time", cards.size.toString())
-                        binding.progressBar2.visibility = GONE
-                    }
-                    else
-                    {
-                        Log.d("Bid time", cards.size.toString())
-                        binding.progressBar2.visibility = GONE
-                        binding.bidstext.text = "No Properties with Bids Yet !!"
-                    }
+                    }.addOnFailureListener {
+                            Toast.makeText(requireContext(), "No Bid Found", Toast.LENGTH_SHORT).show()
+                        }
                 }
+            }.addOnFailureListener {
+                Toast.makeText(requireContext(), "No Bid Found3", Toast.LENGTH_SHORT).show()
             }
         return root
     }
