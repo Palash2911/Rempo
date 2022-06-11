@@ -49,13 +49,12 @@ class Morefragment : Fragment() {
         }
 
         storage = FirebaseStorage.getInstance();
-        val storageRef= storage.reference.child("Profile/" + auth.uid.toString())
-        Log.d("Image", storageRef.toString())
-
-
-
-        Glide.with(requireContext())
-            .load(storageRef).into(binding.profileimg)
+//        val storageRef= storage.reference.child("Profile/" + auth.uid.toString())
+//        storageRef.downloadUrl.addOnSuccessListener {
+////            Glide.with(requireContext())
+////                .load(storageRef).into(binding.profileimg)
+//        }
+//        Log.d("Image", storageRef.toString())
 
         _binding!!.logoutll.setOnClickListener {
             auth.signOut()

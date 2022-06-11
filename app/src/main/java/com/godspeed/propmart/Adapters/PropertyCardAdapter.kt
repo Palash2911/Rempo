@@ -41,18 +41,21 @@ class PropertyCardAdapter(val context:Context , val cards:List<PropertyCardModel
 
        with(holder){
            with(cards[position]){
-               val docRef:DocumentReference = firestore.collection("Users/sample_uid/saved")
-                   .document(this.layoutId);
+               val docRef = firestore
+                   .collection("Users/" + Firebase.auth.currentUser?.uid.toString() + "/saved")
+                   .get().addOnSuccessListener { snapshot->
+                       if(snapshot.isEmpty)
+                       {
+                           binding.save.visibility = View.VISIBLE;
+                           binding.saved.visibility = View.GONE;
+                       }
+                       else {
+                           binding.saved.visibility = View.VISIBLE;
+                           binding.save.visibility = View.GONE
+                       }
+                       Log.d("Layss",layoutId)
+               }.addOnFailureListener {
 
-               docRef.get().addOnSuccessListener {
-                   if(it.exists()){
-                       binding.saved.visibility = View.VISIBLE;
-                       binding.save.visibility = View.GONE;
-                   }
-                   else{
-                       binding.save.visibility = View.VISIBLE;
-                       binding.saved.visibility = View.GONE;
-                   }
                }
                binding.title.text = this.title
                binding.address.text = this.address;
@@ -60,7 +63,7 @@ class PropertyCardAdapter(val context:Context , val cards:List<PropertyCardModel
 //               Glide.with(context).load(this.layoutImage).into(binding.plotImage);
 
                binding.save.setOnClickListener{
-                   firestore.collection("Users").document(Firebase.auth.currentUser.toString()).collection("saved")
+                   firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString()).collection("saved")
                        .document(this.layoutId.toString()).set(card).addOnSuccessListener {
                            Log.d("Saving", "Daddy")
                            binding.save.visibility = View.GONE;
@@ -70,12 +73,12 @@ class PropertyCardAdapter(val context:Context , val cards:List<PropertyCardModel
                }
 
                binding.saved.setOnClickListener{
-                   firestore.collection("Users").document(Firebase.auth.currentUser.toString()).collection("saved")
+                   firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString()).collection("saved")
                        .document(this.layoutId.toString()).delete().addOnSuccessListener {
                            Log.d("Saving", "Daddy")
                            binding.saved.visibility = View.GONE;
                            binding.save.visibility = View.VISIBLE;
-                           Snackbar.make(binding.root,"Removed from Bookmarks",Snackbar.LENGTH_LONG).show();
+                           Snackbar.make(binding.root,"Removed from Bookmarks, Refresh to see the change",Snackbar.LENGTH_LONG).show();
                        }
                }
 

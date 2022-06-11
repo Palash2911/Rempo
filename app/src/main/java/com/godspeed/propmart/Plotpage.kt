@@ -45,7 +45,8 @@ class Plotpage : AppCompatActivity() {
         val bidamt = findViewById<EditText>(R.id.bid_amount)
 
         Log.d("plot", plotid.toString())
-        db.collection("Layouts").document("sample_layout").collection("plots").document(plotid).get().addOnSuccessListener { snapshot ->
+        db.collection("Layouts").document(layoutid.toString()).collection("plots")
+            .document(plotid).get().addOnSuccessListener { snapshot ->
             bidhead.text = "Bid on Plot " + snapshot["title"].toString().substring(5)
             totarea.text =  snapshot["totalArea"].toString() + "Sq.m"
             desc.text = snapshot["description"].toString()
@@ -80,8 +81,8 @@ class Plotpage : AppCompatActivity() {
                             FormatStyle.MEDIUM))
                         profile["time"]=current
                         profile["uid"]=Firebase.auth.currentUser?.uid.toString()
-                        db.collection("Layouts").document("sample_layout")
-                            .collection("plots").document("plot1").collection("bids")
+                        db.collection("Layouts").document(layoutid.toString())
+                            .collection("plots").document(plotid).collection("bids")
                             .document(Firebase.auth.currentUser?.uid.toString()).set(profile).addOnCompleteListener { task->
                             if(task.isSuccessful)
                             {

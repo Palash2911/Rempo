@@ -34,9 +34,6 @@ class HompageFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val HompageViewModel =
-            ViewModelProvider(this).get(HompageViewModel::class.java)
-
         cards = ArrayList<PropertyCardModel>();
         adapter = PropertyCardAdapter(requireActivity(),cards);
         firestore = FirebaseFirestore.getInstance();
@@ -63,15 +60,12 @@ class HompageFragment : Fragment() {
 
                 cards.add(card);
             }
-
             adapter.notifyDataSetChanged();
         }
 
         binding.imageButton.setOnClickListener{
             requireActivity().finish();
         }
-
-
 
         return root
     }

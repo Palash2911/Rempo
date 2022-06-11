@@ -93,7 +93,8 @@ class PropertyPageActivity : AppCompatActivity() {
 
 
         //Getting List of Documents
-        val ref:CollectionReference = firebase.collection("Layouts").document(layoutId).collection("documents");
+        val ref:CollectionReference = firebase.collection("Layouts")
+            .document(layoutId).collection("documents");
         ref.get().addOnSuccessListener { it ->
             it.documents.iterator().forEach { document->
                 var documentModel: DocumentModel = DocumentModel(
@@ -112,8 +113,9 @@ class PropertyPageActivity : AppCompatActivity() {
             }
             else{
                 var availability: String
-                db.collection("Layouts").document("sample_layout")
-                    .collection("plots").document("plot" + binding.plotDropdown.text.toString().substring(5)).get().addOnSuccessListener { snapshot->
+                db.collection("Layouts").document(layoutId)
+                    .collection("plots").document("plot" + binding.plotDropdown.text.toString().substring(5))
+                    .get().addOnSuccessListener { snapshot->
                         availability = snapshot["available"].toString()
                         if(availability=="true")
                         {

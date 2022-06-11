@@ -38,13 +38,14 @@ class Savedfrag : Fragment() {
         binding.saverv.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         binding.saverv.adapter = adapter
         Log.d("Saved", Firebase.auth.currentUser.toString())
-        db.collection("Users").document(Firebase.auth.currentUser.toString()).collection("saved")
+        db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
+            .collection("saved")
             .get().addOnSuccessListener{ snapshot->
                 for(users in snapshot)
                 {
                     Log.d("Layout", users["layoutId"].toString())
                     val title = users["title"].toString()
-                    val seller = users["sellerName"].toString()
+                    val seller = users["seller"].toString()
                     val totalPlots = users["totalPlots"].toString().toLong()
                     val address = users["address"].toString()
                     val longitude:String = users["longitude"] as String;
