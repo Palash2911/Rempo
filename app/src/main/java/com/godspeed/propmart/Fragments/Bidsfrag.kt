@@ -52,40 +52,47 @@ class Bidsfrag : Fragment() {
 
         db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
             .collection("bids").get().addOnSuccessListener { snapshot->
-                for(users in snapshot)
+                if(snapshot.isEmpty)
                 {
-                    Log.d("Layout", users["layoutId"].toString())
-                    db.collection("Layouts")
-                        .document(users["layoutId"] as String).get().addOnSuccessListener { snapshots ->
-                        val title = snapshots["title"].toString()
-                        val seller = snapshots["sellerName"].toString()
-                        val bidamt = users["bidAmount"].toString()
-                        val plotno = users["plotNo"].toString()
+                    binding.progressBar2.visibility = GONE
+                    binding.bidstext.visibility = VISIBLE
+                    binding.bidstext.text = "No Properties with Bids Yet !!"
+                }
+                else
+                {
+                    for(users in snapshot)
+                    {
 
-                        val card: Bidscardmodel =
-                            Bidscardmodel(
-                                snapshots.id.toString(),
-                                bidamt, seller, "", plotno, title
-                            );
+                        Log.d("Layout", users["layoutId"].toString())
+                        db.collection("Layouts")
+                            .document(users["layoutId"] as String).get().addOnSuccessListener { snapshots ->
+                                val title = snapshots["title"].toString()
+                                val seller = snapshots["sellerName"].toString()
+                                val bidamt = users["bidAmount"].toString()
+                                val plotno = users["plotNo"].toString()
 
-                        cards.add(card)
-                            if(cards.size>0)
-                            {
-                                Log.d("Bid time", cards.size.toString())
-                                binding.progressBar2.visibility = GONE
-                                binding.bidstext.visibility = GONE
+                                val card: Bidscardmodel =
+                                    Bidscardmodel(
+                                        snapshots.id.toString(),
+                                        bidamt, seller, "", plotno, title
+                                    );
+
+                                cards.add(card)
+                                if(cards.size>0)
+                                {
+                                    Log.d("Bid time", cards.size.toString())
+                                    binding.progressBar2.visibility = GONE
+                                    binding.bidstext.visibility = GONE
+                                }
+                                else
+                                {
+                                    Log.d("Bid time", cards.size.toString())
+                                }
+                                adapter.notifyDataSetChanged();
+                            }.addOnFailureListener {
+                                Toast.makeText(requireContext(), "No Bid Found", Toast.LENGTH_SHORT).show()
                             }
-                            else
-                            {
-                                Log.d("Bid time", cards.size.toString())
-                                binding.progressBar2.visibility = GONE
-                                binding.bidstext.visibility = VISIBLE
-                                binding.bidstext.text = "No Properties with Bids Yet !!"
-                            }
-                        adapter.notifyDataSetChanged();
-                    }.addOnFailureListener {
-                            Toast.makeText(requireContext(), "No Bid Found", Toast.LENGTH_SHORT).show()
-                        }
+                    }
                 }
             }.addOnFailureListener {
                 Toast.makeText(requireContext(), "No Bid Found3", Toast.LENGTH_SHORT).show()

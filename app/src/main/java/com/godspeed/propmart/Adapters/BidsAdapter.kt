@@ -2,6 +2,7 @@ package com.godspeed.propmart.Adapters
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -43,9 +44,10 @@ class BidsAdapter(val context: Context, val cards:List<Bidscardmodel>):
 //               Glide.with(context).load(this.layoutImage).into(binding.plotImage);
 
                 binding.rebidbtn.setOnClickListener{
+                    Log.d("Plotid", layoutId.toString() + " " + plotno.toString())
                     val intent = Intent(context, Plotpage::class.java)
                     intent.putExtra("layoutId",this.layoutId);
-                    intent.putExtra("Plot_Id",this.plotno);
+                    intent.putExtra("plotId","Plot "+this.plotno);
                     context.startActivity(intent)
                 }
 

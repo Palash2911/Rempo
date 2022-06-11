@@ -44,7 +44,7 @@ class Plotpage : AppCompatActivity() {
         val placebtn = findViewById<Button>(R.id.placebidbtn)
         val bidamt = findViewById<EditText>(R.id.bid_amount)
 
-        Log.d("plot", plotid.toString())
+        Log.d("plotssss", this.intent?.getStringExtra("plotId").toString())
         db.collection("Layouts").document(layoutid.toString()).collection("plots")
             .document(plotid).get().addOnSuccessListener { snapshot ->
             bidhead.text = "Bid on Plot " + snapshot["title"].toString().substring(5)
