@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         messaging = FirebaseMessaging.getInstance();
-        if (auth.currentUser != null) {
+        if(auth.currentUser != null) {
             db.collection("Users").document(auth.currentUser!!.uid).get()
                 .addOnCompleteListener { task2 ->
                     if (task2.result?.exists() == true) {
