@@ -1,10 +1,12 @@
 package com.godspeed.propmart.Adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.godspeed.propmart.Models.DocumentModel
+import com.godspeed.propmart.WebView
 import com.godspeed.propmart.databinding.DocumentListItemBinding
 
 class DocumentAdapter(val context: Context,val documents:ArrayList<DocumentModel>)
@@ -25,7 +27,9 @@ class DocumentAdapter(val context: Context,val documents:ArrayList<DocumentModel
             this.binding.documentName.text = document.title;
 
             this.itemView.setOnClickListener{
-                //Displaying the Document in a WebView
+                val intent:Intent = Intent(context,WebView::class.java);
+                intent.putExtra("downloadUrl",document.downloadUrl);
+                context.startActivity(intent);
             }
         }
     }
