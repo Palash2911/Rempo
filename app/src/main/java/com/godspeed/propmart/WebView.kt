@@ -25,8 +25,6 @@ class WebView : AppCompatActivity() {
         binding.webView.settings.setSupportZoom(true)
         binding.webView.settings.javaScriptEnabled = true
         binding.webView.loadUrl("https://docs.google.com/gview?embedded=true&url=$url");
-
+        Log.d("URL", url.toString())
     }
-
-
 }
