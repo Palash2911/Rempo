@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Propmart</string>
+    <string name="app_name">LandMart</string>
     <string name="title_activity_bottomtab">Bottomtab</string>
     <string name="title_Location">Location</string>
     <string name="title_Hompage">Hompage</string>
