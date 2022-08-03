@@ -60,6 +60,7 @@ class Morefragment : Fragment() {
             auth.signOut()
             val intent = Intent(activity, MainActivity::class.java)
             startActivity(intent)
+            activity?.finish()
         }
 
 //        _binding!!.profileimg.setImageURI(profileuri)
