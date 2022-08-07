@@ -28,10 +28,4 @@
         android:name="com.godspeed.propmart.ui.more.Morefragment"
         android:label="Morefragment"
         tools:layout="@layout/fragment_morefragment"/>
-
-    <fragment
-        android:id="@+id/navigation_Sell"
-        android:name="com.godspeed.propmart.sell.SellFragment"
-        android:label="SellFragment"
-        tools:layout="@layout/fragment_sell" />
 </navigation>

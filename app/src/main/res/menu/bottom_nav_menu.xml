@@ -13,11 +13,6 @@
         android:title="@string/title_Location" />
 
     <item
-        android:id="@+id/navigation_Sell"
-        android:icon="@drawable/ic_baseline_sell_24"
-        android:title="@string/resell" />
-
-    <item
         android:id="@+id/navigation_Bookmarks"
         android:icon="@drawable/ic_baseline_bookmark_24"
         android:title="@string/title_Bookmarks" />

@@ -66,7 +66,6 @@ class Otpactivity : AppCompatActivity() {
             auth.signOut()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
         resendotp.setOnClickListener{
