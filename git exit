@@ -1,0 +1,259 @@
+[33mcommit 3e0572048f756510a1dff0a44b3835d9ade738e4[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/dev_Palash[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mdev_Palash[m[33m)[m
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Thu Aug 4 03:00:15 2022 +0530
+
+    Added 5th tab of sell
+
+[33mcommit dcf6feb267880f457ad35fdb6e657937d9c05105[m
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Tue Jul 5 08:53:19 2022 +0530
+
+    Icons Added
+
+[33mcommit 17405e545663122c53e7783b4d3980cc9f484ad3[m
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Sun Jun 12 15:13:14 2022 +0530
+
+    All Done
+
+[33mcommit bffa6dd347a032b694e9423178fdf19a91f580d2[m
+Author: Aditya Bonde <aditya.bonde1152@gmail.com>
+Date:   Sun Jun 12 15:00:22 2022 +0530
+
+    Document WebView Added
+
+[33mcommit d52de848d130563b9efdbf63843f5e060566ef5e[m
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Sat Jun 11 19:59:23 2022 +0530
+
+    More Features Added
+
+[33mcommit 6be7d4216eb83f875fe456afd93d9e39782b10ad[m
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Sat Jun 11 18:44:41 2022 +0530
+
+    Done
+
+[33mcommit f04e5c2a3a1884955cb6955b4fc3b5218b7203d7[m
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Sat Jun 11 18:34:44 2022 +0530
+
+    Added Dob
+
+[33mcommit ee392fb20c602573ce03eaf6e79b9abba5f6be68[m
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Sat Jun 11 17:59:33 2022 +0530
+
+    All bugs done
+
+[33mcommit 2e511494a4e82569341ce31d04ab74faf8d2adb0[m
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Sat Jun 11 17:05:18 2022 +0530
+
+    All DONE
+
+[33mcommit 2da77f63ddd7079bcbd51b0663aa88fa6a4c6177[m
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Sat Jun 11 16:47:03 2022 +0530
+
+    Save section done
+
+[33mcommit 9de20ceff441ef6bca248f444b6b53ebdc8e4d6f[m
+Author: Aditya Bonde <aditya.bonde1152@gmail.com>
+Date:   Sat Jun 11 03:28:41 2022 +0530
+
+    Sequence of Plots Changed
+
+[33mcommit 9ea3e6b8c19d84e686512ff2ef740b7351641339[m
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Fri Jun 10 22:41:10 2022 +0530
+
+    Availability Functionality Added
+
+[33mcommit 0cd80c8cbe7e51024773cd8cea5a63ecbe96ba03[m
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Fri Jun 10 22:21:43 2022 +0530
+
+    DB made and small changes done
+
+[33mcommit c9f7b58d3a8f2ecbe183216bee0ec39f025a94fe[m
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Fri Jun 10 19:31:52 2022 +0530
+
+    All error done
+
+[33mcommit 751ea3b72d77e2430d228b893f6c74b01bc2fc2c[m
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Fri Jun 10 19:25:36 2022 +0530
+
+    Major changes done
+
+[33mcommit 52666a951a4be6d1c467f0800d890e06e193e26b[m
+Author: Aditya Bonde <aditya.bonde1152@gmail.com>
+Date:   Fri Jun 10 14:57:43 2022 +0530
+
+    Some UI Fixes done
+
+[33mcommit 9fc48382a46c0c10233b1d22f5ae3c09e876bb1b[m
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Fri Jun 10 02:18:52 2022 +0530
+
+    Backend Almost Done
+
+[33mcommit 7913ace2671465b913c7383e4c141c71a1fb20dd[m
+Merge: f4f97b9 8a3dbbe
+Author: Palash Rambhia <80753307+Palash2911@users.noreply.github.com>
+Date:   Fri Jun 10 00:02:38 2022 +0530
+
+    Merge pull request #2 from Palash2911/Aditya_dev2
+    
+    Dev Aditya
+
+[33mcommit 8a3dbbea79287f6e6363130300e5bbdfda087e6e[m[33m ([m[1;31morigin/Aditya_dev2[m[33m)[m
+Merge: 837ccc4 f4f97b9
+Author: Palash Rambhia <80753307+Palash2911@users.noreply.github.com>
+Date:   Fri Jun 10 00:02:29 2022 +0530
+
+    Merge branch 'main' into Aditya_dev2
+
+[33mcommit f4f97b906b51d32eb96d10c9331eb08254fa7609[m
+Merge: c999eb2 8755c0a
+Author: Palash Rambhia <80753307+Palash2911@users.noreply.github.com>
+Date:   Thu Jun 9 23:59:19 2022 +0530
+
+    Merge pull request #1 from Palash2911/dev_Palash
+    
+    Dev palash
+
+[33mcommit 837ccc4ff18e21ad559fd6fa577d15ae80391377[m
+Author: Aditya Bonde <aditya.bonde1152@gmail.com>
+Date:   Thu Jun 9 23:56:07 2022 +0530
+
+    Main Functionalities of Phase1 Development Done
+
+[33mcommit 8755c0a6d2c90f9160516b44cf27c8c7a701abdf[m
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Thu Jun 9 23:55:59 2022 +0530
+
+    Bid Almost Done
+
+[33mcommit 0076804faeaaa69ac9925d40983442067b329c11[m
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Thu Jun 9 18:48:24 2022 +0530
+
+    All Done
+
+[33mcommit e1b46231c15bedf78dc37790c14bba0de67471fd[m
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Thu Jun 9 02:53:38 2022 +0530
+
+    otpactivity edited
+
+[33mcommit f54a2627edb1dc158095fd926f685a7550a4f561[m
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Thu Jun 9 02:43:22 2022 +0530
+
+    Fonts Changed
+
+[33mcommit 62b43e41e7477151548165d6730ecbb43bdb1392[m
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Thu Jun 9 02:22:02 2022 +0530
+
+    All Done
+
+[33mcommit 8dd2dcc4f31c72f3541fcbd9690c67ce31894ec5[m
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Thu Jun 9 01:41:17 2022 +0530
+
+    Almost Done
+
+[33mcommit 4e2642c933fac15a77783a5c68587f8bed0a4866[m
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Thu Jun 9 00:31:28 2022 +0530
+
+    Plotpage done
+
+[33mcommit 7f8472c9529382c07986e577f2dbcc1c3692cd70[m
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Wed Jun 8 19:58:49 2022 +0530
+
+    Changes in Editprofile
+
+[33mcommit 3d2e744e568fd7b6d4b1732f6542da18d46e1de0[m
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Wed Jun 8 01:31:05 2022 +0530
+
+    Bookmarks Saved Section Done
+
+[33mcommit 880dd23b2d4bb3f2a755eac5fc28101107b299ba[m[33m ([m[1;31morigin/Aditya_dev[m[33m, [m[1;32mAditya_dev[m[33m)[m
+Merge: 38119e3 f701583
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Wed Jun 8 00:05:04 2022 +0530
+
+    Merge branch 'Aditya_dev' of https://github.com/Palash2911/Propmart_Final into Aditya_dev
+
+[33mcommit 38119e3eb30d738f525aa55a2629d67a958be7e7[m
+Author: Aditya Bonde <aditya.bonde1152@gmail.com>
+Date:   Tue Jun 7 23:36:42 2022 +0530
+
+    Merged Branches
+
+[33mcommit 7fa637d04fde7d02060c7cd1f1d7d87ca67ea361[m
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Tue Jun 7 23:55:17 2022 +0530
+
+    Bookmark page changes
+
+[33mcommit f70158372b59330b6a5208384a49015f93588c2c[m
+Author: Aditya Bonde <aditya.bonde1152@gmail.com>
+Date:   Tue Jun 7 23:36:42 2022 +0530
+
+    Basic Functionalities done
+
+[33mcommit 371ab1357688409576d8a3ad49fb87a9e59ea715[m
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Tue Jun 7 00:05:43 2022 +0530
+
+    Bookmark Page query added
+
+[33mcommit 7df05acb4254e5f8179a2b3d282b8d1e387e4c34[m
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Mon Jun 6 23:44:23 2022 +0530
+
+    More Fragment Done
+
+[33mcommit a2731954a5c8c660ce90db30749aaef1895030d8[m
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Mon Jun 6 23:17:44 2022 +0530
+
+    Edit Profile Done
+
+[33mcommit 0dfc05f1ecec6b131b5d6fe4a2d830640670bc5b[m
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Mon Jun 6 11:07:49 2022 +0530
+
+    Profile Section Done
+
+[33mcommit 73c2517c955f2a66e4bab9bf895a679a1ecbb79b[m
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Sun Jun 5 01:20:18 2022 +0530
+
+    Update
+
+[33mcommit c999eb2156092a132e7a359900f23e6e12a87d2e[m
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Sun Jun 5 01:14:33 2022 +0530
+
+    updated
+
+[33mcommit de00488bd5276abbb499d7e03b2d8e5fe2acdef5[m
+Author: Palash Rambhia <palashrambhia2@gmail.com>
+Date:   Sun Jun 5 00:08:42 2022 +0530
+
+    Files Added
+
+[33mcommit f415abcc006c9147e3ca697f3ba73f3849ad0eb8[m
+Author: Palash Rambhia <80753307+Palash2911@users.noreply.github.com>
+Date:   Sat Jun 4 23:57:07 2022 +0530
+
+    Initial commit
