@@ -21,8 +21,7 @@ import java.time.LocalDateTime
 import java.util.*
 import kotlin.collections.HashMap
 
-class Profile : AppCompatActivity() {
-    private lateinit var binding: ActivityProfileBinding
+class Profile : AppCompatActivity() {    private lateinit var binding: ActivityProfileBinding
     private val db = Firebase.firestore
     var num: String = ""
     lateinit var datepick: Button

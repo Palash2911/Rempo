@@ -1,41 +1,33 @@
 {
   "project_info": {
-    "project_number": "898164450610",
-    "project_id": "dev-real-estate-app",
-    "storage_bucket": "dev-real-estate-app.appspot.com"
+    "project_number": "337409210695",
+    "project_id": "remp-e7e85",
+    "storage_bucket": "remp-e7e85.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:898164450610:android:3aabfd015bfd2e167e232b",
+        "mobilesdk_app_id": "1:337409210695:android:b971d52f7817f752fbf462",
         "android_client_info": {
           "package_name": "com.godspeed.propmart"
         }
       },
       "oauth_client": [
         {
-          "client_id": "898164450610-40gjdr59ecmu4c095lkqe3nljcojvt9c.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.godspeed.propmart",
-            "certificate_hash": "76b170dd274f35aa15c985d263c2bed3330a15a3"
-          }
-        },
-        {
-          "client_id": "898164450610-0g3125t3v73b5lj9sk3uph842f9mugme.apps.googleusercontent.com",
+          "client_id": "337409210695-r0hp5u9dt9qqva71ncv3vjo2fp4l060e.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC8KMiE_K44QdUMbvQzfiQIIGOhDJJnmPE"
+          "current_key": "AIzaSyAgG9Dmdo21Sf5VdCuARHKoGbji2Wr5PPE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "898164450610-0g3125t3v73b5lj9sk3uph842f9mugme.apps.googleusercontent.com",
+              "client_id": "337409210695-r0hp5u9dt9qqva71ncv3vjo2fp4l060e.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

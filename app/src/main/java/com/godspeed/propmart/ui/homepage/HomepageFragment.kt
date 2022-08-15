@@ -21,8 +21,6 @@ class HompageFragment : Fragment() {
     private lateinit var cards:MutableList<PropertyCardModel>
     private lateinit var firestore: FirebaseFirestore;
 
-
-
     private var _binding: FragmentHomepageBinding? = null
 
     // This property is only valid between onCreateView and
@@ -34,38 +32,38 @@ class HompageFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        cards = ArrayList<PropertyCardModel>();
-        adapter = PropertyCardAdapter(requireActivity(),cards);
-        firestore = FirebaseFirestore.getInstance();
+//        cards = ArrayList<PropertyCardModel>();
+//        adapter = PropertyCardAdapter(requireActivity(),cards);
+//        firestore = FirebaseFirestore.getInstance();
         _binding = FragmentHomepageBinding.inflate(inflater, container, false)
-
+//
         val root: View = binding.root
-
-        binding.layoutRecyclerView.layoutManager = LinearLayoutManager(requireContext(),
-        RecyclerView.VERTICAL,false);
-        binding.layoutRecyclerView.adapter = adapter;
-
-        firestore.collection("Layouts").get().addOnSuccessListener{
-            it.documents.iterator().forEach { documentSnapshot ->
-                val title:String = documentSnapshot.get("title") as String;
-                val seller:String = documentSnapshot.get("sellerName") as String;
-                val totalPlots:Long = documentSnapshot.get("totalPlots") as Long;
-                val address:String = documentSnapshot.get("address") as String;
-                val longitude:String = documentSnapshot.get("longitude") as String;
-                val latitude:String = documentSnapshot.get("latitude") as String;
-
-               val card:PropertyCardModel =
-                   PropertyCardModel(documentSnapshot.id.toString(),
-                       title,seller,address,"",totalPlots,latitude,longitude);
-
-                cards.add(card);
-            }
-            adapter.notifyDataSetChanged();
-        }
-
-//        binding.imageButton.setOnClickListener{
-//            requireActivity().finish();
+//
+//        binding.layoutRecyclerView.layoutManager = LinearLayoutManager(requireContext(),
+//        RecyclerView.VERTICAL,false);
+//        binding.layoutRecyclerView.adapter = adapter;
+//
+//        firestore.collection("Layouts").get().addOnSuccessListener{
+//            it.documents.iterator().forEach { documentSnapshot ->
+//                val title:String = documentSnapshot.get("title") as String;
+//                val seller:String = documentSnapshot.get("sellerName") as String;
+//                val totalPlots:Long = documentSnapshot.get("totalPlots") as Long;
+//                val address:String = documentSnapshot.get("address") as String;
+//                val longitude:String = documentSnapshot.get("longitude") as String;
+//                val latitude:String = documentSnapshot.get("latitude") as String;
+//
+//               val card:PropertyCardModel =
+//                   PropertyCardModel(documentSnapshot.id.toString(),
+//                       title,seller,address,"",totalPlots,latitude,longitude);
+//
+//                cards.add(card);
+//            }
+//            adapter.notifyDataSetChanged();
 //        }
+//
+////        binding.imageButton.setOnClickListener{
+////            requireActivity().finish();
+////        }
 
         return root
     }
