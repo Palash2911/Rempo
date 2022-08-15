@@ -25,9 +25,6 @@ class BookmarksFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val BookmarksViewModel =
-            ViewModelProvider(this).get(BookmarksViewModel::class.java)
-
         _binding = FragmentBookmarkBinding.inflate(inflater, container, false)
         val root: View = binding.root
 

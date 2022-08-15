@@ -7,12 +7,19 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.godspeed.propmart.Adapters.PropertyCardAdapter
+import com.godspeed.propmart.Fragments.Bidsfrag
+import com.godspeed.propmart.Fragments.Savedfrag
+import com.godspeed.propmart.Fragments.plotbuyer
+import com.godspeed.propmart.Fragments.propertyBuyer
 import com.godspeed.propmart.Models.PropertyCardModel
+import com.godspeed.propmart.R
 import com.godspeed.propmart.databinding.FragmentHomepageBinding
+import com.google.android.material.tabs.TabLayout
 import com.google.firebase.firestore.FirebaseFirestore
 
 
@@ -32,13 +39,28 @@ class HompageFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        _binding = FragmentHomepageBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+
+
+        addFragment(propertyBuyer())
+
+        _binding!!.tabLayoutprop.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                setFragment(tab!!.position)
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+
+            }
+        })
+
 //        cards = ArrayList<PropertyCardModel>();
 //        adapter = PropertyCardAdapter(requireActivity(),cards);
 //        firestore = FirebaseFirestore.getInstance();
-        _binding = FragmentHomepageBinding.inflate(inflater, container, false)
-//
-        val root: View = binding.root
-//
 //        binding.layoutRecyclerView.layoutManager = LinearLayoutManager(requireContext(),
 //        RecyclerView.VERTICAL,false);
 //        binding.layoutRecyclerView.adapter = adapter;
@@ -66,6 +88,24 @@ class HompageFragment : Fragment() {
 ////        }
 
         return root
+    }
+
+    private fun setFragment(position: Int) {
+        when (position + 1) {
+            1 -> {
+                addFragment(propertyBuyer())
+            }
+            2 -> {
+                addFragment(plotbuyer())
+            }
+        }
+    }
+
+    private fun addFragment(fragment: Fragment) {
+        val manager: FragmentManager = requireActivity().supportFragmentManager
+        val transaction = manager.beginTransaction()
+        transaction.replace(R.id.propFL, fragment)
+        transaction.commit()
     }
 
     override fun onDestroyView() {
