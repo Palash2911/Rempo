@@ -1,21 +1,19 @@
 package com.godspeed.propmart.ui.more
 
-import android.content.ContentValues
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import android.widget.RadioButton
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.bumptech.glide.Glide
 import com.godspeed.propmart.Editprofile
 import com.godspeed.propmart.MainActivity
+import com.godspeed.propmart.R
 import com.godspeed.propmart.databinding.FragmentMorefragmentBinding
-import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
@@ -55,6 +53,21 @@ class Morefragment : Fragment() {
 ////                .load(storageRef).into(binding.profileimg)
 //        }
 //        Log.d("Image", storageRef.toString())
+
+        _binding!!.accType.setOnClickListener{
+            val bottomSheet = BottomSheetDialog(activity!!)
+            val view = layoutInflater.inflate(R.layout.bottomacctype, null)
+            val btnClose1 = view.findViewById<RadioButton>(R.id.buyerAcc)
+            val btnClose = view.findViewById<RadioButton>(R.id.sellerAc)
+            btnClose.setOnClickListener {
+                bottomSheet.dismiss()
+            }
+            bottomSheet.setCancelable(false)
+            bottomSheet.setContentView(view)
+            // on below line we are calling
+            // a show method to display a dialog.
+            bottomSheet.show()
+        }
 
         _binding!!.logoutll.setOnClickListener {
             auth.signOut()
