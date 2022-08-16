@@ -9,9 +9,8 @@ import android.view.ViewGroup
 import android.widget.RadioButton
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.godspeed.propmart.Editprofile
-import com.godspeed.propmart.MainActivity
-import com.godspeed.propmart.R
+import com.godspeed.propmart.*
+import com.godspeed.propmart.databinding.ActivityBottomtabBinding
 import com.godspeed.propmart.databinding.FragmentMorefragmentBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
@@ -38,6 +37,8 @@ class Morefragment : Fragment() {
             ViewModelProvider(this).get(MoreViewModel::class.java)
 
         _binding = FragmentMorefragmentBinding.inflate(inflater, container, false)
+
+
         val root: View = binding.root
         db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
             .get().addOnSuccessListener { snapshot ->
@@ -57,15 +58,23 @@ class Morefragment : Fragment() {
         _binding!!.accType.setOnClickListener{
             val bottomSheet = BottomSheetDialog(activity!!)
             val view = layoutInflater.inflate(R.layout.bottomacctype, null)
-            val btnClose1 = view.findViewById<RadioButton>(R.id.buyerAcc)
-            val btnClose = view.findViewById<RadioButton>(R.id.sellerAc)
-            btnClose.setOnClickListener {
+            val buyerAcc = view.findViewById<RadioButton>(R.id.buyerAcc)
+            val sellerAcc = view.findViewById<RadioButton>(R.id.sellerAc)
+
+            sellerAcc.setOnClickListener {
+                val intent = Intent(activity, BottomnavSeller::class.java)
+                startActivity(intent)
+                activity?.finish()
+                bottomSheet.dismiss()
+            }
+            buyerAcc.setOnClickListener{
+                val intent = Intent(activity, Bottomtab::class.java)
+                startActivity(intent)
+                activity?.finish()
                 bottomSheet.dismiss()
             }
             bottomSheet.setCancelable(false)
             bottomSheet.setContentView(view)
-            // on below line we are calling
-            // a show method to display a dialog.
             bottomSheet.show()
         }
 

@@ -7,26 +7,29 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.godspeed.propmart.databinding.ActivityBottomtabBinding
+import com.godspeed.propmart.databinding.ActivityBottomnavSellerBinding
 
-class Bottomtab : AppCompatActivity() {
+class BottomnavSeller : AppCompatActivity() {
 
-    private lateinit var binding: ActivityBottomtabBinding
+    private lateinit var binding: ActivityBottomnavSellerBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityBottomtabBinding.inflate(layoutInflater)
+        binding = ActivityBottomnavSellerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val navView: BottomNavigationView = binding.navView
-        binding.navView.menu.findItem(R.id.navigation_home).isVisible = false
-        val navController = findNavController(R.id.nav_host_fragment_activity_bottomtab)
+        binding.navView.menu.findItem(R.id.navigation_home).isVisible = true
+        binding.navView.menu.findItem(R.id.navigation_Hompage).isVisible = false
+        binding.navView.menu.findItem(R.id.navigation_Bookmarks).isVisible = false;
+        binding.navView.menu.findItem(R.id.navigation_Location).isVisible = false;
+        val navController = findNavController(R.id.nav_host_fragment_activity_bottomnav_seller)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_Location, R.id.navigation_Hompage, R.id.navigation_Bookmarks, R.id.navigation_more
+                R.id.navigation_home, R.id.navigation_more
             )
         )
 //        setupActionBarWithNavController(navController, appBarConfiguration)

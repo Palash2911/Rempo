@@ -16,6 +16,10 @@
         android:theme="@style/Theme.Propmart"
         tools:targetApi="31">
         <activity
+            android:name=".BottomnavSeller"
+            android:exported="false"
+            android:label="@string/title_activity_bottomnav_seller" />
+        <activity
             android:name=".WebView"
             android:exported="false" />
         <activity
@@ -57,7 +61,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".Aadharotp"
             android:exported="false" />
