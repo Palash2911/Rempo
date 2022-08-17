@@ -10,7 +10,6 @@ import android.widget.RadioButton
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.godspeed.propmart.*
-import com.godspeed.propmart.databinding.ActivityBottomtabBinding
 import com.godspeed.propmart.databinding.FragmentMorefragmentBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
