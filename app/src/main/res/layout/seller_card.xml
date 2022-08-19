@@ -71,7 +71,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Total Plots:"
+                            android:text="Plot Number:"
                             android:textColor="#91BE6D"
                             android:textFontWeight="400"
                             android:textSize="12dp" />
@@ -86,7 +86,7 @@
                     </LinearLayout>
 
                     <TextView
-                        android:id="@+id/address"
+                        android:id="@+id/sellerAddress"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
