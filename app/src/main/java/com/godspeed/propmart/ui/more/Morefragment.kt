@@ -1,14 +1,18 @@
 package com.godspeed.propmart.ui.more
 
+import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.godspeed.propmart.*
 import com.godspeed.propmart.databinding.FragmentMorefragmentBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -24,7 +28,7 @@ class Morefragment : Fragment() {
     private val auth = FirebaseAuth.getInstance()
     private val binding get() = _binding!!
     private val db = Firebase.firestore
-    private var profileuri : Uri = Uri.parse("downloadUrl");
+    private lateinit var profileuri : Uri;
     private lateinit var storage: FirebaseStorage;
 
     override fun onCreateView(
@@ -47,12 +51,17 @@ class Morefragment : Fragment() {
         }
 
         storage = FirebaseStorage.getInstance();
-//        val storageRef= storage.reference.child("Profile/" + auth.uid.toString())
-//        storageRef.downloadUrl.addOnSuccessListener {
-////            Glide.with(requireContext())
-////                .load(storageRef).into(binding.profileimg)
-//        }
-//        Log.d("Image", storageRef.toString())
+        val storageRef= FirebaseStorage.getInstance().reference.child("Profile/" + auth.uid.toString())
+        storageRef.downloadUrl.addOnSuccessListener {
+            Glide.with(this)
+                .load(storageRef).into(_binding!!.profileImg)
+        }.addOnFailureListener {
+            _binding!!.profileImg.setImageResource(R.drawable.ic_baseline_profile_img)
+        }
+
+        _binding!!.profileImg.setOnClickListener {
+            uploadImg()
+        }
 
         _binding!!.accType.setOnClickListener{
             val bottomSheet = BottomSheetDialog(activity!!)
@@ -83,15 +92,6 @@ class Morefragment : Fragment() {
             startActivity(intent)
         }
 
-//        _binding!!.profileimg.setImageURI(profileuri)
-//
-//        _binding!!.profileimg.setOnClickListener {
-//            val gallery = Intent();
-//            gallery.setType("image/*");
-//            gallery.setAction(Intent.ACTION_GET_CONTENT);
-//            startActivityForResult(gallery,25);
-//        }
-
         db.collection("Users").document(Firebase.auth.currentUser?.uid.toString()).get().addOnSuccessListener { snapshot ->
             binding.namemoresetting.setText(snapshot["Name"] as String);
             binding.numbersetting.setText(snapshot["Phone"] as String);
@@ -104,6 +104,26 @@ class Morefragment : Fragment() {
         return root
     }
 
+    private fun uploadImg() {
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+
+        startActivityForResult(intent, 100)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode==100 && resultCode == RESULT_OK)
+        {
+            profileuri = data?.data!!
+            binding.profileImg.setImageURI(profileuri)
+            val storageref = FirebaseStorage.getInstance().getReference("Profile/" + auth.uid.toString())
+            storageref.putFile(profileuri).addOnSuccessListener {
+                Toast.makeText(requireContext() , "Profile Pic Uploaded Successfully", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
