@@ -1,5 +1,6 @@
 package com.godspeed.propmart.ui.homepageSeller
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -15,6 +16,7 @@ import com.godspeed.propmart.Adapters.sellerHomepageAdapter
 import com.godspeed.propmart.Models.PropertyCardModel
 import com.godspeed.propmart.Models.sellerhomepageModel
 import com.godspeed.propmart.databinding.FragmentHomeBinding
+import com.godspeed.propmart.sellProp
 import com.google.firebase.firestore.FirebaseFirestore
 
 class HomeFragment : Fragment() {
@@ -66,10 +68,11 @@ class HomeFragment : Fragment() {
         }.addOnFailureListener {
             Log.d("Helo", "Empty")
         }
-//
-////        binding.imageButton.setOnClickListener{
-////            requireActivity().finish();
-////        }
+
+        _binding!!.addPropertyBtn.setOnClickListener{
+            val intent = Intent(requireContext(), sellProp::class.java)
+            startActivity(intent)
+        }
 
         return root
     }
