@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.godspeed.propmart" >
+    package="com.godspeed.propmart">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -14,30 +14,38 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Propmart"
-        tools:targetApi="31" >
+        tools:targetApi="31">
         <activity
-            android:name=".MainActivity2"
-            android:exported="false" />
-        <activity
-            android:name=".Onboarding"
-            android:exported="false" />
-        <activity
-            android:name=".onboardingActivity"
-            android:exported="false" />
-        <activity
-            android:name=".OnboardingActivity"
-            android:exported="false" />
-        <activity
-            android:name=".WebView"
-            android:exported="false" />
-        <activity
-            android:name=".SplashActivity"
-            android:exported="true" >
+            android:name=".RebidActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".Seller.PlotDeatails"
+            android:exported="false" />
+        <activity
+            android:name=".Seller.SellerHomePage"
+            android:exported="false" />
+        <activity
+            android:name=".onboardingActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".WebView"
+            android:exported="false" />
+        <activity
+            android:name=".SplashActivity"
+            android:exported="false">
+
         </activity>
         <activity
             android:name=".Plotpage"
@@ -66,9 +74,6 @@
             android:exported="false" />
         <activity
             android:name=".Profile"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".Aadharotp"

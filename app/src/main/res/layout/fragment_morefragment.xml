@@ -4,48 +4,72 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#f4f4f4"
     tools:context=".ui.more.Morefragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:background="#f4f4f4">
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="40dp"
-            android:orientation="vertical">
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="91dp"
+                android:src="#3C91E6"/>
 
-            <TextView
-                android:id="@+id/namemoresetting"
-                android:layout_width="125dp"
-                android:layout_height="27dp"
-                android:fontFamily="@font/roboto"
-                android:text="Name"
-                android:textColor="#050505"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="102dp"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="37dp"
+                android:layout_marginRight="17dp"
+                android:elevation="4dp"
+                app:cardCornerRadius="10dp">
 
-            <TextView
-                android:id="@+id/numbersetting"
-                android:layout_width="140dp"
-                android:layout_height="27dp"
-                android:fontFamily="@font/roboto"
-                android:text="Phone Number"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="40dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/namemoresetting"
+                        android:layout_width="125dp"
+                        android:layout_height="27dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="Name"
+                        android:textColor="#050505"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/numbersetting"
+                        android:layout_width="140dp"
+                        android:layout_height="27dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="Phone Number"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="115dp"
-        android:layout_marginEnd="35dp"
-        android:orientation="vertical">
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="165dp"
+        android:layout_marginEnd="17dp"
+        android:orientation="vertical"
+        >
 
         <LinearLayout
             android:id="@+id/editprofilell"
@@ -56,15 +80,7 @@
             android:orientation="horizontal"
             android:padding="8dp">
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="5dp"
-                android:layout_height="20dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginEnd="20dp"
-                android:layout_weight="0.2"
-                android:src="@drawable/account_circle"
-                app:tint="#858585" />
+
 
             <TextView
                 android:id="@+id/edprofile"
@@ -73,17 +89,21 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/roboto"
                 android:gravity="start|center_vertical"
-                android:text="Edit Profile"
+                android:text="Profile"
                 android:textColor="#0B0B0B"
                 android:textSize="16sp" />
 
             <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="0dp"
-                android:layout_height="14dp"
+                android:id="@+id/imageView3"
+                android:layout_width="20dp"
+                android:layout_height="25dp"
                 android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
+                android:layout_marginEnd="20dp"
+                android:layout_weight="0.2"
+                android:src="@drawable/account_circle"
+                app:tint="#858585" />
+
+
         </LinearLayout>
 
         <LinearLayout
@@ -95,15 +115,7 @@
             android:orientation="horizontal"
             android:padding="8dp">
 
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="5dp"
-                android:layout_height="20dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginEnd="20dp"
-                android:layout_weight="0.2"
-                android:src="@drawable/ic_baseline_call_24"
-                app:tint="#858585" />
+
 
             <TextView
                 android:id="@+id/contact"
@@ -117,17 +129,19 @@
                 android:textSize="16sp" />
 
             <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="0dp"
-                android:layout_height="14dp"
+                android:id="@+id/imageView5"
+                android:layout_width="20dp"
+                android:layout_height="25dp"
                 android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
+                android:layout_marginEnd="20dp"
+                android:layout_weight="0.2"
+                android:src="@drawable/ic_baseline_call_24"
+                app:tint="#858585" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/aboutusll"
+            android:id="@+id/account_type"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="15dp"
@@ -136,15 +150,7 @@
             android:orientation="horizontal"
             android:padding="8dp">
 
-            <ImageView
-                android:id="@+id/imageView7"
-                android:layout_width="5dp"
-                android:layout_height="20dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginEnd="20dp"
-                android:layout_weight="0.2"
-                android:src="@drawable/ic_baseline_info_24"
-                app:tint="#858585" />
+
 
             <TextView
                 android:id="@+id/info"
@@ -158,12 +164,14 @@
                 android:textSize="16sp" />
 
             <ImageView
-                android:id="@+id/imageView8"
-                android:layout_width="0dp"
-                android:layout_height="14dp"
+                android:id="@+id/imageView7"
+                android:layout_width="20dp"
+                android:layout_height="25dp"
                 android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
+                android:layout_marginEnd="20dp"
+                android:layout_weight="0.2"
+                android:src="@drawable/calender"
+                app:tint="#858585" />
 
         </LinearLayout>
 
@@ -177,16 +185,6 @@
             android:orientation="horizontal"
             android:padding="8dp">
 
-            <ImageView
-                android:id="@+id/imageView0"
-                android:layout_width="5dp"
-                android:layout_height="20dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginEnd="20dp"
-                android:layout_weight="0.2"
-                android:src="@drawable/ic_baseline_logout_24"
-                app:tint="#858585" />
-
             <TextView
                 android:id="@+id/logout"
                 android:layout_width="wrap_content"
@@ -194,17 +192,19 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/roboto"
                 android:gravity="start|center_vertical"
-                android:text="Log Out"
+                android:text="Settings"
                 android:textColor="#0C0C0C"
                 android:textSize="16sp" />
 
             <ImageView
-                android:id="@+id/imageView10"
-                android:layout_width="0dp"
-                android:layout_height="14dp"
+                android:id="@+id/imageView0"
+                android:layout_width="20dp"
+                android:layout_height="25dp"
                 android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
+                android:layout_marginEnd="20dp"
+                android:layout_weight="0.2"
+                android:src="@drawable/setting"
+                app:tint="#858585" />
 
         </LinearLayout>
 
@@ -213,8 +213,8 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="380dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="430dp"
         android:layout_marginEnd="30dp"
         android:orientation="vertical">
 
@@ -250,6 +250,16 @@
             android:text="Privacy Policy"
             android:textColor="#000000"
             android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/roboto"
+            android:gravity="top"
+            android:text="Logout"
+            android:textColor="#3C91E6"
+            android:textSize="16sp"/>
     </LinearLayout>
 
 </FrameLayout>
