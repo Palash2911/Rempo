@@ -22,7 +22,7 @@
         <activity
             android:name=".BottomnavSeller"
             android:exported="false"
-            android:label="@string/title_activity_bottomnav_seller" />
+            android:label="BottomnavSeller" />
         <activity
             android:name=".WebView"
             android:exported="false" />
