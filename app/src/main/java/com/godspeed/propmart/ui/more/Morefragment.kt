@@ -54,7 +54,9 @@ class Morefragment : Fragment() {
         val storageRef= FirebaseStorage.getInstance().reference.child("Profile/" + auth.uid.toString())
         storageRef.downloadUrl.addOnSuccessListener {
             Glide.with(this)
-                .load(storageRef).into(_binding!!.profileImg)
+                .load(storageRef)
+                .placeholder(R.drawable.ic_baseline_profile_img)
+                .into(_binding!!.profileImg)
         }.addOnFailureListener {
             _binding!!.profileImg.setImageResource(R.drawable.ic_baseline_profile_img)
         }
