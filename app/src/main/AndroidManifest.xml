@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.godspeed.propmart">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -16,36 +17,23 @@
         android:theme="@style/Theme.Propmart"
         tools:targetApi="31">
         <activity
-            android:name=".RebidActivity"
+            android:name=".sellProp"
+            android:exported="false" />
+        <activity
+            android:name=".BottomnavSeller"
+            android:exported="false"
+            android:label="BottomnavSeller" />
+        <activity
+            android:name=".WebView"
+            android:exported="false" />
+        <activity
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".Seller.PlotDeatails"
-            android:exported="false" />
-        <activity
-            android:name=".Seller.SellerHomePage"
-            android:exported="false" />
-        <activity
-            android:name=".onboardingActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".WebView"
-            android:exported="false" />
-        <activity
-            android:name=".SplashActivity"
-            android:exported="false">
-
         </activity>
         <activity
             android:name=".Plotpage"
@@ -74,6 +62,9 @@
             android:exported="false" />
         <activity
             android:name=".Profile"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".Aadharotp"

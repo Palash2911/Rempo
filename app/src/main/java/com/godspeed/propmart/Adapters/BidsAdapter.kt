@@ -32,7 +32,7 @@ class BidsAdapter(val context: Context, val cards:List<Bidscardmodel>):
     }
 
     override fun onBindViewHolder(holder: BidsAdapter.BidsCardViewHolder, position: Int) {
-        val card: Bidscardmodel = cards[position];
+//        val card: Bidscardmodel = cards[position];
 
         with(holder){
             with(cards[position]){
