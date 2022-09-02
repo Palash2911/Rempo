@@ -44,7 +44,7 @@
             <TextView
                 android:id="@+id/aadharfield"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="45dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/rectangle"
                 android:fontFamily="@font/roboto"
@@ -63,7 +63,7 @@
 
             <TextView
                 android:id="@+id/field_lable2"
-                android:layout_width="165dp"
+                android:layout_width="wrap_content"
                 android:layout_height="18dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
@@ -71,7 +71,7 @@
                 android:fontFamily="@font/roboto"
                 android:gravity="top"
                 android:lineSpacingExtra="3sp"
-                android:text="Name (as on Aadhar)"
+                android:text="Name (as on Aadhar Card)*"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:translationY="-1.69sp" />
@@ -79,7 +79,7 @@
             <EditText
                 android:id="@+id/nameprofileedit"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="45dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/rectangle"
                 android:ems="10"
@@ -149,7 +149,7 @@
             <EditText
                 android:id="@+id/phoneedit"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="45dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/rectangle"
                 android:ems="10"
@@ -178,7 +178,7 @@
                 android:fontFamily="@font/roboto"
                 android:gravity="top"
                 android:lineSpacingExtra="3sp"
-                android:text="Mail - ID"
+                android:text="Email"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:translationY="-1.69sp" />
@@ -186,7 +186,7 @@
             <EditText
                 android:id="@+id/Emailedit"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="45dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/rectangle"
                 android:ems="10"

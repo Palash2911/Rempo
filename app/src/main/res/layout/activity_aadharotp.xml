@@ -1,10 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".Aadharotp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/logo"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
+        android:src="#3C91E6"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/roboto"
+        android:text="Aadhar Verification"
+        android:textColor="@color/black"
+        android:textFontWeight="500"
+        android:textSize="22dp" />
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="57dp"
+        android:fontFamily="@font/roboto"
+        android:gravity="center"
+        android:letterSpacing="0.01"
+        android:text="Please enter the 4 digit OTP which we have sent on the number linked to your adhaar"
+        android:textColor="#858585"
+        android:textSize="16dp" />
+
+    <in.aabhasjindal.otptextview.OtpTextView
+        android:layout_marginTop="130dp"
+        android:id="@+id/aadhar_otp"
+        android:textColor="#020202"
+        app:bar_enabled="false"
+        app:bar_height="2dp"
+        app:height="40dp"
+        app:length="6"
+        app:otp_box_background="@drawable/otpbox"
+        app:otp_box_background_error="@drawable/recerror"
+        app:otp_box_background_success="@drawable/recsuccess"
+        app:otp_text_size="24dp"
+        app:width="45dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/logo"
+        app:bar_margin_top="140dp"
+        android:layout_height="wrap_content"
+        />
+
+
+    <TextView
+        android:layout_width="135dp"
+        android:layout_height="15dp"
+        android:layout_below="@id/logo"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="195dp"
+        android:fontFamily="@font/roboto"
+        android:text="Resend OTP in 9 sec"
+        android:textColor="#3C91E6"
+        android:textFontWeight="500"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="17dp"
+        android:layout_marginRight="17dp"
+        android:layout_alignParentBottom="true"
+        android:text="Verify"
+        android:fontFamily="@font/roboto"
+        android:textAllCaps="false"/>
+</RelativeLayout>

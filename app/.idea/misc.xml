@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/PropMart/Propmart_Final/app/src/main/res/layout/activity_aadharotp.xml" value="0.23854166666666668" />
+        <entry key="..\:/PropMart/Propmart_Final/app/src/main/res/layout/activity_aadharverified.xml" value="0.23854166666666668" />
+        <entry key="..\:/PropMart/Propmart_Final/app/src/main/res/layout/activity_bidplaced.xml" value="0.23854166666666668" />
+        <entry key="..\:/PropMart/Propmart_Final/app/src/main/res/layout/activity_bottomtab.xml" value="0.23854166666666668" />
+        <entry key="..\:/PropMart/Propmart_Final/app/src/main/res/layout/activity_editprofile.xml" value="0.23854166666666668" />
+        <entry key="..\:/PropMart/Propmart_Final/app/src/main/res/layout/activity_main.xml" value="0.23854166666666668" />
+        <entry key="..\:/PropMart/Propmart_Final/app/src/main/res/layout/activity_otpactivity.xml" value="0.23854166666666668" />
+        <entry key="..\:/PropMart/Propmart_Final/app/src/main/res/layout/activity_plotpage.xml" value="0.23854166666666668" />
+        <entry key="..\:/PropMart/Propmart_Final/app/src/main/res/layout/activity_profile.xml" value="0.23854166666666668" />
+        <entry key="..\:/PropMart/Propmart_Final/app/src/main/res/layout/activity_profileverify.xml" value="0.25416666666666665" />
+        <entry key="..\:/PropMart/Propmart_Final/app/src/main/res/layout/activity_property_page.xml" value="0.23854166666666668" />
+        <entry key="..\:/PropMart/Propmart_Final/app/src/main/res/layout/activity_splash.xml" value="0.23854166666666668" />
+        <entry key="..\:/PropMart/Propmart_Final/app/src/main/res/layout/activity_uploadaadhar.xml" value="0.25416666666666665" />
+        <entry key="..\:/PropMart/Propmart_Final/app/src/main/res/layout/activity_web_view.xml" value="0.23854166666666668" />
+        <entry key="..\:/PropMart/Propmart_Final/app/src/main/res/layout/bidscard.xml" value="0.23854166666666668" />
+        <entry key="..\:/PropMart/Propmart_Final/app/src/main/res/layout/document_list_item.xml" value="0.23854166666666668" />
+        <entry key="..\:/PropMart/Propmart_Final/app/src/main/res/layout/fragment_aboutus.xml" value="0.23854166666666668" />
+        <entry key="..\:/PropMart/Propmart_Final/app/src/main/res/layout/fragment_bidsfrag.xml" value="0.23854166666666668" />
+        <entry key="..\:/PropMart/Propmart_Final/app/src/main/res/layout/fragment_bookmark.xml" value="0.23854166666666668" />
+        <entry key="..\:/PropMart/Propmart_Final/app/src/main/res/layout/fragment_contactus.xml" value="0.23854166666666668" />
+        <entry key="..\:/PropMart/Propmart_Final/app/src/main/res/layout/fragment_homepage.xml" value="0.23854166666666668" />
+        <entry key="..\:/PropMart/Propmart_Final/app/src/main/res/layout/fragment_location.xml" value="0.23854166666666668" />
+        <entry key="..\:/PropMart/Propmart_Final/app/src/main/res/layout/fragment_morefragment.xml" value="0.23854166666666668" />
+        <entry key="..\:/PropMart/Propmart_Final/app/src/main/res/layout/fragment_savedfrag.xml" value="0.23854166666666668" />
+        <entry key="..\:/PropMart/Propmart_Final/app/src/main/res/layout/plot_dropdown_item.xml" value="0.23854166666666668" />
+        <entry key="..\:/PropMart/Propmart_Final/app/src/main/res/layout/property_card.xml" value="0.25416666666666665" />
+        <entry key="..\:/PropMart/Propmart_Final/app/src/main/res/layout/seller_card.xml" value="0.253125" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
