@@ -16,9 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Propmart"
         tools:targetApi="31">
-        <activity
-            android:name=".sellProp"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".sellProp"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".BottomnavSeller"
             android:exported="false"
@@ -27,7 +27,7 @@
             android:name=".WebView"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".sellProp"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

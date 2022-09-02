@@ -50,17 +50,17 @@ class Morefragment : Fragment() {
                 profileuri = Uri.parse(snapshot["profilePicture"].toString())
         }
 
-        storage = FirebaseStorage.getInstance();
-        val storageRef= FirebaseStorage.getInstance().reference.child("Profile/" + auth.uid.toString())
-        storageRef.downloadUrl.addOnSuccessListener {
-            Glide.with(this)
-                .load(storageRef)
-                .placeholder(R.drawable.ic_baseline_profile_img)
-                .into(_binding!!.profileImg)
-        }.addOnFailureListener {
-            _binding!!.profileImg.setImageResource(R.drawable.ic_baseline_profile_img)
-        }
-
+//        storage = FirebaseStorage.getInstance();
+//        val storageRef= FirebaseStorage.getInstance().reference.child("Profile/" + auth.uid.toString())
+//        storageRef.downloadUrl.addOnSuccessListener {
+//            Glide.with(this)
+//                .load(storageRef)
+//                .placeholder(R.drawable.ic_baseline_profile_img)
+//                .into(_binding!!.profileImg)
+//        }.addOnFailureListener {
+//            _binding!!.profileImg.setImageResource(R.drawable.ic_baseline_profile_img)
+//        }
+        _binding!!.profileImg.setImageResource(R.drawable.ic_baseline_profile_img)
         _binding!!.profileImg.setOnClickListener {
             uploadImg()
         }
