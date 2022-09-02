@@ -34,10 +34,10 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         adap.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
         binding.plotSpinner.adapter = adap
 
-        binding.spinner2.onItemSelectedListener = this
+        binding.plotSpinner.onItemSelectedListener = this
         var adap2 = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, selectsubplotCat)
         adap2.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
-        binding.spinner2.adapter = adap2
+        binding.plotSpinner.adapter = adap2
 
     }
 
@@ -46,12 +46,12 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         Toast.makeText(this, "Item Selected $item", Toast.LENGTH_SHORT).show()
         if(item == "NA Plot" || (item=="Residential Land" || item=="Commercial Land" || item=="Residential cum Commercial Land"))
         {
-            binding.spinner2.visibility = VISIBLE
+            binding.plotSpinner.visibility = VISIBLE
             binding.textView13.visibility = VISIBLE
         }
         else
         {
-            binding.spinner2.visibility = GONE
+            binding.plotSpinner.visibility = GONE
             binding.textView13.visibility = GONE
         }
     }
