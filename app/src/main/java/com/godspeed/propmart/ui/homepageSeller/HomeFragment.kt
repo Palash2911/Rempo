@@ -41,13 +41,14 @@ class HomeFragment : Fragment() {
         _binding!!.sellerRv.adapter = adapter;
         firestore.collection("Plots").get().addOnSuccessListener{
             it.documents.iterator().forEach { documentSnapshot ->
-                val title:String = documentSnapshot.get("title") as String;
-                val seller:String = documentSnapshot.get("sellerName") as String;
-                val plotnumber:Int = documentSnapshot.get("plotNo").toString().toInt();
-                val address:String = documentSnapshot.get("address") as String;
+                Log.d("TAGGG", documentSnapshot.id.toString())
+                val title:String = documentSnapshot.get("Area") as String;
+                val seller:String = documentSnapshot.get("Owner Name") as String;
+                val plotnumber:Int = documentSnapshot.get("Plot No").toString().toInt();
+                val address:String = documentSnapshot.get("District") as String;
 //                val longitude:String = documentSnapshot.get("longitude") as String;
 //                val latitude:String = documentSnapshot.get("latitude") as String;
-                val plotImage:String = documentSnapshot.get("plotImage") as String;
+                val plotImage:String = documentSnapshot.get("Taluka") as String;
 
                val card:sellerhomepageModel =
                    sellerhomepageModel(documentSnapshot.id.toString(), title, seller, address,

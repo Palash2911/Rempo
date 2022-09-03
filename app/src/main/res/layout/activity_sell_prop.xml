@@ -130,7 +130,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:background="@drawable/rectangle"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -150,8 +150,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:hint="James"
                     android:inputType="textPersonName"
-                    android:text="Name"
                     tools:ignore="TouchTargetSizeCheck" />
 
                 <TextView
@@ -190,13 +190,13 @@
                     android:text="District" />
 
                 <EditText
-                    android:id="@+id/editTextTextMultiLine"
+                    android:id="@+id/District"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:gravity="start|top"
-                    android:inputType="textMultiLine"
-                    android:text=" Enter District"
+                    android:hint=" Enter District"
+                    android:inputType="textPersonName"
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
                 <TextView
@@ -206,12 +206,12 @@
                     android:text="Taluka" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName2"
+                    android:id="@+id/taluka1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:hint="Enter Taluka"
                     android:inputType="textPersonName"
-                    android:text="Enter Taluka"
                     tools:ignore="TouchTargetSizeCheck" />
 
                 <TextView
@@ -221,12 +221,12 @@
                     android:text="Village" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName3"
+                    android:id="@+id/village"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:hint="Enter Village"
                     android:inputType="textPersonName"
-                    android:text="Enter Village"
                     tools:ignore="TouchTargetSizeCheck" />
 
                 <Button
@@ -269,7 +269,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="10"
-                    android:inputType="textPersonName"
+                    android:inputType="number"
                     tools:ignore="TouchTargetSizeCheck" />
 
 
@@ -286,7 +286,7 @@
                     android:ems="10"
                     android:gravity="start|top"
                     android:hint="88-88-88"
-                    android:inputType="textMultiLine"
+                    android:inputType="textPersonName"
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
                 <TextView
@@ -301,7 +301,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="19"
-                    android:inputType="textPersonName"
+                    android:inputType="number"
                     tools:ignore="TouchTargetSizeCheck" />
 
                 <TextView
@@ -322,7 +322,7 @@
                         android:layout_marginEnd="8dp"
                         android:ems="7"
                         android:hint="123"
-                        android:inputType="textPersonName"
+                        android:inputType="number"
                         tools:ignore="TouchTargetSizeCheck" />
 
                     <Spinner
@@ -352,7 +352,7 @@
                         android:layout_marginEnd="8dp"
                         android:ems="8"
                         android:hint="123"
-                        android:inputType="textPersonName"
+                        android:inputType="number"
                         tools:ignore="TouchTargetSizeCheck" />
 
                     <Spinner
@@ -376,7 +376,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="10"
-                    android:inputType="textPersonName"
+                    android:inputType="number"
                     tools:ignore="TouchTargetSizeCheck" />
 
                 <TextView
@@ -391,7 +391,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="9m"
-                    android:inputType="textPersonName"
+                    android:inputType="number"
                     tools:ignore="TouchTargetSizeCheck" />
 
                 <LinearLayout
@@ -430,7 +430,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:background="@drawable/rectangle"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"
