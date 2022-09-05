@@ -128,117 +128,157 @@
             android:id="@+id/CardView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_margin="30dp"
             android:background="@drawable/rectangle"
-            android:visibility="visible">
+            android:visibility="gone"
+            app:cardCornerRadius="15dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="30dp"
-                android:orientation="vertical"
-                android:padding="20dp">
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/oName"
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Owner Name" />
+                    android:layout_height="wrap_content">
 
-                <EditText
-                    android:id="@+id/ownerName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="James"
-                    android:inputType="textPersonName"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:orientation="vertical"
+                        android:padding="10dp">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Property Category" />
+                        <TextView
+                            android:id="@+id/oName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Owner Name" />
 
-                <Spinner
-                    android:id="@+id/plotSpinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="30dp"
-                    android:padding="30dp"
-                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                        <EditText
+                            android:id="@+id/ownerName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="9dp"
+                            android:layout_marginBottom="9dp"
+                            android:background="@drawable/rectangle"
+                            android:ems="10"
+                            android:hint="James"
+                            android:inputType="textPersonName"
+                            android:padding="7dp"
+                            android:paddingStart="8dp"
+                            tools:ignore="TouchTargetSizeCheck" />
 
-                <TextView
-                    android:id="@+id/textView13"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Sub Property Category"
-                    android:visibility="gone" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Property Category" />
 
-                <Spinner
-                    android:id="@+id/subProprSpinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="30dp"
-                    android:padding="30dp"
-                    android:visibility="gone"
-                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                        <Spinner
+                            android:id="@+id/plotSpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="9dp"
+                            android:layout_marginBottom="9dp"
+                            android:background="@drawable/rectangle"
+                            android:padding="9dp"
+                            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-                <TextView
-                    android:id="@+id/textView14"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="District" />
+                        <TextView
+                            android:id="@+id/textView13"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Sub Property Category"
+                            android:visibility="gone" />
 
-                <EditText
-                    android:id="@+id/District"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:gravity="start|top"
-                    android:hint=" Enter District"
-                    android:inputType="textPersonName"
-                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                        <Spinner
+                            android:id="@+id/subProprSpinner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="9dp"
+                            android:layout_marginBottom="9dp"
+                            android:background="@drawable/rectangle"
+                            android:padding="9dp"
+                            android:visibility="gone"
+                            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-                <TextView
-                    android:id="@+id/textView16"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Taluka" />
+                        <TextView
+                            android:id="@+id/textView14"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="District" />
 
-                <EditText
-                    android:id="@+id/taluka1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Enter Taluka"
-                    android:inputType="textPersonName"
-                    tools:ignore="TouchTargetSizeCheck" />
+                        <EditText
+                            android:id="@+id/District"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="9dp"
+                            android:layout_marginBottom="9dp"
+                            android:background="@drawable/rectangle"
+                            android:ems="10"
+                            android:gravity="start|top"
+                            android:hint=" Enter District"
+                            android:inputType="textPersonName"
+                            android:padding="7dp"
+                            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
-                <TextView
-                    android:id="@+id/textView17"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Village" />
+                        <TextView
+                            android:id="@+id/textView16"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Taluka" />
 
-                <EditText
-                    android:id="@+id/village"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Enter Village"
-                    android:inputType="textPersonName"
-                    tools:ignore="TouchTargetSizeCheck" />
+                        <EditText
+                            android:id="@+id/taluka1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="9dp"
+                            android:layout_marginBottom="9dp"
+                            android:background="@drawable/rectangle"
+                            android:ems="10"
+                            android:hint="Enter Taluka"
+                            android:inputType="textPersonName"
+                            android:padding="7dp"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                        <TextView
+                            android:id="@+id/textView17"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Village" />
+
+                        <EditText
+                            android:id="@+id/village"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="9dp"
+                            android:layout_marginBottom="9dp"
+                            android:background="@drawable/rectangle"
+                            android:ems="10"
+                            android:hint="Enter Village"
+                            android:inputType="textPersonName"
+                            android:padding="7dp"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                    </LinearLayout>
+
+                </ScrollView>
 
                 <Button
                     android:id="@+id/Next1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    android:layout_margin="15dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="18dp"
                     android:drawableRight="@drawable/ic_baseline_keyboard_double_arrow_right_24"
                     android:text="Next"
                     android:textColor="@color/white" />
+
             </LinearLayout>
+
 
         </androidx.cardview.widget.CardView>
 
@@ -246,179 +286,222 @@
             android:id="@+id/CardView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_margin="30dp"
             android:background="@drawable/rectangle"
-            android:visibility="gone">
+            android:visibility="gone"
+            app:cardCornerRadius="15dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="30dp"
-                android:orientation="vertical"
-                android:padding="20dp">
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/sNo"
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Survey Number" />
+                    android:layout_height="match_parent">
 
-                <EditText
-                    android:id="@+id/surveyNo."
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="10"
-                    android:inputType="number"
-                    tools:ignore="TouchTargetSizeCheck" />
-
-
-                <TextView
-                    android:id="@+id/loc"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Location" />
-
-                <EditText
-                    android:id="@+id/location"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:gravity="start|top"
-                    android:hint="88-88-88"
-                    android:inputType="textPersonName"
-                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-
-                <TextView
-                    android:id="@+id/pno"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Plot Number" />
-
-                <EditText
-                    android:id="@+id/plotNo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="19"
-                    android:inputType="number"
-                    tools:ignore="TouchTargetSizeCheck" />
-
-                <TextView
-                    android:id="@+id/area"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Area" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/aSize"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:ems="7"
-                        android:hint="123"
-                        android:inputType="number"
-                        tools:ignore="TouchTargetSizeCheck" />
-
-                    <Spinner
-                        android:id="@+id/areaSpinner"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/fr"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Front" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/fron"
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:ems="8"
-                        android:hint="123"
-                        android:inputType="number"
-                        tools:ignore="TouchTargetSizeCheck" />
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="30dp"
+                        android:orientation="vertical"
+                        android:padding="20dp">
 
-                    <Spinner
-                        android:id="@+id/frSpinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-                </LinearLayout>
+                        <TextView
+                            android:id="@+id/sNo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Survey Number" />
 
-                <TextView
-                    android:id="@+id/dt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Depth" />
+                        <EditText
+                            android:id="@+id/surveyNo."
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginBottom="7dp"
+                            android:background="@drawable/rectangle"
+                            android:ems="10"
+                            android:hint="10"
+                            android:inputType="number"
+                            android:padding="7dp"
+                            tools:ignore="TouchTargetSizeCheck" />
 
-                <EditText
-                    android:id="@+id/dept"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="10"
-                    android:inputType="number"
-                    tools:ignore="TouchTargetSizeCheck" />
 
-                <TextView
-                    android:id="@+id/rd"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Road" />
+                        <TextView
+                            android:id="@+id/loc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Location" />
 
-                <EditText
-                    android:id="@+id/road"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="9m"
-                    android:inputType="number"
-                    tools:ignore="TouchTargetSizeCheck" />
+                        <EditText
+                            android:id="@+id/location"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginBottom="7dp"
+                            android:background="@drawable/rectangle"
+                            android:ems="10"
+                            android:gravity="start|top"
+                            android:hint="88-88-88"
+                            android:inputType="textPersonName"
+                            android:padding="7dp"
+                            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+                        <TextView
+                            android:id="@+id/pno"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Plot Number" />
+
+                        <EditText
+                            android:id="@+id/plotNo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginBottom="7dp"
+                            android:background="@drawable/rectangle"
+                            android:ems="10"
+                            android:hint="19"
+                            android:inputType="number"
+                            android:padding="7dp"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                        <TextView
+                            android:id="@+id/area"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Area" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/aSize"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="7dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginBottom="7dp"
+                                android:background="@drawable/rectangle"
+                                android:ems="7"
+                                android:hint="123"
+                                android:inputType="number"
+                                android:padding="7dp"
+                                tools:ignore="TouchTargetSizeCheck" />
+
+                            <Spinner
+                                android:id="@+id/areaSpinner"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/fr"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Front" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/fron"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="7dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginBottom="7dp"
+                                android:background="@drawable/rectangle"
+                                android:ems="8"
+                                android:hint="123"
+                                android:inputType="number"
+                                android:padding="7dp"
+                                tools:ignore="TouchTargetSizeCheck" />
+
+                            <Spinner
+                                android:id="@+id/frSpinner"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/dt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Depth" />
+
+                        <EditText
+                            android:id="@+id/dept"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginBottom="7dp"
+                            android:background="@drawable/rectangle"
+                            android:ems="10"
+                            android:hint="10"
+                            android:inputType="number"
+                            android:padding="7dp"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                        <TextView
+                            android:id="@+id/rd"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Road" />
+
+                        <EditText
+                            android:id="@+id/road"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:background="@drawable/rectangle"
+                            android:ems="10"
+                            android:hint="9m"
+                            android:inputType="number"
+                            android:padding="7dp"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                    </LinearLayout>
+                </ScrollView>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="10dp"
+                    android:layout_marginBottom="15dp"
+                    android:gravity="center"
                     android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/back1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="start"
-                        android:layout_marginEnd="10dp"
+                        android:layout_marginEnd="40dp"
                         android:drawableLeft="@drawable/ic_baseline_keyboard_double_arrow_left_24"
                         android:text="Back"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/white"
+                        tools:ignore="TouchTargetSizeCheck" />
 
                     <Button
                         android:id="@+id/Next2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="end"
                         android:layout_marginStart="20dp"
                         android:drawableRight="@drawable/ic_baseline_keyboard_double_arrow_right_24"
                         android:text="Next"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/white"
+                        tools:ignore="TouchTargetSizeCheck" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -428,71 +511,92 @@
             android:id="@+id/CardView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_margin="30dp"
             android:background="@drawable/rectangle"
-            android:visibility="gone">
+            android:visibility="visible"
+            app:cardCornerRadius="15dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="30dp"
-                android:orientation="vertical"
-                android:padding="20dp">
+                android:orientation="vertical">
 
-
-                <TextView
-                    android:id="@+id/bid1"
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Expected Selling Rate" />
+                    android:layout_height="match_parent">
 
-                <EditText
-                    android:id="@+id/bidAmt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="number"
-                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:orientation="vertical"
+                        android:padding="20dp">
 
-                <TextView
-                    android:id="@+id/alldoc"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Upload Documents" />
+
+                        <TextView
+                            android:id="@+id/bid1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Expected Selling Rate" />
+
+                        <EditText
+                            android:id="@+id/bidAmt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="9dp"
+                            android:layout_marginBottom="9dp"
+                            android:background="@drawable/rectangle"
+                            android:ems="10"
+                            android:inputType="number"
+                            android:padding="7dp"
+                            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+                        <TextView
+                            android:id="@+id/alldoc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Upload Documents" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="18dp"
+                            android:background="@drawable/rectangle"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/textView21"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="9dp"
+                                android:text="NA Order" />
+
+                            <TextView
+                                android:id="@+id/textView22"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="9dp"
+                                android:text="Nakasha" />
+
+                            <TextView
+                                android:id="@+id/textView23"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="9dp"
+                                android:text="7/12 Document" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </ScrollView>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="18dp"
-                    android:background="@drawable/rectangle"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textView21"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="9dp"
-                        android:text="NA Order" />
-
-                    <TextView
-                        android:id="@+id/textView22"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="9dp"
-                        android:text="Nakasha" />
-
-                    <TextView
-                        android:id="@+id/textView23"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="9dp"
-                        android:text="7/12 Document" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="18dp"
+                    android:gravity="center"
                     android:orientation="horizontal">
 
                     <Button

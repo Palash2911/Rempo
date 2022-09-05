@@ -20,19 +20,21 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     lateinit var binding: ActivitySellPropBinding
     var naPlot = false
     private val db = Firebase.firestore
+    val newPlot:HashMap<String, Any> = HashMap()
     var i=0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySellPropBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val newPlot:HashMap<String, Any> = HashMap()
 
         val selectplotCat: ArrayList<String> = ArrayList()
+//        selectplotCat.add("Select Property Category")
         selectplotCat.add("Agricultural Land")
         selectplotCat.add("NA Plot")
         selectplotCat.add("Guntha Plot")
 
         val selectsubplotCat: ArrayList<String> = ArrayList()
+//        selectsubplotCat.add("Select Sub-Property Category")
         selectsubplotCat.add("Residential Land")
         selectsubplotCat.add("Commercial Land")
         selectsubplotCat.add("Residential cum Commercial Land")
@@ -125,11 +127,34 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 //        Toast.makeText(this, "Item Selected $item", Toast.LENGTH_SHORT).show()
         if(item == "NA Plot" || (item=="Residential Land" || item=="Commercial Land" || item=="Residential cum Commercial Land"))
         {
+            val plot = "NA Plot"
+            var subPlot = ""
+            newPlot["Property Category"] = plot.toString()
+            when (item) {
+                "Residential Land" -> {
+                    subPlot = "Residential Land"
+                }
+                "Commercial Land" -> {
+                    subPlot = "Commercial Land"
+                }
+                "Residential cum Commercial Land" -> {
+                    subPlot = "Residential cum Commercial Land"
+                }
+            }
+            newPlot["Sub-Property Category"] = subPlot.toString()
             binding.subProprSpinner.visibility = VISIBLE
             binding.textView13.visibility = VISIBLE
         }
         else
         {
+            if(item=="Agricultural Land")
+            {
+                newPlot["Property Category"] = "Agricultural Land"
+            }
+            else if(item=="Guntha Plot")
+            {
+                newPlot["Property Category"] = "Guntha Plot"
+            }
             binding.subProprSpinner.visibility = GONE
             binding.textView13.visibility = GONE
         }
