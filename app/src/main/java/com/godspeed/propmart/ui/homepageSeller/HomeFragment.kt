@@ -69,6 +69,7 @@ class HomeFragment : Fragment() {
             {
                 _binding!!.sellerRv.visibility = VISIBLE
             }
+
             adapter.notifyDataSetChanged();
         }.addOnFailureListener {
             Log.d("Helo", "Empty")
