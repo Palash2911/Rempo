@@ -6,6 +6,7 @@ import android.net.Uri
 import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.view.isVisible
@@ -21,7 +22,7 @@ import kotlin.collections.HashMap
 
 
 class EditPlotActivity : AppCompatActivity() {
-    val layoutId = intent.getStringExtra("layoutId");
+    var layoutId = ""
     lateinit var binding: ActivityEditPlotBinding
     lateinit var selectedPdf:Uri
     lateinit var firestore: FirebaseFirestore;
@@ -30,6 +31,9 @@ class EditPlotActivity : AppCompatActivity() {
         binding = ActivityEditPlotBinding.inflate(layoutInflater);
         setContentView(binding.root)
 
+        val intent = Intent()
+        layoutId = intent.getStringExtra("layoutId").toString();
+        Log.d("in", layoutId)
         firestore = FirebaseFirestore.getInstance();
 
         val title = intent.getStringExtra("title");
@@ -45,9 +49,7 @@ class EditPlotActivity : AppCompatActivity() {
         }
 
         binding.editScheme.setOnClickListener{it ->
-
             binding.editSchemePopup.visibility = View.VISIBLE;
-
         }
 
         binding.cancel.setOnClickListener{

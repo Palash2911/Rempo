@@ -35,7 +35,6 @@ class sellerHomepageAdapter(val context: Context, val cards:List<sellerhomepageM
                 binding.sellerAddress.text = this.address
 //               Glide.with(context).load(this.layoutImage).into(binding.plotImage);
 
-
                 holder.itemView.setOnClickListener{
                     val intent: Intent = Intent(context, EditPlotActivity::class.java);
                     intent.putExtra("layoutId",this.layoutId);

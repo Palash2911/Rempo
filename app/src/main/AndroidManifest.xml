@@ -17,11 +17,10 @@
         android:theme="@style/Theme.Propmart"
         tools:targetApi="31">
         <activity
-            android:name=".EditPlotActivity"
+            android:name=".SplashActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -36,7 +35,7 @@
             android:name=".WebView"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".MainActivity"
             android:exported="false">
 
         </activity>
@@ -69,7 +68,7 @@
             android:name=".Profile"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".EditPlotActivity"
             android:exported="false" />
         <activity
             android:name=".Aadharotp"
