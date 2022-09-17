@@ -20,6 +20,7 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     lateinit var binding: ActivitySellPropBinding
     var naPlot = false
     private val db = Firebase.firestore
+    private val auth = FirebaseAuth.getInstance()
     val newPlot:HashMap<String, Any> = HashMap()
     var i=0
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,24 +76,120 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         }
 
         binding.Next1.setOnClickListener {
-            newPlot["Owner Name"] = binding.ownerName.text.toString()
-            newPlot["District"] = binding.District.text.toString()
-            newPlot["Taluka"] = binding.taluka1.text.toString()
-            newPlot["Village"] = binding.village.text.toString()
-            binding.CardView2.visibility = VISIBLE
-            binding.CardView1.visibility = GONE
+            var fl1=0
+            var fl2=0
+            var fl3=0
+            var fl4=0
+            if(binding.ownerName.text.toString().isEmpty())
+            {
+                binding.ownerName.error = "Required"
+            }
+            else
+            {
+                fl1=1
+                newPlot["Owner Name"] = binding.ownerName.text.toString()
+            }
+            if(binding.District.text.toString().isEmpty())
+            {
+                binding.District.error = "Required"
+            }
+            else
+            {
+                fl2=1
+                newPlot["District"] = binding.District.text.toString()
+            }
+            if(binding.taluka1.text.toString().isEmpty())
+            {
+                binding.taluka1.error = "Required"
+            }
+            else
+            {
+                fl3=1
+                newPlot["Taluka"] = binding.taluka1.text.toString()
+            }
+            if(binding.village.text.toString().isEmpty())
+            {
+                binding.village.error = "Required"
+            }
+            else
+            {
+                fl4=1
+                newPlot["Village"] = binding.village.text.toString()
+            }
+            if(fl1==1 && fl2==1 && fl3==1 && fl4==1)
+            {
+                binding.CardView2.visibility = VISIBLE
+                binding.CardView1.visibility = GONE
+            }
         }
 
         binding.Next2.setOnClickListener {
-            newPlot["Survey No."] = binding.surveyNo.text.toString()
-            newPlot["Location"] = binding.location.text.toString()
-            newPlot["Plot No"] = binding.plotNo.text.toString()
-            newPlot["Area"] = binding.aSize.text.toString()
-            newPlot["Front"] = binding.fron.text.toString()
-            newPlot["Depth"] = binding.dept.text.toString()
-            newPlot["Road"] = binding.road.text.toString()
-            binding.CardView3.visibility = VISIBLE
-            binding.CardView2.visibility = GONE
+            var fl1=0
+            var fl2=0
+            var fl3=0
+            var fl4=0
+            var fl5=0
+            var fl6=0
+            if(binding.surveyNo.text.toString().isEmpty())
+            {
+                binding.surveyNo.error = "Required"
+            }
+            else
+            {
+                fl1=1
+            }
+            if(binding.location.text.toString().isEmpty())
+            {
+                binding.location.error = "Required"
+            }
+            else
+            {
+                fl2=1
+            }
+            if(binding.aSize.text.toString().isEmpty())
+            {
+                binding.aSize.error = "Required"
+            }
+            else
+            {
+                fl3=1
+            }
+            if(binding.fron.text.toString().isEmpty())
+            {
+                binding.fron.error = "Required"
+            }
+            else
+            {
+                fl4=1
+            }
+            if(binding.dept.text.toString().isEmpty())
+            {
+                binding.dept.error = "Required"
+            }
+            else
+            {
+                fl5=1
+            }
+            if(binding.road.text.toString().isEmpty())
+            {
+                binding.road.error = "Required"
+            }
+            else
+            {
+                fl6=1
+            }
+            if(fl1==1 && fl2==1 && fl3==1 && fl4==1 && fl5==1 && fl6==1)
+            {
+                binding.CardView3.visibility = VISIBLE
+                binding.CardView2.visibility = GONE
+                newPlot["Survey No."] = binding.surveyNo.text.toString()
+                newPlot["Location"] = binding.location.text.toString()
+                newPlot["Plot No"] = binding.plotNo.text.toString()
+                newPlot["Area"] = binding.aSize.text.toString()
+                newPlot["Front"] = binding.fron.text.toString()
+                newPlot["Depth"] = binding.dept.text.toString()
+                newPlot["Road"] = binding.road.text.toString()
+            }
         }
 
         binding.back2.setOnClickListener {
@@ -101,18 +198,31 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         }
 
         binding.Next3.setOnClickListener {
-            newPlot["Bid Price"] = binding.bidAmt.text.toString()
-            db.collection("Plots").document()
-                .set(newPlot).addOnCompleteListener{task->
-                    if (task.isSuccessful){
-                        binding.llSell.visibility = GONE
-                        binding.completeSell.visibility = VISIBLE
-                        Toast.makeText(this, "Plot Successfully Added !! ", Toast.LENGTH_SHORT).show()
-                    } else {
-                        Log.d(ContentValues.TAG, "Error saving Plot! ", task.exception)
-                        Toast.makeText(applicationContext, "Something went wrong!!", Toast.LENGTH_SHORT).show()
+            var fl1=0
+            if(binding.bidAmt.text.toString().isEmpty())
+            {
+                binding.bidAmt.error = "Required"
+            }
+            else
+            {
+                fl1=1
+            }
+            if(fl1==1)
+            {
+                newPlot["Bid Price"] = binding.bidAmt.text.toString()
+                newPlot["Uid"] = auth.currentUser?.uid.toString()
+                db.collection("Plots").document()
+                    .set(newPlot).addOnCompleteListener{task->
+                        if (task.isSuccessful){
+                            binding.llSell.visibility = GONE
+                            binding.completeSell.visibility = VISIBLE
+                            Toast.makeText(this, "Plot Successfully Added !! ", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Log.d(ContentValues.TAG, "Error saving Plot! ", task.exception)
+                            Toast.makeText(applicationContext, "Something went wrong!!", Toast.LENGTH_SHORT).show()
+                        }
                     }
-                }
+            }
         }
 
         binding.visithomeSeller.setOnClickListener {
