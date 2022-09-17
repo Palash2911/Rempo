@@ -69,7 +69,8 @@
                 android:id="@+id/sellerRv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="visible">
+                android:visibility="visible"
+                tools:listitem="@layout/seller_card">
 
             </androidx.recyclerview.widget.RecyclerView>
 
