@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.godspeed.propmart.EditPlotActivity
 import com.godspeed.propmart.Models.sellerhomepageModel
 import com.godspeed.propmart.Plotpage
 import com.godspeed.propmart.PropertyPageActivity
@@ -35,12 +36,12 @@ class sellerHomepageAdapter(val context: Context, val cards:List<sellerhomepageM
 //               Glide.with(context).load(this.layoutImage).into(binding.plotImage);
 
 
-//                holder.itemView.setOnClickListener{
-//                    val intent: Intent = Intent(context, PropertyPageActivity::class.java);
-//                    intent.putExtra("layoutId",this.layoutId);
-//                    intent.putExtra("title",this.title);
-//                    context.startActivity(intent);
-//                }
+                holder.itemView.setOnClickListener{
+                    val intent: Intent = Intent(context, EditPlotActivity::class.java);
+                    intent.putExtra("layoutId",this.layoutId);
+                    intent.putExtra("title",this.title);
+                    context.startActivity(intent);
+                }
             }
         }
     }
