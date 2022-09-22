@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.godspeed.propmart.Adapters.PropertyCardAdapter
 import com.godspeed.propmart.Adapters.sellerHomepageAdapter
+import com.godspeed.propmart.ChooseActivity
 import com.godspeed.propmart.Models.PropertyCardModel
 import com.godspeed.propmart.Models.sellerhomepageModel
 import com.godspeed.propmart.databinding.FragmentHomeBinding
@@ -70,7 +71,7 @@ class HomeFragment : Fragment() {
         }
 
         _binding!!.addPropertyBtn.setOnClickListener{
-            val intent = Intent(requireContext(), sellProp::class.java)
+            val intent = Intent(requireContext(), ChooseActivity::class.java)
             startActivity(intent)
         }
 
