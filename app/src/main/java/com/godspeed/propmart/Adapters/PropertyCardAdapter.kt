@@ -40,7 +40,7 @@ class PropertyCardAdapter(val context:Context , val cards:List<PropertyCardModel
 
     override fun onBindViewHolder(holder: PropertyCardViewHolder, position: Int) {
         val card:PropertyCardModel = cards.get(position);
-
+        Log.d("CAA", card.toString())
        with(holder){
            with(cards[position]){
                val docRef = firestore
@@ -55,7 +55,6 @@ class PropertyCardAdapter(val context:Context , val cards:List<PropertyCardModel
                            binding.saved.visibility = View.VISIBLE;
                            binding.save.visibility = View.GONE
                        }
-                       Log.d("Layss",layoutId)
                }
                binding.title.text = this.title
                binding.address.text = this.address;

@@ -10,7 +10,7 @@ import android.widget.RadioButton
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.godspeed.propmart.Adapters.PropertyCardAdapter
-import com.godspeed.propmart.Fragments.plotbuyer
+import com.godspeed.propmart.Fragments.plotBuyer
 import com.godspeed.propmart.Fragments.propertyBuyer
 import com.godspeed.propmart.Models.PropertyCardModel
 import com.godspeed.propmart.R
@@ -110,7 +110,7 @@ class HompageFragment : Fragment() {
             }
             2 -> {
                 _binding?.filterImg?.visibility = VISIBLE
-                addFragment(plotbuyer())
+                addFragment(plotBuyer())
             }
         }
     }
