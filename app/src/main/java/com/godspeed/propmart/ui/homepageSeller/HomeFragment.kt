@@ -18,6 +18,7 @@ import com.godspeed.propmart.Models.PropertyCardModel
 import com.godspeed.propmart.Models.sellerhomepageModel
 import com.godspeed.propmart.databinding.FragmentHomeBinding
 import com.godspeed.propmart.sellProp
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class HomeFragment : Fragment() {
@@ -25,6 +26,7 @@ class HomeFragment : Fragment() {
     private lateinit var adapter: sellerHomepageAdapter;
     private lateinit var cards:MutableList<sellerhomepageModel>
     private lateinit var firestore: FirebaseFirestore;
+    private val auth = FirebaseAuth.getInstance()
     private var _binding: FragmentHomeBinding? = null
 
     override fun onCreateView(
@@ -42,19 +44,22 @@ class HomeFragment : Fragment() {
         _binding!!.sellerRv.adapter = adapter;
         firestore.collection("Plots").get().addOnSuccessListener{
             it.documents.iterator().forEach { documentSnapshot ->
-                val title:String = documentSnapshot.get("title") as String;
-                val seller:String = documentSnapshot.get("sellerName") as String;
-                val plotnumber:Int = documentSnapshot.get("plotNo").toString().toInt();
-                val address:String = documentSnapshot.get("address") as String;
+                if(auth.currentUser?.uid.toString().equals(documentSnapshot.get("Uid")))
+                {
+                    val title:String = documentSnapshot.get("Area") as String;
+                    val seller:String = documentSnapshot.get("Owner Name") as String;
+                    val plotnumber:Int = documentSnapshot.get("Plot No").toString().toInt();
+                    val address:String = documentSnapshot.get("District") as String;
 //                val longitude:String = documentSnapshot.get("longitude") as String;
 //                val latitude:String = documentSnapshot.get("latitude") as String;
-                val plotImage:String = documentSnapshot.get("plotImage") as String;
+                    val plotImage:String = documentSnapshot.get("Taluka") as String;
 
-               val card:sellerhomepageModel =
-                   sellerhomepageModel(documentSnapshot.id.toString(), title, seller, address,
-                       plotImage, plotnumber, "", "");
+                    val card:sellerhomepageModel =
+                        sellerhomepageModel(documentSnapshot.id.toString(), title, seller, address,
+                            plotImage, plotnumber, "", "");
 
-                cards.add(card);
+                    cards.add(card);
+                }
             }
             _binding!!.sellerProgress.visibility = GONE
             if(cards.isEmpty())
@@ -65,6 +70,7 @@ class HomeFragment : Fragment() {
             {
                 _binding!!.sellerRv.visibility = VISIBLE
             }
+
             adapter.notifyDataSetChanged();
         }.addOnFailureListener {
             Log.d("Helo", "Empty")

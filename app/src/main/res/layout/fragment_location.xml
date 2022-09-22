@@ -88,13 +88,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="16dp"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Welcome ,"
+                    android:text="Welcome "
                     android:textColor="@color/black"
                     android:textSize="22dp" />
 

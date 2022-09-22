@@ -95,7 +95,7 @@ class Bidsfrag : Fragment() {
                     }
                 }
             }.addOnFailureListener {
-                Toast.makeText(requireContext(), "No Bid Found3", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "No Bid Found !", Toast.LENGTH_SHORT).show()
             }
         return root
     }
