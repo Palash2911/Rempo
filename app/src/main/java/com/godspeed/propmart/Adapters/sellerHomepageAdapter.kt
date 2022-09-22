@@ -25,10 +25,9 @@ class sellerHomepageAdapter(val context: Context, val cards:List<sellerhomepageM
     }
 
     override fun onBindViewHolder(holder: sellerHomepageAdapter.sellerCardViewHolder, position: Int) {
-
+        Log.d("CAAS", holder.toString())
         with(holder){
             with(cards[position]){
-
                 binding.title.text = this.title
                 binding.seller.text = this.seller
                 binding.plotCount.text = this.plotnumber.toString()

@@ -92,9 +92,6 @@ class Morefragment : Fragment() {
                 }
             }
             sellerAcc.setOnClickListener {
-                if(sellerAcc.isChecked){
-                    Toast.makeText(requireContext(), "Already on Seller Side !", Toast.LENGTH_SHORT).show()
-                }
                 db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
                     .update("Account", "Seller").addOnSuccessListener {
                         Toast.makeText(requireContext(), "Changed Account Type", Toast.LENGTH_SHORT).show()
