@@ -79,19 +79,42 @@ class Morefragment : Fragment() {
             val buyerAcc = view.findViewById<RadioButton>(R.id.buyerAcc)
             val sellerAcc = view.findViewById<RadioButton>(R.id.sellerAc)
 
+            db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
+                .get().addOnSuccessListener { snapshot->
+                if(snapshot["Account"].toString() == "Buyer")
+                {
+                    buyerAcc.isChecked = true
+                    sellerAcc.isChecked = false
+                }
+                else{
+                    buyerAcc.isChecked = false
+                    sellerAcc.isChecked = true
+                }
+            }
             sellerAcc.setOnClickListener {
+                if(sellerAcc.isChecked){
+                    Toast.makeText(requireContext(), "Already on Seller Side !", Toast.LENGTH_SHORT).show()
+                }
+                db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
+                    .update("Account", "Seller").addOnSuccessListener {
+                        Toast.makeText(requireContext(), "Changed Account Type", Toast.LENGTH_SHORT).show()
+                    }
                 val intent = Intent(activity, BottomnavSeller::class.java)
                 startActivity(intent)
                 activity?.finish()
                 bottomSheet.dismiss()
             }
             buyerAcc.setOnClickListener{
+                db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
+                    .update("Account", "Buyer").addOnSuccessListener {
+                        Toast.makeText(requireContext(), "Changed Account Type", Toast.LENGTH_SHORT).show()
+                    }
                 val intent = Intent(activity, Bottomtab::class.java)
                 startActivity(intent)
                 activity?.finish()
                 bottomSheet.dismiss()
             }
-            bottomSheet.setCancelable(false)
+            bottomSheet.setCancelable(true)
             bottomSheet.setContentView(view)
             bottomSheet.show()
         }

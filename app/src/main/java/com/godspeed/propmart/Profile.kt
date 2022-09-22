@@ -82,6 +82,7 @@ class Profile : AppCompatActivity() {    private lateinit var binding: ActivityP
         profile["dob"] = binding.dobbtn2.text.toString()
         profile["profilePicture"] = "downloadurl"
         profile["Uid"] = Firebase.auth.uid.toString()
+        profile["Account"] = "Buyer"
         profile["Verified"] = true
         var flag = true
         var uid = ""
