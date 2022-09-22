@@ -343,7 +343,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="453dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/layoutimg" />
+                    android:src="@drawable/plot" />
             </androidx.cardview.widget.CardView>
 
 
@@ -488,141 +488,141 @@ Mehkar, Buldhana, 411234"
                 android:textColor="#0A0A0A"
                 android:textSize="12dp" />
 
-<!--            <View-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="4dp"-->
-<!--                android:layout_marginTop="20dp"-->
-<!--                android:layout_marginBottom="20dp"-->
-<!--                android:background="#E5E5E5" />-->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="#E5E5E5" />
 
-<!--            <RelativeLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginRight="16dp">-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp">
 
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginLeft="16dp"-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
 
-<!--                    android:layout_marginRight="16dp"-->
-<!--                    android:gravity="center_vertical"-->
-<!--                    android:text="Plot Details"-->
-<!--                    android:textColor="@color/black"-->
-<!--                    android:textSize="20dp"-->
-<!--                    android:textStyle="bold" />-->
+                    android:layout_marginRight="16dp"
+                    android:gravity="center_vertical"
+                    android:text="Plot Details"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/edit_plot_details"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:layout_alignParentRight="true"-->
-<!--                    android:layout_centerVertical="true"-->
-<!--                    android:orientation="horizontal">-->
+                <LinearLayout
+                    android:id="@+id/edit_plot_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal">
 
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginRight="5dp"-->
-<!--                        android:fontFamily="@font/roboto"-->
-<!--                        android:text="Edit"-->
-<!--                        android:textColor="#3C91E6"-->
-<!--                        android:textSize="16dp" />-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="Edit"
+                        android:textColor="#3C91E6"
+                        android:textSize="16dp" />
 
-<!--                    <ImageView-->
-<!--                        android:layout_width="15dp"-->
-<!--                        android:layout_height="15dp"-->
-<!--                        android:layout_gravity="center_vertical"-->
-<!--                        android:src="@drawable/edit" />-->
-<!--                </LinearLayout>-->
-
-
-<!--            </RelativeLayout>-->
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/edit" />
+                </LinearLayout>
 
 
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="16dp"-->
-<!--                android:orientation="horizontal">-->
-
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginLeft="16dp"-->
-<!--                    android:text="Total Area:"-->
-<!--                    android:textColor="#000000" />-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/area"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginLeft="6dp"-->
-<!--                    android:text="125 sq.m"-->
-<!--                    android:textColor="#000000" />-->
-<!--            </LinearLayout>-->
+            </RelativeLayout>
 
 
-<!--            <TextView-->
-<!--                android:id="@+id/dimensions"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginLeft="16dp"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:text="9.65 sq.m X 13 Sq.m."-->
-<!--                android:textColor="#000000" />-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
 
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:orientation="horizontal">-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:text="Total Area:"
+                    android:textColor="#000000" />
 
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginLeft="16dp"-->
-<!--                    android:text="Deduction of Road Curve:"-->
-<!--                    android:textColor="#000000" />-->
+                <TextView
+                    android:id="@+id/area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:text="125 sq.m"
+                    android:textColor="#000000" />
+            </LinearLayout>
 
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginLeft="6dp"-->
-<!--                    android:text="NA"-->
-<!--                    android:textColor="#000000"-->
-<!--                    android:textStyle="bold" />-->
-<!--            </LinearLayout>-->
 
-<!--            <TextView-->
-<!--                android:id="@+id/description"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginLeft="16dp"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:text="Road touch from both sides"-->
-<!--                android:textColor="#000000" />-->
+            <TextView
+                android:id="@+id/dimensions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:text="9.65 sq.m X 13 Sq.m."
+                android:textColor="#000000" />
 
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:orientation="horizontal">-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
 
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginLeft="16dp"-->
-<!--                    android:textColor="#000000" />-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:text="Deduction of Road Curve:"
+                    android:textColor="#000000" />
 
-<!--                <TextView-->
-<!--                    android:id="@+id/rate"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="2000₹/sq.m"-->
-<!--                    android:textColor="#000000"-->
-<!--                    android:textStyle="bold" />-->
-<!--            </LinearLayout>-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:text="NA"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:text="Road touch from both sides"
+                android:textColor="#000000" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/rate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2000₹/sq.m"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
 
             <View
