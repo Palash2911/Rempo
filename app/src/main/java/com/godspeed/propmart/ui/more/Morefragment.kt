@@ -60,6 +60,14 @@ class Morefragment : Fragment() {
 //        }.addOnFailureListener {
 //            _binding!!.profileImg.setImageResource(R.drawable.ic_baseline_profile_img)
 //        }
+
+        db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
+            .get().addOnSuccessListener { snapshot ->
+                Glide.with(this)
+                .load(snapshot["profilePicture"])
+                .placeholder(R.drawable.ic_baseline_profile_img)
+                .into(_binding!!.profileImg)
+            }
         _binding!!.profileImg.setImageResource(R.drawable.ic_baseline_profile_img)
         _binding!!.profileImg.setOnClickListener {
             uploadImg()
@@ -123,9 +131,8 @@ class Morefragment : Fragment() {
             val storageref = FirebaseStorage.getInstance().getReference("Profile/" + auth.uid.toString())
             storageref.putFile(profileuri).addOnSuccessListener {
                 storageref.downloadUrl.addOnSuccessListener{ uri ->
-
                     val downloadUrl = uri.toString();
-
+                    Log.d("URIdown", downloadUrl)
                     db.collection("Users").document(auth.uid.toString())
                         .update("profilePicture",downloadUrl).addOnSuccessListener{
                             Toast.makeText(requireContext() , "Profile Pic Uploaded Successfully", Toast.LENGTH_SHORT).show()
