@@ -122,7 +122,17 @@ class Morefragment : Fragment() {
             binding.profileImg.setImageURI(profileuri)
             val storageref = FirebaseStorage.getInstance().getReference("Profile/" + auth.uid.toString())
             storageref.putFile(profileuri).addOnSuccessListener {
-                Toast.makeText(requireContext() , "Profile Pic Uploaded Successfully", Toast.LENGTH_SHORT).show()
+                storageref.downloadUrl.addOnSuccessListener{ uri ->
+
+                    val downloadUrl = uri.toString();
+
+                    db.collection("Users").document(auth.uid.toString())
+                        .update("profilePicture",downloadUrl).addOnSuccessListener{
+                            Toast.makeText(requireContext() , "Profile Pic Uploaded Successfully", Toast.LENGTH_SHORT).show()
+                        }
+                }
+
+
             }
         }
     }
