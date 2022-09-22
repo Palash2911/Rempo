@@ -3,6 +3,7 @@ package com.godspeed.propmart
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -17,8 +18,6 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
         auth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
-
-
         navigateUser();
     }
 
@@ -27,10 +26,20 @@ class SplashActivity : AppCompatActivity() {
             val userRef = firestore.collection("Users")
                 .document(auth.uid.toString());
             userRef.get().addOnSuccessListener {
-                if(it.getBoolean("verified")==true){
-                    val intent = Intent(this,Bottomtab::class.java);
-                    startActivity(intent);
-                    finish();
+                if(it.getBoolean("Verified")==true){
+                    Log.d("Testing", it.toString())
+                    if(it.get("Account") == "Buyer")
+                    {
+                        val intent = Intent(this,Bottomtab::class.java);
+                        startActivity(intent);
+                        finish();
+                    }
+                    else
+                    {
+                        val intent = Intent(this,BottomnavSeller::class.java);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
                 else{
                     val intent = Intent(this,Bottomtab::class.java);
@@ -46,7 +55,6 @@ class SplashActivity : AppCompatActivity() {
             val intent = Intent(this,MainActivity::class.java);
             startActivity(intent);
             finish();
-
         }
     }
 }
