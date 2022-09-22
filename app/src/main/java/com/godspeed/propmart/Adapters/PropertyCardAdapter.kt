@@ -22,7 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 class PropertyCardAdapter(val context:Context , val cards:List<PropertyCardModel>):
-    RecyclerView.Adapter<PropertyCardViewHolder>() {
+    RecyclerView.Adapter<PropertyCardAdapter.PropertyCardViewHolder>() {
 
       val firestore: FirebaseFirestore = FirebaseFirestore.getInstance();
       val auth: FirebaseAuth = FirebaseAuth.getInstance();
@@ -35,27 +35,13 @@ class PropertyCardAdapter(val context:Context , val cards:List<PropertyCardModel
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PropertyCardViewHolder {
 
         val binding = PropertyCardBinding.inflate(LayoutInflater.from(context),parent,false);
-        return PropertyCardViewHolder(binding);
+        return PropertyCardAdapter.PropertyCardViewHolder(binding);
     }
 
     override fun onBindViewHolder(holder: PropertyCardViewHolder, position: Int) {
-        val card:PropertyCardModel = cards.get(position);
-        Log.d("CAA", card.toString())
+        val card:PropertyCardModel = cards[position];
        with(holder){
            with(cards[position]){
-               val docRef = firestore
-                   .collection("Users/" + Firebase.auth.currentUser?.uid.toString() + "/saved")
-                   .get().addOnSuccessListener { snapshot->
-                       if(snapshot.isEmpty)
-                       {
-                           binding.save.visibility = View.VISIBLE;
-                           binding.saved.visibility = View.GONE;
-                       }
-                       else {
-                           binding.saved.visibility = View.VISIBLE;
-                           binding.save.visibility = View.GONE
-                       }
-               }
                binding.title.text = this.title
                binding.address.text = this.address;
                binding.plotCount.text = this.totalPlots.toString();
@@ -64,13 +50,12 @@ class PropertyCardAdapter(val context:Context , val cards:List<PropertyCardModel
                binding.save.setOnClickListener{
                    firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString()).collection("saved")
                        .document(this.layoutId.toString()).set(card).addOnSuccessListener {
-                           Log.d("Saving", "Daddy")
                            binding.save.visibility = View.GONE;
                            binding.saved.visibility = View.VISIBLE;
                            Snackbar.make(binding.root,"Added to Bookmarks",Snackbar.LENGTH_LONG).show();
                        }
                }
-
+               Log.d("CAAA2", holder.toString())
                binding.saved.setOnClickListener{
                    firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString()).collection("saved")
                        .document(this.layoutId.toString()).delete().addOnSuccessListener {
@@ -79,7 +64,7 @@ class PropertyCardAdapter(val context:Context , val cards:List<PropertyCardModel
                            Snackbar.make(binding.root,"Removed from Bookmarks, Visit Homepage to Update",Snackbar.LENGTH_LONG).show();
                        }
                }
-
+               Log.d("CAAA3", holder.toString())
                holder.itemView.setOnClickListener{
                     val intent:Intent = Intent(context,PropertyPageActivity::class.java);
                     intent.putExtra("layoutId",this.layoutId);
@@ -89,11 +74,11 @@ class PropertyCardAdapter(val context:Context , val cards:List<PropertyCardModel
 
                binding.map.setOnClickListener{
                    val intent:Intent = Intent(Intent.ACTION_VIEW);
-                   intent.setData(Uri.parse("geo:"+this.latitude+","+this.longitude));
+                   intent.data = Uri.parse("geo:"+this.latitude+","+this.longitude);
                    val chooser = Intent.createChooser(intent ,"Launch Map");
                    context.startActivity(chooser);
                }
-
+               Log.d("CAAA4", holder.toString())
                binding.share.setOnClickListener{
                    //Share Link Activity using Firebase Dynamic Links
                }

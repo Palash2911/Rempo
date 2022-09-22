@@ -61,8 +61,8 @@ class plotBuyer : Fragment() {
 //                val longitude:String = documentSnapshot.get("longitude") as String;
 //                val latitude:String = documentSnapshot.get("latitude") as String;
                     val plotImage:String = documentSnapshot.get("Taluka") as String;
-                    val card: PropertyCardModel =
-                        PropertyCardModel(documentSnapshot.id.toString(), title, seller, address,
+                    val card =
+                        PropertyCardModel(documentSnapshot.id, title, seller, address,
                             plotImage, plotnumber, "", "");
                     cards.add(card);
                     adapter.notifyDataSetChanged();
