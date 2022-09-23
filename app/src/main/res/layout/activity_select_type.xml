@@ -56,17 +56,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/buy_unselected"
-            android:button="null"
             android:layout_marginRight="12dp"
             />
+<!--            android:button="null"-->
         <RadioButton
             android:layout_width="wrap_content"
-
+            android:layout_marginLeft="12dp"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/sell_unselected"
-            android:button="null"
-            android:layout_marginLeft="12dp"
             />
+<!-- android:button="null" -->
     </RadioGroup>
 
     <Button
@@ -90,7 +89,5 @@
         android:layout_below="@id/proceed"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"/>
-
-
 
 </RelativeLayout>
