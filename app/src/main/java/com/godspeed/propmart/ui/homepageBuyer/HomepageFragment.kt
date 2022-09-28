@@ -10,7 +10,7 @@ import android.widget.RadioButton
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.godspeed.propmart.Adapters.PropertyCardAdapter
-import com.godspeed.propmart.Fragments.plotbuyer
+import com.godspeed.propmart.Fragments.plotBuyer
 import com.godspeed.propmart.Fragments.propertyBuyer
 import com.godspeed.propmart.Models.PropertyCardModel
 import com.godspeed.propmart.R
@@ -65,39 +65,8 @@ class HompageFragment : Fragment() {
             }
             bottomSheet.setCancelable(false)
             bottomSheet.setContentView(view)
-            // on below line we are calling
-            // a show method to display a dialog.
             bottomSheet.show()
         }
-
-//        cards = ArrayList<PropertyCardModel>();
-//        adapter = PropertyCardAdapter(requireActivity(),cards);
-//        firestore = FirebaseFirestore.getInstance();
-//        binding.layoutRecyclerView.layoutManager = LinearLayoutManager(requireContext(),
-//        RecyclerView.VERTICAL,false);
-//        binding.layoutRecyclerView.adapter = adapter;
-//
-//        firestore.collection("Layouts").get().addOnSuccessListener{
-//            it.documents.iterator().forEach { documentSnapshot ->
-//                val title:String = documentSnapshot.get("title") as String;
-//                val seller:String = documentSnapshot.get("sellerName") as String;
-//                val totalPlots:Long = documentSnapshot.get("totalPlots") as Long;
-//                val address:String = documentSnapshot.get("address") as String;
-//                val longitude:String = documentSnapshot.get("longitude") as String;
-//                val latitude:String = documentSnapshot.get("latitude") as String;
-//
-//               val card:PropertyCardModel =
-//                   PropertyCardModel(documentSnapshot.id.toString(),
-//                       title,seller,address,"",totalPlots,latitude,longitude);
-//
-//                cards.add(card);
-//            }
-//            adapter.notifyDataSetChanged();
-//        }
-//
-////        binding.imageButton.setOnClickListener{
-////            requireActivity().finish();
-////        }
 
         return root
     }
@@ -110,7 +79,7 @@ class HompageFragment : Fragment() {
             }
             2 -> {
                 _binding?.filterImg?.visibility = VISIBLE
-                addFragment(plotbuyer())
+                addFragment(plotBuyer())
             }
         }
     }

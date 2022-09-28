@@ -23,11 +23,11 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="102dp"
+                android:layout_height="105dp"
                 android:layout_marginLeft="17dp"
                 android:layout_marginTop="37dp"
                 android:layout_marginRight="17dp"
-                android:elevation="4dp"
+                android:elevation="6dp"
                 app:cardCornerRadius="10dp">
 
                 <LinearLayout
@@ -43,7 +43,7 @@
                         android:layout_marginBottom="10dp"
                         app:cardCornerRadius="100dp">
 
-                        <ImageView
+                        <de.hdodenhof.circleimageview.CircleImageView
                             android:id="@+id/profileImg"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

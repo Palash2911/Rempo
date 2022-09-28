@@ -1,60 +1,80 @@
 package com.godspeed.propmart.Fragments
 
+import android.opengl.Visibility
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.godspeed.propmart.Adapters.BidsAdapter
+import com.godspeed.propmart.Adapters.BookmarkViewPagerAdapter
+import com.godspeed.propmart.Adapters.PropertyCardAdapter
+import com.godspeed.propmart.Models.Bidscardmodel
+import com.godspeed.propmart.Models.PropertyCardModel
+import com.godspeed.propmart.Models.sellerhomepageModel
 import com.godspeed.propmart.R
+import com.godspeed.propmart.databinding.FragmentBidsfragBinding
+import com.godspeed.propmart.databinding.FragmentBookmarkBinding
+import com.godspeed.propmart.databinding.FragmentPlotbuyerBinding
+import com.godspeed.propmart.ui.Bookmarks.BookmarksViewModel
+import com.google.android.material.tabs.TabLayout
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [plotbuyer.newInstance] factory method to
- * create an instance of this fragment.
- */
-class plotbuyer : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+class plotBuyer : Fragment() {
+    private var _binding: FragmentPlotbuyerBinding? = null
+    private val db = Firebase.firestore
+    private val binding get() = _binding!!
+    private lateinit var adapter: PropertyCardAdapter;
+    private lateinit var cards:MutableList<PropertyCardModel>
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_plotbuyer, container, false)
+    ): View {
+
+        cards = ArrayList<PropertyCardModel>()
+        adapter = PropertyCardAdapter(requireActivity(), cards);
+        _binding = FragmentPlotbuyerBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+
+        binding.plotRv.layoutManager = LinearLayoutManager(requireContext(),
+            RecyclerView.VERTICAL,false);
+        binding.plotRv.adapter = adapter;
+
+        db.collection("Plots").get().addOnSuccessListener{
+            it.documents.iterator().forEach { documentSnapshot ->
+                    val title:String = documentSnapshot.get("Area") as String;
+                    val seller:String = documentSnapshot.get("Owner Name") as String;
+                    val plotnumber:Long = documentSnapshot.get("Plot No").toString().toLong();
+                    val address:String = documentSnapshot.get("District") as String;
+//                val longitude:String = documentSnapshot.get("longitude") as String;
+//                val latitude:String = documentSnapshot.get("latitude") as String;
+                    val plotImage:String = documentSnapshot.get("Taluka") as String;
+                    val card =
+                        PropertyCardModel(documentSnapshot.id, title, seller, address,
+                            plotImage, plotnumber, "", "");
+                    cards.add(card);
+                    adapter.notifyDataSetChanged();
+            }
+        }.addOnFailureListener {
+                Toast.makeText(requireContext(), "No Plots Found !", Toast.LENGTH_SHORT).show()
+            }
+        return root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment plotbuyer.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            plotbuyer().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

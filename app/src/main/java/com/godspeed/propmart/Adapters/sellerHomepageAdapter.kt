@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.godspeed.propmart.EditPlotActivity
 import com.godspeed.propmart.Models.sellerhomepageModel
 import com.godspeed.propmart.Plotpage
 import com.godspeed.propmart.PropertyPageActivity
@@ -24,23 +25,21 @@ class sellerHomepageAdapter(val context: Context, val cards:List<sellerhomepageM
     }
 
     override fun onBindViewHolder(holder: sellerHomepageAdapter.sellerCardViewHolder, position: Int) {
-
+        Log.d("CAAS", holder.toString())
         with(holder){
             with(cards[position]){
-
                 binding.title.text = this.title
                 binding.seller.text = this.seller
                 binding.plotCount.text = this.plotnumber.toString()
                 binding.sellerAddress.text = this.address
 //               Glide.with(context).load(this.layoutImage).into(binding.plotImage);
 
-
-//                holder.itemView.setOnClickListener{
-//                    val intent: Intent = Intent(context, PropertyPageActivity::class.java);
-//                    intent.putExtra("layoutId",this.layoutId);
-//                    intent.putExtra("title",this.title);
-//                    context.startActivity(intent);
-//                }
+                holder.itemView.setOnClickListener{
+                    val intent: Intent = Intent(context, EditPlotActivity::class.java);
+                    intent.putExtra("layoutId",this.layoutId);
+                    intent.putExtra("title",this.title);
+                    context.startActivity(intent);
+                }
             }
         }
     }

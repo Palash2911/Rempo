@@ -1,26 +1,20 @@
 package com.godspeed.propmart
 
-import `in`.aabhasjindal.otptextview.OtpTextView
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.godspeed.propmart.databinding.ActivityOtpactivityBinding
-import com.godspeed.propmart.databinding.ActivityProfileBinding
-import com.google.common.base.Verify.verify
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.messaging.FcmBroadcastProcessor.reset
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.messaging.ktx.messaging
-import org.w3c.dom.Text
 import java.util.concurrent.TimeUnit
 
 class Otpactivity : AppCompatActivity() {

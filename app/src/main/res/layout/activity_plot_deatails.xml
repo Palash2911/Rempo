@@ -78,22 +78,7 @@
                     android:textSize="20dp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/edit1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@id/detailPen"
-                    android:layout_marginTop="16dp"
-                    android:text="Edit"
-                    android:textColor="#3C91E6" />
 
-                <ImageView
-                    android:id="@+id/detailPen"
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="16dp"
-                    android:src="@drawable/edit" />
             </RelativeLayout>
 
 
