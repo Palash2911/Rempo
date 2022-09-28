@@ -213,7 +213,8 @@
                 android:layout_marginRight="16dp"
                 android:fontFamily="@font/roboto"
                 android:text="Rebid"
-                android:textAllCaps="false" />
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF" />
 
         </LinearLayout>
 

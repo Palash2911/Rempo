@@ -69,15 +69,16 @@
     </RadioGroup>
 
     <Button
+        android:id="@+id/proceed"
         android:layout_width="355dp"
         android:layout_height="50dp"
+        android:layout_below="@id/account_type"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/roboto"
         android:text="Select Account Type"
         android:textAllCaps="false"
-        android:fontFamily="@font/roboto"
-        android:layout_below="@id/account_type"
-        android:layout_marginTop="32dp"
-        android:id="@+id/proceed"/>
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:layout_width="wrap_content"

@@ -219,6 +219,7 @@
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:text="Create Profile"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
