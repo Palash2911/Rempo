@@ -26,6 +26,7 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private lateinit var storage: FirebaseStorage
     private val auth = FirebaseAuth.getInstance()
     val newPlot:HashMap<String, Any> = HashMap()
+    val documentPlot:HashMap<String, Any> = HashMap()
     var i=0
     var doc1 = 0
     var doc2 = 0
@@ -221,16 +222,12 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 newPlot["Uid"] = auth.currentUser?.uid.toString()
                 if((doc1==1 && doc2==1 && doc3==1) || doc4==1)
                 {
+                    // GET DOCUMENT ID HERE
                     db.collection("Plots").document()
-                        .set(newPlot).addOnCompleteListener{task->
-                            if (task.isSuccessful){
-                                binding.llSell.visibility = GONE
-                                binding.completeSell.visibility = VISIBLE
-                                Toast.makeText(this, "Plot Successfully Added !! ", Toast.LENGTH_SHORT).show()
-                            } else {
-                                Log.d(ContentValues.TAG, "Error saving Plot! ", task.exception)
-                                Toast.makeText(applicationContext, "Something went wrong!!", Toast.LENGTH_SHORT).show()
-                            }
+                        .set(newPlot).addOnSuccessListener{ it->
+                            binding.llSell.visibility = GONE
+                            binding.completeSell.visibility = VISIBLE
+                            Toast.makeText(this, "Plot Successfully Added !! ", Toast.LENGTH_SHORT).show()
                         }
                 }
             }
@@ -354,14 +351,10 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                     val downloadUrl = uri.toString();
                     val docs:HashMap<String, Any> = HashMap()
                     Log.d("Hleoo", downloadUrl)
-                    docs["7/12"] = downloadUrl
-                    db.collection("Users").document(auth.uid.toString())
-                        .collection("Documents").document("Document_1")
-                        .set(docs).addOnSuccessListener{
-                            Toast.makeText(this , "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
-                            binding.deletebtn1.visibility = VISIBLE
-                            binding.progressBar4.visibility = GONE
-                        }
+                    documentPlot["7/12"] = downloadUrl
+                    Toast.makeText(this , "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
+                    binding.deletebtn1.visibility = VISIBLE
+                    binding.progressBar4.visibility = GONE
                 }
             }
         }
@@ -374,14 +367,10 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 storageref.downloadUrl.addOnSuccessListener{ uri ->
                     val downloadUrl = uri.toString();
                     val docs:HashMap<String, Any> = HashMap()
-                    docs["Nakasha"] = downloadUrl
-                    db.collection("Users").document(auth.uid.toString())
-                        .collection("Documents").document("Document_2")
-                        .set(docs).addOnSuccessListener{
-                            Toast.makeText(this , "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
-                            binding.deletebtn2.visibility = VISIBLE
-                            binding.progressBar5.visibility = GONE
-                        }
+                    documentPlot["Nakasha"] = downloadUrl
+                    Toast.makeText(this , "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
+                    binding.deletebtn2.visibility = VISIBLE
+                    binding.progressBar5.visibility = GONE
                 }
             }
         }
@@ -394,14 +383,10 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 storageref.downloadUrl.addOnSuccessListener{ uri ->
                     val downloadUrl = uri.toString();
                     val docs:HashMap<String, Any> = HashMap()
-                    docs["NA Order"] = downloadUrl
-                    db.collection("Users").document(auth.uid.toString())
-                        .collection("Documents").document("Document_3")
-                        .set(docs).addOnSuccessListener{
-                            Toast.makeText(this , "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
-                            binding.deletebtn3.visibility = VISIBLE
-                            binding.progressBar6.visibility = GONE
-                        }
+                    documentPlot["NA Order"] = downloadUrl
+                    Toast.makeText(this , "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
+                    binding.deletebtn3.visibility = VISIBLE
+                    binding.progressBar6.visibility = GONE
                 }
             }
         }
@@ -414,14 +399,10 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 storageref.downloadUrl.addOnSuccessListener{ uri ->
                     val downloadUrl = uri.toString();
                     val docs:HashMap<String, Any> = HashMap()
-                    docs["Other"] = downloadUrl
-                    db.collection("Users").document(auth.uid.toString())
-                        .collection("Documents").document("Document_4")
-                        .set(docs).addOnSuccessListener{
-                            Toast.makeText(this , "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
-                            binding.deletebtn4.visibility = VISIBLE
-                            binding.progressBar7.visibility = GONE
-                        }
+                    documentPlot["Other"] = downloadUrl
+                    Toast.makeText(this , "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
+                    binding.deletebtn4.visibility = VISIBLE
+                    binding.progressBar7.visibility = GONE
                 }
             }
         }
