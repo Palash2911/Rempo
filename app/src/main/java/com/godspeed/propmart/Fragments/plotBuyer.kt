@@ -15,8 +15,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.godspeed.propmart.Adapters.BidsAdapter
 import com.godspeed.propmart.Adapters.BookmarkViewPagerAdapter
+import com.godspeed.propmart.Adapters.PlotCardAdapter
 import com.godspeed.propmart.Adapters.PropertyCardAdapter
 import com.godspeed.propmart.Models.Bidscardmodel
+import com.godspeed.propmart.Models.PlotCardModel
 import com.godspeed.propmart.Models.PropertyCardModel
 import com.godspeed.propmart.Models.sellerhomepageModel
 import com.godspeed.propmart.R
@@ -34,8 +36,8 @@ class plotBuyer : Fragment() {
     private var _binding: FragmentPlotbuyerBinding? = null
     private val db = Firebase.firestore
     private val binding get() = _binding!!
-    private lateinit var adapter: PropertyCardAdapter;
-    private lateinit var cards:MutableList<PropertyCardModel>
+    private lateinit var adapter: PlotCardAdapter;
+    private lateinit var cards:MutableList<PlotCardModel>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,8 +45,8 @@ class plotBuyer : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        cards = ArrayList<PropertyCardModel>()
-        adapter = PropertyCardAdapter(requireActivity(), cards);
+        cards = ArrayList<PlotCardModel>()
+        adapter = PlotCardAdapter(requireActivity(), cards);
         _binding = FragmentPlotbuyerBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -62,10 +64,20 @@ class plotBuyer : Fragment() {
 //                val latitude:String = documentSnapshot.get("latitude") as String;
                     val plotImage:String = documentSnapshot.get("Taluka") as String;
                     val card =
-                        PropertyCardModel(documentSnapshot.id, title, seller, address,
+                        PlotCardModel(documentSnapshot.id, title, seller, address,
                             plotImage, plotnumber, "", "");
                     cards.add(card);
                     adapter.notifyDataSetChanged();
+            }
+            if(cards.size==0)
+            {
+                binding.progressBar3.visibility = GONE
+                binding.plottv.text = "No Plots to Show"
+            }
+            else
+            {
+                binding.progressBar3.visibility = GONE
+                binding.plottv.visibility = VISIBLE
             }
         }.addOnFailureListener {
                 Toast.makeText(requireContext(), "No Plots Found !", Toast.LENGTH_SHORT).show()
