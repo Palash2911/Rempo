@@ -207,6 +207,17 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         }
 
         binding.Next3.setOnClickListener {
+
+            newPlot["Bid Price"] = binding.bidAmt.text.toString()
+//            db.collection("Plots/").add(newPlot).addOnSuccessListener{ docRef ->
+//                        val docId = docRef.id;
+//                        binding.llSell.visibility = GONE
+//                        binding.completeSell.visibility = VISIBLE
+//                        Toast.makeText(this, "Plot Successfully Added !! ", Toast.LENGTH_SHORT).show()
+//                        Log.d("TEAFSF", docId);
+//
+//                }
+
             var fl1=0
             if(binding.bidAmt.text.toString().isEmpty())
             {
@@ -309,6 +320,7 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             }.addOnFailureListener {
                 Toast.makeText(this,"Something Went Wrong", Toast.LENGTH_SHORT).show()
             }
+
         }
 
         binding.visithomeSeller.setOnClickListener {
