@@ -9,11 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.godspeed.propmart.Models.PlotCardModel
-import com.godspeed.propmart.Models.PropertyCardModel
 import com.godspeed.propmart.PropertyPageActivity
-import com.godspeed.propmart.databinding.FragmentHomepageBinding
 import com.godspeed.propmart.databinding.PropertyCardBinding
-import com.godspeed.propmart.databinding.SellerCardBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
