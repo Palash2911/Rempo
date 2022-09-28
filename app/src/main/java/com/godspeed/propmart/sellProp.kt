@@ -102,16 +102,13 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         binding.Next3.setOnClickListener {
             newPlot["Bid Price"] = binding.bidAmt.text.toString()
-            db.collection("Plots").document()
-                .set(newPlot).addOnCompleteListener{task->
-                    if (task.isSuccessful){
+            db.collection("Plots").add(newPlot).addOnSuccessListener { docRef ->
+                        val docId = docRef.id
                         binding.llSell.visibility = GONE
                         binding.completeSell.visibility = VISIBLE
                         Toast.makeText(this, "Plot Successfully Added !! ", Toast.LENGTH_SHORT).show()
-                    } else {
-                        Log.d(ContentValues.TAG, "Error saving Plot! ", task.exception)
-                        Toast.makeText(applicationContext, "Something went wrong!!", Toast.LENGTH_SHORT).show()
-                    }
+                        Log.d("TEAFSF", docId);
+
                 }
         }
 
