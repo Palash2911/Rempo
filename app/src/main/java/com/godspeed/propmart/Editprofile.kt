@@ -44,21 +44,29 @@ class Editprofile : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar2)
 
-        val dateSetListener =
-            DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-                cal.set(Calendar.YEAR, year)
-                cal.set(Calendar.MONTH, monthOfYear)
-                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-                val myFormat = "MM/dd/yyyy" // mention the format you need
-                val sdf = SimpleDateFormat(myFormat, Locale.US)
-                binding.dobbtn.text = SimpleDateFormat("MM/dd/yyyy", Locale.US).format(cal.time)
-            }
+        val mDialog = DatePickerDialog(this, { view, year, monthOfYear, dayOfMonth ->
+            cal.set(Calendar.YEAR, year)
+            cal.set(Calendar.MONTH, monthOfYear)
+            cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+            val myFormat = "MM/dd/yyyy" // mention the format you need
+            val sdf = SimpleDateFormat(myFormat, Locale.US)
+            binding.dobbtn.text = SimpleDateFormat("MM/dd/yyyy", Locale.US).format(cal.time)
+        }, cal[Calendar.YEAR], cal[Calendar.MONTH], cal[Calendar.DAY_OF_MONTH])
+
+        val minDay = 1
+        val minMonth = 1
+        val minYear = 1940
+        cal.set(minYear, minMonth-1, minDay)
+        mDialog.datePicker.minDate = cal.timeInMillis
+
+        val maxDay = 31
+        val maxMonth = 12
+        val maxYear = 2004
+        cal.set(maxYear, maxMonth-1, maxDay)
+        mDialog.datePicker.maxDate = cal.timeInMillis
         binding.dobbtn.setOnClickListener {
             Log.d("btn", SimpleDateFormat("MM/dd/yyyy", Locale.US).format(cal.time).toString())
-            DatePickerDialog(this, dateSetListener,
-                cal.get(Calendar.YEAR),
-                cal.get(Calendar.MONTH),
-                cal.get(Calendar.DAY_OF_MONTH)).show()
+            mDialog.show()
         }
 
         supportActionBar!!.title = "Edit Profile"

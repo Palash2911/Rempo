@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SelectTypeActivity">
+    tools:context=".SelectType">
 
     <TextView
         android:layout_width="wrap_content"
@@ -52,19 +52,20 @@
         android:layout_marginTop="85dp"
         android:orientation="horizontal"
         android:layout_centerHorizontal="true">
+
         <RadioButton
+            android:id="@+id/buyRadio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/buy_unselected"
             android:layout_marginRight="12dp"
-            />
+            android:drawableStart="@drawable/buy_unselected" />
 <!--            android:button="null"-->
         <RadioButton
+            android:id="@+id/sellRadio"
             android:layout_width="wrap_content"
-            android:layout_marginLeft="12dp"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/sell_unselected"
-            />
+            android:layout_marginLeft="12dp"
+            android:drawableStart="@drawable/sell_unselected" />
 <!-- android:button="null" -->
     </RadioGroup>
 

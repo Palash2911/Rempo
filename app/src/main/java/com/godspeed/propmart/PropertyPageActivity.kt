@@ -48,11 +48,12 @@ class PropertyPageActivity : AppCompatActivity() {
         adapter = DocumentAdapter(this,documentList);
         plotList = ArrayList<String>();
         idList = ArrayList<String>();
-        var map:HashMap<String,String>  = HashMap<String,String>();
+        val map:HashMap<String,String>  = HashMap<String,String>();
         firebase = FirebaseFirestore.getInstance();
-        binding.title.text = intent.getStringExtra("title");
-        binding.toolbarTitle.text = intent.getStringExtra("title");
-        val layoutId:String = intent.getStringExtra("layoutId").toString();
+        val bundle :Bundle ?=intent.extras
+        binding.title.text = bundle?.getString("title");
+        binding.toolbarTitle.text = bundle?.getString("title");
+        val layoutId:String = bundle?.getString("layoutId").toString();
 
         firebase.collection("Layouts").document(layoutId).get()
             .addOnSuccessListener { snapshot ->
@@ -63,22 +64,17 @@ class PropertyPageActivity : AppCompatActivity() {
                 binding.totalPlots.text = snapshot.get("totalPlots").toString();
         }
 
-        Log.d("plotList",Arrays.toString(plotList.toArray()));
-
-
+//        Log.d("plotList",Arrays.toString(plotList.toArray()));
 
         //Initializing Dropdown Select
         val plotRef:CollectionReference = firebase.collection("Layouts").document(layoutId).collection("plots");
         val q: Query = plotRef.orderBy("index");
         q.get().addOnSuccessListener {
-            var list:ArrayList<String> = ArrayList<String>()
+            val list:ArrayList<String> = ArrayList<String>()
 
             it.documents.iterator().forEach { document ->
-                Log.e("Inside Loop","");
-                Log.e("TITLE",document.getString("title").toString())
-                Log.e("ID",document.id)
-                list.add(document.getString("title").toString());
-                map.put(document.getString("title").toString(),document.id);
+                list.add(document.id);
+                map[document.id] = document.id;
 
             }
             val plotAdapter = ArrayAdapter(this,R.layout.plot_dropdown_item,list);
@@ -86,8 +82,6 @@ class PropertyPageActivity : AppCompatActivity() {
             binding.plotDropdown.addTextChangedListener {
 
                 selectedId =  map.get(binding.plotDropdown.text.toString()).toString();
-                Log.e("selectedId", selectedId);
-
             }
             plotAdapter.notifyDataSetChanged();
         }
@@ -103,12 +97,10 @@ class PropertyPageActivity : AppCompatActivity() {
             .document(layoutId).collection("documents");
         ref.get().addOnSuccessListener { it ->
             it.documents.iterator().forEach { document->
-                var documentModel: DocumentModel = DocumentModel(
+                val documentModel: DocumentModel = DocumentModel(
                     document.getString("title").toString(),
                     document.getString("downloadUrl").toString())
-                if (documentModel != null) {
-                    documentList.add(documentModel);
-                };
+                documentList.add(documentModel);
             }
             adapter.notifyDataSetChanged();
         }
@@ -125,7 +117,6 @@ class PropertyPageActivity : AppCompatActivity() {
                     binding.bookmarkpropertypage.visibility = GONE
                     binding.bookmarksaved.visibility = VISIBLE
                 }
-                Log.d("Layss",layoutId)
             }
 
 
@@ -137,12 +128,11 @@ class PropertyPageActivity : AppCompatActivity() {
                 var availability: String
                 db.collection("Layouts").document(layoutId)
                     .collection("plots")
-                    .document("plot" + binding.plotDropdown.text.toString().substring(5))
+                    .document("plot" + binding.plotDropdown.text.toString().substring(4))
                     .get().addOnSuccessListener { snapshot ->
                         availability = snapshot["available"].toString()
                         if (availability == "true") {
                             val intent = Intent(this, Plotpage::class.java);
-                            Log.d("drop", binding.plotDropdown.text.toString())
                             intent.putExtra("plotId", binding.plotDropdown.text.toString());
                             intent.putExtra("layoutId", layoutId);
                             startActivity(intent);

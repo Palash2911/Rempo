@@ -62,8 +62,6 @@ class Bidsfrag : Fragment() {
                 {
                     for(users in snapshot)
                     {
-
-                        Log.d("Layout", users["layoutId"].toString())
                         db.collection("Layouts")
                             .document(users["layoutId"] as String).get().addOnSuccessListener { snapshots ->
                                 val title = snapshots["title"].toString()

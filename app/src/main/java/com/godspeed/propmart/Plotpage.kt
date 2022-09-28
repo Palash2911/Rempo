@@ -34,7 +34,7 @@ class Plotpage : AppCompatActivity() {
         setContentView(binding.root)
 
         val layoutid = this.intent?.getStringExtra("layoutId")
-        val plotid = "plot"+this.intent?.getStringExtra("plotId")?.substring(5)
+        val plotid = "plot"+this.intent?.getStringExtra("plotId")?.substring(4)
         val totarea = findViewById<TextView>(R.id.area)
         val bidhead = findViewById<TextView>(R.id.plot_no)
         val rate = findViewById<TextView>(R.id.rate)
@@ -47,7 +47,7 @@ class Plotpage : AppCompatActivity() {
         Log.d("plotssss", this.intent?.getStringExtra("plotId").toString())
         db.collection("Layouts").document(layoutid.toString()).collection("plots")
             .document(plotid).get().addOnSuccessListener { snapshot ->
-            bidhead.text = "Bid on Plot " + snapshot["title"].toString().substring(5)
+            bidhead.text = "Bid on Plot " + snapshot["title"].toString().substring(4)
             totarea.text =  snapshot["totalArea"].toString() + "Sq.m"
             desc.text = snapshot["description"].toString()
             rate.text = "Rate : " + snapshot["rate"].toString() + " Rs./sq.m"

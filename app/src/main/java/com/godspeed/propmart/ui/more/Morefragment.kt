@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.Toast
@@ -138,7 +140,6 @@ class Morefragment : Fragment() {
         val intent = Intent()
         intent.type = "image/*"
         intent.action = Intent.ACTION_GET_CONTENT
-
         startActivityForResult(intent, 100)
     }
 
@@ -146,6 +147,8 @@ class Morefragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode==100 && resultCode == RESULT_OK)
         {
+            binding.progressBar9.visibility = VISIBLE
+            binding.Profilepicc.visibility = GONE
             profileuri = data?.data!!
             binding.profileImg.setImageURI(profileuri)
             val storageref = FirebaseStorage.getInstance().getReference("Profile/" + auth.uid.toString())
@@ -155,6 +158,8 @@ class Morefragment : Fragment() {
                     Log.d("URIdown", downloadUrl)
                     db.collection("Users").document(auth.uid.toString())
                         .update("profilePicture",downloadUrl).addOnSuccessListener{
+                            binding.progressBar9.visibility = GONE
+                            binding.Profilepicc.visibility = VISIBLE
                             Toast.makeText(requireContext() , "Profile Pic Uploaded Successfully", Toast.LENGTH_SHORT).show()
                         }
                 }

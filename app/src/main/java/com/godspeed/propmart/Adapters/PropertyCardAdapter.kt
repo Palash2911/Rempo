@@ -3,6 +3,7 @@ package com.godspeed.propmart.Adapters
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -47,39 +48,53 @@ class PropertyCardAdapter(val context:Context , val cards:List<PropertyCardModel
                binding.plotCount.text = this.totalPlots.toString();
                binding.plottextview?.text = "Total Plot: "
 //               Glide.with(context).load(this.layoutImage).into(binding.plotImage);
+               firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString()).collection("saved")
+                   .document(this.layoutId).get().addOnSuccessListener { task->
+                       if(task.exists())
+                       {
+                           binding.save.visibility = View.GONE;
+                           binding.saved.visibility = View.VISIBLE;
+                       }
+                       else
+                       {
+                           binding.save.visibility = View.VISIBLE;
+                           binding.saved.visibility = View.GONE;
+                       }
+                   }.addOnFailureListener {
+                       Snackbar.make(binding.root,"Something Went Wrong !",Snackbar.LENGTH_LONG).show();
+                   }
 
                binding.save.setOnClickListener{
                    firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString()).collection("saved")
-                       .document(this.layoutId.toString()).set(card).addOnSuccessListener {
+                       .document(this.layoutId).set(card).addOnSuccessListener {
                            binding.save.visibility = View.GONE;
                            binding.saved.visibility = View.VISIBLE;
                            Snackbar.make(binding.root,"Added to Bookmarks",Snackbar.LENGTH_LONG).show();
                        }
                }
-               Log.d("CAAA2", holder.toString())
                binding.saved.setOnClickListener{
                    firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString()).collection("saved")
-                       .document(this.layoutId.toString()).delete().addOnSuccessListener {
+                       .document(this.layoutId).delete().addOnSuccessListener {
                            binding.saved.visibility = View.GONE;
                            binding.save.visibility = View.VISIBLE;
                            Snackbar.make(binding.root,"Removed from Bookmarks, Visit Homepage to Update",Snackbar.LENGTH_LONG).show();
                        }
                }
-               Log.d("CAAA3", holder.toString())
                holder.itemView.setOnClickListener{
-                    val intent:Intent = Intent(context,PropertyPageActivity::class.java);
-                    intent.putExtra("layoutId",this.layoutId);
-                    intent.putExtra("title",this.title);
+                    val intent= Intent(context,PropertyPageActivity::class.java);
+                    val extras = Bundle()
+                    extras.putString("layoutId",this.layoutId);
+                    extras.putString("title",this.title);
+                   intent.putExtras(extras)
                     context.startActivity(intent);
                }
 
                binding.map.setOnClickListener{
-                   val intent:Intent = Intent(Intent.ACTION_VIEW);
+                   val intent = Intent(Intent.ACTION_VIEW);
                    intent.data = Uri.parse("geo:"+this.latitude+","+this.longitude);
                    val chooser = Intent.createChooser(intent ,"Launch Map");
                    context.startActivity(chooser);
                }
-               Log.d("CAAA4", holder.toString())
                binding.share.setOnClickListener{
                    //Share Link Activity using Firebase Dynamic Links
                }

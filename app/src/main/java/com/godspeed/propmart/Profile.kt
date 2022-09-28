@@ -29,7 +29,7 @@ class Profile : AppCompatActivity() {    private lateinit var binding: ActivityP
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_profile)
+//        setContentView(R.layout.activity_profile)
 
         binding = ActivityProfileBinding.inflate(layoutInflater)
         datepick = findViewById(R.id.dobbtn2)
@@ -38,21 +38,29 @@ class Profile : AppCompatActivity() {    private lateinit var binding: ActivityP
         num = intent.extras?.get("Number").toString()
         binding.phone.text = num
 
-        val dateSetListener =
-            DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-                cal.set(Calendar.YEAR, year)
-                cal.set(Calendar.MONTH, monthOfYear)
-                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-                val myFormat = "MM/dd/yyyy" // mention the format you need
-                val sdf = SimpleDateFormat(myFormat, Locale.US)
-                binding.dobbtn2.text = SimpleDateFormat("MM/dd/yyyy", Locale.US).format(cal.time)
-            }
+        val mDialog = DatePickerDialog(this, { view, year, monthOfYear, dayOfMonth ->
+            cal.set(Calendar.YEAR, year)
+            cal.set(Calendar.MONTH, monthOfYear)
+            cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+            val myFormat = "MM/dd/yyyy" // mention the format you need
+            val sdf = SimpleDateFormat(myFormat, Locale.US)
+            binding.dobbtn2.text = SimpleDateFormat("MM/dd/yyyy", Locale.US).format(cal.time)
+        }, cal[Calendar.YEAR], cal[Calendar.MONTH], cal[Calendar.DAY_OF_MONTH])
+
+        val minDay = 1
+        val minMonth = 1
+        val minYear = 1940
+        cal.set(minYear, minMonth-1, minDay)
+        mDialog.datePicker.minDate = cal.timeInMillis
+
+        val maxDay = 31
+        val maxMonth = 12
+        val maxYear = 2004
+        cal.set(maxYear, maxMonth-1, maxDay)
+        mDialog.datePicker.maxDate = cal.timeInMillis
 
         binding.dobbtn2.setOnClickListener {
-            DatePickerDialog(this, dateSetListener,
-                cal.get(Calendar.YEAR),
-                cal.get(Calendar.MONTH),
-                cal.get(Calendar.DAY_OF_MONTH)).show()
+            mDialog.show()
         }
 
         binding.saveprofile.setOnClickListener {
@@ -76,7 +84,6 @@ class Profile : AppCompatActivity() {    private lateinit var binding: ActivityP
         }
         profile["Name"] = binding.nameprofile.text.toString()
         profile["Phone"] = binding.phone.text.toString()
-        val num = profile["Number"]
         profile["Aadhar"] = binding.aadharfield.text.toString()
         profile["Email"] = binding.Email.text.toString()
         profile["dob"] = binding.dobbtn2.text.toString()
@@ -98,7 +105,7 @@ class Profile : AppCompatActivity() {    private lateinit var binding: ActivityP
                 }
             }
         }
-        if(flag==false)
+        if(!flag)
         {
             db.collection("Users").document(uid)
                 .set(profile).addOnCompleteListener{task->
@@ -121,7 +128,7 @@ class Profile : AppCompatActivity() {    private lateinit var binding: ActivityP
             db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
                 .set(profile).addOnCompleteListener{task->
                     if (task.isSuccessful){
-                        val intent = Intent(this, Profileverify::class.java)
+                        val intent = Intent(this, SelectType::class.java)
                         startActivity(intent)
                         finish()
                         Toast.makeText(this, "Welcome Champion !! ", Toast.LENGTH_SHORT).show()
@@ -134,11 +141,9 @@ class Profile : AppCompatActivity() {    private lateinit var binding: ActivityP
     }
 
     fun openDatepicker(view: View) {
-        val dateSetListener = object : DatePickerDialog.OnDateSetListener {
-            override fun onDateSet(view: DatePicker, year: Int, monthOfYear: Int,
-                                   dayOfMonth: Int) {
-                datepick.text = year.toString() + monthOfYear.toString() + dayOfMonth.toString()
-            }
-        }
+        val dateSetListener =
+            DatePickerDialog.OnDateSetListener {
+                    view, year, monthOfYear, dayOfMonth ->
+                datepick.text = year.toString() + monthOfYear.toString() + dayOfMonth.toString() }
     }
 }
