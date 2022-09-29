@@ -47,7 +47,7 @@ class BidsAdapter(val context: Context, val cards:List<Bidscardmodel>):
                     Log.d("Plotid", layoutId.toString() + " " + plotno.toString())
                     val intent = Intent(context, Plotpage::class.java)
                     intent.putExtra("layoutId",this.layoutId);
-                    intent.putExtra("plotId","Plot "+this.plotno);
+                    intent.putExtra("plotId","plot"+this.plotno);
                     context.startActivity(intent)
                 }
 
