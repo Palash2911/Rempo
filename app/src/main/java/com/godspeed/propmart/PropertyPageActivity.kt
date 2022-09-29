@@ -3,6 +3,7 @@ package com.godspeed.propmart
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.BoringLayout.make
 import android.util.Log
 import android.view.View
 import android.view.View.GONE
@@ -14,8 +15,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.godspeed.propmart.Adapters.DocumentAdapter
 import com.godspeed.propmart.Models.DocumentModel
+import com.godspeed.propmart.Models.PropertyCardModel
 import com.godspeed.propmart.databinding.ActivityPropertyPageBinding
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.snackbar.Snackbar.make
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
@@ -91,6 +94,36 @@ class PropertyPageActivity : AppCompatActivity() {
         ,RecyclerView.VERTICAL,false);
         binding.documentRv.adapter = adapter;
 
+        binding.bookmarkpropertypage.setOnClickListener {
+            db.collection("Layouts").document(layoutId).get().addOnSuccessListener{
+//                val title:String = documentSnapshot.get("Area") as String;
+                    val seller:String = it["sellerName"] as String;
+                    val plotnumber:Long = it["totalPlots"].toString().toLong();
+                    val address:String = it["address"] as String;
+//                val longitude:String = documentSnapshot.get("longitude") as String;
+//                val latitude:String = documentSnapshot.get("latitude") as String;
+                    val plotImage:String = it["soldPlots"].toString();
+                    val card =
+                        PropertyCardModel(layoutId, "title", seller, address,
+                            plotImage, plotnumber, "", "");
+                firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
+                    .collection("saved")
+                    .document(layoutId).set(card).addOnSuccessListener {
+                        binding.bookmarkpropertypage.visibility = View.GONE;
+                        binding.bookmarksaved.visibility = View.VISIBLE;
+//                       Toast.make(this,"Added to Bookmarks", Toast.LENGTH_SHORT).show();
+                    }
+                    adapter.notifyDataSetChanged();
+                }
+        }
+        binding.bookmarksaved.setOnClickListener {
+            firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString()).collection("saved")
+                .document(layoutId).delete().addOnSuccessListener {
+                    binding.bookmarksaved.visibility = View.GONE;
+                    binding.bookmarkpropertypage.visibility = View.VISIBLE;
+//                    Snackbar.make(binding.root,"Removed from Bookmarks, Visit Homepage to Update",Snackbar.LENGTH_LONG).show();
+                }
+        }
 
         //Getting List of Documents
         val ref:CollectionReference = firebase.collection("Layouts")

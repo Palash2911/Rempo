@@ -32,7 +32,7 @@ class Profile : AppCompatActivity() {    private lateinit var binding: ActivityP
 //        setContentView(R.layout.activity_profile)
 
         binding = ActivityProfileBinding.inflate(layoutInflater)
-        datepick = findViewById(R.id.dobbtn2)
+//        datepick = findViewById(R.id.dobbtn2)
         setContentView(binding.root)
 
         num = intent.extras?.get("Number").toString()

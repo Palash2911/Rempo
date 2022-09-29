@@ -32,6 +32,9 @@
             android:name=".sellProp"
             android:exported="false" />
         <activity
+            android:name=".SelectType"
+            android:exported="false" />
+        <activity
             android:name=".BottomnavSeller"
             android:exported="false"
             android:label="BottomnavSeller" />
