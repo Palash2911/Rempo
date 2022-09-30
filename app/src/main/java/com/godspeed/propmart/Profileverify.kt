@@ -5,12 +5,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import androidx.core.content.ContentProviderCompat.requireContext
+import com.airbnb.lottie.LottieAnimationView
 
 class Profileverify : AppCompatActivity() {
+    lateinit var lottie:LottieAnimationView;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profileverify)
 
+
+        lottie = findViewById(R.id.animation);
         val btn = findViewById<Button>(R.id.profilevisithome)
 
         btn.setOnClickListener {

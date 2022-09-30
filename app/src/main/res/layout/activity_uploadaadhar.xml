@@ -55,6 +55,8 @@
             android:layout_marginTop="10dp"
             android:hint="12 digit Aadhar Number"
             android:textSize="16dp"
+            android:paddingLeft="10dp"
+            android:background="@drawable/rectangle"
             android:id="@+id/aadhar_number"
             />
         <LinearLayout

@@ -44,52 +44,52 @@
         android:textColor="@color/black"
         android:fontFamily="@font/roboto"/>
 
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/name"
-        android:id="@+id/account_type"
-        android:layout_marginTop="85dp"
-        android:orientation="horizontal"
-        android:layout_centerHorizontal="true">
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/buy_unselected"
-            android:button="null"
-            android:layout_marginRight="12dp"
-            />
-        <RadioButton
-            android:layout_width="wrap_content"
+<!--    <RadioGroup-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/name"-->
+<!--        android:id="@+id/account_type"-->
+<!--        android:layout_marginTop="85dp"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_centerHorizontal="true">-->
+<!--        <RadioButton-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:drawableStart="@drawable/buy_unselected"-->
+<!--            android:button="null"-->
+<!--            android:layout_marginRight="12dp"-->
+<!--            />-->
+<!--        <RadioButton-->
+<!--            android:layout_width="wrap_content"-->
 
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/sell_unselected"
-            android:button="null"
-            android:layout_marginLeft="12dp"
-            />
-    </RadioGroup>
+<!--            android:layout_height="wrap_content"-->
+<!--            android:drawableStart="@drawable/sell_unselected"-->
+<!--            android:button="null"-->
+<!--            android:layout_marginLeft="12dp"-->
+<!--            />-->
+<!--    </RadioGroup>-->
 
-    <Button
-        android:layout_width="355dp"
-        android:layout_height="50dp"
-        android:layout_centerHorizontal="true"
-        android:text="Select Account Type"
-        android:textAllCaps="false"
-        android:fontFamily="@font/roboto"
-        android:layout_below="@id/account_type"
-        android:layout_marginTop="32dp"
-        android:id="@+id/proceed"/>
+<!--    <Button-->
+<!--        android:id="@+id/proceed"-->
+<!--        android:layout_width="355dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_below="@id/account_type"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="32dp"-->
+<!--        android:fontFamily="@font/roboto"-->
+<!--        android:text="Select Account Type"-->
+<!--        android:textAllCaps="false" />-->
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Skip>>"
-        android:textSize="18dp"
-        android:fontFamily="@font/roboto"
-        android:textColor="@color/purple_500"
-        android:layout_below="@id/proceed"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"/>
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Skip>>"-->
+<!--        android:textSize="18dp"-->
+<!--        android:fontFamily="@font/roboto"-->
+<!--        android:textColor="@color/purple_500"-->
+<!--        android:layout_below="@id/proceed"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="16dp"/>-->
 
 
 

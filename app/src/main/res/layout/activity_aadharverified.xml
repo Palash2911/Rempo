@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,7 +9,7 @@
 
 
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/imageView"
+        android:id="@+id/animation"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_marginBottom="52dp"
@@ -16,17 +17,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
+        app:lottie_autoPlay="true"
+        android:layout_alignBottom="@id/yohooo"
+        android:layout_centerHorizontal="true"
         app:lottie_fileName="verified.json"
         app:lottie_loop="true"/>
 
     <TextView
         android:id="@+id/yohooo"
+        android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
+
         android:fontFamily="@font/roboto"
         android:gravity="top"
         android:text="Yohooo !"
@@ -42,18 +44,16 @@
     <TextView
         android:id="@+id/your_adhaar"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/yohooo"
+        android:layout_centerHorizontal="true"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="10dp"
         android:fontFamily="@font/roboto"
         android:gravity="center"
-        android:text="Your profile has been created
-Successfully"
+        android:text="Your Aadhar has been
+successfully verified."
         android:textSize="18sp"
 
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,17 +65,13 @@ Successfully"
         android:id="@+id/visithome"
         android:layout_width="283dp"
         android:layout_height="50dp"
-        android:layout_marginTop="56dp"
+        android:layout_alignBottom="@id/your_adhaar"
+        android:layout_centerHorizontal="true"
         android:fontFamily="@font/roboto"
         android:text="Get Started"
+        android:layout_alignParentBottom="true"
         android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/your_adhaar"
-        app:layout_constraintVertical_bias="0.524" />
+         />
 
 
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
