@@ -11,15 +11,14 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/plottv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="No Plots to Show"
             android:textColor="#000000"
             android:textSize="24sp"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
         <ProgressBar
             android:id="@+id/progressBar3"
@@ -27,13 +26,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/plotRv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
             tools:listitem="@layout/property_card">
 
         </androidx.recyclerview.widget.RecyclerView>

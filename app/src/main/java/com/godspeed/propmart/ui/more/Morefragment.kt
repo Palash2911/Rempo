@@ -94,7 +94,7 @@ class Morefragment : Fragment() {
             sellerAcc.setOnClickListener {
                 db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
                     .update("Account", "Seller").addOnSuccessListener {
-                        Toast.makeText(requireContext(), "Changed Account Type", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(activity!!.baseContext, "Changed Account Type", Toast.LENGTH_SHORT).show()
                     }
                 val intent = Intent(activity, BottomnavSeller::class.java)
                 startActivity(intent)
@@ -104,7 +104,7 @@ class Morefragment : Fragment() {
             buyerAcc.setOnClickListener{
                 db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
                     .update("Account", "Buyer").addOnSuccessListener {
-                        Toast.makeText(requireContext(), "Changed Account Type", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(activity!!.baseContext, "Changed Account Type", Toast.LENGTH_SHORT).show()
                     }
                 val intent = Intent(activity, Bottomtab::class.java)
                 startActivity(intent)
@@ -158,8 +158,6 @@ class Morefragment : Fragment() {
                             Toast.makeText(requireContext() , "Profile Pic Uploaded Successfully", Toast.LENGTH_SHORT).show()
                         }
                 }
-
-
             }
         }
     }

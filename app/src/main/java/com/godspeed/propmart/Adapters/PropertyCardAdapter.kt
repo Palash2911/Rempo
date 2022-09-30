@@ -45,6 +45,7 @@ class PropertyCardAdapter(val context:Context , val cards:List<PropertyCardModel
                binding.title.text = this.title
                binding.address.text = this.address;
                binding.plotCount.text = this.totalPlots.toString();
+               binding.plottextview?.text = "Total Plot: "
 //               Glide.with(context).load(this.layoutImage).into(binding.plotImage);
 
                binding.save.setOnClickListener{

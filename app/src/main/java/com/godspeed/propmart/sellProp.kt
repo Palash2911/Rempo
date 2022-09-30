@@ -11,18 +11,27 @@ import android.view.View.VISIBLE
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import com.godspeed.propmart.databinding.ActivitySellPropBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 
 class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     lateinit var binding: ActivitySellPropBinding
     var naPlot = false
     private val db = Firebase.firestore
+    private lateinit var storage: FirebaseStorage
     private val auth = FirebaseAuth.getInstance()
     val newPlot:HashMap<String, Any> = HashMap()
+    val documentPlot:HashMap<String, Any> = HashMap()
     var i=0
+    var doc1 = 0
+    var doc2 = 0
+    var doc3 = 0
+    var doc4 = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySellPropBinding.inflate(layoutInflater)
@@ -222,17 +231,94 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             {
                 newPlot["Bid Price"] = binding.bidAmt.text.toString()
                 newPlot["Uid"] = auth.currentUser?.uid.toString()
-                db.collection("Plots").document()
-                    .set(newPlot).addOnCompleteListener{task->
-                        if (task.isSuccessful){
+                if((doc1==1 && doc2==1 && doc3==1) || doc4==1)
+                {
+                    // GET DOCUMENT ID HERE
+                    db.collection("Plots").document()
+                        .set(newPlot).addOnSuccessListener{ it->
                             binding.llSell.visibility = GONE
                             binding.completeSell.visibility = VISIBLE
                             Toast.makeText(this, "Plot Successfully Added !! ", Toast.LENGTH_SHORT).show()
-                        } else {
-                            Log.d(ContentValues.TAG, "Error saving Plot! ", task.exception)
-                            Toast.makeText(applicationContext, "Something went wrong!!", Toast.LENGTH_SHORT).show()
                         }
+                }
+            }
+        }
+
+        // UPLOADING DOCUMENTS
+        binding.uploadbtn1.setOnClickListener {
+            doc1=1
+            uploadFile("doc1")
+        }
+        binding.deletebtn1.setOnClickListener{
+            binding.deletebtn1.visibility = GONE
+            binding.progressBar4.visibility = VISIBLE
+            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc1")
+            storageref.delete().addOnSuccessListener {
+                db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
+                    .collection("Documents").document("Document_1").delete().addOnSuccessListener {
+                        Toast.makeText(this,"Deleted", Toast.LENGTH_SHORT).show()
+                        binding.progressBar4.visibility = GONE
+                        binding.uploadbtn1.visibility = VISIBLE
                     }
+            }.addOnFailureListener {
+                Toast.makeText(this,"Something Went Wrong", Toast.LENGTH_SHORT).show()
+            }
+        }
+        binding.uploadbtn2.setOnClickListener {
+            doc2=1
+            uploadFile("doc2")
+        }
+        binding.deletebtn2.setOnClickListener{
+            binding.deletebtn2.visibility = GONE
+            binding.progressBar5.visibility = VISIBLE
+            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc2")
+            storageref.delete().addOnSuccessListener {
+                db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
+                    .collection("Documents").document("Document_2").delete().addOnSuccessListener {
+                        Toast.makeText(this,"Deleted", Toast.LENGTH_SHORT).show()
+                        binding.progressBar5.visibility = GONE
+                        binding.uploadbtn2.visibility = VISIBLE
+                    }
+            }.addOnFailureListener {
+                Toast.makeText(this,"Something Went Wrong", Toast.LENGTH_SHORT).show()
+            }
+        }
+        binding.uploadbtn3.setOnClickListener {
+            doc3=1
+            uploadFile("doc3")
+        }
+        binding.deletebtn3.setOnClickListener{
+            binding.deletebtn3.visibility = GONE
+            binding.progressBar6.visibility = VISIBLE
+            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc3")
+            storageref.delete().addOnSuccessListener {
+                db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
+                    .collection("Documents").document("Document_3").delete().addOnSuccessListener {
+                        Toast.makeText(this,"Deleted", Toast.LENGTH_SHORT).show()
+                        binding.progressBar6.visibility = GONE
+                        binding.uploadbtn2.visibility = VISIBLE
+                    }
+            }.addOnFailureListener {
+                Toast.makeText(this,"Something Went Wrong", Toast.LENGTH_SHORT).show()
+            }
+        }
+        binding.uploadbtn4.setOnClickListener {
+            doc4=1
+            uploadFile("doc4")
+        }
+        binding.deletebtn4.setOnClickListener{
+            binding.deletebtn4.visibility = GONE
+            binding.progressBar7.visibility = VISIBLE
+            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc4")
+            storageref.delete().addOnSuccessListener {
+                db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
+                    .collection("Documents").document("Document_4").delete().addOnSuccessListener {
+                        Toast.makeText(this,"Deleted", Toast.LENGTH_SHORT).show()
+                        binding.progressBar7.visibility = GONE
+                        binding.uploadbtn4.visibility = VISIBLE
+                    }
+            }.addOnFailureListener {
+                Toast.makeText(this,"Something Went Wrong", Toast.LENGTH_SHORT).show()
             }
 
         }
@@ -244,6 +330,95 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         }
     }
 
+    private fun uploadFile(docu: String)
+    {
+        var intent = Intent()
+        intent.type = "application/pdf"
+        intent.action = Intent.ACTION_GET_CONTENT
+        when (docu) {
+            "doc1" -> {
+                startActivityForResult(intent, 1);
+            }
+            "doc2" -> {
+                startActivityForResult(intent, 2);
+            }
+            "doc3" -> {
+                startActivityForResult(intent, 3);
+            }
+            "doc4" -> {
+                startActivityForResult(intent, 4);
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode==1 && resultCode == RESULT_OK)
+        {
+            binding.uploadbtn1.visibility = GONE
+            binding.progressBar4.visibility = VISIBLE
+            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_" + "doc1")
+            storageref.putFile(data?.data!!).addOnSuccessListener {
+                storageref.downloadUrl.addOnSuccessListener{ uri ->
+                    val downloadUrl = uri.toString();
+                    val docs:HashMap<String, Any> = HashMap()
+                    Log.d("Hleoo", downloadUrl)
+                    documentPlot["7/12"] = downloadUrl
+                    Toast.makeText(this , "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
+                    binding.deletebtn1.visibility = VISIBLE
+                    binding.progressBar4.visibility = GONE
+                }
+            }
+        }
+        else if(requestCode==2 && resultCode == RESULT_OK)
+        {
+            binding.uploadbtn2.visibility = GONE
+            binding.progressBar5.visibility = VISIBLE
+            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_" + "doc2")
+            storageref.putFile(data?.data!!).addOnSuccessListener {
+                storageref.downloadUrl.addOnSuccessListener{ uri ->
+                    val downloadUrl = uri.toString();
+                    val docs:HashMap<String, Any> = HashMap()
+                    documentPlot["Nakasha"] = downloadUrl
+                    Toast.makeText(this , "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
+                    binding.deletebtn2.visibility = VISIBLE
+                    binding.progressBar5.visibility = GONE
+                }
+            }
+        }
+        else if(requestCode==3 && resultCode == RESULT_OK)
+        {
+            binding.uploadbtn3.visibility = GONE
+            binding.progressBar6.visibility = VISIBLE
+            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_" + "doc3")
+            storageref.putFile(data?.data!!).addOnSuccessListener {
+                storageref.downloadUrl.addOnSuccessListener{ uri ->
+                    val downloadUrl = uri.toString();
+                    val docs:HashMap<String, Any> = HashMap()
+                    documentPlot["NA Order"] = downloadUrl
+                    Toast.makeText(this , "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
+                    binding.deletebtn3.visibility = VISIBLE
+                    binding.progressBar6.visibility = GONE
+                }
+            }
+        }
+        else if(requestCode==4 && resultCode == RESULT_OK)
+        {
+            binding.uploadbtn4.visibility = GONE
+            binding.progressBar7.visibility = VISIBLE
+            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_" + "doc4")
+            storageref.putFile(data?.data!!).addOnSuccessListener {
+                storageref.downloadUrl.addOnSuccessListener{ uri ->
+                    val downloadUrl = uri.toString();
+                    val docs:HashMap<String, Any> = HashMap()
+                    documentPlot["Other"] = downloadUrl
+                    Toast.makeText(this , "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
+                    binding.deletebtn4.visibility = VISIBLE
+                    binding.progressBar7.visibility = GONE
+                }
+            }
+        }
+    }
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
         val item = p0!!.selectedItem.toString()
 //        Toast.makeText(this, "Item Selected $item", Toast.LENGTH_SHORT).show()

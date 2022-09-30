@@ -60,6 +60,7 @@
         android:layout_marginTop="118dp"
         android:layout_marginEnd="20dp"
         android:text="Verify OTP"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"

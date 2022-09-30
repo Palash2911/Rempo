@@ -186,7 +186,8 @@
                 android:layout_marginRight="16dp"
                 android:fontFamily="@font/roboto"
                 android:text="Place Bid"
-                android:textAllCaps="false" />
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF" />
 
         </LinearLayout>
 

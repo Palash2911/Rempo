@@ -195,6 +195,7 @@
         android:fontFamily="@font/roboto"
         android:text="Explore"
         android:textAllCaps="false"
+        android:textColor="#FFFFFF"
         android:textSize="16dp" />
 
 </RelativeLayout>
