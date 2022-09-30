@@ -21,6 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:padding="10dp"
+        android:buttonTint="@color/purple_500"
         android:text="Buyer" />
 
 
@@ -29,6 +30,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:buttonTint="@color/purple_500"
         android:padding="10dp"
         android:text="Seller" />
 

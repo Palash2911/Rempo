@@ -83,7 +83,7 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="30dp"
-                android:layout_marginBottom="100dp"
+                android:layout_marginBottom="57dp"
                 android:clickable="true"
                 android:src="@drawable/ic_baseline_add_24"
                 tools:ignore="SpeakableTextPresentCheck" />
