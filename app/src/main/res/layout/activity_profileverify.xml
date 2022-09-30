@@ -79,14 +79,6 @@ successfully ."
         android:id="@+id/profilevisithome"
         android:layout_width="283dp"
         android:layout_height="50dp"
-<<<<<<< HEAD
-        android:layout_marginTop="56dp"
-        android:text="Visit Home Page"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/your_adhaar" />
-=======
         android:layout_alignBottom="@id/your_adhaar"
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/roboto"
@@ -94,6 +86,5 @@ successfully ."
         android:layout_alignParentBottom="true"
         android:textAllCaps="false"
         />
->>>>>>> Aditya_dev2
 
 </RelativeLayout>

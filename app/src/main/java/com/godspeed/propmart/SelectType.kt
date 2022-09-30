@@ -17,15 +17,15 @@ class SelectType: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_type)
-        val radioGroup = findViewById<RadioGroup>(R.id.account_type)
-
-        val selectbtn = findViewById<Button>(R.id.proceed)
-        selectbtn.setOnClickListener {
-            var id = radioGroup.checkedRadioButtonId
-            Log.d("IDSS", id.toString())
-            val intent = Intent(this, Profileverify::class.java)
-            startActivity(intent)
-            finish()
-        }
+//        val radioGroup = findViewById<RadioGroup>(R.id.account_type)
+//
+//        val selectbtn = findViewById<Button>(R.id.proceed)
+//        selectbtn.setOnClickListener {
+//            var id = radioGroup.checkedRadioButtonId
+//            Log.d("IDSS", id.toString())
+//            val intent = Intent(this, Profileverify::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
     }
 }
