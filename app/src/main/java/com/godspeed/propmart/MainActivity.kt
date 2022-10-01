@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
         } else {
-            Toast.makeText(this,"Welcome User !", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this,"Welcome User !", Toast.LENGTH_SHORT).show()
         }
     }
 

@@ -113,7 +113,7 @@ class Profile : AppCompatActivity() {    private lateinit var binding: ActivityP
                         val intent = Intent(this, Profileverify::class.java)
                         startActivity(intent)
                         finish()
-                        Toast.makeText(this, "Welcome Champion !! ", Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(this, "Welcome Champion !! ", Toast.LENGTH_SHORT).show()
                     } else {
                         Log.d(TAG, "Error saving profile! ", task.exception)
                         Toast.makeText(applicationContext, "Something went wrong!!", Toast.LENGTH_SHORT).show()
@@ -131,7 +131,7 @@ class Profile : AppCompatActivity() {    private lateinit var binding: ActivityP
                         val intent = Intent(this, SelectType::class.java)
                         startActivity(intent)
                         finish()
-                        Toast.makeText(this, "Welcome Champion !! ", Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(this, "Welcome Champion !! ", Toast.LENGTH_SHORT).show()
                     } else {
                         Log.d(TAG, "Error saving profile! ", task.exception)
                         Toast.makeText(applicationContext, "Something went wrong!!", Toast.LENGTH_SHORT).show()
