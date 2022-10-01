@@ -21,7 +21,7 @@
             android:name=".EditPlotActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".Profileverify"
             android:exported="false">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
@@ -57,7 +57,7 @@
             android:name=".Plotpage"
             android:exported="false" />
         <activity
-            android:name=".Profileverify"
+            android:name=".SplashActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
