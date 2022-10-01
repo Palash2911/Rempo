@@ -44,10 +44,6 @@
         android:textColor="@color/black"
         android:fontFamily="@font/roboto"/>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> Aditya_dev2
 <!--    <RadioGroup-->
 <!--        android:layout_width="wrap_content"-->
 <!--        android:layout_height="wrap_content"-->
@@ -83,10 +79,6 @@
 <!--        android:fontFamily="@font/roboto"-->
 <!--        android:text="Select Account Type"-->
 <!--        android:textAllCaps="false" />-->
-<<<<<<< HEAD
-=======
-
->>>>>>> Aditya_dev2
 
 <!--    <TextView-->
 <!--        android:layout_width="wrap_content"-->
