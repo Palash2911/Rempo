@@ -55,6 +55,8 @@ class SelectType: AppCompatActivity() {
                     finish()
                 }
                 else -> {
+                    pb.visibility = GONE
+                    ll.visibility = VISIBLE
                     Toast.makeText(this, "Please Make a Choice !", Toast.LENGTH_SHORT).show()
                 }
             }

@@ -24,6 +24,7 @@ import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.getField
 import com.google.firebase.ktx.Firebase
 import java.util.*
 import kotlin.collections.ArrayList
@@ -93,6 +94,15 @@ class PropertyPageActivity : AppCompatActivity() {
         binding.documentRv.layoutManager = LinearLayoutManager(this
         ,RecyclerView.VERTICAL,false);
         binding.documentRv.adapter = adapter;
+
+        db.collection("Plots").document(layoutId).collection("Document")
+            .document("chJGFkiJdlXFb9zJkXut").get().addOnSuccessListener {
+                val docname = "Nakasha"
+                val docurl = it["Nakasha"].toString()
+                val docCard = DocumentModel(docname, docurl)
+                documentList.add(docCard)
+                adapter.notifyDataSetChanged()
+            }
 
         binding.bookmarkpropertypage.setOnClickListener {
             db.collection("Layouts").document(layoutId).get().addOnSuccessListener{
