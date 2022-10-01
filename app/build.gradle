@@ -109,4 +109,6 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
     // OTP VIEW
     implementation 'com.github.aabhasr1:OtpView:v1.1.2-ktx'
+
+    implementation 'com.github.afreakyelf:Pdf-Viewer:v1.0.7'
 }

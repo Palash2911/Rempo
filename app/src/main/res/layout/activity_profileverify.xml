@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Profileverify">
 
-
-
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/imageView"
         android:layout_width="250dp"
