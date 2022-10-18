@@ -8,9 +8,11 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.load.engine.executor.GlideExecutor.UncaughtThrowableStrategy.LOG
 import com.godspeed.propmart.Adapters.PropertyCardAdapter
 import com.godspeed.propmart.Adapters.sellerHomepageAdapter
 import com.godspeed.propmart.ChooseActivity
@@ -48,7 +50,7 @@ class HomeFragment : Fragment() {
                 {
                     val title:String = documentSnapshot.get("Area") as String;
                     val seller:String = documentSnapshot.get("Owner Name") as String;
-                    val plotnumber:Int = documentSnapshot.get("Plot No").toString().toInt();
+                    val plotnumber:String = documentSnapshot.get("Plot No").toString();
                     val address:String = documentSnapshot.get("District") as String;
 //                val longitude:String = documentSnapshot.get("longitude") as String;
 //                val latitude:String = documentSnapshot.get("latitude") as String;
@@ -65,18 +67,25 @@ class HomeFragment : Fragment() {
             if(cards.isEmpty())
             {
                 _binding!!.sellerLl.visibility = VISIBLE
+                _binding!!.sellerRL.visibility = GONE
             }
             else
             {
-                _binding!!.sellerRv.visibility = VISIBLE
+                _binding!!.sellerLl.visibility = GONE
+                _binding!!.sellerRL.visibility = VISIBLE
             }
 
             adapter.notifyDataSetChanged();
         }.addOnFailureListener {
-            Log.d("Helo", "Empty")
+            Toast.makeText(requireContext(), "ERROR OCCURRED !", Toast.LENGTH_SHORT).show()
         }
 
         _binding!!.addPropertyBtn.setOnClickListener{
+            val intent = Intent(requireContext(), ChooseActivity::class.java)
+            startActivity(intent)
+        }
+
+        _binding!!.listPlotbtn.setOnClickListener{
             val intent = Intent(requireContext(), ChooseActivity::class.java)
             startActivity(intent)
         }

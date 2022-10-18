@@ -52,15 +52,20 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         val selectsubplotCat: ArrayList<String> = ArrayList()
 //        selectsubplotCat.add("Select Sub-Property Category")
-        selectsubplotCat.add("Residential Land")
-        selectsubplotCat.add("Commercial Land")
-        selectsubplotCat.add("Residential cum Commercial Land")
+        selectsubplotCat.add("Residential Plot")
+        selectsubplotCat.add("Commercial Plot")
+        selectsubplotCat.add("Residential cum Commercial Plot")
 
         var area: ArrayList<String> = ArrayList()
         area.add("Sq Ft")
         area.add("H.R ")
         area.add("Sq Mt")
         area.add("Acres")
+
+        var bid: ArrayList<String> = ArrayList()
+        bid.add("Sq Ft")
+        bid.add("Sq Mt")
+        bid.add("Acres")
 
         var fr: ArrayList<String> = ArrayList()
         fr.add("Ft")
@@ -85,6 +90,11 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         var adap3 = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, selectsubplotCat)
         adap3.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
         binding.subProprSpinner.adapter = adap3
+
+        binding.bidSpinner.onItemSelectedListener = this
+        var adap4 = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, bid)
+        adap4.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
+        binding.bidSpinner.adapter = adap4
 
         binding.back1.setOnClickListener {
             binding.CardView2.visibility = GONE
@@ -215,11 +225,11 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         binding.Next3.setOnClickListener {
 
-            newPlot["Bid Price"] = binding.bidAmt.text.toString()
+            newPlot["Bid Price"] = binding.bidamt.text.toString()
             var fl1=0
-            if(binding.bidAmt.text.toString().isEmpty())
+            if(binding.bidamt.text.toString().isEmpty())
             {
-                binding.bidAmt.error = "Required"
+                binding.bidamt.error = "Required"
             }
             else
             {
@@ -227,9 +237,9 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             }
             if(fl1==1)
             {
-                newPlot["Bid Price"] = binding.bidAmt.text.toString()
+                newPlot["Bid Price"] = binding.bidamt.text.toString()
                 newPlot["Uid"] = auth.currentUser?.uid.toString()
-                if((doc1==1 && doc2==1 && doc3==1) || doc4==1)
+                if(doc1==1 || doc2==1 || doc3==1 || doc4==1)
                 {
                     // GET DOCUMENT ID HERE
                     val ref: DocumentReference = db.collection("Plots").document()

@@ -43,7 +43,6 @@ class Morefragment : Fragment() {
 
         _binding = FragmentMorefragmentBinding.inflate(inflater, container, false)
 
-
         val root: View = binding.root
         db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
             .get().addOnSuccessListener { snapshot ->
@@ -103,10 +102,13 @@ class Morefragment : Fragment() {
                     }.addOnFailureListener {
                         Toast.makeText(requireContext(), "Some Internal Error Occured !", Toast.LENGTH_SHORT).show()
                     }
-                val intent = Intent(activity, BottomnavSeller::class.java)
-                startActivity(intent)
-                activity?.finish()
-                bottomSheet.dismiss()
+                if(activity!=null)
+                {
+                    val intent = Intent(activity, BottomnavSeller::class.java)
+                    startActivity(intent)
+                    activity?.finish()
+                    bottomSheet.dismiss()
+                }
             }
             buyerAcc.setOnClickListener{
                 binding.MoreLll.visibility = GONE
@@ -120,10 +122,13 @@ class Morefragment : Fragment() {
                     .addOnFailureListener {
                         Toast.makeText(requireContext(), "Some Internal Error Occurred !", Toast.LENGTH_SHORT).show()
                     }
-                val intent = Intent(activity, Bottomtab::class.java)
-                startActivity(intent)
-                activity?.finish()
-                bottomSheet.dismiss()
+                if(activity!=null)
+                {
+                    val intent = Intent(activity, Bottomtab::class.java)
+                    startActivity(intent)
+                    activity?.finish()
+                    bottomSheet.dismiss()
+                }
             }
             bottomSheet.setCancelable(true)
             bottomSheet.setContentView(view)
@@ -167,7 +172,6 @@ class Morefragment : Fragment() {
             storageref.putFile(profileuri).addOnSuccessListener {
                 storageref.downloadUrl.addOnSuccessListener{ uri ->
                     val downloadUrl = uri.toString();
-                    Log.d("URIdown", downloadUrl)
                     db.collection("Users").document(auth.uid.toString())
                         .update("profilePicture",downloadUrl).addOnSuccessListener{
                             binding.progressBar9.visibility = GONE

@@ -3,11 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-<<<<<<< Updated upstream
         <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/No-Broker-Clone/app/src/main/res/layout/activity_bottomtablayout.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/No-Broker-Clone/app/src/main/res/layout/activity_main.xml" value="0.1578125" />
         <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/No-Broker-Clone/app/src/main/res/layout/property_card.xml" value="0.117578125" />
-=======
         <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/drawable-v24/ic_baseline_arrow_forward_ios_24.xml" value="0.1" />
         <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/drawable-v24/ic_baseline_bookmark_24.xml" value="0.1" />
         <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/drawable-v24/ic_baseline_call_24.xml" value="0.1" />
@@ -40,7 +38,6 @@
         <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/layout/fragment_propertypage.xml" value="0.1" />
         <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/layout/property_card.xml" value="0.1" />
         <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/Propmart/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
->>>>>>> Stashed changes
       </map>
     </option>
   </component>

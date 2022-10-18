@@ -91,14 +91,6 @@ class EditPlotActivity : AppCompatActivity() {
                 }
 
         }
-
-
-
-
-
-
-
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -115,9 +107,6 @@ class EditPlotActivity : AppCompatActivity() {
                 if(task.isSuccessful){
                     ref.downloadUrl.addOnSuccessListener(OnSuccessListener { uri ->
                          val downloadUrl:String = uri.toString();
-
-
-
                     })
                 }
             })
