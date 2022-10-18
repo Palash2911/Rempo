@@ -27,7 +27,6 @@ import com.google.firebase.storage.FirebaseStorage
 
 class Morefragment : Fragment() {
     private var _binding: FragmentMorefragmentBinding? = null
-
     private val auth = FirebaseAuth.getInstance()
     private val binding get() = _binding!!
     private val db = Firebase.firestore
@@ -75,7 +74,6 @@ class Morefragment : Fragment() {
         _binding!!.profileImg.setOnClickListener {
             uploadImg()
         }
-
         _binding!!.accType.setOnClickListener{
             val bottomSheet = BottomSheetDialog(activity!!)
             val view = layoutInflater.inflate(R.layout.bottomacctype, null)
@@ -95,9 +93,15 @@ class Morefragment : Fragment() {
                 }
             }
             sellerAcc.setOnClickListener {
+                binding.MoreLll.visibility = GONE
+                binding.moreporgress.visibility = VISIBLE
                 db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
                     .update("Account", "Seller").addOnSuccessListener {
-                        Toast.makeText(activity!!.baseContext, "Changed Account Type", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), "Changed Account Type", Toast.LENGTH_SHORT).show()
+                        binding.moreporgress.visibility = GONE
+                        binding.MoreLll.visibility = VISIBLE
+                    }.addOnFailureListener {
+                        Toast.makeText(requireContext(), "Some Internal Error Occured !", Toast.LENGTH_SHORT).show()
                     }
                 val intent = Intent(activity, BottomnavSeller::class.java)
                 startActivity(intent)
@@ -105,9 +109,16 @@ class Morefragment : Fragment() {
                 bottomSheet.dismiss()
             }
             buyerAcc.setOnClickListener{
+                binding.MoreLll.visibility = GONE
+                binding.moreporgress.visibility = VISIBLE
                 db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
                     .update("Account", "Buyer").addOnSuccessListener {
-                        Toast.makeText(activity!!.baseContext, "Changed Account Type", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), "Changed Account Type", Toast.LENGTH_SHORT).show()
+                        binding.moreporgress.visibility = GONE
+                        binding.MoreLll.visibility = VISIBLE
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(requireContext(), "Some Internal Error Occurred !", Toast.LENGTH_SHORT).show()
                     }
                 val intent = Intent(activity, Bottomtab::class.java)
                 startActivity(intent)
