@@ -27,6 +27,7 @@ import com.google.firebase.storage.FirebaseStorage
 
 class Morefragment : Fragment() {
     private var _binding: FragmentMorefragmentBinding? = null
+
     private val auth = FirebaseAuth.getInstance()
     private val binding get() = _binding!!
     private val db = Firebase.firestore
