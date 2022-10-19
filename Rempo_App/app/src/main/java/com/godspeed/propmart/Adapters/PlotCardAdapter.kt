@@ -41,7 +41,7 @@ class PlotCardAdapter(val context:Context , val cards:List<PlotCardModel>):
                 binding.title.text = this.title
                 binding.address.text = this.address;
                 binding.plotCount.text = this.plotNo.toString();
-                binding.plottextview?.text  = "Plot No: "
+                binding.plottextview.text  = "Plot No: "
 //               Glide.with(context).load(this.layoutImage).into(binding.plotImage);
 
                 binding.save.setOnClickListener{
@@ -52,7 +52,6 @@ class PlotCardAdapter(val context:Context , val cards:List<PlotCardModel>):
                             Snackbar.make(binding.root,"Added to Bookmarks",Snackbar.LENGTH_LONG).show();
                         }
                 }
-                Log.d("CAAA2", holder.toString())
                 binding.saved.setOnClickListener{
                     firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString()).collection("saved")
                         .document(this.plotId.toString()).delete().addOnSuccessListener {
@@ -61,7 +60,6 @@ class PlotCardAdapter(val context:Context , val cards:List<PlotCardModel>):
                             Snackbar.make(binding.root,"Removed from Bookmarks, Visit Homepage to Update",Snackbar.LENGTH_LONG).show();
                         }
                 }
-                Log.d("CAAA3", holder.toString())
                 holder.itemView.setOnClickListener{
                     val intent:Intent = Intent(context,PropertyPageActivity::class.java);
                     intent.putExtra("layoutId",this.plotId);
@@ -75,7 +73,6 @@ class PlotCardAdapter(val context:Context , val cards:List<PlotCardModel>):
                     val chooser = Intent.createChooser(intent ,"Launch Map");
                     context.startActivity(chooser);
                 }
-                Log.d("CAAA4", holder.toString())
                 binding.share.setOnClickListener{
                     //Share Link Activity using Firebase Dynamic Links
                 }

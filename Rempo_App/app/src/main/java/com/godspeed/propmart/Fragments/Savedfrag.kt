@@ -8,6 +8,7 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.godspeed.propmart.Adapters.PropertyCardAdapter
@@ -71,6 +72,8 @@ class Savedfrag : Fragment() {
                     binding.savetext.text = "No Properties Saved Yet !!"
                 }
                 adapter.notifyDataSetChanged();
+            }.addOnFailureListener {
+                Toast.makeText(requireContext(), "Some Internal Error Occurred !", Toast.LENGTH_SHORT).show()
             }
         return root
     }

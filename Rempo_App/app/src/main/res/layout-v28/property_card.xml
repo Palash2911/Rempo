@@ -71,9 +71,9 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:id="@+id/plottextview"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Total Plots:"
                             android:textColor="#91BE6D"
                             android:textFontWeight="400"
                             android:textSize="12dp" />

@@ -1,5 +1,6 @@
 package com.godspeed.propmart
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -10,6 +11,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import com.godspeed.propmart.databinding.ActivitySellPropBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
@@ -405,7 +407,11 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                     Toast.makeText(this , "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
                     binding.deletebtn3.visibility = VISIBLE
                     binding.progressBar6.visibility = GONE
+                }.addOnFailureListener {
+                    Toast.makeText(this, "Some Internal Error Occurred !", Toast.LENGTH_SHORT).show()
                 }
+            }.addOnFailureListener {
+                Toast.makeText(this, "Some Internal Error Occurred !", Toast.LENGTH_SHORT).show()
             }
         }
         else if(requestCode==4 && resultCode == RESULT_OK)
@@ -421,8 +427,12 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                     Toast.makeText(this , "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
                     binding.deletebtn4.visibility = VISIBLE
                     binding.progressBar7.visibility = GONE
+                }.addOnFailureListener {
+                        Toast.makeText(this, "Some Internal Error Occurred !", Toast.LENGTH_SHORT).show()
+                    }
+            }.addOnFailureListener {
+                    Toast.makeText(this, "Some Internal Error Occurred !", Toast.LENGTH_SHORT).show()
                 }
-            }
         }
     }
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
@@ -434,14 +444,14 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             var subPlot = ""
             newPlot["Property Category"] = plot.toString()
             when (item) {
-                "Residential Land" -> {
-                    subPlot = "Residential Land"
+                "Residential Plot" -> {
+                    subPlot = "Residential Plot"
                 }
-                "Commercial Land" -> {
-                    subPlot = "Commercial Land"
+                "Commercial Plot" -> {
+                    subPlot = "Commercial Plot"
                 }
-                "Residential cum Commercial Land" -> {
-                    subPlot = "Residential cum Commercial Land"
+                "Residential cum Commercial Plot" -> {
+                    subPlot = "Residential cum Commercial Plot"
                 }
             }
             newPlot["Sub-Property Category"] = subPlot.toString()
