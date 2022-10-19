@@ -99,16 +99,13 @@ class Morefragment : Fragment() {
                         Toast.makeText(requireContext(), "Changed Account Type", Toast.LENGTH_SHORT).show()
                         binding.moreporgress.visibility = GONE
                         binding.MoreLll.visibility = VISIBLE
+                        val intent = Intent(activity, BottomnavSeller::class.java)
+                        startActivity(intent)
+                        activity?.finish()
                     }.addOnFailureListener {
-                        Toast.makeText(requireContext(), "Some Internal Error Occured !", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), "Some Internal Error Occurred !", Toast.LENGTH_SHORT).show()
                     }
-                if(activity!=null)
-                {
-                    val intent = Intent(activity, BottomnavSeller::class.java)
-                    startActivity(intent)
-                    activity?.finish()
-                    bottomSheet.dismiss()
-                }
+                bottomSheet.dismiss()
             }
             buyerAcc.setOnClickListener{
                 binding.MoreLll.visibility = GONE
@@ -118,17 +115,14 @@ class Morefragment : Fragment() {
                         Toast.makeText(requireContext(), "Changed Account Type", Toast.LENGTH_SHORT).show()
                         binding.moreporgress.visibility = GONE
                         binding.MoreLll.visibility = VISIBLE
+                        val intent = Intent(activity, Bottomtab::class.java)
+                        startActivity(intent)
+                        activity?.finish()
                     }
                     .addOnFailureListener {
                         Toast.makeText(requireContext(), "Some Internal Error Occurred !", Toast.LENGTH_SHORT).show()
                     }
-                if(activity!=null)
-                {
-                    val intent = Intent(activity, Bottomtab::class.java)
-                    startActivity(intent)
-                    activity?.finish()
-                    bottomSheet.dismiss()
-                }
+                bottomSheet.dismiss()
             }
             bottomSheet.setCancelable(true)
             bottomSheet.setContentView(view)
