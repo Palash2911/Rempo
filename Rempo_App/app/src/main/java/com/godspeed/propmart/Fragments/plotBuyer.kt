@@ -58,7 +58,7 @@ class plotBuyer : Fragment() {
             it.documents.iterator().forEach { documentSnapshot ->
                     val title:String = documentSnapshot.get("Area") as String;
                     val seller:String = documentSnapshot.get("Owner Name") as String;
-                    val plotnumber:Long = documentSnapshot.get("Plot No").toString().toLong();
+                    val plotnumber:String = documentSnapshot.get("Plot No").toString();
                     val address:String = documentSnapshot.get("District") as String;
 //                val longitude:String = documentSnapshot.get("longitude") as String;
 //                val latitude:String = documentSnapshot.get("latitude") as String;
@@ -72,15 +72,16 @@ class plotBuyer : Fragment() {
             if(cards.size==0)
             {
                 binding.progressBar3.visibility = GONE
-                binding.plottv.text = "No Plots to Show"
+                binding.plottv.visibility = VISIBLE
+                binding.plottv.text = "No Plots to Show !"
             }
             else
             {
                 binding.progressBar3.visibility = GONE
-                binding.plottv.visibility = VISIBLE
+                binding.plottv.visibility = GONE
             }
         }.addOnFailureListener {
-                Toast.makeText(requireContext(), "No Plots Found !", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Some Internal Error Occurred !", Toast.LENGTH_SHORT).show()
             }
         return root
     }

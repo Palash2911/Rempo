@@ -71,12 +71,13 @@ class propertyBuyer : Fragment() {
             if(cards.size==0)
             {
                 binding.progressBar8.visibility = GONE
+                binding.propertytv.visibility = VISIBLE
                 binding.propertytv.text = "No Properties to Show"
             }
             else
             {
                 binding.progressBar8.visibility = GONE
-                binding.propertytv.visibility = VISIBLE
+                binding.propertytv.visibility = GONE
             }
         }.addOnFailureListener {
             Toast.makeText(requireContext(), "Something Went Wrong !", Toast.LENGTH_SHORT).show()
