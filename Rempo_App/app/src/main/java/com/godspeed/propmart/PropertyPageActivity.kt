@@ -59,6 +59,7 @@ class PropertyPageActivity : AppCompatActivity() {
         binding.toolbarTitle.text = bundle?.getString("title");
         val layoutIds:String = bundle?.getString("layoutId").toString();
         var plotId:String = bundle?.getString("plotId").toString();
+
         if(layoutIds != "Null")
         {
             firebase.collection("Layouts").document(layoutIds).get()

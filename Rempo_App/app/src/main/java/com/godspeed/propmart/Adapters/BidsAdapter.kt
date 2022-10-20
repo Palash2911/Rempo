@@ -44,10 +44,19 @@ class BidsAdapter(val context: Context, val cards:List<Bidscardmodel>):
 //               Glide.with(context).load(this.layoutImage).into(binding.plotImage);
 
                 binding.rebidbtn.setOnClickListener{
-                    Log.d("Plotid", layoutId.toString() + " " + plotno.toString())
                     val intent = Intent(context, Plotpage::class.java)
-                    intent.putExtra("layoutId",this.layoutId);
-                    intent.putExtra("plotId","plot"+this.plotno);
+                    if(layoutId!="Null")
+                    {
+                        intent.putExtra("layoutId",this.layoutId);
+                        intent.putExtra("plotId", this.plotId)
+//                        intent.putExtra("plotId","plot"+this.plotno);
+                    }
+                    else
+                    {
+
+                        intent.putExtra("layoutId",this.layoutId);
+                        intent.putExtra("plotId", this.plotId)
+                    }
                     context.startActivity(intent)
                 }
 
@@ -55,6 +64,10 @@ class BidsAdapter(val context: Context, val cards:List<Bidscardmodel>):
                     val intent = Intent(context, PropertyPageActivity::class.java)
                     intent.putExtra("layoutId",this.layoutId);
                     intent.putExtra("title",this.title);
+                    if(this.layoutId=="Null")
+                    {
+                        intent.putExtra("plotId", this.plotId)
+                    }
                     context.startActivity(intent)
                 }
 
@@ -62,6 +75,10 @@ class BidsAdapter(val context: Context, val cards:List<Bidscardmodel>):
                     val intent: Intent = Intent(context, PropertyPageActivity::class.java);
                     intent.putExtra("layoutId",this.layoutId);
                     intent.putExtra("title",this.title);
+                    if(this.layoutId=="Null")
+                    {
+                        intent.putExtra("plotId", this.plotId)
+                    }
                     context.startActivity(intent);
                 }
             }
