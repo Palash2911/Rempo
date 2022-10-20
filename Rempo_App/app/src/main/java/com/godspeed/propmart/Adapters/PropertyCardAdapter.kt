@@ -46,7 +46,7 @@ class PropertyCardAdapter(val context:Context , val cards:List<PropertyCardModel
                binding.title.text = this.title
                binding.address.text = this.address;
                binding.plotCount.text = this.totalPlots.toString();
-               binding.plottextview?.text = "Total Plot: "
+               binding.plottextview.text = "Total Plot: "
 //               Glide.with(context).load(this.layoutImage).into(binding.plotImage);
                firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString()).collection("saved")
                    .document(this.layoutId).get().addOnSuccessListener { task->
@@ -66,7 +66,7 @@ class PropertyCardAdapter(val context:Context , val cards:List<PropertyCardModel
 
                binding.save.setOnClickListener{
                    firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString()).collection("saved")
-                       .document(this.layoutId).set(card).addOnSuccessListener {
+                       .document("Layout_"+this.layoutId).set(card).addOnSuccessListener {
                            binding.save.visibility = View.GONE;
                            binding.saved.visibility = View.VISIBLE;
                            Snackbar.make(binding.root,"Added to Bookmarks",Snackbar.LENGTH_LONG).show();
@@ -74,7 +74,7 @@ class PropertyCardAdapter(val context:Context , val cards:List<PropertyCardModel
                }
                binding.saved.setOnClickListener{
                    firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString()).collection("saved")
-                       .document(this.layoutId).delete().addOnSuccessListener {
+                       .document("Layout_"+this.layoutId).delete().addOnSuccessListener {
                            binding.saved.visibility = View.GONE;
                            binding.save.visibility = View.VISIBLE;
                            Snackbar.make(binding.root,"Removed from Bookmarks, Visit Homepage to Update",Snackbar.LENGTH_LONG).show();
@@ -82,9 +82,10 @@ class PropertyCardAdapter(val context:Context , val cards:List<PropertyCardModel
                }
                holder.itemView.setOnClickListener{
                     val intent= Intent(context,PropertyPageActivity::class.java);
-                    val extras = Bundle()
-                    extras.putString("layoutId",this.layoutId);
-                    extras.putString("title",this.title);
+                   val extras = Bundle()
+                   extras.putString("layoutId",this.layoutId);
+                   extras.putString("plotId","Null");
+                   extras.putString("title",this.title);
                    intent.putExtras(extras)
                     context.startActivity(intent);
                }

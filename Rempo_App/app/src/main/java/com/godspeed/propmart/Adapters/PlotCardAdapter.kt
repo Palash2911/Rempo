@@ -3,6 +3,7 @@ package com.godspeed.propmart.Adapters
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -46,7 +47,7 @@ class PlotCardAdapter(val context:Context , val cards:List<PlotCardModel>):
 
                 binding.save.setOnClickListener{
                     firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString()).collection("saved")
-                        .document(this.plotId.toString()).set(card).addOnSuccessListener {
+                        .document("Plot_"+this.plotId).set(card).addOnSuccessListener {
                             binding.save.visibility = View.GONE;
                             binding.saved.visibility = View.VISIBLE;
                             Snackbar.make(binding.root,"Added to Bookmarks",Snackbar.LENGTH_LONG).show();
@@ -54,7 +55,7 @@ class PlotCardAdapter(val context:Context , val cards:List<PlotCardModel>):
                 }
                 binding.saved.setOnClickListener{
                     firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString()).collection("saved")
-                        .document(this.plotId.toString()).delete().addOnSuccessListener {
+                        .document("Plot_"+this.plotId).delete().addOnSuccessListener {
                             binding.saved.visibility = View.GONE;
                             binding.save.visibility = View.VISIBLE;
                             Snackbar.make(binding.root,"Removed from Bookmarks, Visit Homepage to Update",Snackbar.LENGTH_LONG).show();
@@ -62,8 +63,11 @@ class PlotCardAdapter(val context:Context , val cards:List<PlotCardModel>):
                 }
                 holder.itemView.setOnClickListener{
                     val intent:Intent = Intent(context,PropertyPageActivity::class.java);
-                    intent.putExtra("layoutId",this.plotId);
-                    intent.putExtra("title",this.title);
+                    val extras = Bundle()
+                    extras.putString("plotId",this.plotId);
+                    extras.putString("title",this.title);
+                    extras.putString("layoutId","Null");
+                    intent.putExtras(extras)
                     context.startActivity(intent);
                 }
 

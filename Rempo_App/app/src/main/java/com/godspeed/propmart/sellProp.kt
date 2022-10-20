@@ -11,6 +11,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.core.content.ContentProviderCompat.requireContext
 import com.godspeed.propmart.databinding.ActivitySellPropBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -242,21 +243,33 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 newPlot["Uid"] = auth.currentUser?.uid.toString()
                 if(doc1==1 || doc2==1 || doc3==1 || doc4==1)
                 {
-                    // GET DOCUMENT ID HERE
                     val ref: DocumentReference = db.collection("Plots").document()
                     val myId = ref.id
+                    if(doc1==0)
+                    {
+                        newPlot["712"]=""
+                    }
+                    if(doc2==0)
+                    {
+                        newPlot["Nakasha"]=""
+                    }
+                    if(doc3==0)
+                    {
+                        newPlot["NA Order"]=""
+                    }
+                    if(doc4==0)
+                    {
+                        newPlot["Other"]=""
+                    }
                     db.collection("Plots").document(myId)
-                        .set(newPlot).addOnSuccessListener{
-                            db.collection("Plots").document(myId).collection("Documents")
-                                .add(documentPlot).addOnSuccessListener {
-                                    binding.llSell.visibility = GONE
-                                    binding.completeSell.visibility = VISIBLE
-                                    Toast.makeText(this, "Plot Successfully Added !! ", Toast.LENGTH_SHORT).show()
-
-                                }.addOnFailureListener{
+                        .set(newPlot).addOnSuccessListener {
+                            binding.llSell.visibility = GONE
+                            binding.completeSell.visibility = VISIBLE
+                            Toast.makeText(this, "Plot Successfully Added !! ", Toast.LENGTH_SHORT).show()
+                        }
+                            .addOnFailureListener{
                                     Toast.makeText(this, "Something Went Wrong !! ", Toast.LENGTH_SHORT).show()
                                 }
-                        }
                 }
             }
         }
@@ -271,10 +284,11 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             binding.progressBar4.visibility = VISIBLE
             val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc1_" + time)
             storageref.delete().addOnSuccessListener {
-                documentPlot["7/12"]=""
+                newPlot["712"]=""
                 Toast.makeText(this,"Deleted", Toast.LENGTH_SHORT).show()
                 binding.progressBar4.visibility = GONE
                 binding.uploadbtn1.visibility = VISIBLE
+                doc1=0
             }.addOnFailureListener {
                 Toast.makeText(this,"Something Went Wrong", Toast.LENGTH_SHORT).show()
             }
@@ -288,10 +302,11 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             binding.progressBar5.visibility = VISIBLE
             val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc2" + time)
             storageref.delete().addOnSuccessListener {
-                documentPlot["Nakasha"]=""
+                newPlot["Nakasha"]=""
                 Toast.makeText(this,"Deleted", Toast.LENGTH_SHORT).show()
                 binding.progressBar5.visibility = GONE
                 binding.uploadbtn2.visibility = VISIBLE
+                doc2=0
             }.addOnFailureListener {
                 Toast.makeText(this,"Something Went Wrong", Toast.LENGTH_SHORT).show()
             }
@@ -305,10 +320,11 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             binding.progressBar6.visibility = VISIBLE
             val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc3" + time)
             storageref.delete().addOnSuccessListener {
-                documentPlot["NA Order"]=""
+                newPlot["NA Order"]=""
                 Toast.makeText(this,"Deleted", Toast.LENGTH_SHORT).show()
                 binding.progressBar6.visibility = GONE
                 binding.uploadbtn2.visibility = VISIBLE
+                doc3=0
             }.addOnFailureListener {
                 Toast.makeText(this,"Something Went Wrong", Toast.LENGTH_SHORT).show()
             }
@@ -322,10 +338,11 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             binding.progressBar7.visibility = VISIBLE
             val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc4" + time)
             storageref.delete().addOnSuccessListener {
-                documentPlot["Other"]=""
+                newPlot["Other"]=""
                 Toast.makeText(this,"Deleted", Toast.LENGTH_SHORT).show()
                 binding.progressBar7.visibility = GONE
                 binding.uploadbtn4.visibility = VISIBLE
+                doc4=0
             }.addOnFailureListener {
                 Toast.makeText(this,"Something Went Wrong", Toast.LENGTH_SHORT).show()
             }
@@ -371,7 +388,7 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 storageref.downloadUrl.addOnSuccessListener{ uri ->
                     val downloadUrl = uri.toString();
                     val docs:HashMap<String, Any> = HashMap()
-                    documentPlot["7/12"] = downloadUrl
+                    newPlot["712"] = downloadUrl
                     Toast.makeText(this , "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
                     binding.deletebtn1.visibility = VISIBLE
                     binding.progressBar4.visibility = GONE
@@ -387,7 +404,7 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 storageref.downloadUrl.addOnSuccessListener{ uri ->
                     val downloadUrl = uri.toString();
                     val docs:HashMap<String, Any> = HashMap()
-                    documentPlot["Nakasha"] = downloadUrl
+                    newPlot["Nakasha"] = downloadUrl
                     Toast.makeText(this , "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
                     binding.deletebtn2.visibility = VISIBLE
                     binding.progressBar5.visibility = GONE
@@ -403,7 +420,7 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 storageref.downloadUrl.addOnSuccessListener{ uri ->
                     val downloadUrl = uri.toString();
                     val docs:HashMap<String, Any> = HashMap()
-                    documentPlot["NA Order"] = downloadUrl
+                    newPlot["NA Order"] = downloadUrl
                     Toast.makeText(this , "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
                     binding.deletebtn3.visibility = VISIBLE
                     binding.progressBar6.visibility = GONE
@@ -423,7 +440,7 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 storageref.downloadUrl.addOnSuccessListener{ uri ->
                     val downloadUrl = uri.toString();
                     val docs:HashMap<String, Any> = HashMap()
-                    documentPlot["Other"] = downloadUrl
+                    newPlot["Other"] = downloadUrl
                     Toast.makeText(this , "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
                     binding.deletebtn4.visibility = VISIBLE
                     binding.progressBar7.visibility = GONE
@@ -438,7 +455,7 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
         val item = p0!!.selectedItem.toString()
 //        Toast.makeText(this, "Item Selected $item", Toast.LENGTH_SHORT).show()
-        if(item == "NA Plot" || (item=="Residential Land" || item=="Commercial Land" || item=="Residential cum Commercial Land"))
+        if(item == "NA Plot" || (item=="Residential Plot" || item=="Commercial Plot" || item=="Residential cum Commercial Plot"))
         {
             val plot = "NA Plot"
             var subPlot = ""
@@ -454,7 +471,7 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                     subPlot = "Residential cum Commercial Plot"
                 }
             }
-            newPlot["Sub-Property Category"] = subPlot.toString()
+            newPlot["Sub-Property Category"] = subPlot
             binding.subProprSpinner.visibility = VISIBLE
             binding.textView13.visibility = VISIBLE
         }

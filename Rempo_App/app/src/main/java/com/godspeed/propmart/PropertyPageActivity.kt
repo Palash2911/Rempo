@@ -57,21 +57,39 @@ class PropertyPageActivity : AppCompatActivity() {
         val bundle :Bundle ?=intent.extras
         binding.title.text = bundle?.getString("title");
         binding.toolbarTitle.text = bundle?.getString("title");
-        val layoutId:String = bundle?.getString("layoutId").toString();
-
-        firebase.collection("Layouts").document(layoutId).get()
-            .addOnSuccessListener { snapshot ->
-                binding.availablePlots.text = snapshot.get("availablePlots").toString()
-                binding.address.text = snapshot.get("address").toString();
-                binding.soldPlots.text = snapshot.get("soldPlots").toString();
-                binding.sellerName.text = snapshot.get("sellerName").toString();
-                binding.totalPlots.text = snapshot.get("totalPlots").toString();
+        val layoutIds:String = bundle?.getString("layoutId").toString();
+        var plotId:String = bundle?.getString("plotId").toString();
+        if(layoutIds != "Null")
+        {
+            firebase.collection("Layouts").document(layoutIds).get()
+                .addOnSuccessListener { snapshot ->
+                    binding.availablePlots.text = snapshot.get("availablePlots").toString()
+                    binding.address.text = snapshot.get("address").toString();
+                    binding.soldPlots.text = snapshot.get("soldPlots").toString();
+                    binding.sellerName.text = snapshot.get("sellerName").toString();
+                    binding.totalPlots.text = snapshot.get("totalPlots").toString();
+                }
+        }
+        else
+        {
+            firebase.collection("Plots").document(plotId).get()
+                .addOnSuccessListener { snapshot ->
+                    binding.plotTotalplot.text = "Plot No: "
+                    binding.available.visibility = GONE
+                    binding.plotdrp.visibility = GONE
+                    binding.soldtt.visibility = GONE
+                    binding.availablePlots.visibility = GONE
+                    binding.address.text = snapshot.get("Road").toString();
+                    binding.soldPlots.visibility = GONE
+                    binding.sellerName.text = snapshot.get("Owner Name").toString();
+                    binding.totalPlots.text = snapshot.get("Plot No").toString();
+                }
         }
 
 //        Log.d("plotList",Arrays.toString(plotList.toArray()));
 
         //Initializing Dropdown Select
-        val plotRef:CollectionReference = firebase.collection("Layouts").document(layoutId).collection("plots");
+        val plotRef:CollectionReference = firebase.collection("Layouts").document(layoutIds).collection("plots");
         val q: Query = plotRef.orderBy("index");
         q.get().addOnSuccessListener {
             val list:ArrayList<String> = ArrayList<String>()
@@ -95,17 +113,41 @@ class PropertyPageActivity : AppCompatActivity() {
         ,RecyclerView.VERTICAL,false);
         binding.documentRv.adapter = adapter;
 
-        db.collection("Plots").document(layoutId).collection("Document")
-            .document("chJGFkiJdlXFb9zJkXut").get().addOnSuccessListener {
+        // PLOT ID TO REPLACE
+        db.collection("Plots").document("csskjIpbigJ9YW661RKQ").get().addOnSuccessListener {
+            if(it["Nakasha"].toString().isNotEmpty())
+            {
                 val docname = "Nakasha"
                 val docurl = it["Nakasha"].toString()
                 val docCard = DocumentModel(docname, docurl)
                 documentList.add(docCard)
-                adapter.notifyDataSetChanged()
+            }
+            if(it["712"].toString().isNotEmpty())
+            {
+                val docname = "7/12"
+                val docurl = it["712"].toString()
+                val docCard = DocumentModel(docname, docurl)
+                documentList.add(docCard)
+            }
+            if(it["NA Order"].toString().isNotEmpty())
+            {
+                val docname = "NA Order"
+                val docurl = it["NA Order"].toString()
+                val docCard = DocumentModel(docname, docurl)
+                documentList.add(docCard)
+            }
+            if(it["Other"].toString().isNotEmpty())
+            {
+                val docname = "Other"
+                val docurl = it["Other"].toString()
+                val docCard = DocumentModel(docname, docurl)
+                documentList.add(docCard)
+            }
+            adapter.notifyDataSetChanged()
             }
 
         binding.bookmarkpropertypage.setOnClickListener {
-            db.collection("Layouts").document(layoutId).get().addOnSuccessListener{
+            db.collection("Layouts").document(layoutIds).get().addOnSuccessListener{
 //                val title:String = documentSnapshot.get("Area") as String;
                     val seller:String = it["sellerName"] as String;
                     val plotnumber:Long = it["totalPlots"].toString().toLong();
@@ -114,11 +156,11 @@ class PropertyPageActivity : AppCompatActivity() {
 //                val latitude:String = documentSnapshot.get("latitude") as String;
                     val plotImage:String = it["soldPlots"].toString();
                     val card =
-                        PropertyCardModel(layoutId, "title", seller, address,
+                        PropertyCardModel(layoutIds, "title", seller, address,
                             plotImage, plotnumber, "", "");
                 firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
                     .collection("saved")
-                    .document(layoutId).set(card).addOnSuccessListener {
+                    .document(layoutIds).set(card).addOnSuccessListener {
                         binding.bookmarkpropertypage.visibility = View.GONE;
                         binding.bookmarksaved.visibility = View.VISIBLE;
 //                       Toast.make(this,"Added to Bookmarks", Toast.LENGTH_SHORT).show();
@@ -128,7 +170,7 @@ class PropertyPageActivity : AppCompatActivity() {
         }
         binding.bookmarksaved.setOnClickListener {
             firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString()).collection("saved")
-                .document(layoutId).delete().addOnSuccessListener {
+                .document(layoutIds).delete().addOnSuccessListener {
                     binding.bookmarksaved.visibility = View.GONE;
                     binding.bookmarkpropertypage.visibility = View.VISIBLE;
 //                    Snackbar.make(binding.root,"Removed from Bookmarks, Visit Homepage to Update",Snackbar.LENGTH_LONG).show();
@@ -137,7 +179,7 @@ class PropertyPageActivity : AppCompatActivity() {
 
         //Getting List of Documents
         val ref:CollectionReference = firebase.collection("Layouts")
-            .document(layoutId).collection("documents");
+            .document(layoutIds).collection("documents");
         ref.get().addOnSuccessListener { it ->
             it.documents.iterator().forEach { document->
                 val documentModel: DocumentModel = DocumentModel(
@@ -164,28 +206,44 @@ class PropertyPageActivity : AppCompatActivity() {
 
 
         binding.bid.setOnClickListener{
-            if(binding.plotDropdown.text.toString() == "Select Plot"){
-                binding.plotDropdown.error = "Please Select a Plot";
-            }
-            else {
-                var availability: String
-                db.collection("Layouts").document(layoutId)
-                    .collection("plots")
-                    .document("plot" + binding.plotDropdown.text.toString().substring(4))
-                    .get().addOnSuccessListener { snapshot ->
-                        availability = snapshot["available"].toString()
-                        if (availability == "true") {
-                            val intent = Intent(this, Plotpage::class.java);
-                            intent.putExtra("plotId", binding.plotDropdown.text.toString());
-                            intent.putExtra("layoutId", layoutId);
-                            startActivity(intent);
-                        } else {
-                            Toast.makeText(this, "Plot Sold !!", Toast.LENGTH_SHORT).show()
+            if(layoutIds!="Null")
+            {
+                if(binding.plotDropdown.text.toString() == "Select Plot"){
+                    binding.plotDropdown.error = "Please Select a Plot";
+                }
+                else {
+                    var availability: String
+                    db.collection("Layouts").document(layoutIds)
+                        .collection("plots")
+                        .document("plot" + binding.plotDropdown.text.toString().substring(4))
+                        .get().addOnSuccessListener { snapshot ->
+                            availability = snapshot["available"].toString()
+                            if (availability == "true") {
+                                val intent = Intent(this, Plotpage::class.java);
+                                intent.putExtra("plotId", binding.plotDropdown.text.toString());
+                                intent.putExtra("layoutId", layoutIds);
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(this, "Plot Sold !!", Toast.LENGTH_SHORT).show()
+                            }
+                        }.addOnFailureListener {
+                            Toast.makeText(this, "Some Internal Error Occurred !!", Toast.LENGTH_SHORT).show()
                         }
+                }
+            }
+            else
+            {
+                db.collection("Plots").document(plotId)
+                    .get().addOnSuccessListener {
+                        val intent = Intent(this, Plotpage::class.java);
+                        intent.putExtra("plotId", plotId);
+                        intent.putExtra("layoutId", "Null");
+                        startActivity(intent);
+                    }.addOnFailureListener {
+                        Toast.makeText(this, "Some Internal Error Occurred !!", Toast.LENGTH_SHORT).show()
                     }
             }
         }
-
         binding.backButton.setOnClickListener {
             this.finish();
         }
