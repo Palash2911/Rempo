@@ -34,7 +34,7 @@ class Plotpage : AppCompatActivity() {
         setContentView(binding.root)
 
         val layoutid = this.intent?.getStringExtra("layoutId")
-        val plotid = "plot"+this.intent?.getStringExtra("plotId")?.substring(4)
+        var plotid = "plot"+this.intent?.getStringExtra("plotId")?.substring(4)
         val totarea = findViewById<TextView>(R.id.area)
         val bidhead = findViewById<TextView>(R.id.plot_no)
         val rate = findViewById<TextView>(R.id.rate)
@@ -43,19 +43,31 @@ class Plotpage : AppCompatActivity() {
         val desc = findViewById<TextView>(R.id.description)
         val placebtn = findViewById<Button>(R.id.placebidbtn)
         val bidamt = findViewById<EditText>(R.id.bid_amount)
-
-        Log.d("plotssss", this.intent?.getStringExtra("plotId").toString())
-        db.collection("Layouts").document(layoutid.toString()).collection("plots")
-            .document(plotid).get().addOnSuccessListener { snapshot ->
-            bidhead.text = "Bid on Plot " + snapshot["title"].toString().substring(4)
-            totarea.text =  snapshot["totalArea"].toString() + "Sq.m"
-            desc.text = snapshot["description"].toString()
-            rate.text = "Rate : " + snapshot["rate"].toString() + " Rs./sq.m"
-            dim.text = snapshot["dimension"].toString()
-            wp.text = "Current rate at this site is" + snapshot["rate"].toString() + "₹/sq.m. Kindly place your bid by considering current property rate"
-            Log.d("Plot", snapshot["totalArea"].toString())
+        if(layoutid!="Null")
+        {
+            db.collection("Layouts").document(layoutid.toString()).collection("plots")
+                .document(plotid).get().addOnSuccessListener { snapshot ->
+                    bidhead.text = "Bid on Plot " + snapshot["title"].toString().substring(4)
+                    totarea.text =  snapshot["totalArea"].toString() + "Sq.m"
+                    desc.text = snapshot["description"].toString()
+                    rate.text = "Rate : " + snapshot["rate"].toString() + " Rs./sq.m"
+                    dim.text = snapshot["dimension"].toString()
+                    wp.text = "Current rate at this site is" + snapshot["rate"].toString() + "₹/sq.m. Kindly place your bid by considering current property rate"
+                }
         }
-
+        else
+        {
+            plotid = this.intent?.getStringExtra("plotId").toString()
+            Log.d("Plotsss", plotid)
+            db.collection("Plots").document(plotid).get().addOnSuccessListener { snapshot ->
+                    bidhead.text = "Bid on Plot " + snapshot["Plot No"].toString()
+                    totarea.text =  snapshot["Area"].toString() + " Sq.m"
+                    desc.text = snapshot["Road"].toString()
+                    rate.text = "Rate : " + snapshot["Bid Price"].toString() + " Rs./sq.m"
+                    dim.text = "Dimensions" + snapshot["Front"].toString() + " x " + snapshot["Depth"].toString() + " Sq.m"
+                    wp.text = "Current rate at this site is " + snapshot["Bid Price"].toString() + "₹/sq.m. Kindly place your bid by considering current property rate"
+                }
+        }
         if(desc.text.toString() == "null" || desc.text.toString().isEmpty())
         {
             desc.visibility = GONE
