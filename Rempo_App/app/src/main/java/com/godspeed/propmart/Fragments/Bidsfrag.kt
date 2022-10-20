@@ -62,38 +62,58 @@ class Bidsfrag : Fragment() {
                 {
                     for(users in snapshot)
                     {
-                        db.collection("Layouts")
-                            .document(users["layoutId"] as String).get().addOnSuccessListener { snapshots ->
-                                val title = snapshots["title"].toString()
-                                val seller = snapshots["sellerName"].toString()
-                                val bidamt = users["bidAmount"].toString()
-                                val plotno = users["plotNo"].toString()
+                        if(users["layoutId"]!="")
+                        {
+                            db.collection("Layouts")
+                                .document(users["layoutId"] as String).get().addOnSuccessListener { snapshots ->
+                                    val title = snapshots["title"].toString()
+                                    val seller = snapshots["sellerName"].toString()
+                                    val bidamt = users["bidAmount"].toString()
+                                    val plotno = users["plotNo"].toString()
 
-                                val card: Bidscardmodel =
-                                    Bidscardmodel(
-                                        snapshots.id.toString(),
-                                        bidamt, seller, "", plotno, title
-                                    );
-
-                                cards.add(card)
-                                if(cards.size>0)
-                                {
-                                    Log.d("Bid time", cards.size.toString())
-                                    binding.progressBar2.visibility = GONE
-                                    binding.bidstext.visibility = GONE
+                                    val card: Bidscardmodel =
+                                        Bidscardmodel(
+                                            snapshots.id, "plot$plotno",
+                                            bidamt, seller, "", plotno, title
+                                        );
+                                    cards.add(card)
+                                    if(cards.size>0)
+                                    {
+                                        binding.progressBar2.visibility = GONE
+                                        binding.bidstext.visibility = GONE
+                                    }
+                                }.addOnFailureListener {
+                                    Toast.makeText(requireContext(), "Some Internal Error Occurred !", Toast.LENGTH_SHORT).show()
                                 }
-                                else
-                                {
-                                    Log.d("Bid time", cards.size.toString())
+                        }
+                        else
+                        {
+                            db.collection("Plots")
+                                .document(users["plotId"] as String).get().addOnSuccessListener { snapshots ->
+                                    val title = snapshots["District"].toString()
+                                    val seller = snapshots["Owner Name"].toString()
+                                    val bidamt = users["bidAmount"].toString()
+                                    val plotno = users["plotNo"].toString()
+                                    val card: Bidscardmodel =
+                                        Bidscardmodel(
+                                            "Null",snapshots.id,
+                                            bidamt, seller, "", plotno, title
+                                        );
+                                    cards.add(card)
+                                    if(cards.size>0)
+                                    {
+                                        binding.progressBar2.visibility = GONE
+                                        binding.bidstext.visibility = GONE
+                                    }
+                                }.addOnFailureListener {
+                                    Toast.makeText(requireContext(), "Some Internal Error Occurred !", Toast.LENGTH_SHORT).show()
                                 }
-                                adapter.notifyDataSetChanged();
-                            }.addOnFailureListener {
-                                Toast.makeText(requireContext(), "No Bid Found", Toast.LENGTH_SHORT).show()
-                            }
+                        }
+                        adapter.notifyDataSetChanged();
                     }
                 }
             }.addOnFailureListener {
-                Toast.makeText(requireContext(), "No Bid Found !", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Some Internal Error Occurred !", Toast.LENGTH_SHORT).show()
             }
         return root
     }

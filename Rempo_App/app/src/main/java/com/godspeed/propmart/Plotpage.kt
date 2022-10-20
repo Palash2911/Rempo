@@ -41,6 +41,7 @@ class Plotpage : AppCompatActivity() {
         val dim = findViewById<TextView>(R.id.dimensions)
         val wp = findViewById<TextView>(R.id.warningplot)
         val desc = findViewById<TextView>(R.id.description)
+        var plotno = ""
         val placebtn = findViewById<Button>(R.id.placebidbtn)
         val bidamt = findViewById<EditText>(R.id.bid_amount)
         if(layoutid!="Null")
@@ -61,10 +62,11 @@ class Plotpage : AppCompatActivity() {
             Log.d("Plotsss", plotid)
             db.collection("Plots").document(plotid).get().addOnSuccessListener { snapshot ->
                     bidhead.text = "Bid on Plot " + snapshot["Plot No"].toString()
+                    plotno = snapshot["Plot No"].toString()
                     totarea.text =  snapshot["Area"].toString() + " Sq.m"
                     desc.text = snapshot["Road"].toString()
                     rate.text = "Rate : " + snapshot["Bid Price"].toString() + " Rs./sq.m"
-                    dim.text = "Dimensions" + snapshot["Front"].toString() + " x " + snapshot["Depth"].toString() + " Sq.m"
+                    dim.text = "Dimensions : " + snapshot["Front"].toString() + " x " + snapshot["Depth"].toString() + " Sq.m"
                     wp.text = "Current rate at this site is " + snapshot["Bid Price"].toString() + "₹/sq.m. Kindly place your bid by considering current property rate"
                 }
         }
@@ -86,34 +88,67 @@ class Plotpage : AppCompatActivity() {
             {
                 val profile:HashMap<String, Any> = HashMap()
                 val Bids:HashMap<String, Any> = HashMap()
-                db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
-                    .get().addOnSuccessListener{snapshot ->
-                        profile["name"]=snapshot["Name"].toString()
-                        profile["placeBid"]=bidamt.text.toString()
-                        val current = LocalDateTime.now().format(DateTimeFormatter.ofLocalizedDateTime(
-                            FormatStyle.MEDIUM))
-                        profile["time"]=current
-                        profile["uid"]=Firebase.auth.currentUser?.uid.toString()
+                if(layoutid!="Null")
+                {
+                    db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
+                        .get().addOnSuccessListener{snapshot ->
+                            profile["name"]=snapshot["Name"].toString()
+                            profile["placeBid"]=bidamt.text.toString()
+                            val current = LocalDateTime.now().format(DateTimeFormatter.ofLocalizedDateTime(
+                                FormatStyle.MEDIUM))
+                            profile["time"]=current
+                            profile["uid"]=Firebase.auth.currentUser?.uid.toString()
+                            Bids["bidAmount"]=bidamt.text.toString()
+                            Bids["layoutId"]=layoutid.toString()
+                            Bids["plotId"] = ""
+                            Bids["plotNo"]=plotid.substring(4)
+                            Bids["time"]=current
+                            db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
+                                .collection("bids").document(plotid.toString()).set(Bids).addOnCompleteListener {
+                                    Toast.makeText(this, "Bid Placed", Toast.LENGTH_SHORT).show()
+                                }
 
-                        Bids["bidAmount"]=bidamt.text.toString()
-                        Bids["layoutId"]=layoutid.toString()
-                        Bids["plotNo"]=plotid.substring(4)
-                        Bids["time"]=current
-                        db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
-                            .collection("bids").document(plotid.toString()).set(Bids).addOnCompleteListener {
-                                Toast.makeText(this, "Bid Placed", Toast.LENGTH_SHORT).show()
-                            }
-
-                        db.collection("Layouts").document(layoutid.toString())
-                            .collection("plots").document(plotid).collection("bids")
-                            .document(Firebase.auth.currentUser?.uid.toString()).set(profile).addOnCompleteListener { task->
-                            if(task.isSuccessful)
-                            {
-                                val intent = Intent(this, Bidplaced::class.java)
-                                startActivity(intent)
-                            }
+                            db.collection("Layouts").document(layoutid.toString())
+                                .collection("plots").document(plotid).collection("bids")
+                                .document(Firebase.auth.currentUser?.uid.toString()).set(profile).addOnCompleteListener { task->
+                                    if(task.isSuccessful)
+                                    {
+                                        val intent = Intent(this, Bidplaced::class.java)
+                                        startActivity(intent)
+                                    }
+                                }
                         }
-                    }
+                }
+                else
+                {
+                    db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
+                        .get().addOnSuccessListener{snapshot ->
+                            profile["name"]=snapshot["Name"].toString()
+                            profile["placeBid"]=bidamt.text.toString()
+                            val current = LocalDateTime.now().format(DateTimeFormatter.ofLocalizedDateTime(
+                                FormatStyle.MEDIUM))
+                            profile["time"]=current
+                            profile["uid"]=Firebase.auth.currentUser?.uid.toString()
+                            Bids["bidAmount"]=bidamt.text.toString()
+                            Bids["layoutId"]= ""
+                            Bids["plotId"] = plotid
+                            Bids["plotNo"]=plotno
+                            Bids["time"]=current
+                            db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
+                                .collection("bids").document(plotid).set(Bids).addOnCompleteListener {
+                                    Toast.makeText(this, "Bid Placed", Toast.LENGTH_SHORT).show()
+                                }
+
+                            db.collection("Plots").document(plotid).collection("bids")
+                                .document(Firebase.auth.currentUser?.uid.toString()).set(profile).addOnCompleteListener { task->
+                                    if(task.isSuccessful)
+                                    {
+                                        val intent = Intent(this, Bidplaced::class.java)
+                                        startActivity(intent)
+                                    }
+                                }
+                        }
+                }
             }
         }
 
