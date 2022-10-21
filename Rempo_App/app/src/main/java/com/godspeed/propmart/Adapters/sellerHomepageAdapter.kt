@@ -2,6 +2,7 @@ package com.godspeed.propmart.Adapters
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -25,7 +26,6 @@ class sellerHomepageAdapter(val context: Context, val cards:List<sellerhomepageM
     }
 
     override fun onBindViewHolder(holder: sellerHomepageAdapter.sellerCardViewHolder, position: Int) {
-        Log.d("CAAS", holder.toString())
         with(holder){
             with(cards[position]){
                 binding.title.text = this.title
@@ -36,8 +36,11 @@ class sellerHomepageAdapter(val context: Context, val cards:List<sellerhomepageM
 
                 holder.itemView.setOnClickListener{
                     val intent: Intent = Intent(context, EditPlotActivity::class.java);
-                    intent.putExtra("layoutId",this.layoutId);
-                    intent.putExtra("title",this.title);
+                    val extras = Bundle()
+                    extras.putString("layoutId",this.layoutId);
+                    extras.putString("plotId",this.plotId);
+                    extras.putString("title",this.title);
+                    intent.putExtras(extras)
                     context.startActivity(intent);
                 }
             }

@@ -57,8 +57,6 @@ class HompageFragment : Fragment() {
         _binding!!.filterImg.setOnClickListener{
             val bottomSheet = BottomSheetDialog(activity!!)
             val view = layoutInflater.inflate(R.layout.bottomsort, null)
-            val agriculturalBtn = view.findViewById<RadioButton>(R.id.agriculturalSort)
-            val commercialBtn = view.findViewById<RadioButton>(R.id.commercialSort)
             val residentialBtn = view.findViewById<RadioButton>(R.id.residentialSort)
 
             residentialBtn.setOnClickListener {
