@@ -46,7 +46,7 @@ class HompageFragment : Fragment() {
 
         _binding!!.tabLayoutprop.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
-
+                setFragment(tab!!.position)
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
