@@ -8,76 +8,90 @@
     tools:context=".EditPlotActivity">
 
 
-
-
     <androidx.cardview.widget.CardView
+        android:id="@+id/edit_scheme_popup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
         android:layout_centerInParent="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:elevation="6dp"
-        android:id="@+id/edit_scheme_popup"
-        app:cardCornerRadius="16dp"
-        android:visibility="gone">
+        android:visibility="gone"
+        app:cardCornerRadius="16dp">
+
+        <ProgressBar
+            android:id="@+id/editSchemeProgress"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
         <LinearLayout
+            android:id="@+id/editSchemell"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="15dp">
+            android:layout_margin="15dp"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="Edit Scheme Details"
-                android:textStyle="bold"
                 android:layout_marginBottom="15dp"
-                android:textColor="@color/purple_500"/>
+                android:text="Edit Scheme Details"
+                android:textColor="@color/purple_500"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/oName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Owner Name"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
 
             <EditText
                 android:id="@+id/ownerName"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:paddingStart="10dp"
                 android:background="@drawable/rectangle"
+                android:hint="Name"
                 android:inputType="textPersonName"
-                android:hint= "Name"
+                android:paddingStart="10dp"
                 tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Property Category"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
 
             <Spinner
                 android:id="@+id/plotSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_margin="30dp"
-                android:padding="30dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginBottom="9dp"
+                android:background="@drawable/rectangle"
+                android:padding="9dp"
                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
             <TextView
-                android:id="@+id/textView13"
+                android:id="@+id/subProptv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Sub Property Category"
+                android:textColor="@color/black"
                 android:visibility="gone" />
 
             <Spinner
-                android:id="@+id/subPropr"
+                android:id="@+id/subPropSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="30dp"
-                android:padding="30dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginBottom="9dp"
+                android:background="@drawable/rectangle"
+                android:padding="9dp"
                 android:visibility="gone"
                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
@@ -86,16 +100,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="District"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
 
             <EditText
                 android:id="@+id/district"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:paddingStart="10dp"
                 android:background="@drawable/rectangle"
                 android:ems="10"
                 android:hint=" Enter District"
+                android:paddingStart="10dp"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
             <TextView
@@ -103,17 +117,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Taluka"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
 
             <EditText
                 android:id="@+id/editTextTaluka"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:paddingStart="10dp"
                 android:background="@drawable/rectangle"
                 android:ems="10"
-                android:inputType="textPersonName"
                 android:hint="Enter Taluka"
+                android:inputType="textPersonName"
+                android:paddingStart="10dp"
                 tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
@@ -121,18 +135,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Village"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
 
             <EditText
                 android:id="@+id/editTextVillage"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:paddingStart="20dp"
                 android:background="@drawable/rectangle"
                 android:ems="10"
-                android:textColor="@color/black"
-                android:inputType="textPersonName"
                 android:hint="Enter Village"
+                android:inputType="textPersonName"
+                android:paddingStart="10dp"
+                android:textColor="@color/black"
                 tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
@@ -140,25 +154,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Complete Address"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
 
             <EditText
                 android:id="@+id/editTextAddress"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:paddingStart="10dp"
                 android:background="@drawable/rectangle"
-                android:inputType="textPersonName"
                 android:hint="Enter Address"
+                android:inputType="textPersonName"
+                android:paddingStart="10dp"
                 tools:ignore="TouchTargetSizeCheck" />
-
-
 
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="25dp"
-                >
+                android:layout_height="25dp">
 
                 <TextView
                     android:id="@+id/save"
@@ -166,8 +177,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginEnd="10dp"
                     android:layout_toStartOf="@+id/cancel"
-                    android:text="SAVE"
                     android:gravity="center"
+                    android:text="SAVE"
                     android:textColor="@color/purple_500"
                     android:textStyle="bold" />
 
@@ -176,8 +187,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_alignParentRight="true"
-                    android:text="CANCEL"
                     android:gravity="center"
+                    android:text="CANCEL"
                     android:textColor="@color/red"
                     android:textStyle="bold" />
             </RelativeLayout>
@@ -187,87 +198,88 @@
     </androidx.cardview.widget.CardView>
 
 
-
     <androidx.cardview.widget.CardView
+        android:id="@+id/edit_details_popup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
         android:layout_centerInParent="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:elevation="6dp"
-        android:id="@+id/edit_details_popup"
-        app:cardCornerRadius="16dp"
-        android:visibility="gone">
+        android:visibility="gone"
+        app:cardCornerRadius="16dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="10dp">
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="Edit Plot Details"
-                android:textStyle="bold"
                 android:layout_marginBottom="15dp"
-                android:textColor="@color/purple_500"/>
+                android:text="Edit Plot Details"
+                android:textColor="@color/purple_500"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Total Area"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
 
             <EditText
                 android:id="@+id/totalArea"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:paddingStart="10dp"
-                android:background="@drawable/rectangle"
-                android:inputType="textPersonName"
-                android:hint= "Enter Area"
                 android:layout_marginTop="5dp"
-                tools:ignore="TouchTargetSizeCheck"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/rectangle"
+                android:hint="Enter Area"
+                android:inputType="textPersonName"
+                android:paddingStart="10dp"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Dimensions"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
 
             <EditText
                 android:id="@+id/editTextDimensions"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:paddingStart="10dp"
-                android:background="@drawable/rectangle"
-                android:hint= "Enter Dimensions"
                 android:layout_marginTop="5dp"
-                tools:ignore="TouchTargetSizeCheck"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/rectangle"
+                android:hint="Enter Dimensions"
+                android:paddingStart="10dp"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Description"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
 
             <EditText
                 android:id="@+id/editTextDescription"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:paddingStart="10dp"
-                android:background="@drawable/rectangle"
-                android:inputType="textPersonName"
-                android:hint= "Enter Description"
                 android:layout_marginTop="5dp"
-                tools:ignore="TouchTargetSizeCheck"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/rectangle"
+                android:hint="Enter Description"
+                android:inputType="textPersonName"
+                android:paddingStart="10dp"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="25dp"
-                >
+                android:layout_height="25dp">
 
                 <TextView
                     android:id="@+id/savePlot"
@@ -275,8 +287,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginEnd="10dp"
                     android:layout_toStartOf="@+id/cancelPlot"
-                    android:text="SAVE"
                     android:gravity="center"
+                    android:text="SAVE"
                     android:textColor="@color/purple_500"
                     android:textStyle="bold" />
 
@@ -285,8 +297,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_alignParentRight="true"
-                    android:text="CANCEL"
                     android:gravity="center"
+                    android:text="CANCEL"
                     android:textColor="@color/red"
                     android:textStyle="bold" />
             </RelativeLayout>
@@ -427,6 +439,7 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/Plotstv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:lineHeight="18dp"
@@ -444,6 +457,7 @@
                     android:text="70" />
 
                 <TextView
+                    android:id="@+id/availableTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:lineHeight="18dp"
@@ -461,6 +475,7 @@
                     android:text="52" />
 
                 <TextView
+                    android:id="@+id/SoldTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:lineHeight="18dp"

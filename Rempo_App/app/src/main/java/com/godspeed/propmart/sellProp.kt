@@ -291,6 +291,8 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 doc1=0
             }.addOnFailureListener {
                 Toast.makeText(this,"Something Went Wrong", Toast.LENGTH_SHORT).show()
+                binding.deletebtn1.visibility = VISIBLE
+                binding.progressBar4.visibility = GONE
             }
         }
         binding.uploadbtn2.setOnClickListener {
@@ -309,6 +311,8 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 doc2=0
             }.addOnFailureListener {
                 Toast.makeText(this,"Something Went Wrong", Toast.LENGTH_SHORT).show()
+                binding.deletebtn2.visibility = VISIBLE
+                binding.progressBar5.visibility = GONE
             }
         }
         binding.uploadbtn3.setOnClickListener {
@@ -327,6 +331,8 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 doc3=0
             }.addOnFailureListener {
                 Toast.makeText(this,"Something Went Wrong", Toast.LENGTH_SHORT).show()
+                binding.deletebtn3.visibility = VISIBLE
+                binding.progressBar6.visibility = GONE
             }
         }
         binding.uploadbtn4.setOnClickListener {
@@ -345,6 +351,8 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 doc4=0
             }.addOnFailureListener {
                 Toast.makeText(this,"Something Went Wrong", Toast.LENGTH_SHORT).show()
+                binding.deletebtn4.visibility = VISIBLE
+                binding.progressBar7.visibility = GONE
             }
 
         }
@@ -459,7 +467,7 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         {
             val plot = "NA Plot"
             var subPlot = ""
-            newPlot["Property Category"] = plot.toString()
+            newPlot["Property Category"] = plot
             when (item) {
                 "Residential Plot" -> {
                     subPlot = "Residential Plot"
@@ -480,10 +488,12 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             if(item=="Agricultural Land")
             {
                 newPlot["Property Category"] = "Agricultural Land"
+                newPlot["Sub-Property Category"] = ""
             }
             else if(item=="Guntha Plot")
             {
                 newPlot["Property Category"] = "Guntha Plot"
+                newPlot["Sub-Property Category"] = ""
             }
             binding.subProprSpinner.visibility = GONE
             binding.textView13.visibility = GONE

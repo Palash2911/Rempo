@@ -44,9 +44,10 @@ class HomeFragment : Fragment() {
         firestore = FirebaseFirestore.getInstance();
         _binding!!.sellerRv.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL,false);
         _binding!!.sellerRv.adapter = adapter;
+
         firestore.collection("Plots").get().addOnSuccessListener{
             it.documents.iterator().forEach { documentSnapshot ->
-                if(auth.currentUser?.uid.toString().equals(documentSnapshot.get("Uid")))
+                if(auth.currentUser?.uid.toString() == documentSnapshot.get("Uid"))
                 {
                     val title:String = documentSnapshot.get("Area") as String;
                     val seller:String = documentSnapshot.get("Owner Name") as String;
@@ -55,9 +56,8 @@ class HomeFragment : Fragment() {
 //                val longitude:String = documentSnapshot.get("longitude") as String;
 //                val latitude:String = documentSnapshot.get("latitude") as String;
                     val plotImage:String = documentSnapshot.get("Taluka") as String;
-
                     val card:sellerhomepageModel =
-                        sellerhomepageModel(documentSnapshot.id.toString(), title, seller, address,
+                        sellerhomepageModel(documentSnapshot.id,"Null", title, seller, address,
                             plotImage, plotnumber, "", "");
 
                     cards.add(card);

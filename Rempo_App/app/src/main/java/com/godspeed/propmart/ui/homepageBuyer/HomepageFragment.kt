@@ -7,6 +7,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.RadioButton
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.viewpager.widget.ViewPager
@@ -18,7 +19,10 @@ import com.godspeed.propmart.R
 import com.godspeed.propmart.databinding.FragmentHomepageBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.tabs.TabLayout
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 
 class HompageFragment : Fragment() {
@@ -26,9 +30,8 @@ class HompageFragment : Fragment() {
     private lateinit var cards:MutableList<PropertyCardModel>
     private lateinit var firestore: FirebaseFirestore;
     private var _binding: FragmentHomepageBinding? = null
+    private val db = Firebase.firestore
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -57,11 +60,15 @@ class HompageFragment : Fragment() {
         _binding!!.filterImg.setOnClickListener{
             val bottomSheet = BottomSheetDialog(activity!!)
             val view = layoutInflater.inflate(R.layout.bottomsort, null)
-            val agriculturalBtn = view.findViewById<RadioButton>(R.id.agriculturalSort)
-            val commercialBtn = view.findViewById<RadioButton>(R.id.commercialSort)
             val residentialBtn = view.findViewById<RadioButton>(R.id.residentialSort)
 
             residentialBtn.setOnClickListener {
+                db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
+                    .update("Filter", "Res").addOnSuccessListener {
+
+                    }.addOnFailureListener {
+
+                    }
                 bottomSheet.dismiss()
             }
             bottomSheet.setCancelable(false)
