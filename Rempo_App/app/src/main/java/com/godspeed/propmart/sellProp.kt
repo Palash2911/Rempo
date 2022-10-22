@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
@@ -47,54 +48,52 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         setContentView(binding.root)
 
         val selectplotCat: ArrayList<String> = ArrayList()
-//        selectplotCat.add("Select Property Category")
         selectplotCat.add("Agricultural Land")
         selectplotCat.add("NA Plot")
         selectplotCat.add("Guntha Plot")
 
         val selectsubplotCat: ArrayList<String> = ArrayList()
-//        selectsubplotCat.add("Select Sub-Property Category")
         selectsubplotCat.add("Residential Plot")
         selectsubplotCat.add("Commercial Plot")
         selectsubplotCat.add("Residential cum Commercial Plot")
 
-        var area: ArrayList<String> = ArrayList()
+        val area: ArrayList<String> = ArrayList()
         area.add("Sq Ft")
         area.add("H.R ")
         area.add("Sq Mt")
         area.add("Acres")
 
-        var bid: ArrayList<String> = ArrayList()
+        val bid: ArrayList<String> = ArrayList()
         bid.add("Sq Ft")
         bid.add("Sq Mt")
         bid.add("Acres")
 
-        var fr: ArrayList<String> = ArrayList()
+        val fr: ArrayList<String> = ArrayList()
         fr.add("Ft")
         fr.add("Mt")
 
         binding.frSpinner.onItemSelectedListener = this
-        var adap0 = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, fr)
+        val adap0 = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, fr)
         adap0.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
         binding.frSpinner.adapter = adap0
 
         binding.areaSpinner.onItemSelectedListener = this
-        var adap1 = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, area)
+        val adap1 = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, area)
         adap1.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
         binding.areaSpinner.adapter = adap1
 
         binding.plotSpinner.onItemSelectedListener = this
-        var adap2 = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, selectplotCat)
+        val adap2 = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, selectplotCat)
         adap2.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
         binding.plotSpinner.adapter = adap2
 
         binding.subProprSpinner.onItemSelectedListener = this
-        var adap3 = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, selectsubplotCat)
+        val adap3 = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, selectsubplotCat)
         adap3.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
         binding.subProprSpinner.adapter = adap3
 
         binding.bidSpinner.onItemSelectedListener = this
-        var adap4 = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, bid)
+        val adap4 = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, bid)
         adap4.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
         binding.bidSpinner.adapter = adap4
 
@@ -462,6 +461,24 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     }
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
         val item = p0!!.selectedItem.toString()
+        if(binding.CardView2.visibility== VISIBLE)
+        {
+            if(item=="Sq Ft" || item=="H.R " || item=="Sq Mt" || item=="Acres")
+            {
+                newPlot["Area_Un"] = item
+            }
+            if(item=="Ft" || item=="Mt")
+            {
+                newPlot["Front_Un"] = item
+            }
+        }
+        if(binding.CardView3.visibility == VISIBLE)
+        {
+            if(item=="Sq Ft" || item=="Sq Mt" || item=="Acres")
+            {
+                newPlot["Bids_Un"] = item
+            }
+        }
 //        Toast.makeText(this, "Item Selected $item", Toast.LENGTH_SHORT).show()
         if(item == "NA Plot" || (item=="Residential Plot" || item=="Commercial Plot" || item=="Residential cum Commercial Plot"))
         {

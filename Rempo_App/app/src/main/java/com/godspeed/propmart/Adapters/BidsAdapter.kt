@@ -25,18 +25,16 @@ class BidsAdapter(val context: Context, val cards:List<Bidscardmodel>):
     }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BidsAdapter.BidsCardViewHolder {
-
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BidsCardViewHolder {
         val binding = BidscardBinding.inflate(LayoutInflater.from(context),parent,false);
-        return BidsAdapter.BidsCardViewHolder(binding);
+        return BidsCardViewHolder(binding);
     }
 
-    override fun onBindViewHolder(holder: BidsAdapter.BidsCardViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: BidsCardViewHolder, position: Int) {
 //        val card: Bidscardmodel = cards[position];
 
         with(holder){
             with(cards[position]){
-
                 binding.title.text = this.title
                 binding.plotnum.text = "Plot No: " + this.plotno.toString();
                 binding.plotbid.text = this.bidamt;
@@ -53,7 +51,6 @@ class BidsAdapter(val context: Context, val cards:List<Bidscardmodel>):
                     }
                     else
                     {
-
                         intent.putExtra("layoutId",this.layoutId);
                         intent.putExtra("plotId", this.plotId)
                     }

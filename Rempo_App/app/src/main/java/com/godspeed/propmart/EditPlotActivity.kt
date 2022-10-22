@@ -18,6 +18,8 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.godspeed.propmart.Adapters.DocumentAdapter
+import com.godspeed.propmart.Adapters.DocumentEditAdapter
+import com.godspeed.propmart.Models.DocumentEditModel
 import com.godspeed.propmart.Models.DocumentModel
 import com.godspeed.propmart.databinding.ActivityEditPlotBinding
 import com.google.android.gms.tasks.OnCompleteListener
@@ -33,8 +35,8 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
     lateinit var binding: ActivityEditPlotBinding
     lateinit var selectedPdf:Uri
     lateinit var layoutId:String
-    private lateinit var documentList: ArrayList<DocumentModel>;
-    private lateinit var adapter: DocumentAdapter;
+    private lateinit var documentList: ArrayList<DocumentEditModel>;
+    private lateinit var adapter: DocumentEditAdapter;
     lateinit var plotId:String
     lateinit var firestore: FirebaseFirestore;
     val map:HashMap<String,String> = HashMap();
@@ -46,8 +48,8 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
         layoutId = bundle?.getString("layoutId").toString();
         plotId = bundle?.getString("plotId").toString();
         firestore = FirebaseFirestore.getInstance();
-        documentList = ArrayList<DocumentModel>()
-        adapter = DocumentAdapter(this,documentList);
+        documentList = ArrayList<DocumentEditModel>()
+        adapter = DocumentEditAdapter(this,documentList);
 //        val title = intent.getStringExtra("title");
         binding.documentRv.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL,false);
         binding.documentRv.adapter = adapter;
@@ -87,28 +89,28 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
             {
                 val docname = "Nakasha"
                 val docurl = it["Nakasha"].toString()
-                val docCard = DocumentModel(docname, docurl)
+                val docCard = DocumentEditModel(docname, docurl)
                 documentList.add(docCard)
             }
             if(it["712"].toString().isNotEmpty())
             {
                 val docname = "7/12"
                 val docurl = it["712"].toString()
-                val docCard = DocumentModel(docname, docurl)
+                val docCard = DocumentEditModel(docname, docurl)
                 documentList.add(docCard)
             }
             if(it["NA Order"].toString().isNotEmpty())
             {
                 val docname = "NA Order"
                 val docurl = it["NA Order"].toString()
-                val docCard = DocumentModel(docname, docurl)
+                val docCard = DocumentEditModel(docname, docurl)
                 documentList.add(docCard)
             }
             if(it["Other"].toString().isNotEmpty())
             {
                 val docname = "Other"
                 val docurl = it["Other"].toString()
-                val docCard = DocumentModel(docname, docurl)
+                val docCard = DocumentEditModel(docname, docurl)
                 documentList.add(docCard)
             }
             adapter.notifyDataSetChanged()

@@ -40,7 +40,6 @@ class Bidsfrag : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         cards = ArrayList<Bidscardmodel>()
         adapter = BidsAdapter(requireActivity(), cards);
         _binding = FragmentBidsfragBinding.inflate(inflater, container, false)
