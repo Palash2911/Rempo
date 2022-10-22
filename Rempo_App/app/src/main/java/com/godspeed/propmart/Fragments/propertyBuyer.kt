@@ -32,9 +32,8 @@ import com.google.firebase.ktx.Firebase
 
 
 class propertyBuyer : Fragment() {
-    private var _binding: FragmentPropertyBuyerBinding? = null
+    private var binding: FragmentPropertyBuyerBinding? = null
     private val db = Firebase.firestore
-    private val binding get() = _binding!!
     private lateinit var adapter: PropertyCardAdapter;
     private lateinit var cards:MutableList<PropertyCardModel>
 
@@ -46,12 +45,12 @@ class propertyBuyer : Fragment() {
 
         cards = ArrayList<PropertyCardModel>()
         adapter = PropertyCardAdapter(requireActivity(), cards);
-        _binding = FragmentPropertyBuyerBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        binding = FragmentPropertyBuyerBinding.inflate(inflater, container, false)
+        val root: View = binding!!.root
 
-        binding.propertyRv.layoutManager = LinearLayoutManager(requireContext(),
+        binding!!.propertyRv.layoutManager = LinearLayoutManager(requireContext(),
             RecyclerView.VERTICAL,false);
-        binding.propertyRv.adapter = adapter;
+        binding!!.propertyRv.adapter = adapter;
 
         db.collection("Layouts").get().addOnSuccessListener{
             it.documents.iterator().forEach { documentSnapshot ->
@@ -70,14 +69,14 @@ class propertyBuyer : Fragment() {
             }
             if(cards.size==0)
             {
-                binding.progressBar8.visibility = GONE
-                binding.propertytv.visibility = VISIBLE
-                binding.propertytv.text = "No Properties to Show"
+                binding!!.progressBar8.visibility = GONE
+                binding!!.propertytv.visibility = VISIBLE
+                binding!!.propertytv.text = "No Properties to Show"
             }
             else
             {
-                binding.progressBar8.visibility = GONE
-                binding.propertytv.visibility = GONE
+                binding!!.progressBar8.visibility = GONE
+                binding!!.propertytv.visibility = GONE
             }
         }.addOnFailureListener {
             Toast.makeText(requireContext(), "Something Went Wrong !", Toast.LENGTH_SHORT).show()
@@ -87,6 +86,6 @@ class propertyBuyer : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+        binding = null
     }
 }
