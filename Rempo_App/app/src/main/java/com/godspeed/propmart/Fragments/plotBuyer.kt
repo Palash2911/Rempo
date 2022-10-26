@@ -56,14 +56,14 @@ class plotBuyer : Fragment() {
 
         db.collection("Plots").get().addOnSuccessListener{
             it.documents.iterator().forEach { documentSnapshot ->
-                    val title:String = documentSnapshot.get("Area") as String;
-                    val seller:String = documentSnapshot.get("Owner Name") as String;
+                    val title:String = documentSnapshot.get("Area").toString()
+                    val seller:String = documentSnapshot.get("Owner Name").toString()
                     val plotnumber:String = documentSnapshot.get("Plot No").toString();
-                    val address:String = documentSnapshot.get("District") as String;
+                    val address:String = documentSnapshot.get("District").toString()
 
 //                val longitude:String = documentSnapshot.get("longitude") as String;
 //                val latitude:String = documentSnapshot.get("latitude") as String;
-                    val plotImage:String = documentSnapshot.get("Taluka") as String;
+                    val plotImage:String = documentSnapshot.get("Taluka").toString();
                     val card =
                         PlotCardModel(documentSnapshot.id, title, seller, address,
                             plotImage, plotnumber, "", "");
