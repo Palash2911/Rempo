@@ -1,9 +1,30 @@
+import React, { useEffect, useState } from "react";
+import { useLocation, Route, Routes } from "react-router-dom";
 import { Loader } from "./components/Ui";
 
 const App = () => {
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
+  const [loading, setLoading] = useState(true);
+
+  setTimeout(() => setLoading(false), 6000);
+
   return (
     <>
-      <Loader />
+      {loading ? (
+        <Loader />
+      ) : (
+        <div>
+          <Routes>
+            <Route path="/" element={<></>} />
+            <Route path="/" element={<></>} />
+            <Route path="/" element={<></>} />
+          </Routes>
+        </div>
+      )}
     </>
   );
 };
