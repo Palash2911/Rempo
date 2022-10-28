@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#E5E5E5"
+    android:layout_height="match_parent"
+    tools:context=".Editprofile">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="18dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/editprfbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_marginBottom="25dp"
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="5dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar2">
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/field_lable"
+                    android:layout_width="120dp"
+                    android:textColor="@color/black"
+                    android:layout_height="18dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="top"
+                    android:lineSpacingExtra="3sp"
+                    android:text="Aadhar Number"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:translationY="-1.69sp" />
+
+                <TextView
+                    android:id="@+id/aadharfield"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/rectangle"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="center_vertical"
+                    android:paddingStart="20dp"
+                    android:text="1234-5678-9000"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/field_lable2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:textColor="@color/black"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="top"
+                    android:lineSpacingExtra="3sp"
+                    android:text="Name (as on Aadhar Card)*"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:translationY="-1.69sp" />
+
+                <EditText
+                    android:id="@+id/nameprofileedit"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/rectangle"
+                    android:ems="10"
+                    android:fontFamily="@font/roboto"
+                    android:hint="Enter Your Name"
+                    android:inputType="textPersonName"
+                    android:paddingStart="20dp"
+                    android:textSize="16sp"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/field_lable3"
+                    android:layout_width="165dp"
+                    android:layout_height="18dp"
+                    android:textColor="@color/black"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="top"
+                    android:lineSpacingExtra="3sp"
+                    android:text="Date of Birth"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:translationY="-1.69sp" />
+
+                <Button
+                    android:id="@+id/dobbtn"
+                    style="?android:spinnerStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="June 11 2022"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/field_lable4"
+                    android:layout_width="165dp"
+                    android:layout_height="18dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="top"
+                    android:textColor="@color/black"
+                    android:lineSpacingExtra="3sp"
+                    android:text="Mobile Number"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:translationY="-1.69sp" />
+
+                <EditText
+                    android:id="@+id/phoneedit"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/rectangle"
+                    android:ems="10"
+                    android:fontFamily="@font/roboto"
+                    android:hint="Enter Your Number"
+                    android:inputType="number"
+                    android:paddingStart="20dp"
+                    android:textSize="16sp"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/field_lable5"
+                    android:layout_width="165dp"
+                    android:layout_height="18dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="top"
+                    android:lineSpacingExtra="3sp"
+                    android:textColor="@color/black"
+                    android:text="Email"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:translationY="-1.69sp" />
+
+                <EditText
+                    android:id="@+id/Emailedit"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/rectangle"
+                    android:ems="10"
+                    android:fontFamily="@font/roboto"
+                    android:hint="Enter Your Email-ID"
+                    android:inputType="textEmailAddress"
+                    android:paddingStart="20dp"
+                    android:textSize="16sp"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+    <Button
+        android:id="@+id/editprfbtn"
+        android:layout_width="match_parent"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:text="Save"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize"
+        android:paddingStart="20dp"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="#131313" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

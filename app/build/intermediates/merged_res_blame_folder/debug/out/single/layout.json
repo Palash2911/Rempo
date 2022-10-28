@@ -1,0 +1,202 @@
+[
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\document_list_item.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\document_list_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\activity_profile.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\activity_profile.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\activity_plot_deatails.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\activity_plot_deatails.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\activity_bidplaced.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\activity_bidplaced.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\fragment_contactus.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\fragment_contactus.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\activity_splash.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\activity_splash.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\activity_edit_plot.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\activity_edit_plot.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\activity_sell_prop.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\activity_sell_prop.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\activity_rebid.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\activity_rebid.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\activity_bottomnav_seller.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\activity_bottomnav_seller.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\fragment_bookmark.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\fragment_bookmark.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\seller_card.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\seller_card.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\bottomacctype.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\bottomacctype.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\activity_bottomtab.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\activity_bottomtab.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\activity_aadharotp.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\activity_aadharotp.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\bidscard.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\bidscard.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\property_card.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\property_card.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\fragment_aboutus.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\fragment_aboutus.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\plot_dropdown_item.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\plot_dropdown_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\fragment_property_buyer.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\fragment_property_buyer.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\activity_profileverify.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\activity_profileverify.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\fragment_savedfrag.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\fragment_savedfrag.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\fragment_morefragment.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\fragment_morefragment.xml"
+    },
+    {
+        "merged": "com.godspeed.propmart.app-mergeDebugResources-80:/layout/activity_main.xml",
+        "source": "com.godspeed.propmart.app-main-83:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.godspeed.propmart.app-mergeDebugResources-80:/layout/activity_editprofile.xml",
+        "source": "com.godspeed.propmart.app-main-83:/layout/activity_editprofile.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\fragment_home.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\fragment_home.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\activity_uploadaadhar.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\activity_uploadaadhar.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\activity_select_type.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\activity_select_type.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\activity_property_page.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\activity_property_page.xml"
+    },
+    {
+        "merged": "com.godspeed.propmart.app-mergeDebugResources-80:/layout/activity_uploadaadhar.xml",
+        "source": "com.godspeed.propmart.app-main-83:/layout/activity_uploadaadhar.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\fragment_homepage.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\fragment_homepage.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\activity_web_view.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\activity_web_view.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\activity_otpactivity.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\activity_otpactivity.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\bottomsort.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\bottomsort.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\activity_onboarding.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\activity_onboarding.xml"
+    },
+    {
+        "merged": "com.godspeed.propmart.app-mergeDebugResources-80:/layout/activity_otpactivity.xml",
+        "source": "com.godspeed.propmart.app-main-83:/layout/activity_otpactivity.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\activity_choose.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\activity_choose.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\activity_welcome.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\activity_welcome.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\fragment_layout.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\fragment_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\fragment_plotbuyer.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\fragment_plotbuyer.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\activity_plotpage.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\activity_plotpage.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\activity_editprofile.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\activity_editprofile.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\fragment_location.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\fragment_location.xml"
+    },
+    {
+        "merged": "com.godspeed.propmart.app-mergeDebugResources-80:/layout/activity_bidplaced.xml",
+        "source": "com.godspeed.propmart.app-main-83:/layout/activity_bidplaced.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\activity_aadharverified.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\activity_aadharverified.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\fragment_bidsfrag.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\fragment_bidsfrag.xml"
+    },
+    {
+        "merged": "com.godspeed.propmart.app-mergeDebugResources-80:/layout/activity_profileverify.xml",
+        "source": "com.godspeed.propmart.app-main-83:/layout/activity_profileverify.xml"
+    },
+    {
+        "merged": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-mergeDebugResources-80:\\layout\\document_edit_layout.xml",
+        "source": "C:\\Users\\adity\\.gradle\\daemon\\7.3.3\\com.godspeed.propmart.app-main-83:\\layout\\document_edit_layout.xml"
+    },
+    {
+        "merged": "com.godspeed.propmart.app-mergeDebugResources-80:/layout/activity_splash.xml",
+        "source": "com.godspeed.propmart.app-main-83:/layout/activity_splash.xml"
+    }
+]

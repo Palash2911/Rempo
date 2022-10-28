@@ -3,6 +3,55 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/drawable-v24/rectangle.xml" value="0.198" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/drawable/otpbox.xml" value="0.198" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/drawable/recerror.xml" value="0.198" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/drawable/recsuccess.xml" value="0.198" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout-v28/property_card.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/activity_aadharotp.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/activity_aadharverified.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/activity_bidplaced.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/activity_bottomnav_seller.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/activity_bottomtab.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/activity_choose.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/activity_edit_plot.xml" value="0.2" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/activity_editprofile.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/activity_onboarding.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/activity_otpactivity.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/activity_plot_deatails.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/activity_plotpage.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/activity_profile.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/activity_profileverify.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/activity_property_page.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/activity_rebid.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/activity_select_type.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/activity_sell_prop.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/activity_splash.xml" value="0.17239583333333333" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/activity_uploadaadhar.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/activity_web_view.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/activity_welcome.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/bidscard.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/bottomacctype.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/bottomsort.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/document_edit_layout.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/document_list_item.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/fragment_aboutus.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/fragment_bidsfrag.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/fragment_bookmark.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/fragment_contactus.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/fragment_homepage.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/fragment_layout.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/fragment_location.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/fragment_morefragment.xml" value="0.2" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/fragment_plotbuyer.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/fragment_property_buyer.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/fragment_savedfrag.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/plot_dropdown_item.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/property_card.xml" value="0.25" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/search_filters.xml" value="0.2" />
+        <entry key="..\:/LandMart/Propmart_Final/Rempo_App/app/src/main/res/layout/seller_card.xml" value="0.25" />
         <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/No-Broker-Clone/app/src/main/res/layout/activity_bottomtablayout.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/No-Broker-Clone/app/src/main/res/layout/activity_main.xml" value="0.1578125" />
         <entry key="..\:/Users/Palash/Godspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/App Dev/Projects/No-Broker-Clone/app/src/main/res/layout/property_card.xml" value="0.117578125" />

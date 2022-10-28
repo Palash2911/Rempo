@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">337409210695-r0hp5u9dt9qqva71ncv3vjo2fp4l060e.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">337409210695</string>
+    <string name="google_api_key" translatable="false">AIzaSyAgG9Dmdo21Sf5VdCuARHKoGbji2Wr5PPE</string>
+    <string name="google_app_id" translatable="false">1:337409210695:android:b971d52f7817f752fbf462</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAgG9Dmdo21Sf5VdCuARHKoGbji2Wr5PPE</string>
+    <string name="google_storage_bucket" translatable="false">remp-e7e85.appspot.com</string>
+    <string name="project_id" translatable="false">remp-e7e85</string>
+</resources>

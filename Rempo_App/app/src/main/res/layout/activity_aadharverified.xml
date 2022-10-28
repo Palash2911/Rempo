@@ -12,16 +12,16 @@
         android:id="@+id/animation"
         android:layout_width="250dp"
         android:layout_height="250dp"
+        android:layout_alignBottom="@id/yohooo"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="52dp"
         app:layout_constraintBottom_toTopOf="@+id/yohooo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:lottie_autoPlay="true"
-        android:layout_alignBottom="@id/yohooo"
-        android:layout_centerHorizontal="true"
         app:lottie_fileName="verified.json"
-        app:lottie_loop="true"/>
+        app:lottie_loop="true" />
 
     <TextView
         android:id="@+id/yohooo"

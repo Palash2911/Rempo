@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/acctyperec"
+    android:orientation="horizontal"
+    android:layout_centerHorizontal="true"
+    android:padding="16dp">
+
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5" />
+
+    <RadioButton
+        android:id="@+id/buyerAcc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="10dp"
+        android:buttonTint="@color/purple_500"
+        android:text="Buyer" />
+
+
+    <RadioButton
+        android:id="@+id/sellerAc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:buttonTint="@color/purple_500"
+        android:padding="10dp"
+        android:text="Seller" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.4" />
+
+
+</RadioGroup>

@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f4f4f4"
+    tools:context=".ui.more.Morefragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:background="#f4f4f4">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="91dp"
+                android:src="#3C91E6"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="105dp"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="37dp"
+                android:layout_marginRight="17dp"
+                android:elevation="6dp"
+                app:cardCornerRadius="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="10dp"
+                        app:cardCornerRadius="100dp">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/profileImg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_baseline_profile_img" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="35dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/namemoresetting"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:text="Name"
+                            android:textColor="#050505"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/numbersetting"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:text="Phone Number"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="165dp"
+        android:layout_marginEnd="17dp"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:id="@+id/editprofilell"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/rectangle"
+            android:orientation="horizontal"
+            android:padding="11dp">
+
+            <TextView
+                android:id="@+id/edprofile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1.8"
+                android:fontFamily="@font/roboto"
+                android:gravity="start|center_vertical"
+                android:text="Profile"
+                android:textColor="#0B0B0B"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="20dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="0.2"
+                android:src="@drawable/account_circle"
+                app:tint="#858585" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/contactusll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/rectangle"
+            android:orientation="horizontal"
+            android:padding="11dp">
+
+            <TextView
+                android:id="@+id/contact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1.5"
+                android:fontFamily="@font/roboto"
+                android:gravity="start|center_vertical"
+                android:text="Contact Us"
+                android:textColor="#090909"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="20dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="0.2"
+                android:src="@drawable/ic_baseline_call_24"
+                app:tint="#858585" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/aboutusll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="0dp"
+            android:background="@drawable/rectangle"
+            android:orientation="horizontal"
+            android:padding="11dp">
+
+            <TextView
+                android:id="@+id/accType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto"
+                android:gravity="start|center_vertical"
+                android:text="Account Type"
+                android:textColor="#0C0C0C"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="5dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="0.2"
+                android:src="@drawable/ic_baseline_info_24"
+                app:tint="#858585" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/logoutll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/rectangle"
+            android:orientation="horizontal"
+            android:padding="11dp">
+
+            <TextView
+                android:id="@+id/logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_weight="2"
+                android:fontFamily="@font/roboto"
+                android:gravity="start|center_vertical"
+                android:text="Logout"
+                android:textColor="#0C0C0C"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imageView0"
+                android:layout_width="20dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="0.2"
+                android:src="@drawable/ic_baseline_logout_24"
+                app:tint="#858585" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="440dp"
+        android:layout_marginEnd="30dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/rate_us"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/roboto"
+            android:gravity="top"
+            android:text="Rate Us"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/help_suppor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/roboto"
+            android:gravity="top"
+            android:text="Help &amp; Support"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/privecy_pol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/roboto"
+            android:gravity="top"
+            android:text="Privacy Policy"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</FrameLayout>

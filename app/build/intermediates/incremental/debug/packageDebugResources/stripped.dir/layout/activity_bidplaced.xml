@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Bidplaced">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginBottom="52dp"
+        app:layout_constraintBottom_toTopOf="@+id/yohooo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:lottie_autoPlay="true"
+        android:layout_alignBottom="@id/yohooo"
+        android:layout_centerHorizontal="true"
+        app:lottie_fileName="verified.json"
+        app:lottie_loop="true"/>
+
+    <TextView
+        android:id="@+id/yohooo"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:fontFamily="@font/roboto"
+        android:gravity="top"
+        android:text="Yohooo !"
+        android:textColor="#040404"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="412dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/your_adhaar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/yohooo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/roboto"
+        android:gravity="center"
+        android:text="Your Aadhar has been
+successfully verified."
+        android:textSize="18sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yohooo" />
+
+    <Button
+        android:id="@+id/bidvisithome"
+        android:layout_width="283dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@id/your_adhaar"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/roboto"
+        android:text="Visit Home Page"
+        android:textAllCaps="false" />
+
+
+</RelativeLayout>

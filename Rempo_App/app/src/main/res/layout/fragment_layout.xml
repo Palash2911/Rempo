@@ -41,6 +41,7 @@
                 android:padding="12dp"
 
                 android:src="@drawable/filter"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/notifications"
                 app:layout_constraintTop_toTopOf="parent" />
 

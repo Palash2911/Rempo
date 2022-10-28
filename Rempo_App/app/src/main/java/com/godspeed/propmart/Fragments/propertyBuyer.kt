@@ -15,8 +15,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.godspeed.propmart.Adapters.BidsAdapter
 import com.godspeed.propmart.Adapters.BookmarkViewPagerAdapter
+import com.godspeed.propmart.Adapters.PlotCardAdapter
 import com.godspeed.propmart.Adapters.PropertyCardAdapter
 import com.godspeed.propmart.Models.Bidscardmodel
+import com.godspeed.propmart.Models.PlotCardModel
 import com.godspeed.propmart.Models.PropertyCardModel
 import com.godspeed.propmart.Models.sellerhomepageModel
 import com.godspeed.propmart.R
@@ -35,8 +37,8 @@ class propertyBuyer : Fragment() {
     private var _binding: FragmentPropertyBuyerBinding? = null
     private val db = Firebase.firestore
     private val binding get() = _binding!!
-    private lateinit var adapter: PropertyCardAdapter;
-    private lateinit var cards:MutableList<PropertyCardModel>
+    private lateinit var adapter: PlotCardAdapter;
+    private lateinit var cards:MutableList<PlotCardModel>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,8 +46,8 @@ class propertyBuyer : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        cards = ArrayList<PropertyCardModel>()
-        adapter = PropertyCardAdapter(requireActivity(), cards);
+        cards = ArrayList<PlotCardModel>()
+        adapter = PlotCardAdapter(requireActivity(), cards);
         _binding = FragmentPropertyBuyerBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -63,7 +65,7 @@ class propertyBuyer : Fragment() {
 //                val latitude:String = documentSnapshot.get("latitude") as String;
                 val plotImage:String = documentSnapshot.get("soldPlots").toString();
                 val card =
-                    PropertyCardModel(documentSnapshot.id, "title", seller, address,
+                    PlotCardModel(documentSnapshot.id, "title", seller, address,
                         plotImage, plotnumber, "", "");
                 cards.add(card);
                 adapter.notifyDataSetChanged();

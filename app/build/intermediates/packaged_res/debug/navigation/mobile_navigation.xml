@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_Hompage">
+
+    <fragment
+        android:id="@+id/navigation_Location"
+        android:name="com.godspeed.propmart.ui.Location.LocationFragment"
+        android:label="@string/title_Location"
+        tools:layout="@layout/fragment_location" />
+
+    <fragment
+        android:id="@+id/navigation_Hompage"
+        android:name="com.godspeed.propmart.ui.Hompage.HompageFragment"
+        android:label="@string/title_Hompage"
+        tools:layout="@layout/fragment_homepage" />
+
+    <fragment
+        android:id="@+id/navigation_Bookmarks"
+        android:name="com.godspeed.propmart.ui.Bookmarks.BookmarksFragment"
+        android:label="@string/title_Bookmarks"
+        tools:layout="@layout/fragment_bookmark" />
+
+    <fragment
+        android:id="@+id/navigation_more"
+        android:name="com.godspeed.propmart.ui.more.Morefragment"
+        android:label="Morefragment"
+        tools:layout="@layout/fragment_morefragment"/>
+</navigation>

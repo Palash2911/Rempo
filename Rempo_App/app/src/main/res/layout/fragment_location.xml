@@ -130,11 +130,12 @@
             android:textSize="14dp"
             android:textStyle="bold" />
 
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/state"
             android:background="@drawable/rectangle"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:paddingLeft="15dp"
             android:layout_marginTop="16dp"
             android:inputType="text"/>
 
@@ -148,8 +149,9 @@
             android:textSize="14dp"
             android:textStyle="bold" />
 
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/district"
+            android:paddingLeft="15dp"
             android:background="@drawable/rectangle"
             android:layout_width="match_parent"
             android:layout_height="50dp"
