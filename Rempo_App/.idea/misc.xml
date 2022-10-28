@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<<< HEAD:Rempo_App/.idea/misc.xml
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
@@ -47,4 +48,7 @@
   <component name="ProjectType">
     <option name="id" value="Android" />
   </component>
+========
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+>>>>>>>> 9c86a721f20207444b671442a7e13e2fcfd65c1b:.idea/misc.xml
 </project>
