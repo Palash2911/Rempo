@@ -9,17 +9,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.view.isVisible
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.godspeed.propmart.Adapters.DocumentAdapter
-import com.godspeed.propmart.Adapters.DocumentEditAdapter
-import com.godspeed.propmart.Models.DocumentEditModel
 import com.godspeed.propmart.Models.DocumentModel
 import com.godspeed.propmart.databinding.ActivityEditPlotBinding
 import com.google.android.gms.tasks.OnCompleteListener
@@ -32,29 +25,57 @@ import kotlin.collections.HashMap
 
 
 class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+    var layoutId = ""
     lateinit var binding: ActivityEditPlotBinding
     lateinit var selectedPdf:Uri
-    lateinit var layoutId:String
-    private lateinit var documentList: ArrayList<DocumentEditModel>;
-    private lateinit var adapter: DocumentEditAdapter;
-    lateinit var plotId:String
     lateinit var firestore: FirebaseFirestore;
-    val map:HashMap<String,String> = HashMap();
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEditPlotBinding.inflate(layoutInflater);
         setContentView(binding.root)
-        val bundle :Bundle ?=intent.extras
-        layoutId = bundle?.getString("layoutId").toString();
-        plotId = bundle?.getString("plotId").toString();
+
+        val intent = Intent()
+        layoutId = intent.getStringExtra("layoutId").toString();
+        Log.d("in", layoutId)
         firestore = FirebaseFirestore.getInstance();
-        documentList = ArrayList<DocumentEditModel>()
-        adapter = DocumentEditAdapter(this,documentList);
-//        val title = intent.getStringExtra("title");
-        binding.documentRv.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL,false);
-        binding.documentRv.adapter = adapter;
+
+        val title = intent.getStringExtra("title");
 
         binding.toolbarTitle.text = title;
+
+
+        binding.editPlotDetails.setOnClickListener {
+            binding.editDetailsPopup.visibility = View.VISIBLE;
+        }
+
+        var area: ArrayList<String> = ArrayList()
+        area.add("Sq Ft")
+        area.add("H.R ")
+        area.add("Sq Mt")
+        area.add("Acres")
+
+        var bid: ArrayList<String> = ArrayList()
+        bid.add("Sq Ft")
+        bid.add("Sq Mt")
+        bid.add("Acres")
+
+        var fr: ArrayList<String> = ArrayList()
+        fr.add("Ft")
+        fr.add("Mt")
+
+        binding.frSpinner.onItemSelectedListener = this
+        var adap0 = ArrayAdapter<String>(this, R.layout.simple_spinner_item, fr)
+        adap0.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
+        binding.frSpinner.adapter = adap0
+
+        binding.areaSpinner.onItemSelectedListener = this
+        var adap1 = ArrayAdapter<String>(this, R.layout.simple_spinner_item, area)
+        adap1.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
+        binding.areaSpinner.adapter = adap1
+
+
+
+
 
         binding.upload.setOnClickListener {
             val pdfIntent:Intent = Intent();
@@ -63,125 +84,102 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
             startActivityForResult(pdfIntent,25);
         }
 
-        if(layoutId == "Null")
-        {
-            firestore.collection("Plots").document(plotId).get().addOnSuccessListener {
-                binding.title.text = it["District"].toString()
-                binding.sellerName.text = "By - " + it["Owner Name"].toString()
-                binding.Plotstv.text = "Plot No: "
-                binding.totalPlots.text = it["Plot No"].toString()
-                binding.availableTv.visibility = GONE
-                binding.availablePlots.visibility = GONE
-                binding.SoldTv.visibility = GONE
-                binding.soldPlots.visibility = GONE
-                binding.address.text = it["Road"].toString()
-                binding.area.text = it["Area"].toString() + "sq.m"
-                binding.dimensions.text = it["Front"].toString() + "sq.m x " +it["Depth"].toString() + "sq.m"
-                binding.rate.text = it["Bid Price"].toString()
-                binding.description.visibility = GONE
-            }.addOnFailureListener {
-                Toast.makeText(this, "Some Internal Error Occurred !", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        firestore.collection("Plots").document("csskjIpbigJ9YW661RKQ").get().addOnSuccessListener {
-            if(it["Nakasha"].toString().isNotEmpty())
-            {
-                val docname = "Nakasha"
-                val docurl = it["Nakasha"].toString()
-                val docCard = DocumentEditModel(docname, docurl)
-                documentList.add(docCard)
-            }
-            if(it["712"].toString().isNotEmpty())
-            {
-                val docname = "7/12"
-                val docurl = it["712"].toString()
-                val docCard = DocumentEditModel(docname, docurl)
-                documentList.add(docCard)
-            }
-            if(it["NA Order"].toString().isNotEmpty())
-            {
-                val docname = "NA Order"
-                val docurl = it["NA Order"].toString()
-                val docCard = DocumentEditModel(docname, docurl)
-                documentList.add(docCard)
-            }
-            if(it["Other"].toString().isNotEmpty())
-            {
-                val docname = "Other"
-                val docurl = it["Other"].toString()
-                val docCard = DocumentEditModel(docname, docurl)
-                documentList.add(docCard)
-            }
-            adapter.notifyDataSetChanged()
-        }
-
-        var selectplotCat: ArrayList<String> = ArrayList()
-//        selectplotCat.add("Select Property Category")
-        selectplotCat.add("NA Plot")
-        selectplotCat.add("Agricultural Land")
-        selectplotCat.add("Guntha Plot")
-
-        var selectsubplotCat: ArrayList<String> = ArrayList()
-//        selectsubplotCat.add("Select Sub-Property Category")
-        selectsubplotCat.add("Residential Plot")
-        selectsubplotCat.add("Commercial Plot")
-        selectsubplotCat.add("Residential cum Commercial Plot")
-
-        binding.plotSpinner.onItemSelectedListener = this
-        var adap2 = ArrayAdapter<String>(this, R.layout.simple_spinner_item, selectplotCat)
-        adap2.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
-        binding.plotSpinner.adapter = adap2
-
-        binding.subPropSpinner.onItemSelectedListener = this
-        var adap3 = ArrayAdapter<String>(this, R.layout.simple_spinner_item, selectsubplotCat)
-        adap3.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
-        binding.subPropSpinner.adapter = adap3
-
-        binding.editScheme.setOnClickListener{
-            binding.editSchemePopup.visibility = VISIBLE;
-            binding.editSchemell.visibility = GONE
-            binding.editSchemeProgress.visibility = VISIBLE
-            firestore.collection("Plots").document(plotId).get().addOnSuccessListener {
-                binding.ownerName.setText(it["Owner Name"].toString())
-                binding.district.setText(it["District"].toString())
-                binding.editTextTaluka.setText(it["Taluka"].toString())
-                binding.editTextVillage.setText(it["Village"].toString())
-                binding.editTextAddress.setText(it["Road"].toString())
-                if(it["Property Category"].toString() == "Agricultural Land")
-                {
-                    binding.plotSpinner.setSelection(1)
-                }
-                else if(it["Property Category"].toString() == "NA Plot")
-                {
-                    binding.plotSpinner.setSelection(0)
-                    binding.subPropSpinner.visibility = VISIBLE
-                    binding.subProptv.visibility = VISIBLE
-                    if(it["Sub-Property Category"].toString() == "Residential Plot")
-                    {
-                        binding.subPropSpinner.setSelection(0)
-                    }
-                    else if(it["Sub-Property Category"].toString() == "Commercial Plot")
-                    {
-                        binding.subPropSpinner.setSelection(1)
-                    }
-                    else
-                    {
-                        binding.subPropSpinner.setSelection(2)
-                    }
-                }
-                else{
-                    binding.plotSpinner.setSelection(2)
-                }
-                binding.editSchemeProgress.visibility = GONE
-                binding.editSchemell.visibility = VISIBLE
-            }.addOnFailureListener {
-                Toast.makeText(this, "Some Internal Error Occurred !", Toast.LENGTH_SHORT).show()
-            }
+        binding.editScheme.setOnClickListener{it ->
+            binding.editSchemePopup.visibility = View.VISIBLE;
         }
 
         binding.cancel.setOnClickListener{
             binding.editSchemePopup.visibility = View.GONE
+        }
+
+        binding.savePlot.setOnClickListener {
+
+            val dialog:ProgressDialog = ProgressDialog(this);
+            dialog.setCancelable(false);
+            dialog.setMessage("Please Wait");
+            dialog.show();
+
+            var fl1=0
+            var fl2=0
+            var fl3=0
+            var fl4=0
+            var fl5=0
+            var fl6=0
+            if(binding.surveyNo.text.toString().isEmpty())
+            {
+                binding.surveyNo.error = "Required"
+            }
+            else
+            {
+                fl1=1
+            }
+            if(binding.location.text.toString().isEmpty())
+            {
+                binding.location.error = "Required"
+            }
+            else
+            {
+                fl2=1
+            }
+            if(binding.aSize.text.toString().isEmpty())
+            {
+                binding.aSize.error = "Required"
+            }
+            else
+            {
+                fl3=1
+            }
+            if(binding.fron.text.toString().isEmpty())
+            {
+                binding.fron.error = "Required"
+            }
+            else
+            {
+                fl4=1
+            }
+            if(binding.dept.text.toString().isEmpty())
+            {
+                binding.dept.error = "Required"
+            }
+            else
+            {
+                fl5=1
+            }
+            if(binding.road.text.toString().isEmpty())
+            {
+                binding.road.error = "Required"
+            }
+            else
+            {
+                fl6=1
+            }
+            if(fl1==1 && fl2==1 && fl3==1 && fl4==1 && fl5==1 && fl6==1) {
+                val newPlot: HashMap<String, Any> = HashMap();
+                newPlot["Survey No."] = binding.surveyNo.text.toString()
+                newPlot["Location"] = binding.location.text.toString()
+                newPlot["Plot No"] = binding.plotNo.text.toString()
+                newPlot["Area"] = binding.aSize.text.toString()
+                newPlot["Front"] = binding.fron.text.toString()
+                newPlot["Depth"] = binding.dept.text.toString()
+                newPlot["Road"] = binding.road.text.toString()
+
+                firestore.collection("Layouts").document(layoutId + "")
+                    .update(newPlot as Map<String, Any>).addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Toast.makeText(
+                                this,
+                                "Details Updated Successfully",
+                                Toast.LENGTH_SHORT
+                            );
+                            binding.editSchemePopup.visibility = View.GONE;
+                            dialog.dismiss();
+                        }
+                    }
+            }
+
+            dialog.dismiss();
+
+
         }
 
         binding.save.setOnClickListener {
@@ -192,33 +190,33 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
             dialog.show();
 
          val owner:String = binding.ownerName.text.toString();
-         val address:String = binding.editTextAddress.text.toString();
+         val address:String = binding.address.text.toString();
          val district:String = binding.district.text.toString();
          val village:String = binding.editTextVillage.text.toString();
          val taluka:String = binding.editTextTaluka.text.toString();
+//         val desc:String = binding.description.text.toString();
+//         val type:String = binding.description.text.toString();
 
-            map["Owner Name"] = owner;
-            map["District"] = district;
-            map["Road"] = address;
-            map["Village"] = village;
-            map["Taluka"] = taluka;
+            val map:HashMap<String,String> = HashMap();
 
-            firestore.collection("Plots").document(plotId)
-                .update(map as Map<String, Any>).addOnSuccessListener {
-                    Toast.makeText(this,"Details Updated Successfully",Toast.LENGTH_SHORT);
-                    binding.editSchemePopup.visibility = View.GONE;
-                    dialog.dismiss();
-                    finish();
-                    startActivity(intent);
-                }.addOnFailureListener {
-                    Toast.makeText(this, "Some Internal Error Occurred !", Toast.LENGTH_SHORT).show()
+            map.set("sellerName",owner);
+            map.set("district",district);
+            map.set("address",address);
+            map.set("village",village);
+            map.set("taluka",taluka);
+//          map.set("description",desc);
+//          map.set("type",type);
+
+            firestore.collection("Layouts").document(layoutId+"")
+                .update(map as Map<String, Any>).addOnCompleteListener { task ->
+                    if(task.isSuccessful){
+                        Toast.makeText(this,"Details Updated Successfully",Toast.LENGTH_SHORT);
+                        binding.editSchemePopup.visibility = View.GONE;
+                        dialog.dismiss();
+                    }
                 }
-        }
-
-        binding.editPlotDetails.setOnClickListener {
 
         }
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -227,7 +225,7 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
         val date:Date = Date();
         selectedPdf = data?.data!!
 
-        if(selectedPdf!=null){
+        if(selectedPdf!=null)
             dialog.show();
             val ref:StorageReference = FirebaseStorage.getInstance().reference
                 .child("Documents").child(layoutId+"").child(date.time.toString());
@@ -239,45 +237,9 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
                 }
             })
         }
-    }
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-        val item = p0!!.selectedItem.toString()
-        if(item == "NA Plot" || (item=="Residential Plot" || item=="Commercial Plot" || item=="Residential cum Commercial Plot"))
-        {
-            val plot = "NA Plot"
-            var subPlot = ""
-            map["Property Category"] = plot
-            when (item) {
-                "Residential Plot" -> {
-                    subPlot = "Residential Plot"
-                }
-                "Commercial Plot" -> {
-                    subPlot = "Commercial Plot"
-                }
-                "Residential cum Commercial Plot" -> {
-                    subPlot = "Residential cum Commercial Plot"
-                }
-            }
-            map["Sub-Property Category"] = subPlot
-            binding.subPropSpinner.visibility = VISIBLE
-            binding.subProptv.visibility = VISIBLE
-        }
-        else
-        {
-            if(item=="Agricultural Land")
-            {
-                map["Property Category"] = "Agricultural Land"
-                map["Sub-Property Category"] = ""
-            }
-            else if(item=="Guntha Plot")
-            {
-                map["Property Category"] = "Guntha Plot"
-                map["Sub-Property Category"] = ""
-            }
-            binding.subPropSpinner.visibility = GONE
-            binding.subProptv.visibility = GONE
-        }
+        TODO("Not yet implemented")
     }
 
     override fun onNothingSelected(p0: AdapterView<*>?) {

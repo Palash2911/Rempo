@@ -25,16 +25,18 @@ class BidsAdapter(val context: Context, val cards:List<Bidscardmodel>):
     }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BidsCardViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BidsAdapter.BidsCardViewHolder {
+
         val binding = BidscardBinding.inflate(LayoutInflater.from(context),parent,false);
-        return BidsCardViewHolder(binding);
+        return BidsAdapter.BidsCardViewHolder(binding);
     }
 
-    override fun onBindViewHolder(holder: BidsCardViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: BidsAdapter.BidsCardViewHolder, position: Int) {
 //        val card: Bidscardmodel = cards[position];
 
         with(holder){
             with(cards[position]){
+
                 binding.title.text = this.title
                 binding.plotnum.text = "Plot No: " + this.plotno.toString();
                 binding.plotbid.text = this.bidamt;
@@ -42,18 +44,10 @@ class BidsAdapter(val context: Context, val cards:List<Bidscardmodel>):
 //               Glide.with(context).load(this.layoutImage).into(binding.plotImage);
 
                 binding.rebidbtn.setOnClickListener{
+                    Log.d("Plotid", layoutId.toString() + " " + plotno.toString())
                     val intent = Intent(context, Plotpage::class.java)
-                    if(layoutId!="Null")
-                    {
-                        intent.putExtra("layoutId",this.layoutId);
-                        intent.putExtra("plotId", this.plotId)
-//                        intent.putExtra("plotId","plot"+this.plotno);
-                    }
-                    else
-                    {
-                        intent.putExtra("layoutId",this.layoutId);
-                        intent.putExtra("plotId", this.plotId)
-                    }
+                    intent.putExtra("layoutId",this.layoutId);
+                    intent.putExtra("plotId","plot"+this.plotno);
                     context.startActivity(intent)
                 }
 
@@ -61,10 +55,6 @@ class BidsAdapter(val context: Context, val cards:List<Bidscardmodel>):
                     val intent = Intent(context, PropertyPageActivity::class.java)
                     intent.putExtra("layoutId",this.layoutId);
                     intent.putExtra("title",this.title);
-                    if(this.layoutId=="Null")
-                    {
-                        intent.putExtra("plotId", this.plotId)
-                    }
                     context.startActivity(intent)
                 }
 
@@ -72,10 +62,6 @@ class BidsAdapter(val context: Context, val cards:List<Bidscardmodel>):
                     val intent: Intent = Intent(context, PropertyPageActivity::class.java);
                     intent.putExtra("layoutId",this.layoutId);
                     intent.putExtra("title",this.title);
-                    if(this.layoutId=="Null")
-                    {
-                        intent.putExtra("plotId", this.plotId)
-                    }
                     context.startActivity(intent);
                 }
             }

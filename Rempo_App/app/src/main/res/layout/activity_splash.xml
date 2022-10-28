@@ -7,11 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".SplashActivity">
 
+
+
  <ImageView
-     android:layout_width="285dp"
-     android:layout_height="80dp"
-     android:layout_centerInParent="true"
      android:id="@+id/logo"
+     android:layout_width="204dp"
+     android:layout_height="86dp"
+     android:layout_centerInParent="true"
      android:src="@drawable/rempo"
      app:tint="@color/purple_500" />
 

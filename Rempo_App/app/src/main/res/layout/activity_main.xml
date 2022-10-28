@@ -88,7 +88,11 @@
         android:layout_width="303dp"
         android:layout_height="50dp"
         android:layout_marginTop="32dp"
+        android:fontFamily="@font/roboto"
         android:text="Send OTP"
+
+        android:textSize="16dp"
+        android:textAllCaps="false"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

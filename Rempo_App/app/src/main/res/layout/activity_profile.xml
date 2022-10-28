@@ -209,7 +209,7 @@
                     android:fontFamily="@font/roboto"
                     android:gravity="top"
                     android:lineSpacingExtra="3sp"
-                    android:text="Mail - ID"
+                    android:text="Email"
                     android:textSize="16sp"
                     android:translationY="-1.69sp" />
 
