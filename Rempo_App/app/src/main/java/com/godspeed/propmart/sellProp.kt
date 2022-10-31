@@ -209,7 +209,7 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             {
                 binding.CardView3.visibility = VISIBLE
                 binding.CardView2.visibility = GONE
-                newPlot["Survey No."] = binding.surveyNo.text.toString()
+                newPlot["Survey No"] = binding.surveyNo.text.toString()
                 newPlot["Location"] = binding.location.text.toString()
                 newPlot["Plot No"] = binding.plotNo.text.toString()
                 newPlot["Area"] = binding.aSize.text.toString()
