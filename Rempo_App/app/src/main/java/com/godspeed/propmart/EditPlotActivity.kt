@@ -53,7 +53,7 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
 //        val title = intent.getStringExtra("title");
         binding.documentRv.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL,false);
         binding.documentRv.adapter = adapter;
-
+        binding.fullprogress.visibility = VISIBLE
         binding.toolbarTitle.text = title;
 
         binding.upload.setOnClickListener {
@@ -79,6 +79,7 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
                 binding.dimensions.text = it["Front"].toString() + "sq.m x " +it["Depth"].toString() + "sq.m"
                 binding.rate.text = it["Bid Price"].toString()
                 binding.description.visibility = GONE
+                binding.fullprogress.visibility = GONE
             }.addOnFailureListener {
                 Toast.makeText(this, "Some Internal Error Occurred !", Toast.LENGTH_SHORT).show()
             }
@@ -216,9 +217,58 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
         }
 
         binding.editPlotDetails.setOnClickListener {
+            binding.editDetailsPopup.visibility = VISIBLE
+            binding.editdetailsll.visibility = GONE
+            binding.editdepro.visibility = VISIBLE
 
+            firestore.collection("Plots").document(plotId).get().addOnSuccessListener{
+                binding.surveyNo.setText(it["Survey No"].toString())
+                binding.plotNo.setText(it["Plot No"].toString())
+                binding.aSize.setText(it["Area"].toString())
+                binding.fron.setText(it["Front"].toString())
+                binding.dept.setText(it["Depth"].toString())
+                binding.road.setText(it["Road"].toString())
+                binding.editdetailsll.visibility = VISIBLE
+                binding.editdepro.visibility = GONE
+            }.addOnFailureListener {
+                Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
+            }
         }
 
+        binding.savePlot.setOnClickListener {
+            val dialog:ProgressDialog = ProgressDialog(this);
+            dialog.setCancelable(false);
+            dialog.setMessage("Please Wait");
+            dialog.show();
+
+            val sno:String = binding.surveyNo.text.toString();
+            val pno:String = binding.plotNo.text.toString();
+            val asi:String = binding.aSize.text.toString();
+            val fro:String = binding.fron.text.toString();
+            val dept:String = binding.dept.text.toString();
+            val road:String = binding.road.text.toString()
+
+            map["Survey No"] = sno;
+            map["Plot No"] = pno;
+            map["Front"] = fro;
+            map["Area"] = asi;
+            map["Depth"] = dept;
+            map["Road"] = road
+
+            firestore.collection("Plots").document(plotId)
+                .update(map as Map<String, Any>).addOnSuccessListener {
+                    Toast.makeText(this,"Details Updated Successfully",Toast.LENGTH_SHORT);
+                    binding.editDetailsPopup.visibility = View.GONE;
+                    dialog.dismiss();
+                    finish();
+                    startActivity(intent);
+                }.addOnFailureListener {
+                    Toast.makeText(this, "Some Internal Error Occurred !", Toast.LENGTH_SHORT).show()
+                }
+        }
+        binding.cancelPlot.setOnClickListener {
+            binding.editDetailsPopup.visibility = GONE
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

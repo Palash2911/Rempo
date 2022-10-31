@@ -22,7 +22,7 @@ class SplashActivity : AppCompatActivity() {
         firestore = FirebaseFirestore.getInstance();
         Handler(Looper.getMainLooper()).postDelayed({
             navigateUser();
-        },3000)
+        },1000)
     }
 
     private fun navigateUser() {
