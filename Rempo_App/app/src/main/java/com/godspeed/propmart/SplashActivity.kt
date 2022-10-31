@@ -3,6 +3,8 @@ package com.godspeed.propmart
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -18,7 +20,9 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
         auth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
-        navigateUser();
+        Handler(Looper.getMainLooper()).postDelayed({
+            navigateUser();
+        },3000)
     }
 
     private fun navigateUser() {
