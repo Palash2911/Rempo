@@ -29,13 +29,12 @@ class PlotCardAdapter(val context:Context , val cards:List<PlotCardModel>):
     }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlotCardAdapter.PlotCardViewHolder {
-
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlotCardViewHolder {
         val binding = PropertyCardBinding.inflate(LayoutInflater.from(context),parent,false);
-        return PlotCardAdapter.PlotCardViewHolder(binding);
+        return PlotCardViewHolder(binding);
     }
 
-    override fun onBindViewHolder(holder: PlotCardAdapter.PlotCardViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PlotCardViewHolder, position: Int) {
         val card:PlotCardModel = cards[position];
         with(holder){
             with(cards[position]){

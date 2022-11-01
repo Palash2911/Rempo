@@ -53,7 +53,7 @@ class plotBuyer : Fragment() {
         binding.plotRv.layoutManager = LinearLayoutManager(requireContext(),
             RecyclerView.VERTICAL,false);
         binding.plotRv.adapter = adapter;
-
+        binding.progressBar3.visibility = VISIBLE
         db.collection("Plots").get().addOnSuccessListener{
             it.documents.iterator().forEach { documentSnapshot ->
                     val title:String = documentSnapshot.get("Area").toString()
