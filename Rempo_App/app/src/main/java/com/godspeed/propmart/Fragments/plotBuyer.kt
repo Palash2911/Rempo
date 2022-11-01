@@ -36,8 +36,8 @@ class plotBuyer : Fragment() {
     private var _binding: FragmentPlotbuyerBinding? = null
     private val db = Firebase.firestore
     private val binding get() = _binding!!
-    private lateinit var adapter: PlotCardAdapter;
-    private lateinit var cards:MutableList<PlotCardModel>
+    private lateinit var adapter: PropertyCardAdapter;
+    private lateinit var cards:MutableList<PropertyCardModel>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,8 +45,8 @@ class plotBuyer : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        cards = ArrayList<PlotCardModel>()
-        adapter = PlotCardAdapter(requireActivity(), cards);
+        cards = ArrayList<PropertyCardModel>()
+        adapter = PropertyCardAdapter(requireActivity(), cards);
         _binding = FragmentPlotbuyerBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -65,7 +65,7 @@ class plotBuyer : Fragment() {
 //                val latitude:String = documentSnapshot.get("latitude") as String;
                     val plotImage:String = documentSnapshot.get("Taluka").toString();
                     val card =
-                        PlotCardModel(documentSnapshot.id, title, seller, address,
+                        PropertyCardModel("Null",documentSnapshot.id, title, seller, address,
                             plotImage, plotnumber, "", "");
                     cards.add(card);
                     adapter.notifyDataSetChanged();

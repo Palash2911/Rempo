@@ -86,13 +86,13 @@ class LocationFragment : Fragment() {
                     it.documents.iterator().forEach { documentSnapshot ->
                         val title:String = documentSnapshot.get("title") as String;
                         val seller:String = documentSnapshot.get("sellerName") as String;
-                        val totalPlots:Long = documentSnapshot.get("totalPlots") as Long;
+                        val totalPlots:String = documentSnapshot.get("totalPlots") as String;
                         val address:String = documentSnapshot.get("address") as String;
                         val longitude:String = documentSnapshot.get("longitude") as String;
                         val latitude:String = documentSnapshot.get("latitude") as String;
 
                         val card:PropertyCardModel =
-                            PropertyCardModel(documentSnapshot.id.toString(),
+                            PropertyCardModel(documentSnapshot.id.toString(), "Null",
                                 title,seller,address,"",totalPlots,latitude,longitude);
 
                         cards.add(card);

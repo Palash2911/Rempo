@@ -46,7 +46,7 @@ class PropertyPageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPropertyPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        binding.propertypagrProgress.visibility = VISIBLE
         //Initializing the Activity
         documentList = ArrayList<DocumentModel>()
         adapter = DocumentAdapter(this,documentList);
@@ -69,6 +69,9 @@ class PropertyPageActivity : AppCompatActivity() {
                     binding.soldPlots.text = snapshot.get("soldPlots").toString();
                     binding.sellerName.text = snapshot.get("sellerName").toString();
                     binding.totalPlots.text = snapshot.get("totalPlots").toString();
+                    binding.propertypagrProgress.visibility = GONE
+                }.addOnFailureListener {
+                    Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
                 }
         }
         else
@@ -84,6 +87,9 @@ class PropertyPageActivity : AppCompatActivity() {
                     binding.soldPlots.visibility = GONE
                     binding.sellerName.text = snapshot.get("Owner Name").toString();
                     binding.totalPlots.text = snapshot.get("Plot No").toString();
+                    binding.propertypagrProgress.visibility = GONE
+                }.addOnFailureListener {
+                    Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
                 }
         }
 
@@ -151,13 +157,13 @@ class PropertyPageActivity : AppCompatActivity() {
             db.collection("Layouts").document(layoutIds).get().addOnSuccessListener{
 //                val title:String = documentSnapshot.get("Area") as String;
                     val seller:String = it["sellerName"] as String;
-                    val plotnumber:Long = it["totalPlots"].toString().toLong();
+                    val plotnumber:String = it["totalPlots"].toString();
                     val address:String = it["address"] as String;
 //                val longitude:String = documentSnapshot.get("longitude") as String;
 //                val latitude:String = documentSnapshot.get("latitude") as String;
                     val plotImage:String = it["soldPlots"].toString();
                     val card =
-                        PropertyCardModel(layoutIds, "title", seller, address,
+                        PropertyCardModel(layoutIds, "Null", "title", seller, address,
                             plotImage, plotnumber, "", "");
                 firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
                     .collection("saved")

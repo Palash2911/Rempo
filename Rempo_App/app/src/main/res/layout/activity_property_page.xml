@@ -1,44 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".PropertyPageActivity">
 
-    <LinearLayout
-        android:id="@+id/toolbar"
+    <ProgressBar
+        android:id="@+id/propertypagrProgress"
+        style="?android:attr/progressBarStyle"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:padding="145dp"
+        android:visibility="gone" />
 
-        <ImageView
-            android:id="@+id/back_button"
-            android:layout_width="32dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/arrow" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/toolbar_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="12dp"
-            android:gravity="center"
-            android:text="Layout at Survey No. 35/3 A and..."
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+        <LinearLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal">
 
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/back_button"
+                android:layout_width="32dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/arrow" />
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="12dp"
+                android:gravity="center"
+                android:text="Layout at Survey No. 35/3 A and..."
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/toolbar"
-            android:layout_marginTop="5dp"
-            android:layout_above="@id/plot_selection">
+            android:layout_marginTop="55dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -61,7 +72,6 @@
                 </androidx.cardview.widget.CardView>
 
 
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -74,6 +84,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -81,7 +92,6 @@
                     android:layout_marginRight="16dp"
                     android:text="Layout at Survey No. 35/3 A and 35/1 A "
                     android:textColor="@color/black"
-                    android:id="@+id/title"
                     android:textSize="16dp"
                     android:textStyle="normal" />
 
@@ -115,12 +125,12 @@
                         android:textSize="12dp" />
 
                     <TextView
+                        android:id="@+id/totalPlots"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="20dp"
-                        android:text="70"
-                        android:id="@+id/totalPlots"/>
+                        android:text="70" />
 
                     <TextView
                         android:id="@+id/available"
@@ -133,12 +143,12 @@
                         android:textSize="12dp" />
 
                     <TextView
+                        android:id="@+id/availablePlots"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="20dp"
-                        android:text="52"
-                        android:id="@+id/availablePlots"/>
+                        android:text="52" />
 
                     <TextView
                         android:id="@+id/soldtt"
@@ -151,12 +161,12 @@
                         android:textSize="12dp" />
 
                     <TextView
+                        android:id="@+id/sold_plots"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="20dp"
-                        android:text="8"
-                        android:id="@+id/sold_plots"/>
+                        android:text="8" />
                 </LinearLayout>
 
                 <TextView
@@ -167,7 +177,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginRight="16dp"
                     android:text="Haran tekdi, Near Samruddhi Mahamarga,
-Mehkar, Buldhana, 411234"
+    Mehkar, Buldhana, 411234"
                     android:textColor="#0A0A0A"
                     android:textSize="12dp" />
 
@@ -190,35 +200,37 @@ Mehkar, Buldhana, 411234"
                     android:textStyle="bold" />
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/document_rv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
-                    android:id="@+id/document_rv"
                     tools:listitem="@layout/document_list_item" />
 
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
+
         <androidx.cardview.widget.CardView
+            android:id="@+id/plot_selection"
             android:layout_width="match_parent"
             android:layout_height="89dp"
-          android:layout_alignParentBottom="true"
-            android:id="@+id/plot_selection"
-            android:outlineAmbientShadowColor="#e5e5e5"
+            android:layout_alignParentBottom="true"
             android:elevation="6dp"
+            android:outlineAmbientShadowColor="#e5e5e5"
             app:cardElevation="6dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                >
+                android:orientation="horizontal">
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="55dp"
-                    android:orientation="vertical"
-                    android:layout_weight="1"
                     android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
                     android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -285,4 +297,7 @@ Mehkar, Buldhana, 411234"
 
 
         </androidx.cardview.widget.CardView>
-</RelativeLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
