@@ -42,7 +42,6 @@ class propertyBuyer : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         cards = ArrayList<PropertyCardModel>()
         adapter = PropertyCardAdapter(requireActivity(), cards);
         binding = FragmentPropertyBuyerBinding.inflate(inflater, container, false)
@@ -56,13 +55,13 @@ class propertyBuyer : Fragment() {
             it.documents.iterator().forEach { documentSnapshot ->
 //                val title:String = documentSnapshot.get("Area") as String;
                 val seller:String = documentSnapshot.get("sellerName") as String;
-                val plotnumber:Long = documentSnapshot.get("totalPlots").toString().toLong();
+                val plotnumber:String = documentSnapshot.get("totalPlots").toString();
                 val address:String = documentSnapshot.get("address") as String;
 //                val longitude:String = documentSnapshot.get("longitude") as String;
 //                val latitude:String = documentSnapshot.get("latitude") as String;
                 val plotImage:String = documentSnapshot.get("soldPlots").toString();
                 val card =
-                    PropertyCardModel(documentSnapshot.id, "title", seller, address,
+                    PropertyCardModel(documentSnapshot.id, "Null", "title", seller, address,
                         plotImage, plotnumber, "", "");
                 cards.add(card);
                 adapter.notifyDataSetChanged();

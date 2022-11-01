@@ -82,7 +82,7 @@
                             android:id="@+id/plot_count"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="78"
+                            android:text=""
                             android:textColor="#B6B2B2"
                             android:textSize="12dp" />
                     </LinearLayout>

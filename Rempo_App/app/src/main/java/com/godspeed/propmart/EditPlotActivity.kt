@@ -17,10 +17,8 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.godspeed.propmart.Adapters.DocumentAdapter
 import com.godspeed.propmart.Adapters.DocumentEditAdapter
 import com.godspeed.propmart.Models.DocumentEditModel
-import com.godspeed.propmart.Models.DocumentModel
 import com.godspeed.propmart.databinding.ActivityEditPlotBinding
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.OnSuccessListener
@@ -28,6 +26,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
 
@@ -274,7 +273,7 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         val dialog:ProgressDialog = ProgressDialog(this);
-        val date:Date = Date();
+        val date: Date = Date();
         selectedPdf = data?.data!!
 
         if(selectedPdf!=null){
