@@ -39,7 +39,7 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     var doc3 = 0
     var doc4 = 0
     val time = DateTimeFormatter
-        .ofPattern("yyyy-MM-dd HH:mm:ss")
+        .ofPattern("yyyy-MM-dd")
         .withZone(ZoneOffset.UTC)
         .format(Instant.now()).toString()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -301,7 +301,7 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         binding.deletebtn2.setOnClickListener{
             binding.deletebtn2.visibility = GONE
             binding.progressBar5.visibility = VISIBLE
-            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc2" + time)
+            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc2_" + time)
             storageref.delete().addOnSuccessListener {
                 newPlot["Nakasha"]=""
                 Toast.makeText(this,"Deleted", Toast.LENGTH_SHORT).show()
@@ -321,12 +321,12 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         binding.deletebtn3.setOnClickListener{
             binding.deletebtn3.visibility = GONE
             binding.progressBar6.visibility = VISIBLE
-            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc3" + time)
+            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc3_" + time)
             storageref.delete().addOnSuccessListener {
                 newPlot["NA Order"]=""
                 Toast.makeText(this,"Deleted", Toast.LENGTH_SHORT).show()
                 binding.progressBar6.visibility = GONE
-                binding.uploadbtn2.visibility = VISIBLE
+                binding.uploadbtn3.visibility = VISIBLE
                 doc3=0
             }.addOnFailureListener {
                 Toast.makeText(this,"Something Went Wrong", Toast.LENGTH_SHORT).show()
@@ -341,7 +341,7 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         binding.deletebtn4.setOnClickListener{
             binding.deletebtn4.visibility = GONE
             binding.progressBar7.visibility = VISIBLE
-            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc4" + time)
+            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc4_" + time)
             storageref.delete().addOnSuccessListener {
                 newPlot["Other"]=""
                 Toast.makeText(this,"Deleted", Toast.LENGTH_SHORT).show()

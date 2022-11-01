@@ -17,8 +17,9 @@ import com.rajat.pdfviewer.PdfViewerActivity
 class DocumentAdapter(val context: Context,val documents:ArrayList<DocumentModel>)
     : RecyclerView.Adapter<DocumentAdapter.DocumentViewHolder>() {
 
-    inner class DocumentViewHolder(val binding: DocumentListItemBinding):
-        RecyclerView.ViewHolder(binding.root)
+    class DocumentViewHolder(val binding: DocumentListItemBinding): RecyclerView.ViewHolder(binding.root){
+
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DocumentViewHolder {
         val binding = DocumentListItemBinding.inflate(LayoutInflater.from(context),parent,false);
@@ -27,24 +28,19 @@ class DocumentAdapter(val context: Context,val documents:ArrayList<DocumentModel
 
     override fun onBindViewHolder(holder: DocumentViewHolder, position: Int) {
         val document:DocumentModel = documents[position];
-
         with(holder){
-            this.binding.documentName.text = document.title;
-
-            this.itemView.setOnClickListener{
-
-                context.startActivity(
-
-                    // Use 'launchPdfFromPath' if you want to use assets file (enable "fromAssets" flag) / internal directory
-
-                    PdfViewerActivity.launchPdfFromUrl(           //PdfViewerActivity.Companion.launchPdfFromUrl(..   :: incase of JAVA
-                        context,
-                        document.downloadUrl,                                // PDF URL in String format
-                        document.title,                        // PDF Name/Title in String format
-                        "",                  // If nothing specific, Put "" it will save to Downloads
-                       true                 // This param is true by defualt.
+                this.binding.documentName.text = document.title;
+                this.itemView.setOnClickListener{
+                    context.startActivity(
+                        // Use 'launchPdfFromPath' if you want to use assets file (enable "fromAssets" flag) / internal directory
+                        PdfViewerActivity.launchPdfFromUrl(           //PdfViewerActivity.Companion.launchPdfFromUrl(..   :: incase of JAVA
+                            context,
+                            document.downloadUrl,                                // PDF URL in String format
+                            document.title,                        // PDF Name/Title in String format
+                            "",                  // If nothing specific, Put "" it will save to Downloads
+                            true                 // This param is true by defualt.
+                        )
                     )
-                )
             }
         }
     }
@@ -52,6 +48,4 @@ class DocumentAdapter(val context: Context,val documents:ArrayList<DocumentModel
     override fun getItemCount(): Int {
        return documents.size
     }
-
-
 }

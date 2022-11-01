@@ -73,6 +73,36 @@ class PropertyPageActivity : AppCompatActivity() {
                 }.addOnFailureListener {
                     Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
                 }
+            binding.bookmarkpropertypage.setOnClickListener {
+                db.collection("Layouts").document(layoutIds).get().addOnSuccessListener{
+//                val title:String = documentSnapshot.get("Area") as String;
+                    val seller:String = it["sellerName"] as String;
+                    val plotnumber:String = it["totalPlots"].toString();
+                    val address:String = it["address"] as String;
+//                val longitude:String = documentSnapshot.get("longitude") as String;
+//                val latitude:String = documentSnapshot.get("latitude") as String;
+                    val plotImage:String = it["soldPlots"].toString();
+                    val card =
+                        PropertyCardModel(layoutIds, "Null", "title", seller, address,
+                            plotImage, plotnumber, "", "");
+                    firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
+                        .collection("saved")
+                        .document("Layout_"+layoutIds).set(card).addOnSuccessListener {
+                            binding.bookmarkpropertypage.visibility = View.GONE;
+                            binding.bookmarksaved.visibility = View.VISIBLE;
+//                       Toast.make(this,"Added to Bookmarks", Toast.LENGTH_SHORT).show();
+                        }
+                    adapter.notifyDataSetChanged();
+                }
+            }
+            binding.bookmarksaved.setOnClickListener {
+                firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString()).collection("saved")
+                    .document("Layout_"+layoutIds).delete().addOnSuccessListener {
+                        binding.bookmarksaved.visibility = View.GONE;
+                        binding.bookmarkpropertypage.visibility = View.VISIBLE;
+//                    Snackbar.make(binding.root,"Removed from Bookmarks, Visit Homepage to Update",Snackbar.LENGTH_LONG).show();
+                    }
+            }
         }
         else
         {
@@ -91,6 +121,36 @@ class PropertyPageActivity : AppCompatActivity() {
                 }.addOnFailureListener {
                     Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
                 }
+            binding.bookmarkpropertypage.setOnClickListener {
+                db.collection("Plots").document(plotId).get().addOnSuccessListener{
+//                val title:String = documentSnapshot.get("Area") as String;
+                    val seller:String = it["Owner Name"] as String;
+                    val plotnumber:String = it["Plot No"].toString();
+                    val address:String = it["Road"] as String;
+//                val longitude:String = documentSnapshot.get("longitude") as String;
+//                val latitude:String = documentSnapshot.get("latitude") as String;
+                    val plotImage:String = it["Uid"].toString();
+                    val card =
+                        PropertyCardModel("Null", plotId, "title", seller, address,
+                            plotImage, plotnumber, "", "");
+                    firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
+                        .collection("saved")
+                        .document("Plot_$plotId").set(card).addOnSuccessListener {
+                            binding.bookmarkpropertypage.visibility = View.GONE;
+                            binding.bookmarksaved.visibility = View.VISIBLE;
+//                       Toast.make(this,"Added to Bookmarks", Toast.LENGTH_SHORT).show();
+                        }
+                    adapter.notifyDataSetChanged();
+                }
+            }
+            binding.bookmarksaved.setOnClickListener {
+                firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString()).collection("saved")
+                    .document("Plot_$plotId").delete().addOnSuccessListener {
+                        binding.bookmarksaved.visibility = View.GONE;
+                        binding.bookmarkpropertypage.visibility = View.VISIBLE;
+//                    Snackbar.make(binding.root,"Removed from Bookmarks, Visit Homepage to Update",Snackbar.LENGTH_LONG).show();
+                    }
+            }
         }
 
 //        Log.d("plotList",Arrays.toString(plotList.toArray()));
@@ -121,7 +181,7 @@ class PropertyPageActivity : AppCompatActivity() {
         binding.documentRv.adapter = adapter;
 
         // PLOT ID TO REPLACE
-        db.collection("Plots").document("csskjIpbigJ9YW661RKQ").get().addOnSuccessListener {
+        db.collection("Plots").document(plotId).get().addOnSuccessListener {
             if(it["Nakasha"].toString().isNotEmpty())
             {
                 val docname = "Nakasha"
@@ -150,52 +210,22 @@ class PropertyPageActivity : AppCompatActivity() {
                 val docCard = DocumentModel(docname, docurl)
                 documentList.add(docCard)
             }
+            Log.d("DOCUMS", documentList.toString())
             adapter.notifyDataSetChanged()
-            }
-
-        binding.bookmarkpropertypage.setOnClickListener {
-            db.collection("Layouts").document(layoutIds).get().addOnSuccessListener{
-//                val title:String = documentSnapshot.get("Area") as String;
-                    val seller:String = it["sellerName"] as String;
-                    val plotnumber:String = it["totalPlots"].toString();
-                    val address:String = it["address"] as String;
-//                val longitude:String = documentSnapshot.get("longitude") as String;
-//                val latitude:String = documentSnapshot.get("latitude") as String;
-                    val plotImage:String = it["soldPlots"].toString();
-                    val card =
-                        PropertyCardModel(layoutIds, "Null", "title", seller, address,
-                            plotImage, plotnumber, "", "");
-                firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
-                    .collection("saved")
-                    .document(layoutIds).set(card).addOnSuccessListener {
-                        binding.bookmarkpropertypage.visibility = View.GONE;
-                        binding.bookmarksaved.visibility = View.VISIBLE;
-//                       Toast.make(this,"Added to Bookmarks", Toast.LENGTH_SHORT).show();
-                    }
-                    adapter.notifyDataSetChanged();
-                }
-        }
-        binding.bookmarksaved.setOnClickListener {
-            firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString()).collection("saved")
-                .document(layoutIds).delete().addOnSuccessListener {
-                    binding.bookmarksaved.visibility = View.GONE;
-                    binding.bookmarkpropertypage.visibility = View.VISIBLE;
-//                    Snackbar.make(binding.root,"Removed from Bookmarks, Visit Homepage to Update",Snackbar.LENGTH_LONG).show();
-                }
         }
 
         //Getting List of Documents
-        val ref:CollectionReference = firebase.collection("Layouts")
-            .document(layoutIds).collection("documents");
-        ref.get().addOnSuccessListener { it ->
-            it.documents.iterator().forEach { document->
-                val documentModel: DocumentModel = DocumentModel(
-                    document.getString("title").toString(),
-                    document.getString("downloadUrl").toString())
-                documentList.add(documentModel);
-            }
-            adapter.notifyDataSetChanged();
-        }
+//        val ref:CollectionReference = firebase.collection("Plots")
+//            .document(plotId).collection("documents");
+//        ref.get().addOnSuccessListener { it ->
+//            it.documents.iterator().forEach { document->
+//                val documentModel: DocumentModel = DocumentModel(
+//                    document.getString("title").toString(),
+//                    document.getString("downloadUrl").toString())
+//                documentList.add(documentModel);
+//            }
+//            adapter.notifyDataSetChanged();
+//        }
 
         val docRef = firestore
             .collection("Users/" + Firebase.auth.currentUser?.uid.toString() + "/saved")
