@@ -4,6 +4,7 @@ import android.app.DownloadManager
 import android.content.Context
 import android.content.Context.DOWNLOAD_SERVICE
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat.getSystemService
@@ -14,7 +15,7 @@ import com.godspeed.propmart.WebView
 import com.godspeed.propmart.databinding.DocumentListItemBinding
 import com.rajat.pdfviewer.PdfViewerActivity
 
-class DocumentAdapter(val context: Context,val documents:ArrayList<DocumentModel>)
+class DocumentAdapter(val context: Context,val documents:List<DocumentModel>)
     : RecyclerView.Adapter<DocumentAdapter.DocumentViewHolder>() {
 
     class DocumentViewHolder(val binding: DocumentListItemBinding): RecyclerView.ViewHolder(binding.root){
@@ -27,20 +28,22 @@ class DocumentAdapter(val context: Context,val documents:ArrayList<DocumentModel
     }
 
     override fun onBindViewHolder(holder: DocumentViewHolder, position: Int) {
-        val document:DocumentModel = documents[position];
         with(holder){
-                this.binding.documentName.text = document.title;
-                this.itemView.setOnClickListener{
+            with(documents[position]){
+                Log.d("TATA", this.downloadUrl)
+                binding.documentName.text = this.title;
+                itemView.setOnClickListener{
                     context.startActivity(
                         // Use 'launchPdfFromPath' if you want to use assets file (enable "fromAssets" flag) / internal directory
                         PdfViewerActivity.launchPdfFromUrl(           //PdfViewerActivity.Companion.launchPdfFromUrl(..   :: incase of JAVA
                             context,
-                            document.downloadUrl,                                // PDF URL in String format
-                            document.title,                        // PDF Name/Title in String format
+                            this.downloadUrl,                                // PDF URL in String format
+                            this.title,                        // PDF Name/Title in String format
                             "",                  // If nothing specific, Put "" it will save to Downloads
                             true                 // This param is true by defualt.
                         )
                     )
+                }
             }
         }
     }
