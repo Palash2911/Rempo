@@ -32,16 +32,12 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private lateinit var storage: FirebaseStorage
     private val auth = FirebaseAuth.getInstance()
     val newPlot:HashMap<String, Any> = HashMap()
-    val documentPlot:HashMap<String, Any> = HashMap()
     var i=0
     var doc1 = 0
     var doc2 = 0
     var doc3 = 0
     var doc4 = 0
-    val time = DateTimeFormatter
-        .ofPattern("yyyy-MM-dd")
-        .withZone(ZoneOffset.UTC)
-        .format(Instant.now()).toString()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySellPropBinding.inflate(layoutInflater)
@@ -281,7 +277,7 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         binding.deletebtn1.setOnClickListener{
             binding.deletebtn1.visibility = GONE
             binding.progressBar4.visibility = VISIBLE
-            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc1_" + time)
+            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc1_" + newPlot["Plot No"])
             storageref.delete().addOnSuccessListener {
                 newPlot["712"]=""
                 Toast.makeText(this,"Deleted", Toast.LENGTH_SHORT).show()
@@ -301,7 +297,7 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         binding.deletebtn2.setOnClickListener{
             binding.deletebtn2.visibility = GONE
             binding.progressBar5.visibility = VISIBLE
-            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc2_" + time)
+            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc2_" + newPlot["Plot No"])
             storageref.delete().addOnSuccessListener {
                 newPlot["Nakasha"]=""
                 Toast.makeText(this,"Deleted", Toast.LENGTH_SHORT).show()
@@ -321,7 +317,7 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         binding.deletebtn3.setOnClickListener{
             binding.deletebtn3.visibility = GONE
             binding.progressBar6.visibility = VISIBLE
-            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc3_" + time)
+            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc3_" + newPlot["Plot No"])
             storageref.delete().addOnSuccessListener {
                 newPlot["NA Order"]=""
                 Toast.makeText(this,"Deleted", Toast.LENGTH_SHORT).show()
@@ -341,7 +337,7 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         binding.deletebtn4.setOnClickListener{
             binding.deletebtn4.visibility = GONE
             binding.progressBar7.visibility = VISIBLE
-            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc4_" + time)
+            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc4_" + newPlot["Plot No"])
             storageref.delete().addOnSuccessListener {
                 newPlot["Other"]=""
                 Toast.makeText(this,"Deleted", Toast.LENGTH_SHORT).show()
@@ -390,7 +386,7 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         {
             binding.uploadbtn1.visibility = GONE
             binding.progressBar4.visibility = VISIBLE
-            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc1_" + time)
+            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc1_" + newPlot["Plot No"])
             storageref.putFile(data?.data!!).addOnSuccessListener {
                 storageref.downloadUrl.addOnSuccessListener{ uri ->
                     val downloadUrl = uri.toString();
@@ -406,7 +402,7 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         {
             binding.uploadbtn2.visibility = GONE
             binding.progressBar5.visibility = VISIBLE
-            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc2_" + time)
+            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc2_" + newPlot["Plot No"])
             storageref.putFile(data?.data!!).addOnSuccessListener {
                 storageref.downloadUrl.addOnSuccessListener{ uri ->
                     val downloadUrl = uri.toString();
@@ -422,7 +418,7 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         {
             binding.uploadbtn3.visibility = GONE
             binding.progressBar6.visibility = VISIBLE
-            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc3_" + time)
+            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc3_" + newPlot["Plot No"])
             storageref.putFile(data?.data!!).addOnSuccessListener {
                 storageref.downloadUrl.addOnSuccessListener{ uri ->
                     val downloadUrl = uri.toString();
@@ -442,7 +438,7 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         {
             binding.uploadbtn4.visibility = GONE
             binding.progressBar7.visibility = VISIBLE
-            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc4_" + time)
+            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc4_" + newPlot["Plot No"])
             storageref.putFile(data?.data!!).addOnSuccessListener {
                 storageref.downloadUrl.addOnSuccessListener{ uri ->
                     val downloadUrl = uri.toString();

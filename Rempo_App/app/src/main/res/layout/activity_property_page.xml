@@ -207,6 +207,11 @@
                     android:layout_marginRight="16dp"
                     tools:listitem="@layout/document_list_item" />
 
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="match_parent"
+                    android:layout_height="89dp" />
+
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
@@ -218,6 +223,7 @@
             android:layout_alignParentBottom="true"
             android:elevation="6dp"
             android:outlineAmbientShadowColor="#e5e5e5"
+            android:visibility="visible"
             app:cardElevation="6dp">
 
             <LinearLayout

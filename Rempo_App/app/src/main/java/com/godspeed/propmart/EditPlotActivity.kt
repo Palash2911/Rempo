@@ -55,12 +55,6 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
         binding.fullprogress.visibility = VISIBLE
         binding.toolbarTitle.text = title;
 
-        binding.upload.setOnClickListener {
-            val pdfIntent:Intent = Intent();
-            pdfIntent.setAction(Intent.ACTION_GET_CONTENT);
-            pdfIntent.setType("application/pdf");
-            startActivityForResult(pdfIntent,25);
-        }
 
         if(layoutId == "Null")
         {
@@ -84,35 +78,44 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
             }
         }
 
-        firestore.collection("Plots").document("csskjIpbigJ9YW661RKQ").get().addOnSuccessListener {
+        firestore.collection("Plots").document("7LH3ntlfcZmoMCWh5jPc").get().addOnSuccessListener {
+            val docname = "Nakasha"
+            var docurl = ""
+            val pno = it["Plot No"].toString()
+            val pid = "7LH3ntlfcZmoMCWh5jPc"
             if(it["Nakasha"].toString().isNotEmpty())
             {
-                val docname = "Nakasha"
-                val docurl = it["Nakasha"].toString()
-                val docCard = DocumentEditModel(docname, docurl)
-                documentList.add(docCard)
+                docurl = it["Nakasha"].toString()
             }
+            val docCard = DocumentEditModel(docname, docurl, pno, pid)
+            documentList.add(docCard)
+
+            val docname2 = "7/12"
+            var docurl2 = ""
             if(it["712"].toString().isNotEmpty())
             {
-                val docname = "7/12"
-                val docurl = it["712"].toString()
-                val docCard = DocumentEditModel(docname, docurl)
-                documentList.add(docCard)
+                docurl2 = it["712"].toString()
             }
+            val docCard2 = DocumentEditModel(docname2, docurl2, pno, pid)
+            documentList.add(docCard2)
+
+            val docname3 = "NA Order"
+            var docurl3 = ""
             if(it["NA Order"].toString().isNotEmpty())
             {
-                val docname = "NA Order"
-                val docurl = it["NA Order"].toString()
-                val docCard = DocumentEditModel(docname, docurl)
-                documentList.add(docCard)
+                docurl3 = it["NA Order"].toString()
             }
+            val docCard3 = DocumentEditModel(docname3, docurl3, pno, pid)
+            documentList.add(docCard3)
+
+            val docname4 = "Other"
+            var docurl4 = ""
             if(it["Other"].toString().isNotEmpty())
             {
-                val docname = "Other"
-                val docurl = it["Other"].toString()
-                val docCard = DocumentEditModel(docname, docurl)
-                documentList.add(docCard)
+                docurl4 = it["Other"].toString()
             }
+            val docCard4 = DocumentEditModel(docname4, docurl4, pno, pid)
+            documentList.add(docCard4)
             adapter.notifyDataSetChanged()
         }
 
