@@ -20,7 +20,7 @@ class DocumentAdapter(val context: Context,val documents:List<DocumentModel>)
 
     class DocumentViewHolder(val binding: DocumentListItemBinding): RecyclerView.ViewHolder(binding.root){
 
-        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DocumentViewHolder {
         val binding = DocumentListItemBinding.inflate(LayoutInflater.from(context),parent,false);

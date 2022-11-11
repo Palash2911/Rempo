@@ -1,6 +1,7 @@
 package com.godspeed.propmart.Adapters
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View.GONE
 import android.view.View.VISIBLE
@@ -26,15 +27,31 @@ import java.util.*
 class DocumentEditAdapter(val context:android.content.Context , val documentList:List<DocumentEditModel>):
 RecyclerView.Adapter<DocumentEditAdapter.DocumentEditViewHolder>(){
 
+    private lateinit var mlist : onItemClickListner
+
+    interface onItemClickListner{
+        fun onItemClick(position: Int)
+    }
+
+    fun setOnItemClickListener(listner: onItemClickListner){
+        mlist = listner
+    }
+
     val db: FirebaseFirestore = FirebaseFirestore.getInstance();
     val auth: FirebaseAuth = FirebaseAuth.getInstance();
 
-inner class DocumentEditViewHolder(val binding:DocumentEditLayoutBinding):RecyclerView.ViewHolder(binding.root)
+    class DocumentEditViewHolder(val binding: DocumentEditLayoutBinding, listener: onItemClickListner): RecyclerView.ViewHolder(binding.root){
+        init {
+            itemView.setOnClickListener{
+                listener.onItemClick(adapterPosition)
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DocumentEditViewHolder {
 
         val binding = DocumentEditLayoutBinding.inflate(LayoutInflater.from(context),parent,false);
-        return DocumentEditViewHolder(binding);
+        return DocumentEditViewHolder(binding, mlist);
     }
 
     override fun onBindViewHolder(holder: DocumentEditViewHolder, position: Int) {
@@ -42,18 +59,18 @@ inner class DocumentEditViewHolder(val binding:DocumentEditLayoutBinding):Recycl
         {
             with(documentList[position])
             {
-                itemView.setOnClickListener{
-                    context.startActivity(
-                        // Use 'launchPdfFromPath' if you want to use assets file (enable "fromAssets" flag) / internal directory
-                        PdfViewerActivity.launchPdfFromUrl(           //PdfViewerActivity.Companion.launchPdfFromUrl(..   :: incase of JAVA
-                            context,
-                            this.downloadUrl,                                // PDF URL in String format
-                            this.title,                        // PDF Name/Title in String format
-                            "",                  // If nothing specific, Put "" it will save to Downloads
-                            true                 // This param is true by defualt.
-                        )
-                    )
-                }
+//                itemView.setOnClickListener{
+//                    context.startActivity(
+//                        // Use 'launchPdfFromPath' if you want to use assets file (enable "fromAssets" flag) / internal directory
+//                        PdfViewerActivity.launchPdfFromUrl(           //PdfViewerActivity.Companion.launchPdfFromUrl(..   :: incase of JAVA
+//                            context,
+//                            this.downloadUrl,                                // PDF URL in String format
+//                            this.title,                        // PDF Name/Title in String format
+//                            "",                  // If nothing specific, Put "" it will save to Downloads
+//                            true                 // This param is true by defualt.
+//                        )
+//                    )
+//                }
                 binding.documentName.text = this.title;
                 if(this.downloadUrl.isNotEmpty())
                 {
@@ -69,6 +86,7 @@ inner class DocumentEditViewHolder(val binding:DocumentEditLayoutBinding):Recycl
                 {
                     binding.deletebtn.setOnClickListener {
                         binding.progressBar.visibility = VISIBLE
+                        binding.deletebtn.visibility = GONE
                         val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.currentUser?.uid.toString() + "_doc1_" + this.plotNo)
                         storageref.delete().addOnSuccessListener {
                             db.collection("Plots").document(this.plotId).update("712", "").addOnSuccessListener {
@@ -99,6 +117,7 @@ inner class DocumentEditViewHolder(val binding:DocumentEditLayoutBinding):Recycl
                 {
                     binding.deletebtn.setOnClickListener {
                         binding.progressBar.visibility = VISIBLE
+                        binding.deletebtn.visibility = GONE
                         val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.currentUser?.uid.toString() + "_doc2_" + this.plotNo)
                         storageref.delete().addOnSuccessListener {
                             db.collection("Plots").document(this.plotId).update("Nakasha", "").addOnSuccessListener {
@@ -122,6 +141,7 @@ inner class DocumentEditViewHolder(val binding:DocumentEditLayoutBinding):Recycl
                 {
                     binding.deletebtn.setOnClickListener {
                         binding.progressBar.visibility = VISIBLE
+                        binding.deletebtn.visibility = GONE
                         val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.currentUser?.uid.toString() + "_doc3_" + this.plotNo)
                         storageref.delete().addOnSuccessListener {
                             db.collection("Plots").document(this.plotId).update("NA Order", "").addOnSuccessListener {
@@ -145,6 +165,7 @@ inner class DocumentEditViewHolder(val binding:DocumentEditLayoutBinding):Recycl
                 {
                     binding.deletebtn.setOnClickListener {
                         binding.progressBar.visibility = VISIBLE
+                        binding.deletebtn.visibility = GONE
                         val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.currentUser?.uid.toString() + "_doc4_" + this.plotNo)
                         storageref.delete().addOnSuccessListener {
                             db.collection("Plots").document(this.plotId).update("Other", "").addOnSuccessListener {
@@ -169,83 +190,8 @@ inner class DocumentEditViewHolder(val binding:DocumentEditLayoutBinding):Recycl
         }
     }
 
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//        if(requestCode==1 && resultCode == AppCompatActivity.RESULT_OK)
-//        {
-//            binding.uploadbtn1.visibility = GONE
-//            binding.progressBar4.visibility = VISIBLE
-//            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc1_" + newPlot["Plot No"])
-//            storageref.putFile(data?.data!!).addOnSuccessListener {
-//                storageref.downloadUrl.addOnSuccessListener{ uri ->
-//                    val downloadUrl = uri.toString();
-//                    val docs:HashMap<String, Any> = HashMap()
-//                    newPlot["712"] = downloadUrl
-//                    Toast.makeText(this , "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
-//                    binding.deletebtn1.visibility = VISIBLE
-//                    binding.progressBar4.visibility = GONE
-//                }
-//            }
-//        }
-//        else if(requestCode==2 && resultCode == AppCompatActivity.RESULT_OK)
-//        {
-//            binding.uploadbtn2.visibility = GONE
-//            binding.progressBar5.visibility = VISIBLE
-//            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc2_" + newPlot["Plot No"])
-//            storageref.putFile(data?.data!!).addOnSuccessListener {
-//                storageref.downloadUrl.addOnSuccessListener{ uri ->
-//                    val downloadUrl = uri.toString();
-//                    val docs:HashMap<String, Any> = HashMap()
-//                    newPlot["Nakasha"] = downloadUrl
-//                    Toast.makeText(this , "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
-//                    binding.deletebtn2.visibility = VISIBLE
-//                    binding.progressBar5.visibility = GONE
-//                }
-//            }
-//        }
-//        else if(requestCode==3 && resultCode == AppCompatActivity.RESULT_OK)
-//        {
-//            binding.uploadbtn3.visibility = GONE
-//            binding.progressBar6.visibility = VISIBLE
-//            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc3_" + newPlot["Plot No"])
-//            storageref.putFile(data?.data!!).addOnSuccessListener {
-//                storageref.downloadUrl.addOnSuccessListener{ uri ->
-//                    val downloadUrl = uri.toString();
-//                    val docs:HashMap<String, Any> = HashMap()
-//                    newPlot["NA Order"] = downloadUrl
-//                    Toast.makeText(this , "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
-//                    binding.deletebtn3.visibility = VISIBLE
-//                    binding.progressBar6.visibility = GONE
-//                }.addOnFailureListener {
-//                    Toast.makeText(this, "Some Internal Error Occurred !", Toast.LENGTH_SHORT).show()
-//                }
-//            }.addOnFailureListener {
-//                Toast.makeText(this, "Some Internal Error Occurred !", Toast.LENGTH_SHORT).show()
-//            }
-//        }
-//        else if(requestCode==4 && resultCode == AppCompatActivity.RESULT_OK)
-//        {
-//            binding.uploadbtn4.visibility = GONE
-//            binding.progressBar7.visibility = VISIBLE
-//            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.uid.toString() + "_doc4_" + newPlot["Plot No"])
-//            storageref.putFile(data?.data!!).addOnSuccessListener {
-//                storageref.downloadUrl.addOnSuccessListener{ uri ->
-//                    val downloadUrl = uri.toString();
-//                    val docs:HashMap<String, Any> = HashMap()
-//                    newPlot["Other"] = downloadUrl
-//                    Toast.makeText(this , "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
-//                    binding.deletebtn4.visibility = VISIBLE
-//                    binding.progressBar7.visibility = GONE
-//                }.addOnFailureListener {
-//                    Toast.makeText(this, "Some Internal Error Occurred !", Toast.LENGTH_SHORT).show()
-//                }
-//            }.addOnFailureListener {
-//                Toast.makeText(this, "Some Internal Error Occurred !", Toast.LENGTH_SHORT).show()
-//            }
-//        }
-//    }
-
     override fun getItemCount(): Int {
         return documentList.size
     }
+
 }
