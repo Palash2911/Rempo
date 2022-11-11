@@ -41,6 +41,7 @@ class sellerHomepageAdapter(val context: Context, val cards:List<sellerhomepageM
                     extras.putString("layoutId",this.layoutId);
                     extras.putString("plotId",this.plotId);
                     extras.putString("title",this.title);
+                    extras.putString("plotNo", this.plotnumber)
                     intent.putExtras(extras)
                     context.startActivity(intent);
                 }

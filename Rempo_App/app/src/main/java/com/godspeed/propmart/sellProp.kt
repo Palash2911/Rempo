@@ -455,6 +455,7 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 }
         }
     }
+
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
         val item = p0!!.selectedItem.toString()
         if(binding.CardView2.visibility== VISIBLE)

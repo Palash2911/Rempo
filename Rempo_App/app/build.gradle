@@ -48,9 +48,6 @@ android {
             }
         }
     }
-    buildFeatures {
-        viewBinding true
-    }
 }
 
 dependencies {
@@ -63,6 +60,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.android.databinding:viewbinding:7.3.1'
     implementation "com.airbnb.android:lottie:3.2.0"
     implementation 'com.google.firebase:firebase-common-ktx:20.1.1'
     implementation 'com.google.firebase:firebase-auth-ktx:21.0.5'
@@ -109,6 +107,6 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
     // OTP VIEW
     implementation 'com.github.aabhasr1:OtpView:v1.1.2-ktx'
-
+    implementation 'com.github.emreesen27:Android-Nested-Progress:v1.0.2'
     implementation 'com.github.afreakyelf:Pdf-Viewer:v1.0.7'
 }

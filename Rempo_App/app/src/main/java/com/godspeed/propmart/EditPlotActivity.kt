@@ -22,7 +22,10 @@ import com.godspeed.propmart.Models.DocumentEditModel
 import com.godspeed.propmart.databinding.ActivityEditPlotBinding
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.util.*
@@ -37,6 +40,7 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
     private lateinit var documentList: ArrayList<DocumentEditModel>;
     private lateinit var adapter: DocumentEditAdapter;
     lateinit var plotId:String
+    lateinit var plotNo:String
     lateinit var firestore: FirebaseFirestore;
     val map:HashMap<String,String> = HashMap();
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,6 +50,7 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
         val bundle :Bundle ?=intent.extras
         layoutId = bundle?.getString("layoutId").toString();
         plotId = bundle?.getString("plotId").toString();
+        plotNo = bundle?.getString("plotNo").toString();
         firestore = FirebaseFirestore.getInstance();
         documentList = ArrayList<DocumentEditModel>()
         adapter = DocumentEditAdapter(this,documentList);
@@ -55,6 +60,27 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
         binding.fullprogress.visibility = VISIBLE
         binding.toolbarTitle.text = title;
 
+        adapter.setOnItemClickListener(object : DocumentEditAdapter.onItemClickListner{
+            override fun onItemClick(position: Int) {
+                val intent = Intent()
+                intent.type = "application/pdf"
+                intent.action = Intent.ACTION_GET_CONTENT
+                when (position) {
+                    0 -> {
+                        startActivityForResult(intent, 2);
+                    }
+                    1 -> {
+                        startActivityForResult(intent, 1);
+                    }
+                    2 -> {
+                        startActivityForResult(intent, 3);
+                    }
+                    3 -> {
+                        startActivityForResult(intent, 4);
+                    }
+                }
+            }
+        })
 
         if(layoutId == "Null")
         {
@@ -275,21 +301,96 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        val dialog:ProgressDialog = ProgressDialog(this);
-        val date: Date = Date();
-        selectedPdf = data?.data!!
+        if(requestCode==1 && resultCode == RESULT_OK)
+        {
+//            binding.
+//            binding.progressBar4.visibility = VISIBLE
 
-        if(selectedPdf!=null){
-            dialog.show();
-            val ref:StorageReference = FirebaseStorage.getInstance().reference
-                .child("Documents").child(layoutId+"").child(date.time.toString());
-            ref.putFile(selectedPdf).addOnCompleteListener(OnCompleteListener { task ->
-                if(task.isSuccessful){
-                    ref.downloadUrl.addOnSuccessListener(OnSuccessListener { uri ->
-                         val downloadUrl:String = uri.toString();
-                    })
+            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + Firebase.auth.currentUser?.uid.toString() + "_doc1_" + plotNo)
+            storageref.putFile(data?.data!!).addOnSuccessListener {
+                storageref.downloadUrl.addOnSuccessListener{ uri ->
+                    val downloadUrl = uri.toString();
+                    val docs:HashMap<String, Any> = HashMap()
+                    firestore.collection("Plots").document(plotId).update("712", downloadUrl)
+                        .addOnSuccessListener {
+                            Toast.makeText(this , "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
+                        }.addOnFailureListener {
+                            Toast.makeText(this , it.toString(), Toast.LENGTH_SHORT).show()
+                        }
+
+//                    binding.deletebtn1.visibility = VISIBLE
+//                    binding.progressBar4.visibility = GONE
                 }
-            })
+            }
+        }
+        else if(requestCode==2 && resultCode == RESULT_OK)
+        {
+//            binding.uploadbtn2.visibility = GONE
+//            binding.progressBar5.visibility = VISIBLE
+            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + Firebase.auth.currentUser?.uid.toString() + "_doc2_" + plotNo)
+            storageref.putFile(data?.data!!).addOnSuccessListener {
+                storageref.downloadUrl.addOnSuccessListener{ uri ->
+                    val downloadUrl = uri.toString();
+                    val docs:HashMap<String, Any> = HashMap()
+                    firestore.collection("Plots").document(plotId).update("Nakasha", downloadUrl)
+                        .addOnSuccessListener {
+                            Toast.makeText(this , "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
+                        }.addOnFailureListener {
+                            Toast.makeText(this , it.toString(), Toast.LENGTH_SHORT).show()
+                        }
+//                    binding.deletebtn2.visibility = VISIBLE
+//                    binding.progressBar5.visibility = GONE
+                }
+            }
+        }
+        else if(requestCode==3 && resultCode == RESULT_OK)
+        {
+//            binding.uploadbtn3.visibility = GONE
+//            binding.progressBar6.visibility = VISIBLE
+            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + Firebase.auth.currentUser?.uid.toString() + "_doc3_" + plotNo)
+            storageref.putFile(data?.data!!).addOnSuccessListener {
+                storageref.downloadUrl.addOnSuccessListener{ uri ->
+                    val downloadUrl = uri.toString();
+                    val docs:HashMap<String, Any> = HashMap()
+                    firestore.collection("Plots").document(plotId).update("NA Order", downloadUrl)
+                        .addOnSuccessListener {
+                            Toast.makeText(this , "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
+                        }.addOnFailureListener {
+                            Toast.makeText(this , it.toString(), Toast.LENGTH_SHORT).show()
+                        }
+                    Toast.makeText(this , "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
+//                    binding.deletebtn3.visibility = VISIBLE
+//                    binding.progressBar6.visibility = GONE
+                }.addOnFailureListener {
+                    Toast.makeText(this, "Some Internal Error Occurred !", Toast.LENGTH_SHORT).show()
+                }
+            }.addOnFailureListener {
+                Toast.makeText(this, "Some Internal Error Occurred !", Toast.LENGTH_SHORT).show()
+            }
+        }
+        else if(requestCode==4 && resultCode == RESULT_OK)
+        {
+//            binding.uploadbtn4.visibility = GONE
+//            binding.progressBar7.visibility = VISIBLE
+            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + Firebase.auth.currentUser?.uid.toString() + "_doc4_" + plotNo)
+            storageref.putFile(data?.data!!).addOnSuccessListener {
+                storageref.downloadUrl.addOnSuccessListener{ uri ->
+                    val downloadUrl = uri.toString();
+                    val docs:HashMap<String, Any> = HashMap()
+                    firestore.collection("Plots").document(plotId).update("Other", downloadUrl)
+                        .addOnSuccessListener {
+                            Toast.makeText(this , "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
+                        }.addOnFailureListener {
+                            Toast.makeText(this , it.toString(), Toast.LENGTH_SHORT).show()
+                        }
+//                    binding.deletebtn4.visibility = VISIBLE
+//                    binding.progressBar7.visibility = GONE
+                }.addOnFailureListener {
+                    Toast.makeText(this, "Some Internal Error Occurred !", Toast.LENGTH_SHORT).show()
+                }
+            }.addOnFailureListener {
+                Toast.makeText(this, "Some Internal Error Occurred !", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -331,6 +432,7 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
             binding.subProptv.visibility = GONE
         }
     }
+
 
     override fun onNothingSelected(p0: AdapterView<*>?) {
         TODO("Not yet implemented")
