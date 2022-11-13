@@ -130,7 +130,7 @@
             android:textSize="14dp"
             android:textStyle="bold" />
 
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/state"
             android:background="@drawable/rectangle"
             android:layout_width="match_parent"
@@ -148,7 +148,7 @@
             android:textSize="14dp"
             android:textStyle="bold" />
 
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/district"
             android:background="@drawable/rectangle"
             android:layout_width="match_parent"
