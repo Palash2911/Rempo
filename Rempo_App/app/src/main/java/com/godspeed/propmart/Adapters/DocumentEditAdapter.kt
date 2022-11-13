@@ -43,13 +43,16 @@ RecyclerView.Adapter<DocumentEditAdapter.DocumentEditViewHolder>(){
     class DocumentEditViewHolder(val binding: DocumentEditLayoutBinding, listener: onItemClickListner): RecyclerView.ViewHolder(binding.root){
         init {
             itemView.setOnClickListener{
+                binding.uploadbtn.visibility = GONE
+                binding.progressBar.visibility = VISIBLE
                 listener.onItemClick(adapterPosition)
+                binding.deletebtn.visibility = VISIBLE
+                binding.progressBar.visibility = GONE
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DocumentEditViewHolder {
-
         val binding = DocumentEditLayoutBinding.inflate(LayoutInflater.from(context),parent,false);
         return DocumentEditViewHolder(binding, mlist);
     }

@@ -23,7 +23,7 @@
 
         <com.sn.lib.NestedProgress
             android:id="@+id/moreporgress"
-            android:layout_width="200dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             app:innerAnimInterpolator="linear"
