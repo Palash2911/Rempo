@@ -6,15 +6,9 @@ const Loader = () => {
     <>
       <div className={classes.loader_container}>
         <div className={classes.loader}>
-          <div className={classes.dot}></div>
-          <div className={classes.dot}></div>
-          <div className={classes.dot}></div>
-          <div className={classes.dot}></div>
-          <div className={classes.dot}></div>
-          <div className={classes.dot}></div>
-          <div className={classes.dot}></div>
-          <div className={classes.dot}></div>
-          <div className={classes.dot}></div>
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(() => {
+            return <div className={classes.dot}></div>;
+          })}
         </div>
       </div>
     </>

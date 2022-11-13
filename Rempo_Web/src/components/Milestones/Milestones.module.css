@@ -1,0 +1,40 @@
+.milestone_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 200px;
+  color: #000;
+}
+.heading {
+  font-size: 64px;
+  text-align: left;
+  font-family: "Courier New", Courier, monospace;
+}
+.para {
+  font-size: 23px;
+  color: #787d82;
+}
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.card_data {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px;
+  position: relative;
+}
+.miles_img {
+  width: 90px;
+  position: absolute;
+  top: -50px;
+}
+.miles_title {
+  margin-top: 20px;
+  text-align: center;
+}

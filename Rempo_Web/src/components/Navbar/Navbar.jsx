@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import classes from "./Navbar.module.css";
+import logo from "../../assets/nav_logo.png";
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -11,7 +12,7 @@ function Navbar() {
       <nav className={classes.navbar}>
         <div className={classes.nav_container}>
           <NavLink exact to="/" className={classes.nav_logo}>
-            CodeBucks
+            <img className={classes.navbar_logo} src={logo} alt="logo" />
           </NavLink>
 
           <ul
@@ -35,23 +36,45 @@ function Navbar() {
             <li className={classes.nav_item}>
               <NavLink
                 exact
-                to="/about"
+                to="/milestones"
                 activeClassName={classes.active}
                 className={classes.nav_links}
                 onClick={handleClick}
               >
-                About
+                Milestones
               </NavLink>
             </li>
             <li className={classes.nav_item}>
               <NavLink
                 exact
-                to="/blog"
+                to="/services"
                 activeClassName={classes.active}
                 className={classes.nav_links}
                 onClick={handleClick}
               >
-                Blog
+                Services
+              </NavLink>
+            </li>
+            <li className={classes.nav_item}>
+              <NavLink
+                exact
+                to="/team"
+                activeClassName={classes.active}
+                className={classes.nav_links}
+                onClick={handleClick}
+              >
+                Our Team
+              </NavLink>
+            </li>
+            <li className={classes.nav_item}>
+              <NavLink
+                exact
+                to="/about"
+                activeClassName={classes.active}
+                className={classes.nav_links}
+                onClick={handleClick}
+              >
+                About Us
               </NavLink>
             </li>
             <li className={classes.nav_item}>
@@ -63,6 +86,17 @@ function Navbar() {
                 onClick={handleClick}
               >
                 Contact Us
+              </NavLink>
+            </li>
+            <li className={classes.nav_item}>
+              <NavLink
+                exact
+                to="/profile"
+                activeClassName={classes.active}
+                className={classes.nav_links}
+                onClick={handleClick}
+              >
+                <i class="fas fa-user"></i>
               </NavLink>
             </li>
           </ul>

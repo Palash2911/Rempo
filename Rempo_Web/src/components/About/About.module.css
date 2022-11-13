@@ -1,0 +1,37 @@
+.about_container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: calc(100vw-40px);
+  height: 100vh;
+  background-image: url("../../assets/about.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 10px 20px;
+  padding-top: 100px;
+}
+.title {
+  font-size: 64px;
+}
+.para {
+  font-size: 24px;
+  text-align: center;
+  padding: 0 12vw;
+}
+.card_content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+}
+.number {
+  all: unset;
+  font-size: 64px;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+.para2 {
+  text-align: center;
+}

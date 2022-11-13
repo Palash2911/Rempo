@@ -1,0 +1,17 @@
+.landing_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  position: relative;
+}
+.main_div {
+  position: absolute;
+  bottom: -100px;
+}
+.image {
+  width: 100vw;
+  height: 467px;
+  filter: grayscale(0.15);
+}
