@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
-import { Loader } from "./components/Ui";
+import { Loader, Card } from "./components/Ui";
 
 const App = () => {
   const location = useLocation();
@@ -20,6 +20,7 @@ const App = () => {
       ) : (
         <div>
           <Navbar />
+          <Card />
           <Routes>
             <Route path="/" element={<></>} />
             <Route path="/" element={<></>} />

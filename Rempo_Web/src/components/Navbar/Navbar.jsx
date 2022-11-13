@@ -16,55 +16,57 @@ function Navbar() {
 
           <ul
             className={
-              click ? `${classes.nav_menu} ${classes.active}` : "nav_menu"
+              click
+                ? `${classes.nav_menu} ${classes.active}`
+                : `${classes.nav_menu}`
             }
           >
-            <li className="nav-item">
+            <li className={classes.nav_item}>
               <NavLink
                 exact
                 to="/"
-                activeClassName="active"
-                className="nav-links"
+                activeClassName={classes.active}
+                className={classes.nav_links}
                 onClick={handleClick}
               >
                 Home
               </NavLink>
             </li>
-            <li className="nav-item">
+            <li className={classes.nav_item}>
               <NavLink
                 exact
                 to="/about"
-                activeClassName="active"
-                className="nav-links"
+                activeClassName={classes.active}
+                className={classes.nav_links}
                 onClick={handleClick}
               >
                 About
               </NavLink>
             </li>
-            <li className="nav-item">
+            <li className={classes.nav_item}>
               <NavLink
                 exact
                 to="/blog"
-                activeClassName="active"
-                className="nav-links"
+                activeClassName={classes.active}
+                className={classes.nav_links}
                 onClick={handleClick}
               >
                 Blog
               </NavLink>
             </li>
-            <li className="nav-item">
+            <li className={classes.nav_item}>
               <NavLink
                 exact
                 to="/contact"
-                activeClassName="active"
-                className="nav-links"
+                activeClassName={classes.active}
+                className={classes.nav_links}
                 onClick={handleClick}
               >
                 Contact Us
               </NavLink>
             </li>
           </ul>
-          <div className="nav-icon" onClick={handleClick}>
+          <div className={classes.nav_icon} onClick={handleClick}>
             <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
           </div>
         </div>
