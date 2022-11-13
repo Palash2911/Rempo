@@ -63,10 +63,10 @@ class Plotpage : AppCompatActivity() {
             db.collection("Plots").document(plotid).get().addOnSuccessListener { snapshot ->
                     bidhead.text = "Bid on Plot " + snapshot["Plot No"].toString()
                     plotno = snapshot["Plot No"].toString()
-                    totarea.text =  snapshot["Area"].toString() + snapshot["Area_Un"].toString()
+                    totarea.text =  snapshot["Area"].toString() + " " +snapshot["Area_Un"].toString()
                     desc.text = snapshot["Road"].toString()
-                    rate.text = "Rate : " + snapshot["Bid Price"].toString() + "Rs./" + snapshot["Bids_Un"].toString()
-                    dim.text = "Dimensions : " + snapshot["Front"].toString() + snapshot["Front_Un"].toString() + " x " + snapshot["Depth"].toString() + snapshot["Front_Un"].toString()
+                    rate.text = "Rate : " + snapshot["Bid Price"].toString() + " Rs./" + snapshot["Bids_Un"].toString()
+                    dim.text = "Dimensions : " + snapshot["Front"].toString() + " " + snapshot["Front_Un"].toString() + " x " + snapshot["Depth"].toString() + " " + snapshot["Front_Un"].toString()
                     wp.text = "Current rate at this site is " + snapshot["Bid Price"].toString() + "₹/${snapshot["Bids_Un"].toString()} Kindly place your bid by considering current property rate"
                 }
         }

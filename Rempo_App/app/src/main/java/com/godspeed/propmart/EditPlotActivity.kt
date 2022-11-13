@@ -94,9 +94,9 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
                 binding.SoldTv.visibility = GONE
                 binding.soldPlots.visibility = GONE
                 binding.address.text = it["Road"].toString()
-                binding.area.text = it["Area"].toString() + it["Area_Un"].toString()
-                binding.dimensions.text = it["Front"].toString() + "${it["Front"].toString()} x " +it["Depth"].toString() + it["Front"].toString()
-                binding.rate.text = it["Bid Price"].toString() + it["Bids_Un"].toString()
+                binding.area.text = it["Area"].toString() + " " + it["Area_Un"].toString()
+                binding.dimensions.text = it["Front"].toString() + " ${it["Front_Un"].toString()} x " +it["Depth"].toString() + " " + it["Front_Un"].toString()
+                binding.rate.text = it["Bid Price"].toString() + "Rs./ " + it["Bids_Un"].toString()
                 binding.description.visibility = GONE
                 binding.fullprogress.visibility = GONE
             }.addOnFailureListener {
@@ -157,6 +157,31 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
         selectsubplotCat.add("Commercial Plot")
         selectsubplotCat.add("Residential cum Commercial Plot")
 
+        val area: ArrayList<String> = ArrayList()
+        area.add("Sq Ft")
+        area.add("H.R ")
+        area.add("Sq Mt")
+        area.add("Acres")
+
+        val bid: ArrayList<String> = ArrayList()
+        bid.add("Sq Ft")
+        bid.add("Sq Mt")
+        bid.add("Acres")
+
+        val fr: ArrayList<String> = ArrayList()
+        fr.add("Ft")
+        fr.add("Mt")
+
+        binding.frSpinner.onItemSelectedListener = this
+        val adap0 = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, fr)
+        adap0.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
+        binding.frSpinner.adapter = adap0
+
+        binding.areaSpinner.onItemSelectedListener = this
+        val adap1 = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, area)
+        adap1.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
+        binding.areaSpinner.adapter = adap1
+
         binding.plotSpinner.onItemSelectedListener = this
         var adap2 = ArrayAdapter<String>(this, R.layout.simple_spinner_item, selectplotCat)
         adap2.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
@@ -167,6 +192,11 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
         adap3.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
         binding.subPropSpinner.adapter = adap3
 
+        binding.bidSpinner.onItemSelectedListener = this
+        val adap4 = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, bid)
+        adap4.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
+        binding.bidSpinner.adapter = adap4
+
         binding.editScheme.setOnClickListener{
             binding.editSchemePopup.visibility = VISIBLE;
             binding.editSchemell.visibility = GONE
@@ -174,9 +204,23 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
             firestore.collection("Plots").document(plotId).get().addOnSuccessListener {
                 binding.ownerName.setText(it["Owner Name"].toString())
                 binding.district.setText(it["District"].toString())
+                binding.bidamt.setText(it["Bid Price"].toString())
                 binding.editTextTaluka.setText(it["Taluka"].toString())
                 binding.editTextVillage.setText(it["Village"].toString())
                 binding.editTextAddress.setText(it["Road"].toString())
+
+                if(it["Bids_Un"].toString() == "Sq Ft")
+                {
+                    binding.bidSpinner.setSelection(0)
+                }
+                else if(it["Bids_Un"].toString() == "Sq Mt")
+                {
+                    binding.bidSpinner.setSelection(1)
+                }
+                else
+                {
+                    binding.bidSpinner.setSelection(2)
+                }
                 if(it["Property Category"].toString() == "Agricultural Land")
                 {
                     binding.plotSpinner.setSelection(1)
@@ -225,10 +269,12 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
          val district:String = binding.district.text.toString();
          val village:String = binding.editTextVillage.text.toString();
          val taluka:String = binding.editTextTaluka.text.toString();
+            val price:String = binding.bidamt.text.toString();
 
             map["Owner Name"] = owner;
             map["District"] = district;
             map["Road"] = address;
+            map["Bid Price"] = price;
             map["Village"] = village;
             map["Taluka"] = taluka;
 
@@ -252,11 +298,40 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
             firestore.collection("Plots").document(plotId).get().addOnSuccessListener{
                 binding.surveyNo.setText(it["Survey No"].toString())
                 binding.plotNo.setText(it["Plot No"].toString())
-                binding.bidPrice.setText(it["Bid Price"].toString())
                 binding.aSize.setText(it["Area"].toString())
                 binding.fron.setText(it["Front"].toString())
                 binding.dept.setText(it["Depth"].toString())
                 binding.road.setText(it["Road"].toString())
+
+//                area.add("Sq Ft")
+//                area.add("H.R ")
+//                area.add("Sq Mt")
+//                area.add("Acres")
+
+                if(it["Area_Un"] == "Sq Ft")
+                {
+                    binding.areaSpinner.setSelection(0)
+                }
+                else if(it["Area_Un"] == "H.R ")
+                {
+                    binding.areaSpinner.setSelection(1)
+                }
+                else if(it["Area_Un"] == "Sq Mt")
+                {
+                    binding.areaSpinner.setSelection(2)
+                }
+                else
+                {
+                    binding.areaSpinner.setSelection(3)
+                }
+                if(it["Front_Un"] == "Ft")
+                {
+                    binding.frSpinner.setSelection(0)
+                }
+                else
+                {
+                    binding.frSpinner.setSelection(1)
+                }
                 binding.editdetailsll.visibility = VISIBLE
                 binding.editdepro.visibility = GONE
             }.addOnFailureListener {
@@ -274,12 +349,10 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
             val pno:String = binding.plotNo.text.toString();
             val asi:String = binding.aSize.text.toString();
             val fro:String = binding.fron.text.toString();
-            val price:String = binding.bidPrice.text.toString();
             val dept:String = binding.dept.text.toString();
             val road:String = binding.road.text.toString()
 
             map["Survey No"] = sno;
-            map["Bid Price"] = price;
             map["Plot No"] = pno;
             map["Front"] = fro;
             map["Area"] = asi;
@@ -399,6 +472,24 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
         val item = p0!!.selectedItem.toString()
+        if(binding.editdetailsll.visibility == VISIBLE)
+        {
+            if(item=="Sq Ft" || item=="H.R " || item=="Sq Mt" || item=="Acres")
+            {
+                map["Area_Un"] = item
+            }
+            if(item=="Ft" || item=="Mt")
+            {
+                map["Front_Un"] = item
+            }
+        }
+        if(binding.editSchemell.visibility == VISIBLE)
+        {
+            if(item=="Sq Ft" || item=="Sq Mt" || item=="Acres")
+            {
+                map["Bids_Un"] = item
+            }
+        }
         if(item == "NA Plot" || (item=="Residential Plot" || item=="Commercial Plot" || item=="Residential cum Commercial Plot"))
         {
             val plot = "NA Plot"

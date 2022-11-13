@@ -156,6 +156,40 @@
                     tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                 <TextView
+                    android:id="@+id/bid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Bid Price" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/bidamt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="@drawable/rectangle"
+                        android:ems="5"
+                        android:hint="990"
+                        android:inputType="number"
+                        android:padding="7dp"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <Spinner
+                        android:id="@+id/bidSpinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                </LinearLayout>
+
+                <TextView
                     android:id="@+id/textView14"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -351,26 +385,6 @@
 
                         <EditText
                             android:id="@+id/plotNo"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="7dp"
-                            android:layout_marginBottom="7dp"
-                            android:background="@drawable/rectangle"
-                            android:ems="10"
-                            android:hint="19"
-                            android:inputType="textPersonName"
-                            android:maxLength="6"
-                            android:padding="7dp"
-                            tools:ignore="TouchTargetSizeCheck" />
-
-                        <TextView
-                            android:id="@+id/bid"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Bid Price" />
-
-                        <EditText
-                            android:id="@+id/bidPrice"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="7dp"
