@@ -334,6 +334,26 @@
                             tools:ignore="TouchTargetSizeCheck" />
 
                         <TextView
+                            android:id="@+id/bid"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Bid Price" />
+
+                        <EditText
+                            android:id="@+id/bidPrice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginBottom="7dp"
+                            android:background="@drawable/rectangle"
+                            android:ems="10"
+                            android:hint="19"
+                            android:inputType="textPersonName"
+                            android:maxLength="6"
+                            android:padding="7dp"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                        <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Area" />
