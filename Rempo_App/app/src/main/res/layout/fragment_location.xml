@@ -84,30 +84,14 @@
                 android:layout_height="75dp"
                 android:src="@color/black" />
 
-            <LinearLayout
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="16dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Welcome "
-                    android:textColor="@color/black"
-                    android:textSize="22dp" />
-
-                <TextView
-                    android:id="@+id/locationnameuser"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text=""
-                    android:textColor="@color/black"
-                    android:textFontWeight="600"
-                    android:textSize="24dp" />
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:gravity="center"
+                android:text="Search Location"
+                android:textColor="@color/black"
+                android:textSize="22dp" />
 
         </LinearLayout>
 
@@ -132,11 +116,12 @@
 
         <AutoCompleteTextView
             android:id="@+id/state"
-            android:background="@drawable/rectangle"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
-            android:inputType="text"/>
+            android:background="@drawable/rectangle"
+            android:inputType="text"
+            android:padding="15dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -150,11 +135,12 @@
 
         <AutoCompleteTextView
             android:id="@+id/district"
-            android:background="@drawable/rectangle"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
-            android:inputType="text"/>
+            android:background="@drawable/rectangle"
+            android:inputType="text"
+            android:padding="15dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -168,11 +154,12 @@
 
         <EditText
             android:id="@+id/taluka"
-            android:background="@drawable/rectangle"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
-            android:inputType="text"/>
+            android:background="@drawable/rectangle"
+            android:inputType="text"
+            android:padding="15dp" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

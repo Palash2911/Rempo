@@ -7,13 +7,24 @@
     android:orientation="vertical"
     tools:context=".PropertyPageActivity">
 
-    <ProgressBar
+<!--    <ProgressBar-->
+<!--        android:id="@+id/propertypagrProgress"-->
+<!--        style="?android:attr/progressBarStyle"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:padding="145dp"-->
+<!--        android:visibility="gone" />-->
+
+    <com.sn.lib.NestedProgress
         android:id="@+id/propertypagrProgress"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:padding="145dp"
-        android:visibility="gone" />
+        android:layout_gravity="center"
+        app:innerAnimInterpolator="linear"
+        app:outerAnimInterpolator="overshoot"
+        android:layout_marginTop="200dp"
+        android:visibility="gone"
+        app:outerLoaderAnimDuration="2500" />
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
         android:gravity="center"
         android:text="Document 1"
@@ -22,10 +23,11 @@
         android:layout_width="12dp"
         android:layout_height="12dp"
         android:layout_alignParentEnd="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
         android:foregroundGravity="center"
         android:src="@drawable/ic_baseline_arrow_forward_ios_24"
-        app:tint="@color/black"
-        android:layout_marginTop="15dp"/>
+        app:tint="@color/black" />
 
     <View
         android:layout_width="match_parent"

@@ -38,7 +38,6 @@
                 android:fontFamily="@font/roboto"
                 android:text="Bid on Plot 3"
                 android:textColor="#211A1E"
-
                 android:textSize="16dp"
                 android:textStyle="bold" />
 

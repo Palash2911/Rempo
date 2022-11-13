@@ -616,13 +616,22 @@
                                         android:text="Upload"
                                         android:textColor="#3C91E6" />
 
-                                    <ProgressBar
+<!--                                    <ProgressBar-->
+<!--                                        android:id="@+id/progressBar4"-->
+<!--                                        style="?android:attr/progressBarStyle"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:layout_weight="1"-->
+<!--                                        android:visibility="gone" />-->
+                                    <com.sn.lib.NestedProgress
                                         android:id="@+id/progressBar4"
-                                        style="?android:attr/progressBarStyle"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
+                                        app:innerAnimInterpolator="linear"
+                                        app:outerAnimInterpolator="overshoot"
                                         android:layout_weight="1"
-                                        android:visibility="gone" />
+                                        android:visibility="gone"
+                                        app:outerLoaderAnimDuration="2500" />
 
                                     <TextView
                                         android:id="@+id/deletebtn1"
@@ -667,13 +676,23 @@
                                         android:text="Upload"
                                         android:textColor="#3C91E6" />
 
-                                    <ProgressBar
+<!--                                    <ProgressBar-->
+<!--                                        android:id="@+id/progressBar5"-->
+<!--                                        style="?android:attr/progressBarStyle"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:layout_weight="1"-->
+<!--                                        android:visibility="gone" />-->
+
+                                    <com.sn.lib.NestedProgress
                                         android:id="@+id/progressBar5"
-                                        style="?android:attr/progressBarStyle"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
+                                        app:innerAnimInterpolator="linear"
+                                        app:outerAnimInterpolator="overshoot"
                                         android:layout_weight="1"
-                                        android:visibility="gone" />
+                                        android:visibility="gone"
+                                        app:outerLoaderAnimDuration="2500" />
 
                                     <TextView
                                         android:id="@+id/deletebtn2"
@@ -718,13 +737,23 @@
                                         android:text="Upload"
                                         android:textColor="#3C91E6" />
 
-                                    <ProgressBar
+<!--                                    <ProgressBar-->
+<!--                                        android:id="@+id/progressBar6"-->
+<!--                                        style="?android:attr/progressBarStyle"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:layout_weight="1"-->
+<!--                                        android:visibility="gone" />-->
+
+                                    <com.sn.lib.NestedProgress
                                         android:id="@+id/progressBar6"
-                                        style="?android:attr/progressBarStyle"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
+                                        app:innerAnimInterpolator="linear"
+                                        app:outerAnimInterpolator="overshoot"
                                         android:layout_weight="1"
-                                        android:visibility="gone" />
+                                        android:visibility="gone"
+                                        app:outerLoaderAnimDuration="2500" />
 
                                     <TextView
                                         android:id="@+id/deletebtn3"
@@ -770,13 +799,23 @@
                                         android:text="Upload"
                                         android:textColor="#3C91E6" />
 
-                                    <ProgressBar
+<!--                                    <ProgressBar-->
+<!--                                        android:id="@+id/progressBar7"-->
+<!--                                        style="?android:attr/progressBarStyle"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:layout_weight="1"-->
+<!--                                        android:visibility="gone" />-->
+
+                                    <com.sn.lib.NestedProgress
                                         android:id="@+id/progressBar7"
-                                        style="?android:attr/progressBarStyle"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
+                                        app:innerAnimInterpolator="linear"
+                                        app:outerAnimInterpolator="overshoot"
                                         android:layout_weight="1"
-                                        android:visibility="gone" />
+                                        android:visibility="gone"
+                                        app:outerLoaderAnimDuration="2500" />
 
                                     <TextView
                                         android:id="@+id/deletebtn4"

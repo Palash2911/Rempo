@@ -36,20 +36,26 @@
         android:layout_below="@id/tag1"
         android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true">
-        <Button
-            android:layout_width="110dp"
-            android:layout_height="50dp"
-            android:text="Plot"
-            android:id="@+id/plot"
-            android:layout_marginRight="15dp"
-            android:textAllCaps="false"/>
 
         <Button
+            android:id="@+id/plot"
             android:layout_width="110dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="15dp"
+            android:backgroundTint="@color/purple_500"
+            android:text="Plot"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
+        <Button
             android:id="@+id/layout"
+            android:layout_width="110dp"
             android:layout_height="50dp"
             android:layout_marginLeft="15dp"
+            android:backgroundTint="@color/purple_500"
             android:text="Layout"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
     </LinearLayout>
 </RelativeLayout>

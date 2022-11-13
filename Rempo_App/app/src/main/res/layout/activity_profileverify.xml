@@ -67,7 +67,6 @@
         android:text="Your Profile has been created
 successfully ."
         android:textSize="18sp"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,12 +76,11 @@ successfully ."
         android:id="@+id/profilevisithome"
         android:layout_width="283dp"
         android:layout_height="50dp"
-        android:layout_alignBottom="@id/your_adhaar"
+        android:layout_alignTop="@id/your_adhaar"
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/roboto"
         android:text="Get Started"
-        android:layout_alignParentBottom="true"
-        android:textAllCaps="false"
-        />
+        android:layout_marginTop="50dp"
+        android:textAllCaps="false" />
 
 </RelativeLayout>

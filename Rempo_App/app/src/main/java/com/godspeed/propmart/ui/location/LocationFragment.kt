@@ -53,10 +53,7 @@ class LocationFragment : Fragment() {
         pDailog.setCancelable(false);
         pDailog.setMessage("Please Wait");
 
-        firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
-            .get().addOnSuccessListener { snapshot->
-                binding.locationnameuser.text = snapshot["Name"].toString()
-        }
+
         val profilePic = ""
 
         Glide.with(requireActivity())
@@ -325,9 +322,6 @@ class LocationFragment : Fragment() {
                     }
                 }
             }
-
-
-
 
         binding.explore.setOnClickListener{
                 pDailog.show();

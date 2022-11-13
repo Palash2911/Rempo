@@ -98,6 +98,7 @@ class Plotpage : AppCompatActivity() {
                                 FormatStyle.MEDIUM))
                             profile["time"]=current
                             profile["uid"]=Firebase.auth.currentUser?.uid.toString()
+                            profile["Phone"] = snapshot["Phone"].toString()
                             Bids["bidAmount"]=bidamt.text.toString()
                             Bids["layoutId"]=layoutid.toString()
                             Bids["plotId"] = ""
@@ -129,6 +130,7 @@ class Plotpage : AppCompatActivity() {
                                 FormatStyle.MEDIUM))
                             profile["time"]=current
                             profile["uid"]=Firebase.auth.currentUser?.uid.toString()
+                            profile["Phone"] = snapshot["Phone"].toString()
                             Bids["bidAmount"]=bidamt.text.toString()
                             Bids["layoutId"]= ""
                             Bids["plotId"] = plotid

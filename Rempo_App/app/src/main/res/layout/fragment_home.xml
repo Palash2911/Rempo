@@ -52,14 +52,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appbar">
 
-        <ProgressBar
+<!--        <ProgressBar-->
+<!--            android:id="@+id/sellerProgress"-->
+<!--            style="?android:attr/progressBarStyle"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_weight="0.2"-->
+<!--            android:visibility="visible" />-->
+
+        <com.sn.lib.NestedProgress
             android:id="@+id/sellerProgress"
-            style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="0.2"
-            android:visibility="visible" />
+            android:layout_marginTop="200dp"
+            app:innerAnimInterpolator="linear"
+            app:outerAnimInterpolator="overshoot"
+            app:outerLoaderAnimDuration="2500" />
 
         <RelativeLayout
             android:id="@+id/sellerRL"

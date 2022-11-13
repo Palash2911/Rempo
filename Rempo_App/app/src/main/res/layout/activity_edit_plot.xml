@@ -23,6 +23,7 @@
         android:layout_gravity="center"
         app:innerAnimInterpolator="linear"
         app:outerAnimInterpolator="overshoot"
+        android:layout_marginTop="200dp"
         android:visibility="gone"
         app:outerLoaderAnimDuration="2500" />
 
@@ -81,9 +82,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:visibility="gone"
                 app:innerAnimInterpolator="linear"
                 app:outerAnimInterpolator="overshoot"
-                android:visibility="gone"
                 app:outerLoaderAnimDuration="2500" />
 
             <LinearLayout
@@ -267,6 +268,15 @@
             android:visibility="gone"
             app:cardCornerRadius="16dp">
 
+            <com.sn.lib.NestedProgress
+                android:id="@+id/editdepro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:innerAnimInterpolator="linear"
+                app:outerAnimInterpolator="overshoot"
+                app:outerLoaderAnimDuration="2500" />
+
             <LinearLayout
                 android:id="@+id/editdetailsll"
                 android:layout_width="match_parent"
@@ -278,15 +288,6 @@
 <!--                    style="?android:attr/progressBarStyle"-->
 <!--                    android:layout_width="match_parent"-->
 <!--                    android:layout_height="wrap_content" />-->
-
-                <com.sn.lib.NestedProgress
-                    android:id="@+id/editdepro"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    app:innerAnimInterpolator="linear"
-                    app:outerAnimInterpolator="overshoot"
-                    app:outerLoaderAnimDuration="2500" />
 
                 <ScrollView
                     android:layout_width="match_parent"

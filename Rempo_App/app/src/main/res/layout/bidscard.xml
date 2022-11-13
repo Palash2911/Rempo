@@ -135,6 +135,11 @@
                     android:textColor="#3C91E6"
                     android:textSize="18sp" />
 
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#E5E5E5" />
+
                 <TextView
                     android:id="@+id/rebidbtn"
                     android:layout_width="100dp"

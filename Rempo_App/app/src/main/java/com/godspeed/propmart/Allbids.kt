@@ -61,10 +61,11 @@ class Allbids : AppCompatActivity() {
                             {
                                 val name = ss["name"].toString()
                                 val date = ss["time"].toString().substring(0, 11)
-                                val bid = ss["placeBid"].toString()
+                                val bid = "Rs." + ss["placeBid"].toString()
+                                val pno = "+91 " + ss["Phone"].toString()
                                 val card: allBidsModel =
                                     allBidsModel(
-                                        plotId, "Null", name, date, bid, plotno
+                                        plotId, "Null", name, date, bid, pno
                                     );
                                 cards.add(card)
                                 if(cards.size>0)

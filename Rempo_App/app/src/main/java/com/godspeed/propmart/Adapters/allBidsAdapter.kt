@@ -25,7 +25,7 @@ class allBidsAdapter(val context: Context, val cards:List<allBidsModel>):
         with(holder){
             with(cards[position]){
                 binding.bidderName.text = this.Bidder
-                binding.plotno.text =  this.plotNo;
+                binding.phone.text =  this.pNo;
                 binding.bidPrice.text = this.Bid;
                 binding.datebid.text = this.date;
 //               Glide.with(context).load(this.layoutImage).into(binding.plotImage);
