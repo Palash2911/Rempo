@@ -6,16 +6,16 @@ import android.os.Bundle
 import android.util.Log
 import android.webkit.WebViewClient
 import com.godspeed.propmart.databinding.ActivityAadharverifiedBinding
-import com.godspeed.propmart.databinding.ActivityWebViewBinding
+import com.godspeed.propmart.databinding.ActivityWebviewBinding
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import java.net.URLEncoder
 
 class WebView : AppCompatActivity() {
-    private lateinit var binding: ActivityWebViewBinding;
+    private lateinit var binding: ActivityWebviewBinding;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityWebViewBinding.inflate(layoutInflater);
+        binding = ActivityWebviewBinding.inflate(layoutInflater);
         setContentView(binding.root)
 
         val pdf = intent.getStringExtra("downloadUrl");

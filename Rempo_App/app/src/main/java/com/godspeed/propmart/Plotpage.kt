@@ -49,9 +49,9 @@ class Plotpage : AppCompatActivity() {
             db.collection("Layouts").document(layoutid.toString()).collection("plots")
                 .document(plotid).get().addOnSuccessListener { snapshot ->
                     bidhead.text = "Bid on Plot " + snapshot["title"].toString().substring(4)
-                    totarea.text =  snapshot["totalArea"].toString() + "Sq.m"
+                    totarea.text =  snapshot["totalArea"].toString() + snapshot["Area_Un"].toString()
                     desc.text = snapshot["description"].toString()
-                    rate.text = "Rate : " + snapshot["rate"].toString() + " Rs./sq.m"
+                    rate.text = "Rate : " + snapshot["rate"].toString() + "Rs./" + snapshot["Bids_Un"].toString()
                     dim.text = snapshot["dimension"].toString()
                     wp.text = "Current rate at this site is" + snapshot["rate"].toString() + "₹/sq.m. Kindly place your bid by considering current property rate"
                 }
@@ -63,11 +63,11 @@ class Plotpage : AppCompatActivity() {
             db.collection("Plots").document(plotid).get().addOnSuccessListener { snapshot ->
                     bidhead.text = "Bid on Plot " + snapshot["Plot No"].toString()
                     plotno = snapshot["Plot No"].toString()
-                    totarea.text =  snapshot["Area"].toString() + " Sq.m"
+                    totarea.text =  snapshot["Area"].toString() + snapshot["Area_Un"].toString()
                     desc.text = snapshot["Road"].toString()
-                    rate.text = "Rate : " + snapshot["Bid Price"].toString() + " Rs./sq.m"
-                    dim.text = "Dimensions : " + snapshot["Front"].toString() + " x " + snapshot["Depth"].toString() + " Sq.m"
-                    wp.text = "Current rate at this site is " + snapshot["Bid Price"].toString() + "₹/sq.m. Kindly place your bid by considering current property rate"
+                    rate.text = "Rate : " + snapshot["Bid Price"].toString() + "Rs./" + snapshot["Bids_Un"].toString()
+                    dim.text = "Dimensions : " + snapshot["Front"].toString() + snapshot["Front_Un"].toString() + " x " + snapshot["Depth"].toString() + snapshot["Front_Un"].toString()
+                    wp.text = "Current rate at this site is " + snapshot["Bid Price"].toString() + "₹/${snapshot["Bids_Un"].toString()} Kindly place your bid by considering current property rate"
                 }
         }
         if(desc.text.toString() == "null" || desc.text.toString().isEmpty())

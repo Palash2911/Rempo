@@ -57,24 +57,6 @@ class HompageFragment : Fragment() {
             }
         })
 
-        _binding!!.filterImg.setOnClickListener{
-            val bottomSheet = BottomSheetDialog(activity!!)
-            val view = layoutInflater.inflate(R.layout.bottomsort, null)
-            val residentialBtn = view.findViewById<RadioButton>(R.id.residentialSort)
-
-            residentialBtn.setOnClickListener {
-                db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
-                    .update("Filter", "Res").addOnSuccessListener {
-
-                    }.addOnFailureListener {
-
-                    }
-                bottomSheet.dismiss()
-            }
-            bottomSheet.setCancelable(false)
-            bottomSheet.setContentView(view)
-            bottomSheet.show()
-        }
 
         return root
     }
@@ -82,11 +64,9 @@ class HompageFragment : Fragment() {
     private fun setFragment(position: Int) {
         when (position + 1) {
             1 -> {
-                _binding?.filterImg?.visibility = GONE
                 addFragment(propertyBuyer())
             }
             2 -> {
-                _binding?.filterImg?.visibility = VISIBLE
                 addFragment(plotBuyer())
             }
         }

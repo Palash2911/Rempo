@@ -94,9 +94,9 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
                 binding.SoldTv.visibility = GONE
                 binding.soldPlots.visibility = GONE
                 binding.address.text = it["Road"].toString()
-                binding.area.text = it["Area"].toString() + "sq.m"
-                binding.dimensions.text = it["Front"].toString() + "sq.m x " +it["Depth"].toString() + "sq.m"
-                binding.rate.text = it["Bid Price"].toString()
+                binding.area.text = it["Area"].toString() + it["Area_Un"].toString()
+                binding.dimensions.text = it["Front"].toString() + "${it["Front"].toString()} x " +it["Depth"].toString() + it["Front"].toString()
+                binding.rate.text = it["Bid Price"].toString() + it["Bids_Un"].toString()
                 binding.description.visibility = GONE
                 binding.fullprogress.visibility = GONE
             }.addOnFailureListener {

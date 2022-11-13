@@ -49,7 +49,8 @@ class propertyBuyer : Fragment() {
 
         binding!!.propertyRv.layoutManager = LinearLayoutManager(requireContext(),
             RecyclerView.VERTICAL,false);
-        binding!!.propertyRv.adapter = adapter;
+        binding!!.propertyRv.adapter = adapter
+        binding!!.progressBar8.visibility = VISIBLE
 
         db.collection("Layouts").get().addOnSuccessListener{
             it.documents.iterator().forEach { documentSnapshot ->
