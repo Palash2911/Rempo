@@ -104,11 +104,11 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
             }
         }
 
-        firestore.collection("Plots").document("7LH3ntlfcZmoMCWh5jPc").get().addOnSuccessListener {
+        firestore.collection("Plots").document(plotId).get().addOnSuccessListener {
             val docname = "Nakasha"
             var docurl = ""
             val pno = it["Plot No"].toString()
-            val pid = "7LH3ntlfcZmoMCWh5jPc"
+            val pid = plotId
             if(it["Nakasha"].toString().isNotEmpty())
             {
                 docurl = it["Nakasha"].toString()

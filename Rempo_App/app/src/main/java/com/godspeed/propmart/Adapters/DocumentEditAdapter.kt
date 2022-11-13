@@ -62,18 +62,6 @@ RecyclerView.Adapter<DocumentEditAdapter.DocumentEditViewHolder>(){
         {
             with(documentList[position])
             {
-//                itemView.setOnClickListener{
-//                    context.startActivity(
-//                        // Use 'launchPdfFromPath' if you want to use assets file (enable "fromAssets" flag) / internal directory
-//                        PdfViewerActivity.launchPdfFromUrl(           //PdfViewerActivity.Companion.launchPdfFromUrl(..   :: incase of JAVA
-//                            context,
-//                            this.downloadUrl,                                // PDF URL in String format
-//                            this.title,                        // PDF Name/Title in String format
-//                            "",                  // If nothing specific, Put "" it will save to Downloads
-//                            true                 // This param is true by defualt.
-//                        )
-//                    )
-//                }
                 binding.documentName.text = this.title;
                 if(this.downloadUrl.isNotEmpty())
                 {
