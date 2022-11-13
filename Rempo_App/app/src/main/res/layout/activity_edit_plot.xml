@@ -8,13 +8,23 @@
     tools:context=".EditPlotActivity">
 
 
-    <ProgressBar
+<!--    <ProgressBar-->
+<!--        android:id="@+id/fullprogress"-->
+<!--        style="?android:attr/progressBarStyle"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:padding="140dp"-->
+<!--        android:visibility="gone" />-->
+
+    <com.sn.lib.NestedProgress
         android:id="@+id/fullprogress"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:padding="140dp"
-        android:visibility="gone" />
+        android:layout_gravity="center"
+        app:innerAnimInterpolator="linear"
+        app:outerAnimInterpolator="overshoot"
+        android:visibility="gone"
+        app:outerLoaderAnimDuration="2500" />
 
     <LinearLayout
         android:id="@+id/toolbar"
@@ -58,13 +68,23 @@
             android:visibility="gone"
             app:cardCornerRadius="16dp">
 
-            <ProgressBar
+<!--            <ProgressBar-->
+<!--                android:id="@+id/editSchemeProgress"-->
+<!--                style="?android:attr/progressBarStyle"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:visibility="gone" />-->
+
+            <com.sn.lib.NestedProgress
                 android:id="@+id/editSchemeProgress"
-                style="?android:attr/progressBarStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:visibility="gone" />
+                app:innerAnimInterpolator="linear"
+                app:outerAnimInterpolator="overshoot"
+                android:visibility="gone"
+                app:outerLoaderAnimDuration="2500" />
 
             <LinearLayout
                 android:id="@+id/editSchemell"
@@ -253,11 +273,20 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <ProgressBar
+<!--                <ProgressBar-->
+<!--                    android:id="@+id/editdepro"-->
+<!--                    style="?android:attr/progressBarStyle"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content" />-->
+
+                <com.sn.lib.NestedProgress
                     android:id="@+id/editdepro"
-                    style="?android:attr/progressBarStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:innerAnimInterpolator="linear"
+                    app:outerAnimInterpolator="overshoot"
+                    app:outerLoaderAnimDuration="2500" />
 
                 <ScrollView
                     android:layout_width="match_parent"
