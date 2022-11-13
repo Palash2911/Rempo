@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import classes from "./Navbar.module.css";
-import logo from "../../assets/nav_logo.png";
+import Logo from "../Ui/Logo/Logo";
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -12,7 +12,7 @@ function Navbar() {
       <nav className={classes.navbar}>
         <div className={classes.nav_container}>
           <NavLink exact to="/" className={classes.nav_logo}>
-            <img className={classes.navbar_logo} src={logo} alt="logo" />
+            <Logo />
           </NavLink>
 
           <ul

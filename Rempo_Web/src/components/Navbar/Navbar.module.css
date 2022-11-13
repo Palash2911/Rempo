@@ -9,7 +9,7 @@
   z-index: 20;
   padding: 0 30px;
   padding-top: 5px;
-  background-color: #fff;
+  background-color: #ffffffb7;
 }
 .navbar_logo {
   width: 180px;
@@ -42,9 +42,10 @@
 .nav_links {
   color: #000;
   text-decoration: none;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.5rem;
   height: 100%;
   border-bottom: 3px solid transparent;
+  white-space: nowrap;
 }
 .fa-code {
   margin-left: 1rem;
@@ -55,7 +56,7 @@
   margin-right: 1rem;
 }
 .fa .fas {
-  color: #000;
+  color: #fff;
 }
 .nav_item:after {
   content: "";
@@ -68,12 +69,12 @@
 
 .nav_item:hover:after {
   width: 100%;
-  background: #ffdd40;
+  background: #3c91e6;
 }
 
 .nav_item .active {
-  color: #ffdd40;
-  border: 1px solid #ffdd40;
+  color: #3c91e6;
+  border: 1px solid #3c91e6;
 }
 
 .nav_icon {
@@ -83,7 +84,7 @@
 @media screen and (max-width: 960px) {
   .navbar {
     padding: 0;
-    background: #8df5ff;
+    background: #3c91e6;
   }
   .nav_menu {
     display: flex;
@@ -106,7 +107,7 @@
     z-index: 1;
   }
   .nav_item .active {
-    color: #ffdd40;
+    color: #3c91e6;
     border: none;
   }
   .nav_links {
@@ -124,6 +125,6 @@
     transform: translate(-100%, 60%);
     font-size: 1.8rem;
     cursor: pointer;
-    color: #000;
+    color: #fff;
   }
 }

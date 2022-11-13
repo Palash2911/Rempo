@@ -43,11 +43,12 @@
 /* Filled Styles */
 
 .fill {
-  color: #4385f5;
+  color: #ffffff;
+  background-color: #4385f5;
 }
 .fill::before {
-  background: #4385f5;
+  background: #ffffff;
 }
 .fill:hover {
-  color: #fff;
+  color: #4385f5;
 }

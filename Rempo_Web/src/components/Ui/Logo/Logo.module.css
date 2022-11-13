@@ -1,0 +1,8 @@
+.logo {
+  fill: #3c91e6;
+}
+@media screen and (max-width: 960px) {
+  .logo {
+    fill: #fff;
+  }
+}

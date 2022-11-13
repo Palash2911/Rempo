@@ -15,3 +15,9 @@
   height: 467px;
   filter: grayscale(0.15);
 }
+.btn_container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: inherit;
+}

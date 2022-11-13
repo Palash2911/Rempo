@@ -6,7 +6,7 @@ const Button = ({
   onClick,
   label = "Label Missing",
   disabled,
-  filled = true,
+  filled,
   padding = "0.5em 1.5em",
   fontSize = "17px",
 }) => {
