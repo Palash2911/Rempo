@@ -252,6 +252,7 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
             firestore.collection("Plots").document(plotId).get().addOnSuccessListener{
                 binding.surveyNo.setText(it["Survey No"].toString())
                 binding.plotNo.setText(it["Plot No"].toString())
+                binding.bidPrice.setText(it["Bid Price"].toString())
                 binding.aSize.setText(it["Area"].toString())
                 binding.fron.setText(it["Front"].toString())
                 binding.dept.setText(it["Depth"].toString())
@@ -273,10 +274,12 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
             val pno:String = binding.plotNo.text.toString();
             val asi:String = binding.aSize.text.toString();
             val fro:String = binding.fron.text.toString();
+            val price:String = binding.bidPrice.text.toString();
             val dept:String = binding.dept.text.toString();
             val road:String = binding.road.text.toString()
 
             map["Survey No"] = sno;
+            map["Bid Price"] = price;
             map["Plot No"] = pno;
             map["Front"] = fro;
             map["Area"] = asi;
