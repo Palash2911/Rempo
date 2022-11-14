@@ -4,6 +4,7 @@ import About from "./components/About/About";
 import Landing from "./components/Landing/Landing";
 import Milestones from "./components/Milestones/Milestones";
 import Navbar from "./components/Navbar/Navbar";
+import Team from "./components/Team/Team";
 import { Loader } from "./components/Ui";
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
           <Landing />
           <Milestones />
           <About />
+          <Team />
           <Routes>
             <Route path="/" element={<></>} />
             <Route path="/" element={<></>} />
