@@ -38,6 +38,7 @@
 
 .btn:hover {
   color: #fff;
+  cursor: pointer;
 }
 
 /* Filled Styles */
@@ -51,4 +52,5 @@
 }
 .fill:hover {
   color: #4385f5;
+  cursor: pointer;
 }

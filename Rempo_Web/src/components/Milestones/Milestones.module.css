@@ -38,3 +38,13 @@
   margin-top: 20px;
   text-align: center;
 }
+
+@media screen and (max-width: 960px) {
+  .heading{
+    text-align: center;
+  }
+  .para{
+    text-align: justify;
+    padding: 15px;
+  }
+}

@@ -22,3 +22,12 @@
   align-items: center;
   height: inherit;
 }
+
+@media screen and (max-width: 500px) {
+  .btn_container {
+    flex-direction: column;
+  }
+  .landing_container{
+    padding-left: 20px;
+  }
+}

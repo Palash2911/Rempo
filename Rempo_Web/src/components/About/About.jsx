@@ -24,8 +24,8 @@ const About = () => {
           Currently we have our presence in few districts of Vidarbha,
           Marathwada and Pune region
         </p>
-        <div>
-          <Card width="60vw" height="250px">
+        <div className={classes.sm_cont}> 
+          <Card width="50vw" height="220px" margin="50px">
             <div className={classes.card_content}>
               <h2 className={classes.number}>1000+</h2>
               <p className={classes.para2}>

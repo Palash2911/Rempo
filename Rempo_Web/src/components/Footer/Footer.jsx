@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <>
       <div className={classes.footer_container}>
-        <h4>This is a footer</h4>
+        <h4>© Copyright 2022 | All Rights Reserved</h4>
       </div>
     </>
   )

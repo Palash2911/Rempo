@@ -17,9 +17,9 @@ const Team = () => {
             return (
               <Card
                 key={i}
-                width="400px"
-                height="310px"
-                margin="100px"
+                width="35vw"
+                height="40vh"
+                margin="5vw 2vw"
                 radius="10px"
               >
                 <div className={classes.card_data}>

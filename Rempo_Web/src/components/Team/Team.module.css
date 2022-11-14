@@ -13,6 +13,8 @@
 }
 .para {
     font-size: 23px;
+    padding: 15px;
+    text-align: justify;
     color: #787d82;
 }
 .cards {
@@ -38,4 +40,10 @@
 .teams_title {
     margin-top: 50px;
     text-align: justify;
+}
+
+@media screen and (max-width:500px) {
+    .cards{
+        flex-direction: column;
+    }    
 }

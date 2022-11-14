@@ -10,9 +10,14 @@
   background-size: cover;
   padding: 10px 20px;
   padding-top: 100px;
+  position: relative;
 }
 .title {
   font-size: 64px;
+}
+.sm_cont{
+  position: absolute;
+  bottom: -100px;
 }
 .para {
   font-size: 24px;
@@ -24,14 +29,30 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 20px;
+  padding: 10px;
 }
 .number {
   all: unset;
   font-size: 64px;
   font-weight: 600;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 .para2 {
   text-align: center;
+}
+
+@media screen and (max-width: 960px) {
+  .about_container{
+    height: 120vh;
+  }
+  .sm_cont{
+    bottom: -180px;
+  }
+  .para{
+    text-align: justify;
+    padding: 0px;
+  }
+  .para2{
+    text-align: justify;
+  }
 }
