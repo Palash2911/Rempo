@@ -14,7 +14,6 @@ function Navbar() {
           <NavLink exact to="/" className={classes.nav_logo}>
             <Logo />
           </NavLink>
-
           <ul
             className={
               click
