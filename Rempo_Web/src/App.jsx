@@ -5,6 +5,7 @@ import Landing from "./components/Landing/Landing";
 import Milestones from "./components/Milestones/Milestones";
 import Navbar from "./components/Navbar/Navbar";
 import Team from "./components/Team/Team";
+import Footer from "./components/Footer/Footer"
 import { Loader } from "./components/Ui";
 
 const App = () => {
@@ -28,8 +29,9 @@ const App = () => {
           <Milestones />
           <About />
           <Team />
+          <Footer />
           <Routes>
-            <Route path="/" element={<Landing />} />
+            <Route path="/" element={<></>} />
             <Route path="/" element={<></>} />
             <Route path="/" element={<></>} />
           </Routes>

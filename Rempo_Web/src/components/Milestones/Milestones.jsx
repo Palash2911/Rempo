@@ -2,6 +2,7 @@ import React from "react";
 import classes from "./Milestones.module.css";
 import { Card } from "../Ui";
 import { milestoneData } from "../../assets/milestones";
+
 const Milestones = () => {
   return (
     <>

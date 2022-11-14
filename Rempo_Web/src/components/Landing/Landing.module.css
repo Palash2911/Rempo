@@ -3,7 +3,8 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100vw;
+  width: 90vw;
+  padding-left: 70px;
   position: relative;
 }
 .main_div {
@@ -11,7 +12,7 @@
   bottom: -100px;
 }
 .image {
-  width: 100vw;
+  width: 90vw;
   height: 467px;
   filter: grayscale(0.15);
 }
