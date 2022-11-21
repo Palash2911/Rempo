@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, Route, Routes } from "react-router-dom";
-import About from "./components/About/About";
-import Landing from "./components/Landing/Landing";
-import Milestones from "./components/Milestones/Milestones";
 import Navbar from "./components/Navbar/Navbar";
-import Team from "./components/Team/Team";
-import Footer from "./components/Footer/Footer"
+import Footer from "./components/Footer/Footer";
 import { Loader } from "./components/Ui";
+import Login from "./components/Login/Login";
+import Homepage from "./pages/Homepage";
 
 const App = () => {
   const location = useLocation();
@@ -25,16 +23,12 @@ const App = () => {
       ) : (
         <div>
           <Navbar />
-          <Landing />
-          <Milestones />
-          <About />
-          <Team />
-          <Footer />
           <Routes>
-            <Route path="/" element={<></>} />
-            <Route path="/" element={<></>} />
+            <Route path="/" element={<Homepage />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/" element={<></>} />
           </Routes>
+          <Footer />
         </div>
       )}
     </>
