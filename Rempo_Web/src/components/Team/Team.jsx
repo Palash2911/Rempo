@@ -2,8 +2,11 @@ import React from "react";
 import classes from "./Team.module.css";
 import { Card } from "../Ui";
 import { teamsData } from "../../assets/teams";
+import useScreenType from "react-screentype-hook";
 
 const Team = () => {
+  const screenType = useScreenType();
+
   return (
     <>
       <div className={classes.team_container}>
@@ -17,7 +20,7 @@ const Team = () => {
             return (
               <Card
                 key={i}
-                width="35vw"
+                width={screenType.isMobile ? "80vw" : "35vw"}
                 height="40vh"
                 margin="5vw 2vw"
                 radius="10px"

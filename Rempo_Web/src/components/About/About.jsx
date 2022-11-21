@@ -1,8 +1,11 @@
 import React from "react";
 import { Card } from "../Ui";
 import classes from "./About.module.css";
+import useScreenType from "react-screentype-hook";
 
 const About = () => {
+  const screenType = useScreenType();
+
   return (
     <>
       <div className={classes.about_container}>
@@ -24,8 +27,12 @@ const About = () => {
           Currently we have our presence in few districts of Vidarbha,
           Marathwada and Pune region
         </p>
-        <div className={classes.sm_cont}> 
-          <Card width="50vw" height="220px" margin="50px">
+        <div className={classes.sm_cont}>
+          <Card
+            width={screenType.isMobile ? "80vw" : "50vw"}
+            height="220px"
+            margin="50px"
+          >
             <div className={classes.card_content}>
               <h2 className={classes.number}>1000+</h2>
               <p className={classes.para2}>
