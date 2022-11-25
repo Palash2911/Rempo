@@ -1,7 +1,9 @@
 /* Normal Styles */
 
 .btn,
-.fill {
+.fill,
+.dim {
+  all: unset;
   padding: 0.8em 1.8em;
   border: 2px solid #4385f5;
   position: relative;
@@ -17,7 +19,8 @@
 }
 
 .btn::before,
-.fill::before {
+.fill::before,
+.dim::before {
   content: "";
   width: 0;
   height: 1000%;
@@ -32,7 +35,8 @@
 }
 
 .btn:hover::before,
-.fill:hover::before {
+.fill:hover::before,
+.dim:hover::before {
   width: 105%;
 }
 
@@ -52,5 +56,20 @@
 }
 .fill:hover {
   color: #4385f5;
+  cursor: pointer;
+}
+
+/* Dim Styles */
+
+.dim {
+  color: #ffffff;
+  border: 2px solid #0496ff00;
+  background-color: #0496ff66;
+}
+.dim::before {
+  background: #ffffff;
+}
+.dim:hover {
+  color: #0496ff66;
   cursor: pointer;
 }

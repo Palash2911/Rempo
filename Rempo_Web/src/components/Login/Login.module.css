@@ -4,3 +4,20 @@
   align-items: center;
   height: 81.5vh;
 }
+.form_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px 10px;
+  row-gap: 30px;
+}
+.outerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.PhoneInputContainer {
+  width: auto;
+}
