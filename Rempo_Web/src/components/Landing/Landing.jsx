@@ -12,8 +12,8 @@ const Landing = () => {
         <div className={classes.main_div}>
           <Card width="50vw" height="200px" radius="15px">
             <div className={classes.btn_container}>
-              <Button label="List a Plot" />
-              <Button filled label="List a Layout" />
+              <Button type="1" label="List a Plot" />
+              <Button type="2" filled label="List a Layout" />
             </div>
           </Card>
         </div>

@@ -9,17 +9,30 @@ const Button = ({
   filled,
   padding = "0.5em 1.5em",
   fontSize = "17px",
+  type = "0",
+  radius,
 }) => {
   return (
     <>
-      <button
-        style={{ padding: padding, fontSize: fontSize }}
-        className={filled ? classes.fill : classes.btn}
-        onClick={onClick}
-        disabled={disabled}
-      >
-        {label || children}
-      </button>
+      {type === "1" ? (
+        <button
+          style={{ padding: padding, fontSize: fontSize, borderRadius: radius }}
+          className={filled ? classes.fill : classes.btn}
+          onClick={onClick}
+          disabled={disabled}
+        >
+          {label || children}
+        </button>
+      ) : (
+        <button
+          style={{ padding: padding, fontSize: fontSize, borderRadius: radius }}
+          className={classes.dim}
+          onClick={onClick}
+          disabled={disabled}
+        >
+          {label || children}
+        </button>
+      )}
     </>
   );
 };
