@@ -5,6 +5,7 @@ import Footer from "./components/Footer/Footer";
 import { Loader } from "./components/Ui";
 import Login from "./components/Login/Login";
 import Homepage from "./pages/Homepage";
+import Profile from "./components/Profile/Profile"
 
 const App = () => {
   const location = useLocation();
@@ -26,7 +27,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/" element={<></>} />
+            <Route path="/Profile" element={<Profile />} />
           </Routes>
           <Footer />
         </div>

@@ -1,0 +1,22 @@
+.profile_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 90vw;
+    padding-left: 70px;
+    margin: 30px;
+  }
+.profile_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 30px;
+}
+
+.profile_input{
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10%;
+}

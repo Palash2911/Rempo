@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./Landing.module.css";
 import landing from "../../assets/landing.png";
 import Card from "../Ui/Card/Card";
 import { Button } from "../Ui";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import app from "../firebase_config"
+import { useNavigate } from 'react-router-dom'
+const auth = getAuth(app);
 
 const Landing = () => {
+
+  let histo = useNavigate();
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        histo("/")
+        // ...
+      } else {
+        histo("/login")
+      }
+    });
+    //eslint-disable-next-line
+  }, [])
+
   return (
     <>
       <div className={classes.landing_container}>
