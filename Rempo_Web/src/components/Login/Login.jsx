@@ -44,7 +44,6 @@ const Login = () => {
     setFlag({flag: 1})
     const phoneNumber = "+91" + state.phone.toString().substring(2); 
     const appVerifier = window.recaptchaVerifier;
-    console.log("fuck:"+appVerifier)
     signInWithPhoneNumber(auth, phoneNumber, appVerifier)
     .then((confirmationResult) => {
       window.confirmationResult = confirmationResult;
@@ -60,7 +59,7 @@ const Login = () => {
     window.confirmationResult.confirm(otpstate.otp).then((result) => {
       // User signed in successfully.
       const user = result.user;
-      histo("/")
+      histo("/profile")
       // ...
     }).catch((error) => {
       // User couldn't sign in (bad verification code?)
