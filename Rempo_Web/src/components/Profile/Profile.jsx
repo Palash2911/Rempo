@@ -7,6 +7,8 @@ import app, { db } from "../firebase_config"
 import { useNavigate } from 'react-router-dom'
 import useScreenType from "react-screentype-hook";
 import { collection, addDoc,  doc, setDoc } from "firebase/firestore";
+import Profile_section from "../../assets/profile_section_pic.png"
+import Input from "../Ui/Input/Input";
 
 const auth = getAuth(app);
 
@@ -48,19 +50,37 @@ const Profile = () => {
   return (
     <>
       <div className={classes.profile_container}>
-        <Card
-            width={screenType.isMobile ? "90vw" : "35vw"}
-            height="85vh"
-            radius="24px"
-          >  
-          <form action="" className={classes.profile_form}>
-            <input type="text" value={stateName.Namee} name="name" placeholder="Enter Your Name" className={classes.profile_input} onChange={(e) => setStateName({ Namee: e.target.value })}/>
-            <input type="text" value={stateEmail.Email} name="email" placeholder="Enter Your Email" className={classes.profile_input} onChange={(e) => setStateEmail({ Email: e.target.value })}/>
-            <input type="text" value={statePhone.Number} name="number" placeholder="Enter Your Phone Number" className={classes.profile_input} onChange={(e) => setStatePhone({ Number: e.target.value })}/>
-            <input type="text" name="aadhar" placeholder="1234-5678-9013" className={classes.profile_input} disabled/>
-            <input type="text" value={stateDob.Dob} name="dob" placeholder="Enter Your Dob" className={classes.profile_input} onChange={(e) => setStateDob({ Dob: e.target.value })}/>
-            <Button label="Create Profile" padding="0.5em 7em" radius="24px" onClick={handleClick}/>
-          </form>
+        <Card width={!screenType.isMobile ? "90vw" : "35vw"} height="85vh"  radius="24px">  
+        <div className={classes.profile_card}>
+          <div className={classes.profile_left}>
+            <img className={classes.profile_img} src={Profile_section} alt="Profile Left Picture"/>
+          </div>
+          <div className={classes.profile_right}>
+            <form action="" className={classes.profile_form}>
+              <div className={classes.profile_input_div}>
+                <label>Full Name: </label>
+                <input type="text" value={stateName.Namee} name="name" placeholder="John Smith" className={classes.profile_input} onChange={(e) => setStateName({ Namee: e.target.value })}/>
+              </div>
+              <div className={classes.profile_input_div}>
+                <label>Email: </label>
+                <input type="text" value={stateEmail.Email} name="email" placeholder="xyz@gmail.com" className={classes.profile_input} onChange={(e) => setStateEmail({ Email: e.target.value })}/>
+              </div>
+              <div className={classes.profile_input_div}>
+                <label>Phone Number: </label>
+                <input type="text" value={statePhone.Number} name="number" placeholder="+91 1234567890" className={classes.profile_input} onChange={(e) => setStatePhone({ Number: e.target.value })}/>
+              </div>
+              <div className={classes.profile_input_div}>
+                <label>Date Of Birth: </label>
+                <input type="text" value={stateDob.Dob} name="dob" placeholder="12/11/2002" className={classes.profile_input} onChange={(e) => setStateDob({ Dob: e.target.value })}/>
+              </div>
+              <div className={classes.profile_input_div}>
+                <label>Aadhar Number: </label>
+                <input type="text" name="aadhar" placeholder="1234-5678-9013" className={classes.profile_input} disabled/>
+              </div>
+              <Button label="Create Profile" padding="0.5em 7em" radius="24px" onClick={handleClick}/>
+            </form>
+          </div>
+        </div>
         </Card>
       </div>
     </>

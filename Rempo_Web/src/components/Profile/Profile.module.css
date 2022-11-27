@@ -3,20 +3,39 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 90vw;
-    padding-left: 70px;
+    /* padding-left: 70px; */
     margin: 30px;
   }
 .profile_form {
     display: flex;
     justify-content: center;
     align-items: center;
+    align-content: center;
     flex-direction: column;
     row-gap: 30px;
+    height: 80vh;
+    margin-right: 250px;
 }
-
+.profile_card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    flex-direction: row;
+}
 .profile_input{
     padding: 10px;
-    margin: 10px;
-    border-radius: 10%;
+    width: 400px;
 }
+.profile_img{
+    width: 535px;
+    height: 600px;  
+}
+.profile_input_div{
+    display: flex;
+    justify-content: center;
+    align-content: flex-start;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
