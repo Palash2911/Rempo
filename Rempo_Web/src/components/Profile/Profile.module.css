@@ -30,6 +30,7 @@
 .profile_img{
     width: 535px;
     height: 600px;  
+    /* mask-image: linear-gradient(rgb(100, 100, 100)); */
 }
 .profile_input_div{
     display: flex;

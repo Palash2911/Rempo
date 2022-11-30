@@ -10,18 +10,6 @@ const auth = getAuth(app);
 
 const Landing = () => {
 
-  let histo = useNavigate();
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        histo("/")
-        // ...
-      } else {
-        histo("/login")
-      }
-    });
-    //eslint-disable-next-line
-  }, [])
 
   return (
     <>

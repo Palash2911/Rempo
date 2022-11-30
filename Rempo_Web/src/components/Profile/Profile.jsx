@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import classes from "./Profile.module.css";
 import Card from "../Ui/Card/Card";
 import { Button } from "../Ui";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import app, { db } from "../firebase_config"
 import { useNavigate } from 'react-router-dom'
 import useScreenType from "react-screentype-hook";
-import { collection, addDoc,  doc, setDoc } from "firebase/firestore";
+import { collection, addDoc,  doc, setDoc, getDoc } from "firebase/firestore";
 import Profile_section from "../../assets/profile_section_pic.png"
 import Input from "../Ui/Input/Input";
 
@@ -20,6 +20,30 @@ const Profile = () => {
   const [stateEmail, setStateEmail] = useState({ Email: '' });
   const [statePhone, setStatePhone] = useState({ Number: '' });
   const [stateDob, setStateDob] = useState({ Dob: '' });
+
+  const checkauth = async()=>{
+    const docRef = doc(db, "Users", auth.currentUser.uid);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      histo("/")
+    } else {
+      // doc.data() will be undefined in this case
+      histo("/profile")
+    }
+  }
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) { 
+        checkauth()
+        // ...
+      } else {
+        histo("/")
+      }
+    });
+    //eslint-disable-next-line
+  }, [])
 
   const handleClick = async (e)=> {
     e.preventDefault(); 

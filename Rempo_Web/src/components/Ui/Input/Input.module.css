@@ -1,4 +1,4 @@
-.input {
+/* .input {
   line-height: 28px;
   border: 2px solid transparent;
   border-bottom-color: #777;
@@ -24,4 +24,4 @@ input:hover {
 .input:focus::placeholder {
   opacity: 0;
   transition: opacity 0.3s;
-}
+} */

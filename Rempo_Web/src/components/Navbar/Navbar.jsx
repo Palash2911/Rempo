@@ -2,11 +2,19 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import classes from "./Navbar.module.css";
 import Logo from "../Ui/Logo/Logo";
+import { getAuth, signOut } from "firebase/auth";
+import app, { db } from "../firebase_config"
+
+const auth = getAuth(app);
 
 function Navbar() {
   const [click, setClick] = useState(false);
 
-  const handleClick = () => setClick(!click);
+  const handleClick = () => {
+    setClick(!click)
+    signOut(auth);
+  };
+    
   return (
     <>
       <nav className={classes.navbar}>
