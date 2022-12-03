@@ -6,10 +6,9 @@ import { Button } from "../Ui";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import app from "../firebase_config"
 import { useNavigate } from 'react-router-dom'
-const auth = getAuth(app);
+
 
 const Landing = () => {
-
 
   return (
     <>

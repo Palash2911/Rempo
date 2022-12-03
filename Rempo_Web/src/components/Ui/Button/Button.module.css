@@ -64,12 +64,12 @@
 .dim {
   color: #ffffff;
   border: 2px solid #0496ff00;
-  background-color: #0496ff66;
+  background-color: #4385f5;
 }
 .dim::before {
   background: #ffffff;
 }
 .dim:hover {
-  color: #0496ff66;
+  color: #4385f5;
   cursor: pointer;
 }

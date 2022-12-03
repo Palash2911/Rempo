@@ -11,6 +11,12 @@
   padding-top: 5px;
   background-color: #ffffffb7;
 }
+.nav_login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
 .navbar_logo {
   width: 180px;
 }
