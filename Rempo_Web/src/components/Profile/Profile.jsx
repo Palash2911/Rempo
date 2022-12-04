@@ -77,6 +77,14 @@ const Profile = () => {
         <Card width={!screenType.isMobile ? "79vw" : "35vw"} height="85vh"  radius="24px">  
         <div className={classes.profile_card}>
           <div className={classes.profile_left}>
+            <div className={classes.profile_left_inner}></div>
+            <div className={classes.profile_left_text}>
+              <h2 className={classes.profile_left_heading}>rempo</h2>
+              <div className={classes.profile_left_suinner}>
+                <h2>1000+ Agents</h2>
+                <h4 style={{fontWeight: "400"}}>Connecting Local Market with Technology</h4>
+              </div>
+            </div>
             <img className={classes.profile_img} src={Profile_section} alt="Profile Left Picture"/>
           </div>
           <div className={classes.profile_right}>
