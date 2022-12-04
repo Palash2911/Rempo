@@ -1,19 +1,15 @@
 package com.godspeed.propmart.Fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.godspeed.propmart.Adapters.PlotCardAdapter
 import com.godspeed.propmart.Adapters.PropertyCardAdapter
-import com.godspeed.propmart.Models.PlotCardModel
 import com.godspeed.propmart.Models.PropertyCardModel
 import com.godspeed.propmart.databinding.FragmentSavedfragBinding
 import com.google.firebase.auth.ktx.auth

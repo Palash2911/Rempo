@@ -124,17 +124,6 @@
                     android:src="@drawable/pen"
                     android:visibility="visible" />
 
-                <ImageView
-                    android:id="@+id/saved"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="1"
-                    android:padding="6dp"
-                    android:src="@drawable/saved"
-                    android:visibility="gone" />
-
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"

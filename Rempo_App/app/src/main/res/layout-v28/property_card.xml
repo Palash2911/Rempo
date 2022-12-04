@@ -121,7 +121,7 @@
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:src="@drawable/bookmark"
+                    android:src="@drawable/ic_baseline_bookmark_border_24"
                     android:visibility="visible" />
 
                 <ImageView
@@ -132,7 +132,7 @@
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:padding="6dp"
-                    android:src="@drawable/saved"
+                    android:src="@drawable/ic_baseline_bookmark_24"
                     android:visibility="gone" />
 
                 <View

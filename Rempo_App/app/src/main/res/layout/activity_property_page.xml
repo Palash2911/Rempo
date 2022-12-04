@@ -298,15 +298,14 @@
                         android:layout_height="40dp"
                         android:layout_gravity="center"
                         android:layout_weight="0.2"
-                        android:src="@drawable/bookmark" />
-
+                        android:src="@drawable/ic_baseline_bookmark_border_24" />
                     <ImageView
                         android:id="@+id/bookmarksaved"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
                         android:layout_weight="0.2"
-                        android:src="@drawable/saved"
+                        android:src="@drawable/ic_baseline_bookmark_24"
                         android:visibility="gone" />
                 </LinearLayout>
 
