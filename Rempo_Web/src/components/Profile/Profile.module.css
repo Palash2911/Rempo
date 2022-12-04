@@ -10,11 +10,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    align-content: center;
     flex-direction: column;
-    row-gap: 30px;
-    height: 80vh;
-    margin-right: 250px;
+    row-gap: 20px;
+    height: 70vh;
+    margin-right: 10vw;
 }
 .profile_card{
     display: flex;
@@ -28,8 +27,8 @@
     width: 400px;
 }
 .profile_img{
-    width: 535px;
-    height: 600px;  
+    width: 30vw;
+    height: 85vh;  
     /* mask-image: linear-gradient(rgb(100, 100, 100)); */
 }
 .profile_input_div{
@@ -37,6 +36,6 @@
     justify-content: center;
     align-content: flex-start;
     flex-direction: column;
-    row-gap: 10px;
+    /* row-gap: 10px; */
 }
 

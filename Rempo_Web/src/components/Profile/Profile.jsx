@@ -74,12 +74,13 @@ const Profile = () => {
   return (
     <>
       <div className={classes.profile_container}>
-        <Card width={!screenType.isMobile ? "90vw" : "35vw"} height="85vh"  radius="24px">  
+        <Card width={!screenType.isMobile ? "79vw" : "35vw"} height="85vh"  radius="24px">  
         <div className={classes.profile_card}>
           <div className={classes.profile_left}>
             <img className={classes.profile_img} src={Profile_section} alt="Profile Left Picture"/>
           </div>
           <div className={classes.profile_right}>
+            <h1>Create Your Account</h1>
             <form action="" className={classes.profile_form}>
               <div className={classes.profile_input_div}>
                 <label>Full Name: </label>

@@ -36,7 +36,7 @@ const Login = () => {
   };
 
   const [state, setState] = useState({ phone: 0 });
-  const [otpstate, otpsetState] = useState({ otp: "" });
+  const [otpstate, otpsetState] = useState({ otp: 0 });
   const [flagstate, setFlag] = useState({ flag: 0 });
   // To check whether the number is correct or not.
   useEffect(() => {
@@ -120,7 +120,7 @@ const Login = () => {
                 <div className={classes.PhoneInputContainer}>
                   <OtpInput
                     value={otpstate.otp}
-                    onChange={(e) => otpsetState({ otp: e.target.value })}
+                    onChange={(otp) => otpsetState({ otp })}
                     numInputs={6}
                     separator={<span>-</span>}
                     inputStyle={{
