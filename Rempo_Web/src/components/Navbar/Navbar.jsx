@@ -3,41 +3,38 @@ import { NavLink } from "react-router-dom";
 import classes from "./Navbar.module.css";
 import Logo from "../Ui/Logo/Logo";
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
-import app, { db } from "../firebase_config"
-import { useNavigate } from 'react-router-dom'
+import app, { db } from "../firebase_config";
+import { useNavigate } from "react-router-dom";
 
 const auth = getAuth(app);
 
 const Navbar = () => {
   const [click, setClick] = useState(false);
   let histo = useNavigate();
-  
+
   const [statelog, setStatelog] = useState(false);
 
   const handleClick = () => {
-    setClick(!click)
-    if(!statelog)
-    {
+    setClick(!click);
+    if (!statelog) {
       signOut(auth);
-    }
-    else
-    {
-      setStatelog(!statelog)
+    } else {
+      setStatelog(!statelog);
     }
   };
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      if (user) { 
-        setStatelog(true)
+      if (user) {
+        setStatelog(true);
         // ...
       } else {
-        setStatelog(false)
+        setStatelog(false);
       }
     });
     //eslint-disable-next-line
-  }, [])
-    
+  }, []);
+
   return (
     <>
       <nav className={classes.navbar}>
@@ -119,17 +116,32 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li className={classes.nav_item}>
-              <NavLink exact to = {!statelog?"/login":"/"} activeClassName={classes.active} className={classes.nav_links} onClick={handleClick}>
-                {statelog ? 
-                  <i class="fas fa-sign-out-alt"></i> 
-                  : <i class="fas fa-sign-in-alt"></i>}
+              <NavLink
+                exact
+                to={!statelog ? "/login" : "/"}
+                activeClassName={classes.active}
+                className={classes.nav_links}
+                onClick={handleClick}
+              >
+                {statelog ? (
+                  <i class="fas fa-sign-out-alt"></i>
+                ) : (
+                  <i class="fas fa-sign-in-alt"></i>
+                )}
               </NavLink>
             </li>
-            <li className={classes.nav_item}>
-              <NavLink exact to = {!statelog?"/":"/profile"} activeClassName={classes.active} className={classes.nav_links} onClick={handleClick}>
-               {statelog ? <i class="fas fa-user"></i>: null}
-              </NavLink>
-            </li>
+            {statelog && (
+              <li className={classes.nav_item}>
+                <NavLink
+                  exact
+                  to={!statelog ? "/" : "/userProfile"}
+                  activeClassName={classes.active}
+                  className={classes.nav_links}
+                >
+                  {statelog ? <i class="fas fa-user"></i> : null}
+                </NavLink>
+              </li>
+            )}
           </ul>
           <div className={classes.nav_icon} onClick={handleClick}>
             <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
@@ -138,6 +150,6 @@ const Navbar = () => {
       </nav>
     </>
   );
-}
+};
 
 export default Navbar;
