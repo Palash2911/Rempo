@@ -6,15 +6,15 @@ import Card from "../Ui/Card/Card";
 const UserProfile = () => {
   return (
     <>
-      <div>
-        <img src={profileBanner} alt="profileBanner" />
-        <div>
-          <Card width="80%" height="250px" radius="20px">
-            <div>
-              <div>
-                <i class="fas fa-user"></i>
+      <div className={classes.user_page}>
+        <img src={profileBanner} className={classes.background_image} alt="profileBanner" />
+        <div className={classes.user_details}>
+          <Card width="80vw" height="250px" radius="20px">
+            <div className={classes.user_details_card}>
+              <div className={classes.user_icon}>
+                <i class="fas fa-user"></i> 
               </div>
-              <div>
+              <div className={classes.user_details_info} >
                 <h1>Dale Carnegie</h1>
                 <p>
                   <span>
@@ -29,18 +29,18 @@ const UserProfile = () => {
                   abc@gmail.com
                 </p>
               </div>
-              <div>
+              <div className={classes.edit_user_details}>
                 <i class="fas fa-pen"></i>
               </div>
             </div>
           </Card>
-          <Card width="80%" height="250px" radius="20px">
-            <div>
-              <div>
-                <button>My Listings</button>
-                <button>Current Listings</button>
+          <Card width="80vw" height="250px" radius="20px">
+            <div classname={classes.layout_listing}>
+              <div className={classes.layout_listing_mylisting}>
+                <button className={classes.hover_underline_animation}>My Listings</button>
+                <button className={classes.hover_underline_animation}>Current Listings</button>
               </div>
-              <ul>
+              <ul className={classes.layout_listing_details}>
                 <li>Layout 1</li>
                 <li>Layout 2</li>
                 <li>Layout 3</li>

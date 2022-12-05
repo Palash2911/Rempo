@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.background_image{
+    width: 98.9vw;
+}
+
+.user_details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.user_details_card{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+}
+
+.user_icon{
+    border: 7px solid black;  
+    border-radius: 100%; 
+    margin: 24px;
+}
+
+.user_details_info span{
+    padding: 8px;
+}
+
+.user_details_info h1, .user_details_info p{
+    padding: 4px;
+}
+
+.user_icon i{
+      font-size: 100px;
+      padding: 30px;
+}
+
+.edit_user_details{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    border: 2px solid #3C91E6;  
+    border-radius: 10px; 
+    margin: 24px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.edit_user_details i{
+    font-size: 16px;
+    padding: 10px;
+    color: #3C91E6;
+}
+
+.layout_listing_details{
+    list-style-type: none;
+    text-decoration: none;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.layout_listing_details li{
+    padding: 8px;
+    border: 2px solid #E5E5E5;
+    border-radius: 10px;
+}
+
+.layout_listing_mylisting button{
+    all: unset;
+    padding: 8px 24px;
+    margin: 8px 16px 0 16px;
+}
+
+.layout_listing_mylisting button:focus{
+    border-bottom: 3px solid #3C91E6;
+}
