@@ -4,12 +4,10 @@ import landing from "../../assets/landing.png";
 import Card from "../Ui/Card/Card";
 import { Button } from "../Ui";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import app from "../firebase_config"
-import { useNavigate } from 'react-router-dom'
-
+import app from "../firebase_config";
+import { Link, useNavigate } from "react-router-dom";
 
 const Landing = () => {
-
   return (
     <>
       <div className={classes.landing_container}>
@@ -17,8 +15,10 @@ const Landing = () => {
         <div className={classes.main_div}>
           <Card width="50vw" height="200px" radius="15px">
             <div className={classes.btn_container}>
-              <Button type="1" label="List a Plot" />
-              <Button type="2" filled label="List a Layout" />
+              <Button type="1" label="List a Plot"></Button>
+              <Link to="/layout">
+                <Button type="2" filled label="List a Layout" />
+              </Link>
             </div>
           </Card>
         </div>
