@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import classes from "./Landing.module.css";
 import landing from "../../assets/landing.png";
 import Card from "../Ui/Card/Card";
 import { Button } from "../Ui";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import app from "../firebase_config";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
   return (

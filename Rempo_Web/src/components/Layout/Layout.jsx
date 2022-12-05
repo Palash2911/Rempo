@@ -20,7 +20,7 @@ const Layout = () => {
         >
           <div className={classes.form_inner_container}>
             <h1>Layout Details</h1>
-            {formNo == 1 ? <Form1 /> : formNo == 2 ? <Form2 /> : <Form3 />}
+            {formNo === 1 ? <Form1 /> : formNo === 2 ? <Form2 /> : <Form3 />}
             <div>
               {formNo > 1 && (
                 <button

@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./Input.module.css";
-import errorpng from "../../../assets/errorpng.png";
+// import errorpng from "../../../assets/errorpng.png";
 
 const Input = ({
   value,
@@ -25,11 +25,11 @@ const Input = ({
         required={required}
         onChange={onChange}
       >
-        {label && // <label className={classes.form__label} htmlFor={`${name}`}>
         {
-          label,
-        }
-        // </label>
+          label && { // <label className={classes.form__label} htmlFor={`${name}`}>
+            label,
+          }
+          // </label>
         }
         {/* {error && (
           <p className={classes.error}>

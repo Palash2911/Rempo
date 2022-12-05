@@ -3,14 +3,14 @@ import { NavLink } from "react-router-dom";
 import classes from "./Navbar.module.css";
 import Logo from "../Ui/Logo/Logo";
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
-import app, { db } from "../firebase_config";
-import { useNavigate } from "react-router-dom";
+import app from "../firebase_config";
+// import { useNavigate } from "react-router-dom";
 
 const auth = getAuth(app);
 
 const Navbar = () => {
   const [click, setClick] = useState(false);
-  let histo = useNavigate();
+  // let histo = useNavigate();
 
   const [statelog, setStatelog] = useState(false);
 
