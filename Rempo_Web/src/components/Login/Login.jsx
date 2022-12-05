@@ -16,7 +16,7 @@ import OtpInput from "react-otp-input";
 const auth = getAuth(app);
 
 const Login = () => {
-  let switcher = 1;
+  // let switcher = 1;
   const screenType = useScreenType();
   let histo = useNavigate();
 
@@ -66,7 +66,7 @@ const Login = () => {
       .confirm(otpstate.otp)
       .then((result) => {
         // User signed in successfully.
-        const user = result.user;
+        // const user = result.user;
         histo("/profile");
         // ...
       })
@@ -80,7 +80,7 @@ const Login = () => {
     <>
       <div className={classes.container}>
         <div id="recaptcha-container"></div>
-        {flagstate.flag == 0 ? (
+        {flagstate.flag === 0 ? (
           <Card
             width={screenType.isMobile ? "90vw" : "35vw"}
             height="70vh"

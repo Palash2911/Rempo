@@ -1,0 +1,16 @@
+.form_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  margin: 20px 0;
+}
+.form_inner_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px 40px;
+  gap: 20px;
+}
