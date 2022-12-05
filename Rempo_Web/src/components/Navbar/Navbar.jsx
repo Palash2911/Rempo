@@ -124,9 +124,9 @@ const Navbar = () => {
                 onClick={handleClick}
               >
                 {statelog ? (
-                  <i class="fas fa-sign-out-alt"></i>
+                  <i className="fas fa-sign-out-alt"></i>
                 ) : (
-                  <i class="fas fa-sign-in-alt"></i>
+                  <i className="fas fa-sign-in-alt"></i>
                 )}
               </NavLink>
             </li>
@@ -138,7 +138,7 @@ const Navbar = () => {
                   activeClassName={classes.active}
                   className={classes.nav_links}
                 >
-                  {statelog ? <i class="fas fa-user"></i> : null}
+                  {statelog ? <i className="fas fa-user"></i> : null}
                 </NavLink>
               </li>
             )}
