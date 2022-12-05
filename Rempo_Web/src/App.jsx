@@ -5,7 +5,8 @@ import Footer from "./components/Footer/Footer";
 import { Loader } from "./components/Ui";
 import Login from "./components/Login/Login";
 import Homepage from "./pages/Homepage";
-import Profile from "./components/Profile/Profile"
+import Profile from "./components/Profile/Profile";
+import UserProfile from "./components/UserProfile/UserProfile";
 
 const App = () => {
   const location = useLocation();
@@ -28,6 +29,7 @@ const App = () => {
             <Route path="/" element={<Homepage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/Profile" element={<Profile />} />
+            <Route path="/userProfile" element={<UserProfile />} />
           </Routes>
           <Footer />
         </div>
