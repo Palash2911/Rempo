@@ -22,7 +22,7 @@ class ChooseActivity : AppCompatActivity() {
         }
 
         binding.layout.setOnClickListener {
-            val intent:Intent = Intent(this , sellProp::class.java);
+            val intent:Intent = Intent(this , Visitweb::class.java);
             startActivity(intent);
         }
     }

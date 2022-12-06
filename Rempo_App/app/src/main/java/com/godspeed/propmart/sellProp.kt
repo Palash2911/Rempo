@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.view.get
 import com.godspeed.propmart.databinding.ActivitySellPropBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
@@ -37,6 +38,8 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     var doc2 = 0
     var doc3 = 0
     var doc4 = 0
+    var pr=0
+    var spr=0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,11 +47,13 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         setContentView(binding.root)
 
         val selectplotCat: ArrayList<String> = ArrayList()
+        selectplotCat.add("Select Property Category")
         selectplotCat.add("Agricultural Land")
         selectplotCat.add("NA Plot")
         selectplotCat.add("Guntha Plot")
 
         val selectsubplotCat: ArrayList<String> = ArrayList()
+        selectsubplotCat.add("Select Sub-Property Category")
         selectsubplotCat.add("Residential Plot")
         selectsubplotCat.add("Commercial Plot")
         selectsubplotCat.add("Residential cum Commercial Plot")
@@ -141,8 +146,21 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             }
             if(fl1==1 && fl2==1 && fl3==1 && fl4==1)
             {
-                binding.CardView2.visibility = VISIBLE
-                binding.CardView1.visibility = GONE
+                if(pr==0){
+                    Toast.makeText(this, "Please Select Property Category! ", Toast.LENGTH_SHORT).show()
+                }
+                else
+                {
+                    if(pr==2 && spr==0)
+                    {
+                        Toast.makeText(this, "Please Select Sub-Property Category! ", Toast.LENGTH_SHORT).show()
+                    }
+                    else
+                    {
+                        binding.CardView2.visibility = VISIBLE
+                        binding.CardView1.visibility = GONE
+                    }
+                }
             }
         }
 
@@ -477,20 +495,27 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             }
         }
 //        Toast.makeText(this, "Item Selected $item", Toast.LENGTH_SHORT).show()
-        if(item == "NA Plot" || (item=="Residential Plot" || item=="Commercial Plot" || item=="Residential cum Commercial Plot"))
+        if(item == "NA Plot" || (item=="Residential Plot" || item=="Commercial Plot" || item=="Residential cum Commercial Plot" || item== "Select Sub-Property Category"))
         {
+            pr=2
             val plot = "NA Plot"
             var subPlot = ""
             newPlot["Property Category"] = plot
             when (item) {
                 "Residential Plot" -> {
                     subPlot = "Residential Plot"
+                    spr=1
                 }
                 "Commercial Plot" -> {
                     subPlot = "Commercial Plot"
+                    spr=1
                 }
                 "Residential cum Commercial Plot" -> {
                     subPlot = "Residential cum Commercial Plot"
+                    spr=1
+                }
+                "Select Sub-Property Category" ->{
+                    spr=0
                 }
             }
             newPlot["Sub-Property Category"] = subPlot
@@ -503,11 +528,17 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             {
                 newPlot["Property Category"] = "Agricultural Land"
                 newPlot["Sub-Property Category"] = ""
+                pr=1
             }
             else if(item=="Guntha Plot")
             {
                 newPlot["Property Category"] = "Guntha Plot"
                 newPlot["Sub-Property Category"] = ""
+                pr=3
+            }
+            else
+            {
+                pr=0
             }
             binding.subProprSpinner.visibility = GONE
             binding.textView13.visibility = GONE

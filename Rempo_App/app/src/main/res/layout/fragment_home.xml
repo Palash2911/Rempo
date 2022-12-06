@@ -75,7 +75,7 @@
             android:id="@+id/sellerRL"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/sellerRv"
@@ -97,8 +97,11 @@
                 android:layout_marginEnd="30dp"
                 android:layout_marginBottom="57dp"
                 android:clickable="true"
+                app:elevation="6dp"
+                app:tint = "@color/white"
                 android:src="@drawable/ic_baseline_add_24"
                 android:visibility="visible"
+                app:backgroundTint="@color/purple_200"
                 tools:ignore="SpeakableTextPresentCheck" />
 
         </RelativeLayout>
