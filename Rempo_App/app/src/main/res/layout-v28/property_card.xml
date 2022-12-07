@@ -23,7 +23,7 @@
                 android:layout_height="match_parent"
                 android:layout_above="@id/seperator"
                 android:layout_marginLeft="12dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="9dp"
                 android:layout_marginRight="12dp"
                 android:orientation="horizontal">
 
@@ -60,41 +60,58 @@
                         android:id="@+id/seller"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
                         android:layout_marginBottom="4dp"
                         android:text="By - Annapoorna Associates"
-                        android:textColor="#3F3F3F"
+                        android:textColor="#000"
                         android:textFontWeight="400"
                         android:textSize="12dp" />
 
                     <LinearLayout
+                        android:id="@+id/plotscntll"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
                         <TextView
-                            android:id="@+id/plottextview"
+                            android:id="@+id/totalPlotstv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="#91BE6D"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="4dp"
+                            android:text="Total Plots: "
+                            android:textColor="#000"
                             android:textFontWeight="400"
                             android:textSize="12dp" />
 
                         <TextView
-                            android:id="@+id/plot_count"
+                            android:id="@+id/plotcnt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text=""
-                            android:textColor="#B6B2B2"
+                            android:textColor="#000"
                             android:textSize="12dp" />
                     </LinearLayout>
 
                     <TextView
-                        android:id="@+id/address"
+                        android:id="@+id/districtv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Haran tekdi, Near Samruddhi Mahamarga, Mehkar, Buldhana, 411234 "
-                        android:textColor="#211A1E"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="4dp"
+                        android:text="District:"
+                        android:textColor="#000"
                         android:textSize="12dp" />
+
+                    <TextView
+                        android:id="@+id/talkuatv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="4dp"
+                        android:text="Taluka:"
+                        android:textColor="#000"
+                        android:textSize="12dp" />
+
                 </LinearLayout>
             </LinearLayout>
 

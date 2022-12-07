@@ -56,14 +56,15 @@ class propertyBuyer : Fragment() {
             it.documents.iterator().forEach { documentSnapshot ->
 //                val title:String = documentSnapshot.get("Area") as String;
                 val seller:String = documentSnapshot.get("sellerName") as String;
-                val plotnumber:String = documentSnapshot.get("totalPlots").toString();
+                val totalplots:String = documentSnapshot.get("totalPlots").toString();
                 val address:String = documentSnapshot.get("address") as String;
+                val talkua:String = documentSnapshot.get("address").toString();
 //                val longitude:String = documentSnapshot.get("longitude") as String;
 //                val latitude:String = documentSnapshot.get("latitude") as String;
                 val plotImage:String = documentSnapshot.get("soldPlots").toString();
                 val card =
                     PropertyCardModel(documentSnapshot.id, "Null", "title", seller, address,
-                        plotImage, plotnumber, "", "");
+                        plotImage, totalplots, "", "", talkua);
                 cards.add(card);
                 adapter.notifyDataSetChanged();
             }

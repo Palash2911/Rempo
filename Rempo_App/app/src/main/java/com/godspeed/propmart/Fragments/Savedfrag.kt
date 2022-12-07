@@ -45,15 +45,16 @@ class Savedfrag : Fragment() {
                     if(users.id.substring(0, 4)=="Plot")
                     {
                         val title = users["title"].toString()
-                        val seller = users["owner"].toString()
+                        val seller = users["seller"].toString()
                         val pNo = users["totalPlots"].toString()
-                        val address = users["address"].toString()
+                        val dist = users["address"].toString()
                         val longitude:String = users["longitude"] as String;
                         val latitude:String = users["latitude"] as String;
                         val plotId:String = users["plotId"].toString()
+                        val tal:String = users["taluka"].toString()
                         val cardP =
                             PropertyCardModel("Null",plotId,
-                                title,seller,address,"",pNo,latitude,longitude);
+                                title,seller,dist,"",pNo,latitude,longitude,tal);
 
                         cards.add(cardP)
                     }
@@ -62,13 +63,14 @@ class Savedfrag : Fragment() {
                         val title = users["title"].toString()
                         val seller = users["seller"].toString()
                         val totalPlots = users["totalPlots"].toString()
-                        val address = users["address"].toString()
+                        val dist = users["address"].toString()
                         val longitude:String = users["longitude"] as String;
                         val latitude:String = users["latitude"] as String;
+                        val tal:String = users["taluka"].toString()
 
                         val card:PropertyCardModel =
                             PropertyCardModel(users.id.substring(7),"Null",
-                                title,seller,address,"",totalPlots,latitude,longitude);
+                                title,seller,dist,"",totalPlots,latitude,longitude,tal);
 
                         cards.add(card)
                     }

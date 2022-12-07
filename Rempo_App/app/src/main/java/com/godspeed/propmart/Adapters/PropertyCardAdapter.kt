@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
@@ -45,10 +47,12 @@ class PropertyCardAdapter(val context:Context , val cards:List<PropertyCardModel
            with(cards[position]){
                if(this.plotId=="Null")
                {
+                   binding.plotscntll.visibility = VISIBLE
                    binding.title.text = this.title
-                   binding.address.text = this.address
-                   binding.plotCount.text = this.totalPlots
-                   binding.plottextview.text = "Total Plot: "
+                   binding.plotcnt.text = this.totalPlots
+                   binding.districtv.text = "District: ${this.address}"
+                   binding.talkuatv.text = "Taluka: ${this.taluka}"
+                   binding.seller.text = "By - ${this.seller}"
 //               Glide.with(context).load(this.layoutImage).into(binding.plotImage);
                    firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString()).collection("saved")
                        .document("Layout_"+this.layoutId).get().addOnSuccessListener { task->
@@ -105,10 +109,11 @@ class PropertyCardAdapter(val context:Context , val cards:List<PropertyCardModel
                }
                else
                {
+                   binding.plotscntll.visibility = GONE
                    binding.title.text = this.title
-                   binding.address.text = this.address;
-                   binding.plotCount.text = this.totalPlots;
-                   binding.plottextview.text  = "Plot No: "
+                   binding.districtv.text = "District: ${this.address}"
+                   binding.talkuatv.text = "Taluka: ${this.taluka}"
+                   binding.seller.text = "By - ${this.seller}"
 //               Glide.with(context).load(this.layoutImage).into(binding.plotImage);
                    firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString()).collection("saved")
                        .document("Plot_"+this.plotId).get().addOnSuccessListener { task->

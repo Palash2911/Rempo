@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#E5E5E5"
     android:layout_height="match_parent"
+    android:background="#f4f4f4"
     tools:context=".Editprofile">
+
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="18dp"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="50dp"
         android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp"
+        app:cardCornerRadius="18dp"
         app:layout_constraintBottom_toTopOf="@+id/editprfbtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:layout_marginBottom="25dp"
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
             android:layout_marginEnd="5dp"
+            android:layout_marginBottom="25dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +43,6 @@
                 <TextView
                     android:id="@+id/field_lable"
                     android:layout_width="120dp"
-                    android:textColor="@color/black"
                     android:layout_height="18dp"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
@@ -52,6 +51,7 @@
                     android:gravity="top"
                     android:lineSpacingExtra="3sp"
                     android:text="Aadhar Number"
+                    android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:translationY="-1.69sp" />
@@ -80,7 +80,6 @@
                     android:id="@+id/field_lable2"
                     android:layout_width="wrap_content"
                     android:layout_height="18dp"
-                    android:textColor="@color/black"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginTop="25dp"
@@ -88,6 +87,7 @@
                     android:gravity="top"
                     android:lineSpacingExtra="3sp"
                     android:text="Name (as on Aadhar Card)*"
+                    android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:translationY="-1.69sp" />
@@ -118,7 +118,6 @@
                     android:id="@+id/field_lable3"
                     android:layout_width="165dp"
                     android:layout_height="18dp"
-                    android:textColor="@color/black"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginTop="25dp"
@@ -126,6 +125,7 @@
                     android:gravity="top"
                     android:lineSpacingExtra="3sp"
                     android:text="Date of Birth"
+                    android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:translationY="-1.69sp" />
@@ -157,9 +157,9 @@
                     android:layout_marginTop="25dp"
                     android:fontFamily="@font/roboto"
                     android:gravity="top"
-                    android:textColor="@color/black"
                     android:lineSpacingExtra="3sp"
                     android:text="Mobile Number"
+                    android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:translationY="-1.69sp" />
@@ -196,8 +196,8 @@
                     android:fontFamily="@font/roboto"
                     android:gravity="top"
                     android:lineSpacingExtra="3sp"
-                    android:textColor="@color/black"
                     android:text="Email"
+                    android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:translationY="-1.69sp" />
@@ -221,10 +221,6 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-
-
-
-
     <Button
         android:id="@+id/editprfbtn"
         android:layout_width="match_parent"
@@ -243,7 +239,6 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
         android:layout_width="409dp"
-        app:title="Edit Profile"
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:minHeight="?attr/actionBarSize"
@@ -252,6 +247,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:title="Edit Profile"
         app:titleTextColor="#131313" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

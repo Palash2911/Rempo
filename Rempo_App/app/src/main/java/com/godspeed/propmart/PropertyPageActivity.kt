@@ -84,7 +84,7 @@ class PropertyPageActivity : AppCompatActivity() {
                     val plotImage:String = it["soldPlots"].toString();
                     val card =
                         PropertyCardModel(layoutIds, "Null", "title", seller, address,
-                            plotImage, plotnumber, "", "");
+                            plotImage, plotnumber, "", "","");
                     firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
                         .collection("saved")
                         .document("Layout_"+layoutIds).set(card).addOnSuccessListener {
@@ -132,7 +132,7 @@ class PropertyPageActivity : AppCompatActivity() {
                     val plotImage:String = it["Uid"].toString();
                     val card =
                         PropertyCardModel("Null", plotId, "title", seller, address,
-                            plotImage, plotnumber, "", "");
+                            plotImage, plotnumber, "", "", "");
                     firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
                         .collection("saved")
                         .document("Plot_$plotId").set(card).addOnSuccessListener {

@@ -368,7 +368,7 @@ class LocationFragment : Fragment() {
 
                         val card:PropertyCardModel =
                             PropertyCardModel(documentSnapshot.id.toString(), "Null",
-                                title,seller,address,"",totalPlots,latitude,longitude);
+                                title,seller,address,"",totalPlots,latitude,longitude,"");
 
                         cards.add(card);
                     }
@@ -390,7 +390,7 @@ class LocationFragment : Fragment() {
 
                             val card:PropertyCardModel =
                                 PropertyCardModel(documentSnapshot.id.toString(), "Null",
-                                    title,seller,address,"",totalPlots,latitude,longitude);
+                                    title,seller,address,"",totalPlots,latitude,longitude,"");
 
                             cards.add(card);
                         }

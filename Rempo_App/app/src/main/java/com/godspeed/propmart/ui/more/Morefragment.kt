@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.godspeed.propmart.*
@@ -39,15 +40,15 @@ class Morefragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val moreViewModel =
-            ViewModelProvider(this).get(MoreViewModel::class.java)
+            ViewModelProvider(this)[MoreViewModel::class.java]
 
         _binding = FragmentMorefragmentBinding.inflate(inflater, container, false)
 
         val root: View = binding.root
         db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
             .get().addOnSuccessListener { snapshot ->
-                binding.namemoresetting.setText(snapshot["Name"] as String);
-                binding.numbersetting.setText(snapshot["Phone"] as String);
+                binding.namemoresetting.text = snapshot["Name"] as String;
+                binding.numbersetting.text = snapshot["Phone"] as String;
                 profileuri = Uri.parse(snapshot["profilePicture"].toString())
         }
 
@@ -132,6 +133,11 @@ class Morefragment : Fragment() {
         _binding!!.logoutll.setOnClickListener {
             auth.signOut()
             val intent = Intent(activity, MainActivity::class.java)
+            startActivity(intent)
+            activity?.finish()
+        }
+        _binding!!.contactusll.setOnClickListener {
+            val intent = Intent(activity, Contact::class.java)
             startActivity(intent)
         }
 

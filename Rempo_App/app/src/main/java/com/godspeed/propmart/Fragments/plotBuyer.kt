@@ -43,7 +43,7 @@ class plotBuyer : Fragment() {
             it.documents.iterator().forEach { documentSnapshot ->
                     val title:String = "Plot No " + documentSnapshot.get("Plot No").toString() + " At S.No. " + documentSnapshot.get("Survey No").toString()
                     val seller:String = documentSnapshot.get("Owner Name").toString()
-                    val plotnumber:String = documentSnapshot.get("Plot No").toString();
+                    val taluka:String = documentSnapshot.get("Taluka").toString();
                     val address:String = documentSnapshot.get("District").toString()
 
 //                val longitude:String = documentSnapshot.get("longitude") as String;
@@ -51,7 +51,7 @@ class plotBuyer : Fragment() {
                     val plotImage:String = documentSnapshot.get("Taluka").toString();
                     val card =
                         PropertyCardModel("Null",documentSnapshot.id, title, seller, address,
-                            plotImage, plotnumber, "", "");
+                            plotImage, "Null", "", "", taluka);
                     cards.add(card);
                     adapter.notifyDataSetChanged();
             }
