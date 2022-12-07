@@ -41,12 +41,17 @@ const UserProfile = () => {
   return (
     <>
       <div className={classes.user_page}>
-        <img src={profileBanner} className={classes.background_image} alt="profileBanner" />
+        <img
+          src={profileBanner}
+          className={classes.background_image}
+          alt="profileBanner"
+        />
+
         <div className={classes.user_details}>
           <Card width="80vw" height="250px" radius="20px">
             <div className={classes.user_details_card}>
               <div className={classes.user_icon}>
-                <i class="fas fa-user"></i> 
+                <i class="fas fa-user"></i>
               </div>
               <div className={classes.user_details_info} >
                 <h1>{stateName.Name}</h1>
@@ -68,11 +73,17 @@ const UserProfile = () => {
               </div>
             </div>
           </Card>
+        </div>
+        <div className={classes.listings}>
           <Card width="80vw" height="250px" radius="20px">
             <div classname={classes.layout_listing}>
               <div className={classes.layout_listing_mylisting}>
-                <button className={classes.hover_underline_animation}>My Listings</button>
-                <button className={classes.hover_underline_animation}>Current Listings</button>
+                <button className={classes.hover_underline_animation}>
+                  My Listings
+                </button>
+                <button className={classes.hover_underline_animation}>
+                  Current Listings
+                </button>
               </div>
               <ul className={classes.layout_listing_details}>
                 <li>Layout 1</li>

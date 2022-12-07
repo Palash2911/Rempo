@@ -9,6 +9,7 @@
 }
 .label {
   all: unset;
+  white-space: nowrap;
 }
 .input {
   width: 100%;
@@ -28,10 +29,13 @@
   color: #9e9ea7;
 }
 
+.input:hover {
+  border-color: #3c91e65a;
+}
 .input:focus,
 input:hover {
   outline: none;
-  border-color: rgba(234, 76, 137, 0.4);
+  border-color: #3c91e6;
   background-color: #fff;
-  box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
+  box-shadow: 0 0 0 4px rgba(67, 246, 255, 0.1);
 }

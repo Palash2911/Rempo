@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./Input.module.css";
-import errorpng from "../../../assets/errorpng.png";
+// import errorpng from "../../../assets/errorpng.png";
 
 const Input = ({
   value,
@@ -12,9 +12,10 @@ const Input = ({
   onChange,
   required,
   error = "",
+  width,
 }) => {
   return (
-    <div className={classes.group}>
+    <div className={classes.group} style={{ width: width }}>
       {/* {label} */}
       <p className={classes.label}>{label}</p>
       <input
