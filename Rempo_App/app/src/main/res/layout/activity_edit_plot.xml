@@ -88,8 +88,8 @@
                     android:id="@+id/editSchemell"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="15dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -196,6 +196,25 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/textView19"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="State"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/editTextState"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginBottom="9dp"
+                        android:background="@drawable/rectangle"
+                        android:hint="Enter State"
+                        android:inputType="text"
+                        android:paddingStart="10dp"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <TextView
                         android:id="@+id/textView14"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -258,26 +277,6 @@
                         android:textColor="@color/black"
                         tools:ignore="TouchTargetSizeCheck" />
 
-                    <TextView
-                        android:id="@+id/textView19"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Complete Address"
-                        android:textColor="@color/black"
-                        android:textSize="16sp" />
-
-                    <EditText
-                        android:id="@+id/editTextAddress"
-                        android:layout_width="match_parent"
-                        android:layout_height="35dp"
-                        android:layout_marginBottom="9dp"
-                        android:background="@drawable/rectangle"
-                        android:hint="Enter Address"
-                        android:inputType="textPersonName"
-                        android:paddingStart="10dp"
-                        tools:ignore="TouchTargetSizeCheck" />
-
-
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -329,6 +328,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:visibility="gone"
                 app:innerAnimInterpolator="linear"
                 app:outerAnimInterpolator="overshoot"
                 app:outerLoaderAnimDuration="2500" />
@@ -342,9 +342,7 @@
                     android:id="@+id/editdetailsll"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="20dp"
                     android:orientation="vertical"
                     android:padding="20dp">
 
@@ -360,7 +358,7 @@
                         android:id="@+id/surveyNo."
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="7dp"
+                        android:layout_marginTop="2dp"
                         android:layout_marginBottom="7dp"
                         android:background="@drawable/rectangle"
                         android:ems="10"
@@ -384,7 +382,7 @@
                         android:id="@+id/location"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="7dp"
+                        android:layout_marginTop="2dp"
                         android:layout_marginBottom="7dp"
                         android:background="@drawable/rectangle"
                         android:ems="10"
@@ -407,7 +405,7 @@
                         android:id="@+id/plotNo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="7dp"
+                        android:layout_marginTop="2dp"
                         android:layout_marginBottom="7dp"
                         android:background="@drawable/rectangle"
                         android:ems="10"
@@ -503,7 +501,7 @@
                         android:id="@+id/dept"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="7dp"
+                        android:layout_marginTop="2dp"
                         android:layout_marginBottom="7dp"
                         android:background="@drawable/rectangle"
                         android:ems="10"
@@ -525,7 +523,7 @@
                         android:id="@+id/road"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="7dp"
+                        android:layout_marginTop="2dp"
                         android:background="@drawable/rectangle"
                         android:ems="10"
                         android:hint="Ganesh khind Road 40m"
