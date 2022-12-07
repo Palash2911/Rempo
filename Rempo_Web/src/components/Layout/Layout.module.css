@@ -23,7 +23,8 @@
   flex-direction: column;
   gap: 30px;
 }
-.group {
+.group,
+.group3 {
   display: flex;
   line-height: 28px;
   align-items: flex-start;
@@ -31,6 +32,14 @@
   width: 500px;
   /* max-width: 500px; */
   flex-direction: column;
+}
+.group3 {
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
 }
 .label {
   all: unset;
@@ -106,6 +115,16 @@ textarea:hover {
   justify-content: space-between;
   align-items: center;
   column-gap: 10px;
+}
+.cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.plot_no {
+  align-self: flex-start;
 }
 .plot_container {
   display: flex;

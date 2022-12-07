@@ -44,25 +44,84 @@ const Form3 = () => {
       <div>
         {arr.map((item, i) => {
           return (
-            <Card width={screenType.isMobile ? "87vw" : "67vw"} height="auto">
-              <div className={classes.plot_container}>
-                <h3>Plot {i + 1}</h3>
-                <div className={classes.plot_data}>
-                  <Input
-                    width="150px"
-                    label="Plot number"
-                    placeholder="Plot 1"
-                  />
-                  <Input width="150px" label="Road" placeholder="meter" />
-                  <Input
-                    width="150px"
-                    label="Expected Selling Rate"
-                    placeholder="456456"
-                  />
-                  <Input width="150px" label="Status" placeholder="Sold" />
+            <div className={classes.cards}>
+              <Card width={screenType.isMobile ? "87vw" : "67vw"} height="auto">
+                <div className={classes.plot_container}>
+                  <h3 className={classes.plot_no}>Plot {i + 1}</h3>
+                  <div className={classes.plot_data}>
+                    <Input
+                      width="150px"
+                      label="Plot number"
+                      placeholder="Plot 1"
+                    />
+                    <div className={classes.group3}>
+                      <Input width="150px" label="Area Size" placeholder="" />
+                      <input
+                        className={classes.input}
+                        list="categories"
+                        name="category"
+                        id="category"
+                        placeholder="unit"
+                        style={{ width: "150px" }}
+                      />
+                      <datalist id="categories">
+                        <option value="Edge" />
+                        <option value="Firefox" />
+                        <option value="Chrome" />
+                        <option value="Opera" />
+                        <option value="Safari" />
+                      </datalist>
+                    </div>
+
+                    <div className={classes.group3}>
+                      <Input width="150px" label="Front" placeholder="" />
+                      <input
+                        className={classes.input}
+                        list="categories"
+                        name="category"
+                        id="category"
+                        placeholder="unit"
+                        style={{ width: "150px" }}
+                      />
+                      <datalist id="categories">
+                        <option value="Edge" />
+                        <option value="Firefox" />
+                        <option value="Chrome" />
+                        <option value="Opera" />
+                        <option value="Safari" />
+                      </datalist>
+                    </div>
+
+                    <div className={classes.group3}>
+                      <Input width="150px" label="Depth" placeholder="" />
+                      <input
+                        className={classes.input}
+                        list="categories"
+                        name="category"
+                        id="category"
+                        placeholder="unit"
+                        style={{ width: "150px" }}
+                      />
+                      <datalist id="categories">
+                        <option value="Edge" />
+                        <option value="Firefox" />
+                        <option value="Chrome" />
+                        <option value="Opera" />
+                        <option value="Safari" />
+                      </datalist>
+                    </div>
+
+                    <Input width="150px" label="Road" placeholder="meter" />
+                    <Input
+                      width="150px"
+                      label=" Selling Price"
+                      placeholder="456456"
+                    />
+                    <Input width="150px" label="Status" placeholder="Sold" />
+                  </div>
                 </div>
-              </div>
-            </Card>
+              </Card>
+            </div>
           );
         })}
       </div>
