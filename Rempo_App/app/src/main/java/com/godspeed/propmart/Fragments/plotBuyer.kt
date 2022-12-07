@@ -41,7 +41,7 @@ class plotBuyer : Fragment() {
         binding.progressBar3.visibility = VISIBLE
         db.collection("Plots").get().addOnSuccessListener{
             it.documents.iterator().forEach { documentSnapshot ->
-                    val title:String = "Plot No " + documentSnapshot.get("Plot No").toString() + " At S.No. " + documentSnapshot.get("Survey No").toString()
+                    val title:String = "Plot No " + documentSnapshot.get("Plot No").toString() + " At S.No " + documentSnapshot.get("Survey No").toString()
                     val seller:String = documentSnapshot.get("Owner Name").toString()
                     val taluka:String = documentSnapshot.get("Taluka").toString();
                     val address:String = documentSnapshot.get("District").toString()

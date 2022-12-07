@@ -49,16 +49,16 @@ class HomeFragment : Fragment() {
             it.documents.iterator().forEach { documentSnapshot ->
                 if(auth.currentUser?.uid.toString() == documentSnapshot.get("Uid"))
                 {
-                    val title:String = documentSnapshot.get("Area") as String;
-                    val seller:String = documentSnapshot.get("Owner Name") as String;
-                    val plotnumber:String = documentSnapshot.get("Plot No").toString();
-                    val address:String = documentSnapshot.get("District") as String;
+                    val title:String = "Plot No ${documentSnapshot.get("Plot No").toString()} At S.No ${documentSnapshot.get("Survey No")}";
+                    val seller:String = documentSnapshot.get("Owner Name").toString();
+                    val dist:String = "District: " + documentSnapshot.get("District").toString();
+                    val tal:String = "Taluka: " + documentSnapshot.get("Taluka").toString();
 //                val longitude:String = documentSnapshot.get("longitude") as String;
 //                val latitude:String = documentSnapshot.get("latitude") as String;
                     val plotImage:String = documentSnapshot.get("Taluka") as String;
                     val card:sellerhomepageModel =
-                        sellerhomepageModel(documentSnapshot.id,"Null", title, seller, address,
-                            plotImage, plotnumber, "", "");
+                        sellerhomepageModel(documentSnapshot.id,"Null", title, seller, dist,
+                            plotImage, "Null", "", "",tal);
 
                     cards.add(card);
                 }
