@@ -60,6 +60,7 @@
 .nav_item {
   line-height: 40px;
   margin-right: 1rem;
+  cursor: pointer;
 }
 .fa .fas {
   color: #fff;
