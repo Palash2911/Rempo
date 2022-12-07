@@ -7,15 +7,6 @@
     android:orientation="vertical"
     tools:context=".EditPlotActivity">
 
-
-<!--    <ProgressBar-->
-<!--        android:id="@+id/fullprogress"-->
-<!--        style="?android:attr/progressBarStyle"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:padding="140dp"-->
-<!--        android:visibility="gone" />-->
-
     <com.sn.lib.NestedProgress
         android:id="@+id/fullprogress"
         android:layout_width="wrap_content"
@@ -324,10 +315,11 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/edit_details_popup"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_height="620dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
             android:elevation="6dp"
             android:visibility="gone"
             app:cardCornerRadius="16dp">
@@ -341,226 +333,234 @@
                 app:outerAnimInterpolator="overshoot"
                 app:outerLoaderAnimDuration="2500" />
 
-            <LinearLayout
-                android:id="@+id/editdetailsll"
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_marginBottom="9dp">
 
-<!--                <ProgressBar-->
-<!--                    android:id="@+id/editdepro"-->
-<!--                    style="?android:attr/progressBarStyle"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content" />-->
-
-                <ScrollView
+                <LinearLayout
+                    android:id="@+id/editdetailsll"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:id="@+id/sNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Survey Number"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/surveyNo."
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="@drawable/rectangle"
+                        android:ems="10"
+                        android:hint="10"
+                        android:inputType="textPersonName"
+                        android:maxLength="10"
+                        android:padding="7dp"
+                        android:textColor="@color/black"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+
+                    <TextView
+                        android:id="@+id/loc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Location"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="@drawable/rectangle"
+                        android:ems="10"
+                        android:gravity="start|top"
+                        android:hint="88-88-88"
+                        android:inputType="textPersonName"
+                        android:padding="7dp"
+                        android:textColor="@color/black"
+                        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+                    <TextView
+                        android:id="@+id/pno"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Plot Number"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/plotNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="@drawable/rectangle"
+                        android:ems="10"
+                        android:hint="19"
+                        android:inputType="textPersonName"
+                        android:maxLength="6"
+                        android:padding="7dp"
+                        android:textColor="@color/black"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Area"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="20dp"
-                        android:orientation="vertical"
-                        android:padding="20dp">
-
-                        <TextView
-                            android:id="@+id/sNo"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Survey Number" />
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
 
                         <EditText
-                            android:id="@+id/surveyNo."
-                            android:layout_width="match_parent"
+                            android:id="@+id/aSize"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="7dp"
+                            android:layout_marginEnd="8dp"
                             android:layout_marginBottom="7dp"
                             android:background="@drawable/rectangle"
-                            android:ems="10"
-                            android:hint="10"
-                            android:inputType="textPersonName"
-                            android:maxLength="10"
-                            android:padding="7dp"
-                            tools:ignore="TouchTargetSizeCheck" />
-
-
-                        <TextView
-                            android:id="@+id/loc"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Location" />
-
-                        <EditText
-                            android:id="@+id/location"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="7dp"
-                            android:layout_marginBottom="7dp"
-                            android:background="@drawable/rectangle"
-                            android:ems="10"
-                            android:gravity="start|top"
-                            android:hint="88-88-88"
-                            android:inputType="textPersonName"
-                            android:padding="7dp"
-                            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-
-                        <TextView
-                            android:id="@+id/pno"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Plot Number" />
-
-                        <EditText
-                            android:id="@+id/plotNo"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="7dp"
-                            android:layout_marginBottom="7dp"
-                            android:background="@drawable/rectangle"
-                            android:ems="10"
-                            android:hint="19"
-                            android:inputType="textPersonName"
-                            android:maxLength="6"
-                            android:padding="7dp"
-                            tools:ignore="TouchTargetSizeCheck" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Area" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/aSize"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="7dp"
-                                android:layout_marginEnd="8dp"
-                                android:layout_marginBottom="7dp"
-                                android:background="@drawable/rectangle"
-                                android:ems="5"
-                                android:hint="123"
-                                android:inputType="number"
-                                android:padding="7dp"
-                                tools:ignore="TouchTargetSizeCheck" />
-
-                            <Spinner
-                                android:id="@+id/areaSpinner"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center"
-                                android:gravity="center"
-                                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:id="@+id/fr"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Front" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/fron"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="7dp"
-                                android:layout_marginEnd="8dp"
-                                android:layout_marginBottom="7dp"
-                                android:background="@drawable/rectangle"
-                                android:ems="5"
-                                android:hint="123"
-                                android:inputType="number"
-                                android:padding="7dp"
-                                tools:ignore="TouchTargetSizeCheck" />
-
-                            <Spinner
-                                android:id="@+id/frSpinner"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center"
-                                android:gravity="center"
-                                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:id="@+id/dt"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Depth" />
-
-                        <EditText
-                            android:id="@+id/dept"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="7dp"
-                            android:layout_marginBottom="7dp"
-                            android:background="@drawable/rectangle"
-                            android:ems="10"
-                            android:hint="10"
+                            android:ems="5"
+                            android:hint="123"
                             android:inputType="number"
                             android:padding="7dp"
+                            android:textColor="@color/black"
                             tools:ignore="TouchTargetSizeCheck" />
 
-                        <TextView
-                            android:id="@+id/rd"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Road / Description" />
+                        <Spinner
+                            android:id="@+id/areaSpinner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/fr"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Front"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
 
                         <EditText
-                            android:id="@+id/road"
-                            android:layout_width="match_parent"
+                            android:id="@+id/fron"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="7dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="7dp"
                             android:background="@drawable/rectangle"
-                            android:ems="10"
-                            android:hint="Ganesh khind Road 40m"
-                            android:inputType="textPersonName"
+                            android:ems="5"
+                            android:hint="123"
+                            android:inputType="number"
                             android:padding="7dp"
+                            android:textColor="@color/black"
                             tools:ignore="TouchTargetSizeCheck" />
 
+                        <Spinner
+                            android:id="@+id/frSpinner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
                     </LinearLayout>
-                </ScrollView>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="25dp">
 
                     <TextView
-                        android:id="@+id/savePlot"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="10dp"
-                        android:layout_toStartOf="@+id/cancelPlot"
-                        android:gravity="center"
-                        android:text="SAVE"
-                        android:textColor="@color/purple_500"
-                        android:textStyle="bold" />
+                        android:id="@+id/dt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Depth"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/dept"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="@drawable/rectangle"
+                        android:ems="10"
+                        android:hint="10"
+                        android:inputType="number"
+                        android:padding="7dp"
+                        android:textColor="@color/black"
+                        tools:ignore="TouchTargetSizeCheck" />
 
                     <TextView
-                        android:id="@+id/cancelPlot"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="10dp"
-                        android:gravity="center"
-                        android:text="CANCEL"
-                        android:textColor="@color/red"
-                        android:textStyle="bold" />
-                </RelativeLayout>
-            </LinearLayout>
+                        android:id="@+id/rd"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Road / Description"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/road"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:background="@drawable/rectangle"
+                        android:ems="10"
+                        android:hint="Ganesh khind Road 40m"
+                        android:inputType="textPersonName"
+                        android:padding="7dp"
+                        android:textColor="@color/black"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp">
+
+                        <Button
+                            android:id="@+id/cancelPlot"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="false"
+                            android:backgroundTint="@color/white"
+                            android:text="Cancel"
+                            android:textColor="@color/purple_500"
+                            android:textStyle="bold" />
+
+                        <Button
+                            android:id="@+id/savePlot"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:text="Save"
+                            android:textColor="@color/white" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </ScrollView>
 
         </androidx.cardview.widget.CardView>
 
