@@ -1,9 +1,43 @@
-import React from "react";
+import React, { useEffect , useState} from "react";
 import classes from "./UserProfile.module.css";
 import profileBanner from "../../assets/profileBanner.png";
 import Card from "../Ui/Card/Card";
+import { collection, doc, setDoc, getDoc } from "firebase/firestore";
+import app, { db } from "../firebase_config";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+
+const auth = getAuth(app);
 
 const UserProfile = () => {
+  
+  const [stateName, setStateName] = useState({ Name: "Daniel" });
+  const [stateEmail, setStateEmail] = useState({ Email: "abc@gmail.com" });
+  const [statePhone, setStatePhone] = useState({ Number: "+91 720115324" });
+  
+  const fillauth = async () => {
+    const docRef = doc(db, "Users", auth.currentUser.uid);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      setStatePhone({Number: docSnap.data().Phone})
+      setStateName({Name: docSnap.data().Name})
+      setStateEmail({Email: docSnap.data().Email})
+    } else {
+      // doc.data() will be undefined in this case
+      histo("/profile");
+    }
+  };
+
+  useEffect(() => {
+    fillauth()
+    //eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    
+    //eslint-disable-next-line
+  }, []);
+  
   return (
     <>
       <div className={classes.user_page}>
@@ -15,18 +49,18 @@ const UserProfile = () => {
                 <i class="fas fa-user"></i> 
               </div>
               <div className={classes.user_details_info} >
-                <h1>Dale Carnegie</h1>
+                <h1>{stateName.Name}</h1>
                 <p>
                   <span>
                     <i class="fas fa-phone"></i>
                   </span>
-                  +91 7564814659
+                  {statePhone.Number}
                 </p>
                 <p>
                   <span>
                     <i class="fas fa-envelope"></i>
                   </span>
-                  abc@gmail.com
+                  {stateEmail.Email}
                 </p>
               </div>
               <div className={classes.edit_user_details}>

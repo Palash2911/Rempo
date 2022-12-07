@@ -16,12 +16,14 @@ const Navbar = () => {
 
   const handleClick = () => {
     setClick(!click);
+  };
+  const handleSign = () =>{
     if (!statelog) {
       signOut(auth);
     } else {
       setStatelog(!statelog);
     }
-  };
+  }
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -121,7 +123,7 @@ const Navbar = () => {
                 to={!statelog ? "/login" : "/"}
                 activeClassName={classes.active}
                 className={classes.nav_links}
-                onClick={handleClick}
+                onClick={handleSign}
               >
                 {statelog ? (
                   <i className="fas fa-sign-out-alt"></i>

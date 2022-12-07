@@ -10,8 +10,9 @@ import {
   signInWithPhoneNumber,
   RecaptchaVerifier,
 } from "firebase/auth";
-import app from "../firebase_config";
+import app , { db } from "../firebase_config";
 import OtpInput from "react-otp-input";
+import { collection, doc, getDoc} from "firebase/firestore";
 
 const auth = getAuth(app);
 
@@ -61,13 +62,25 @@ const Login = () => {
       });
   };
 
+  const checkauth = async () => {
+    const docRef = doc(db, "Users", auth.currentUser.uid);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      histo("/");
+    } else {
+      // doc.data() will be undefined in this case
+      histo("/profile");
+    }
+  };
+
   const onVerifyCode = () => {
     window.confirmationResult
       .confirm(otpstate.otp)
       .then((result) => {
         // User signed in successfully.
         // const user = result.user;
-        histo("/profile");
+        checkauth();
         // ...
       })
       .catch((error) => {

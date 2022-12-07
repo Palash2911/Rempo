@@ -20,30 +20,6 @@ const Profile = () => {
   const [statePhone, setStatePhone] = useState({ Number: "" });
   const [stateDob, setStateDob] = useState({ Dob: "" });
 
-  const checkauth = async () => {
-    const docRef = doc(db, "Users", auth.currentUser.uid);
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) {
-      histo("/");
-    } else {
-      // doc.data() will be undefined in this case
-      histo("/profile");
-    }
-  };
-
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        checkauth();
-        // ...
-      } else {
-        histo("/");
-      }
-    });
-    //eslint-disable-next-line
-  }, []);
-
   const handleClick = async (e) => {
     e.preventDefault();
     try {
