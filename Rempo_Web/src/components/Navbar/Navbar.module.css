@@ -11,7 +11,7 @@
   padding-top: 5px;
   background-color: #ffffffb7;
 }
-.nav_login{
+.nav_login {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -106,7 +106,7 @@
   .nav_menu.active {
     margin: 0;
     padding: 0;
-    background: #8df5ff;
+    background: #fff;
     left: 0px;
     opacity: 1;
     transition: all 0.5s ease;

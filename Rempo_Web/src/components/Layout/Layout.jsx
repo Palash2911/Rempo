@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import classes from "./Layout.module.css";
-import { Card } from "../Ui";
+import { Button, Card } from "../Ui";
 import Form1 from "./Form1";
 import Form2 from "./Form2";
 import Form3 from "./Form3";
@@ -14,37 +14,37 @@ const Layout = () => {
     <>
       <div className={classes.form_container}>
         <Card
-          width={screenType.isMobile ? "90vw" : "50vw"}
-          height="110vh"
+          width={screenType.isMobile ? "90vw" : "70vw"}
+          height="auto"
           radius="24px"
         >
           <div className={classes.form_inner_container}>
-            <h1>Layout Details</h1>
+            {formNo === 3 ? <h1>Plot Details</h1> : <h1>Layout Details</h1>}
             {formNo === 1 ? <Form1 /> : formNo === 2 ? <Form2 /> : <Form3 />}
-            <div>
+            <div className={classes.btn_containers}>
               {formNo > 1 && (
-                <button
-                  className="btn btn-primary"
-                  type="button"
+                <Button
                   onClick={() => {
                     let pg = formNo;
                     setFormNo(pg - 1);
                   }}
-                >
-                  Back
-                </button>
+                  type="2"
+                  filled
+                  label="Back"
+                  radius="4px"
+                />
               )}
               {formNo < 3 && (
-                <button
-                  className="btn btn-primary mx-4"
-                  type="button"
+                <Button
                   onClick={() => {
                     let pg = formNo;
                     setFormNo(pg + 1);
                   }}
-                >
-                  Next
-                </button>
+                  type="2"
+                  filled
+                  label="Next"
+                  radius="4px"
+                />
               )}
             </div>
           </div>

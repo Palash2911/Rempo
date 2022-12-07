@@ -5,6 +5,7 @@
   flex-direction: column;
   width: 100vw;
   margin: 20px 0;
+  min-height: 83vh;
 }
 .form_inner_container {
   display: flex;
@@ -13,4 +14,127 @@
   flex-direction: column;
   padding: 20px 40px;
   gap: 20px;
+}
+/* Input Style */
+.form_group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+}
+.group,
+.group3 {
+  display: flex;
+  line-height: 28px;
+  align-items: flex-start;
+  position: relative;
+  width: 500px;
+  /* max-width: 500px; */
+  flex-direction: column;
+}
+.group3 {
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.label {
+  all: unset;
+}
+.input,
+.input2 {
+  width: 100%;
+  height: 40px;
+  line-height: 28px;
+  padding: 0 1rem;
+  padding-left: 1rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  outline: none;
+  background-color: #f3f3f4;
+  color: #0d0c22;
+  transition: 0.3s ease;
+}
+.input2 {
+  height: 160px;
+}
+.input::placeholder,
+.input2::placeholder {
+  color: #9e9ea7;
+}
+
+.input:focus,
+.input2:focus,
+input:hover,
+textarea:hover {
+  outline: none;
+  border-color: rgba(234, 76, 137, 0.4);
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
+}
+.file_group {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+.file_label {
+  width: 100px;
+  margin-right: 50px;
+}
+.cutom_file_input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.cutom_file_input::before {
+  content: "Upload";
+  display: inline-block;
+  background: linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+}
+.cutom_file_input:hover::before {
+  border-color: black;
+}
+.cutom_file_input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+.btn_containers {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 10px;
+}
+.cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.plot_no {
+  align-self: flex-start;
+}
+.plot_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+}
+.plot_data {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
 }
