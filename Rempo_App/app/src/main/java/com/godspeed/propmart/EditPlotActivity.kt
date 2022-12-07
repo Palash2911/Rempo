@@ -207,7 +207,7 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
                 binding.bidamt.setText(it["Bid Price"].toString())
                 binding.editTextTaluka.setText(it["Taluka"].toString())
                 binding.editTextVillage.setText(it["Village"].toString())
-                binding.editTextAddress.setText(it["Road"].toString())
+                binding.editTextState.setText(it["State"].toString())
 
                 if(it["Bids_Un"].toString() == "Sq Ft")
                 {
@@ -265,15 +265,15 @@ class EditPlotActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
             dialog.show();
 
          val owner:String = binding.ownerName.text.toString();
-         val address:String = binding.editTextAddress.text.toString();
+         val address:String = binding.editTextState.text.toString();
          val district:String = binding.district.text.toString();
          val village:String = binding.editTextVillage.text.toString();
          val taluka:String = binding.editTextTaluka.text.toString();
-            val price:String = binding.bidamt.text.toString();
+         val price:String = binding.bidamt.text.toString();
 
             map["Owner Name"] = owner;
             map["District"] = district;
-            map["Road"] = address;
+            map["State"] = address
             map["Bid Price"] = price;
             map["Village"] = village;
             map["Taluka"] = taluka;
