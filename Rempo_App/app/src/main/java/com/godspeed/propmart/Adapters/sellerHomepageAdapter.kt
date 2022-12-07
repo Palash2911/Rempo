@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View.GONE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.godspeed.propmart.Allbids
@@ -32,7 +33,9 @@ class sellerHomepageAdapter(val context: Context, val cards:List<sellerhomepageM
                 binding.title.text = this.title
                 binding.seller.text = this.seller
                 binding.plotCount.text = this.plotnumber
-                binding.sellerAddress.text = this.address
+                binding.sellerDist.text = this.district
+                binding.sellerTal.text = this.taluka
+                binding.sellerplotcntll.visibility = GONE
 //               Glide.with(context).load(this.layoutImage).into(binding.plotImage);
 
                 binding.edit.setOnClickListener {

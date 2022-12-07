@@ -10,6 +10,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat.startActivityForResult
@@ -40,11 +41,20 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     var doc4 = 0
     var pr=0
     var spr=0
+    private lateinit var statesel: AutoCompleteTextView;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySellPropBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        statesel = binding.statetv
+        val stateArray = resources.getStringArray(R.array.array_indian_states)
+
+        val stateAdapter: ArrayAdapter<String> = ArrayAdapter(this,
+            android.R.layout.simple_list_item_1,stateArray);
+        statesel.setAdapter(stateAdapter);
+        statesel.threshold = 1;
 
         val selectplotCat: ArrayList<String> = ArrayList()
         selectplotCat.add("Select Property Category")
@@ -99,6 +109,12 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         binding.bidSpinner.adapter = adap4
 
         binding.back1.setOnClickListener {
+
+            if(newPlot["Property Category"] == "NA Plot")
+            {
+                binding.subProprSpinner.visibility = VISIBLE
+                binding.textView13.visibility = VISIBLE
+            }
             binding.CardView2.visibility = GONE
             binding.CardView1.visibility = VISIBLE
         }
@@ -108,6 +124,7 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             var fl2=0
             var fl3=0
             var fl4=0
+            var fl5=0
             if(binding.ownerName.text.toString().isEmpty())
             {
                 binding.ownerName.error = "Required"
@@ -117,14 +134,14 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 fl1=1
                 newPlot["Owner Name"] = binding.ownerName.text.toString()
             }
-            if(binding.District.text.toString().isEmpty())
+            if(binding.districttv.text.toString().isEmpty())
             {
-                binding.District.error = "Required"
+                binding.districttv.error = "Required"
             }
             else
             {
                 fl2=1
-                newPlot["District"] = binding.District.text.toString()
+                newPlot["District"] = binding.districttv.text.toString()
             }
             if(binding.taluka1.text.toString().isEmpty())
             {
@@ -144,7 +161,259 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 fl4=1
                 newPlot["Village"] = binding.village.text.toString()
             }
-            if(fl1==1 && fl2==1 && fl3==1 && fl4==1)
+            if(binding.statetv.text.toString().isEmpty())
+            {
+                binding.statetv.error = "Required"
+            }
+            else
+            {
+                fl5=1
+                statesel.onItemClickListener = AdapterView
+                    .OnItemClickListener{
+                            parent,view,position,id->
+                        val selectedItem = parent.getItemAtPosition(position)
+                            .toString()
+                        when(selectedItem){
+
+                            "Andhra Pradesh" ->{
+
+                                val array = resources.getStringArray(R.array.array_andhra_pradesh_districts);
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(
+                                    this, android.R.layout.simple_list_item_1,
+                                    array
+                                );
+                                binding.districttv.setAdapter(districtAdapter)}
+
+                            "Arunachal Pradesh"-> {
+
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(
+                                    this, android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_arunachal_pradesh_districts)
+                                );
+                                binding.districttv.setAdapter(districtAdapter)
+                            }
+
+                            "Assam"->{
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_assam_districts));
+                                binding.districttv.setAdapter(districtAdapter)}
+
+                            "Bihar"-> {
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_bihar_districts));
+                                binding.districttv.setAdapter(districtAdapter)}
+
+                            "Chhattisgarh"-> {
+                                val array = resources.getStringArray(R.array.array_chhattisgarh_districts);
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(
+                                    this, android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_chhattisgarh_districts)
+                                );
+                                binding.districttv.setAdapter(districtAdapter)
+                            }
+
+                            "Goa"-> {
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(
+                                    this, android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_goa_districts)
+                                );
+                                binding.districttv.setAdapter(districtAdapter)
+                            }
+
+                            "Gujarat"-> {
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(
+                                    this, android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_gujarat_districts)
+                                );
+                                binding.districttv.setAdapter(districtAdapter)
+                            }
+
+                            "Haryana"-> {
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(
+                                    this, android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_haryana_districts)
+                                );
+                                binding.districttv.setAdapter(districtAdapter)
+                            }
+
+                            "Himachal Pradesh"-> {
+                                val districtAdapter:ArrayAdapter<String> =  ArrayAdapter(
+                                    this, android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_himachal_pradesh_districts));
+                                binding.districttv.setAdapter(districtAdapter)
+                            }
+
+                            "Jharkhand"-> {
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_jharkhand_districts));
+                                binding.districttv.setAdapter(districtAdapter)}
+
+                            "Karnataka"-> {
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_karnataka_districts));
+                                binding.districttv.setAdapter(districtAdapter)}
+
+                            "Kerala"->{
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_kerala_districts));
+                                binding.districttv.setAdapter(districtAdapter)}
+
+                            "Madhya Pradesh"->{
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_madhya_pradesh_districts));
+                                binding.districttv.setAdapter(districtAdapter)}
+
+                            "Maharashtra"-> {
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_maharashtra_districts));
+                                binding.districttv.setAdapter(districtAdapter);
+                            }
+
+                            "Manipur"-> {
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_manipur_districts));
+                                binding.districttv.setAdapter(districtAdapter);
+                            }
+
+                            "Meghalaya"-> {
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_meghalaya_districts));
+                                binding.districttv.setAdapter(districtAdapter);
+                            }
+
+                            "Mizoram"-> {
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_mizoram_districts));
+                                binding.districttv.setAdapter(districtAdapter);
+                            }
+
+                            "Nagaland"->{
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_nagaland_districts));
+                                binding.districttv.setAdapter(districtAdapter);
+                            }
+
+                            "Odisha"->{
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_odisha_districts));
+                                binding.districttv.setAdapter(districtAdapter);
+                            }
+
+                            "Punjab"->{
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_punjab_districts));
+                                binding.districttv.setAdapter(districtAdapter);
+                            }
+                            "Rajasthan"->{
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_rajasthan_districts));
+                                binding.districttv.setAdapter(districtAdapter);
+                            }
+
+                            "Sikkim" -> {
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_sikkim_districts));
+                                binding.districttv.setAdapter(districtAdapter);
+                            }
+
+                            "Tamil Nadu"-> {
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_tamil_nadu_districts));
+                                binding.districttv.setAdapter(districtAdapter);
+                            }
+
+                            "Telangana"->{
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_telangana_districts));
+                                binding.districttv.setAdapter(districtAdapter);
+                            }
+                            "Tripura"-> {
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_tripura_districts));
+                                binding.districttv.setAdapter(districtAdapter);
+                            }
+
+                            "Uttar Pradesh"-> {
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_uttar_pradesh_districts));
+                                binding.districttv.setAdapter(districtAdapter);
+                            }
+
+                            "Uttarakhand"-> {
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_uttarakhand_districts));
+                                binding.districttv.setAdapter(districtAdapter);
+                            }
+
+                            "West Bengal"->{
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_west_bengal_districts));
+                                binding.districttv.setAdapter(districtAdapter);
+                            }
+
+                            "Andaman and Nicobar Islands"-> {
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_andaman_nicobar_districts));
+                                binding.districttv.setAdapter(districtAdapter);
+                            }
+
+                            "Chandigarh"-> {
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_chandigarh_districts));
+                                binding.districttv.setAdapter(districtAdapter);
+                            }
+
+                            "Dadra and Nagar Haveli"-> {
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_dadra_nagar_haveli_districts));
+                                binding.districttv.setAdapter(districtAdapter);
+                            }
+
+                            "Daman and Diu"-> {
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_daman_diu_districts));
+                                binding.districttv.setAdapter(districtAdapter);
+                            }
+
+                            "Delhi"-> {
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_delhi_districts));
+                                binding.districttv.setAdapter(districtAdapter);
+                            }
+
+                            "Jammu and Kashmir"->{
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_jammu_kashmir_districts));
+                                binding.districttv.setAdapter(districtAdapter);
+                            }
+
+                            "Lakshadweep"->{
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_lakshadweep_districts));
+                                binding.districttv.setAdapter(districtAdapter);
+                            }
+
+                            "Ladakh"->{
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_ladakh_districts));
+                                binding.districttv.setAdapter(districtAdapter);
+                            }
+
+
+                            "Puducherry"->{
+                                val districtAdapter:ArrayAdapter<String> = ArrayAdapter(this,android.R.layout.simple_list_item_1,
+                                    resources.getStringArray(R.array.array_puducherry_districts));
+                                binding.districttv.setAdapter(districtAdapter);
+                            }
+
+                            else -> {
+                                binding.districttv.error = "Please Select a Valid State";
+                            }
+                        }
+                    }
+                newPlot["State"] = binding.statetv.text.toString()
+            }
+            if(fl1==1 && fl2==1 && fl3==1 && fl4==1 && fl5==1)
             {
                 if(pr==0){
                     Toast.makeText(this, "Please Select Property Category! ", Toast.LENGTH_SHORT).show()
@@ -497,6 +766,9 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 //        Toast.makeText(this, "Item Selected $item", Toast.LENGTH_SHORT).show()
         if(item == "NA Plot" || (item=="Residential Plot" || item=="Commercial Plot" || item=="Residential cum Commercial Plot" || item== "Select Sub-Property Category"))
         {
+
+            binding.subProprSpinner.visibility = VISIBLE
+            binding.textView13.visibility = VISIBLE
             pr=2
             val plot = "NA Plot"
             var subPlot = ""
@@ -519,8 +791,6 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 }
             }
             newPlot["Sub-Property Category"] = subPlot
-            binding.subProprSpinner.visibility = VISIBLE
-            binding.textView13.visibility = VISIBLE
         }
         else
         {

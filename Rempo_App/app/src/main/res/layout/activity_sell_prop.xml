@@ -130,7 +130,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
             android:background="@drawable/rectangle"
-            android:visibility="visible"
+            android:visibility="gone"
             app:cardCornerRadius="15dp">
 
             <LinearLayout
@@ -140,7 +140,8 @@
 
                 <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -205,13 +206,32 @@
                             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                         <TextView
+                            android:id="@+id/textView122"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="State" />
+
+                        <AutoCompleteTextView
+                            android:id="@+id/statetv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="9dp"
+                            android:layout_marginBottom="9dp"
+                            android:background="@drawable/rectangle"
+                            android:ems="10"
+                            android:gravity="start|top"
+                            android:hint=" Enter State"
+                            android:inputType="text"
+                            android:padding="7dp" />
+
+                        <TextView
                             android:id="@+id/textView14"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="District" />
 
-                        <EditText
-                            android:id="@+id/District"
+                        <AutoCompleteTextView
+                            android:id="@+id/districttv"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="9dp"
@@ -220,7 +240,7 @@
                             android:ems="10"
                             android:gravity="start|top"
                             android:hint=" Enter District"
-                            android:inputType="textPersonName"
+                            android:inputType="text"
                             android:padding="7dp"
                             tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
@@ -262,20 +282,19 @@
                             android:padding="7dp"
                             tools:ignore="TouchTargetSizeCheck" />
 
+                        <Button
+                            android:id="@+id/Next1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginBottom="18dp"
+                            android:drawableRight="@drawable/ic_baseline_keyboard_double_arrow_right_24"
+                            android:text="Next"
+                            android:textColor="@color/white" />
+
                     </LinearLayout>
 
                 </ScrollView>
-
-                <Button
-                    android:id="@+id/Next1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="18dp"
-                    android:drawableRight="@drawable/ic_baseline_keyboard_double_arrow_right_24"
-                    android:text="Next"
-                    android:textColor="@color/white" />
 
             </LinearLayout>
 
@@ -298,16 +317,17 @@
 
                 <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="6dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
+                        android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
-                        android:layout_marginEnd="20dp"
+                        android:layout_marginEnd="10dp"
                         android:orientation="vertical"
-                        android:padding="20dp">
+                        android:padding="10dp">
 
                         <TextView
                             android:id="@+id/sNo"
@@ -475,36 +495,38 @@
                             android:padding="7dp"
                             tools:ignore="TouchTargetSizeCheck" />
 
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginBottom="15dp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/back1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="20dp"
+                                android:drawableLeft="@drawable/ic_baseline_keyboard_double_arrow_left_24"
+                                android:text="Back"
+                                android:textColor="@color/white"
+                                tools:ignore="TouchTargetSizeCheck" />
+
+                            <Button
+                                android:id="@+id/Next2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:drawableRight="@drawable/ic_baseline_keyboard_double_arrow_right_24"
+                                android:text="Next"
+                                android:textColor="@color/white"
+                                tools:ignore="TouchTargetSizeCheck" />
+                        </LinearLayout>
+
                     </LinearLayout>
                 </ScrollView>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="15dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/back1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="40dp"
-                        android:drawableLeft="@drawable/ic_baseline_keyboard_double_arrow_left_24"
-                        android:text="Back"
-                        android:textColor="@color/white"
-                        tools:ignore="TouchTargetSizeCheck" />
-
-                    <Button
-                        android:id="@+id/Next2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:drawableRight="@drawable/ic_baseline_keyboard_double_arrow_right_24"
-                        android:text="Next"
-                        android:textColor="@color/white"
-                        tools:ignore="TouchTargetSizeCheck" />
-                </LinearLayout>
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
@@ -515,7 +537,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
             android:background="@drawable/rectangle"
-            android:visibility="gone"
+            android:visibility="visible"
             app:cardCornerRadius="15dp">
 
             <LinearLayout
@@ -579,7 +601,7 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="357dp"
+                            android:layout_height="307dp"
                             android:layout_marginTop="10dp"
                             android:background="@drawable/rectangle"
                             android:orientation="vertical">
@@ -616,21 +638,21 @@
                                         android:text="Upload"
                                         android:textColor="#3C91E6" />
 
-<!--                                    <ProgressBar-->
-<!--                                        android:id="@+id/progressBar4"-->
-<!--                                        style="?android:attr/progressBarStyle"-->
-<!--                                        android:layout_width="wrap_content"-->
-<!--                                        android:layout_height="wrap_content"-->
-<!--                                        android:layout_weight="1"-->
-<!--                                        android:visibility="gone" />-->
+                                    <!--                                    <ProgressBar-->
+                                    <!--                                        android:id="@+id/progressBar4"-->
+                                    <!--                                        style="?android:attr/progressBarStyle"-->
+                                    <!--                                        android:layout_width="wrap_content"-->
+                                    <!--                                        android:layout_height="wrap_content"-->
+                                    <!--                                        android:layout_weight="1"-->
+                                    <!--                                        android:visibility="gone" />-->
                                     <com.sn.lib.NestedProgress
                                         android:id="@+id/progressBar4"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        app:innerAnimInterpolator="linear"
-                                        app:outerAnimInterpolator="overshoot"
                                         android:layout_weight="1"
                                         android:visibility="gone"
+                                        app:innerAnimInterpolator="linear"
+                                        app:outerAnimInterpolator="overshoot"
                                         app:outerLoaderAnimDuration="2500" />
 
                                     <TextView
@@ -676,22 +698,22 @@
                                         android:text="Upload"
                                         android:textColor="#3C91E6" />
 
-<!--                                    <ProgressBar-->
-<!--                                        android:id="@+id/progressBar5"-->
-<!--                                        style="?android:attr/progressBarStyle"-->
-<!--                                        android:layout_width="wrap_content"-->
-<!--                                        android:layout_height="wrap_content"-->
-<!--                                        android:layout_weight="1"-->
-<!--                                        android:visibility="gone" />-->
+                                    <!--                                    <ProgressBar-->
+                                    <!--                                        android:id="@+id/progressBar5"-->
+                                    <!--                                        style="?android:attr/progressBarStyle"-->
+                                    <!--                                        android:layout_width="wrap_content"-->
+                                    <!--                                        android:layout_height="wrap_content"-->
+                                    <!--                                        android:layout_weight="1"-->
+                                    <!--                                        android:visibility="gone" />-->
 
                                     <com.sn.lib.NestedProgress
                                         android:id="@+id/progressBar5"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        app:innerAnimInterpolator="linear"
-                                        app:outerAnimInterpolator="overshoot"
                                         android:layout_weight="1"
                                         android:visibility="gone"
+                                        app:innerAnimInterpolator="linear"
+                                        app:outerAnimInterpolator="overshoot"
                                         app:outerLoaderAnimDuration="2500" />
 
                                     <TextView
@@ -737,22 +759,22 @@
                                         android:text="Upload"
                                         android:textColor="#3C91E6" />
 
-<!--                                    <ProgressBar-->
-<!--                                        android:id="@+id/progressBar6"-->
-<!--                                        style="?android:attr/progressBarStyle"-->
-<!--                                        android:layout_width="wrap_content"-->
-<!--                                        android:layout_height="wrap_content"-->
-<!--                                        android:layout_weight="1"-->
-<!--                                        android:visibility="gone" />-->
+                                    <!--                                    <ProgressBar-->
+                                    <!--                                        android:id="@+id/progressBar6"-->
+                                    <!--                                        style="?android:attr/progressBarStyle"-->
+                                    <!--                                        android:layout_width="wrap_content"-->
+                                    <!--                                        android:layout_height="wrap_content"-->
+                                    <!--                                        android:layout_weight="1"-->
+                                    <!--                                        android:visibility="gone" />-->
 
                                     <com.sn.lib.NestedProgress
                                         android:id="@+id/progressBar6"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        app:innerAnimInterpolator="linear"
-                                        app:outerAnimInterpolator="overshoot"
                                         android:layout_weight="1"
                                         android:visibility="gone"
+                                        app:innerAnimInterpolator="linear"
+                                        app:outerAnimInterpolator="overshoot"
                                         app:outerLoaderAnimDuration="2500" />
 
                                     <TextView
@@ -799,22 +821,22 @@
                                         android:text="Upload"
                                         android:textColor="#3C91E6" />
 
-<!--                                    <ProgressBar-->
-<!--                                        android:id="@+id/progressBar7"-->
-<!--                                        style="?android:attr/progressBarStyle"-->
-<!--                                        android:layout_width="wrap_content"-->
-<!--                                        android:layout_height="wrap_content"-->
-<!--                                        android:layout_weight="1"-->
-<!--                                        android:visibility="gone" />-->
+                                    <!--                                    <ProgressBar-->
+                                    <!--                                        android:id="@+id/progressBar7"-->
+                                    <!--                                        style="?android:attr/progressBarStyle"-->
+                                    <!--                                        android:layout_width="wrap_content"-->
+                                    <!--                                        android:layout_height="wrap_content"-->
+                                    <!--                                        android:layout_weight="1"-->
+                                    <!--                                        android:visibility="gone" />-->
 
                                     <com.sn.lib.NestedProgress
                                         android:id="@+id/progressBar7"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        app:innerAnimInterpolator="linear"
-                                        app:outerAnimInterpolator="overshoot"
                                         android:layout_weight="1"
                                         android:visibility="gone"
+                                        app:innerAnimInterpolator="linear"
+                                        app:outerAnimInterpolator="overshoot"
                                         app:outerLoaderAnimDuration="2500" />
 
                                     <TextView
@@ -832,37 +854,38 @@
 
                         </LinearLayout>
 
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="18dp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/back2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginEnd="20dp"
+                                android:drawableLeft="@drawable/ic_baseline_keyboard_double_arrow_left_24"
+                                android:text="Back"
+                                android:textColor="@color/white" />
+
+                            <Button
+                                android:id="@+id/Next3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:layout_marginStart="10dp"
+                                android:drawableRight="@drawable/ic_baseline_keyboard_double_arrow_right_24"
+                                android:text="Next"
+                                android:textColor="@color/white" />
+                        </LinearLayout>
+
                     </LinearLayout>
                 </ScrollView>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="18dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/back2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="start"
-                        android:layout_marginEnd="10dp"
-                        android:drawableLeft="@drawable/ic_baseline_keyboard_double_arrow_left_24"
-                        android:text="Back"
-                        android:textColor="@color/white" />
-
-                    <Button
-                        android:id="@+id/Next3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:layout_marginStart="20dp"
-                        android:drawableRight="@drawable/ic_baseline_keyboard_double_arrow_right_24"
-                        android:text="Next"
-                        android:textColor="@color/white" />
-                </LinearLayout>
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>

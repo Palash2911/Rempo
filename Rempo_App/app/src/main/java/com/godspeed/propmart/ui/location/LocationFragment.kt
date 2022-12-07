@@ -54,11 +54,6 @@ class LocationFragment : Fragment() {
         pDailog.setMessage("Please Wait");
 
 
-        val profilePic = ""
-
-        Glide.with(requireActivity())
-            .load(profilePic).into(binding.profileImage);
-
 
         binding.locationRv.layoutManager = LinearLayoutManager(requireContext(),
             RecyclerView.VERTICAL,false);
@@ -68,8 +63,6 @@ class LocationFragment : Fragment() {
         // -------------------------------------------------------------------------------------------->
 
         val stateArray = resources.getStringArray(R.array.array_indian_states)
-
-
 
         val stateAdapter: ArrayAdapter<String> = ArrayAdapter(requireActivity(),
             android.R.layout.simple_list_item_1,stateArray);
@@ -314,9 +307,6 @@ class LocationFragment : Fragment() {
                         binding.district.setAdapter(districtAdapter);
                     }
 
-
-
-
                     else -> {
                         binding.district.error = "Please Select a Valid State";
                     }
@@ -365,7 +355,6 @@ class LocationFragment : Fragment() {
                         val longitude:String = documentSnapshot.get("longitude") as String;
                         val latitude:String = documentSnapshot.get("latitude") as String;
 
-
                         val card:PropertyCardModel =
                             PropertyCardModel(documentSnapshot.id.toString(), "Null",
                                 title,seller,address,"",totalPlots,latitude,longitude,"");
@@ -403,9 +392,6 @@ class LocationFragment : Fragment() {
                         binding.toolbar.visibility = View.VISIBLE;
                     }
                 }
-
-
-
         }
 
         binding.backButton.setOnClickListener{
@@ -415,10 +401,6 @@ class LocationFragment : Fragment() {
             binding.toolbar.visibility = View.GONE;
 
         }
-
-
-
-
 
         return binding.root
     }
