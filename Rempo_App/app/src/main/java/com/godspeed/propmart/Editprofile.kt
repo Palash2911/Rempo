@@ -30,7 +30,7 @@ class Editprofile : AppCompatActivity() {
     lateinit var datepick: Button
     var cal = Calendar.getInstance()
     val profile:HashMap<String, Any> = HashMap()
-    var doc=0
+    var doc=1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
