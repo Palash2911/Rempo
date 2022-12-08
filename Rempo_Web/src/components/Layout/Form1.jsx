@@ -30,6 +30,7 @@ const Form1 = () => {
           }}
           placeholder="John Doe"
           label="Owner Name"
+          required={true}
         />
         <div className={classes.group}>
           <label for="category">Layout Category</label>
@@ -43,6 +44,7 @@ const Form1 = () => {
             name="category"
             id="category"
             placeholder="Select layout category"
+            required={true}
           />
           <datalist id="categories">
             <option value="Edge" />
@@ -65,6 +67,7 @@ const Form1 = () => {
             rows="10"
             className={classes.input2}
             placeholder="Description of layout"
+            required={true}
           ></textarea>
         </div>
         <div className={classes.group}>
@@ -79,6 +82,7 @@ const Form1 = () => {
             name="category"
             id="category"
             placeholder="Select layout State"
+            required={true}
           />
           <datalist id="categories">
             <option value="Edge" />
@@ -100,6 +104,7 @@ const Form1 = () => {
             name="category"
             id="category"
             placeholder="Select layout District"
+            required={true}
           />
           <datalist id="categories">
             <option value="Edge" />
@@ -121,6 +126,7 @@ const Form1 = () => {
             name="category"
             id="category"
             placeholder="Select layout Taluka"
+            required={true}
           />
           <datalist id="categories">
             <option value="Edge" />
@@ -142,6 +148,7 @@ const Form1 = () => {
             name="category"
             id="category"
             placeholder="Select layout Village"
+            required={true}
           />
           <datalist id="categories">
             <option value="Edge" />

@@ -28,6 +28,8 @@ const Form2 = () => {
           }}
           placeholder="11/22/3 A"
           label="Survey Number"
+          required={true}
+
         />
         <Input
           value={layoutLocation}
@@ -36,6 +38,8 @@ const Form2 = () => {
           }}
           placeholder="Layout Location"
           label="Location"
+          required={true}
+
         />
         <div className={classes.form_group}>
           <h6 className={classes.file_label}>Upload Document</h6>
@@ -51,6 +55,8 @@ const Form2 = () => {
                 onChange={(e) => {
                   setDoc1(e.target.value);
                 }}
+          required={true}
+
               />
             </div>
             <div className={classes.file_group}>
@@ -64,6 +70,8 @@ const Form2 = () => {
                 onChange={(e) => {
                   setDoc3(e.target.value);
                 }}
+          required={true}
+
               />
             </div>
             <div className={classes.file_group}>
@@ -77,6 +85,8 @@ const Form2 = () => {
                 onChange={(e) => {
                   setDoc3(e.target.value);
                 }}
+          required={true}
+
               />
             </div>
             <div className={classes.file_group}>
@@ -90,6 +100,8 @@ const Form2 = () => {
                 onChange={(e) => {
                   setDoc4(e.target.value);
                 }}
+          required={true}
+
               />
             </div>
           </div>
