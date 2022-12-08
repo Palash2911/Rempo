@@ -130,7 +130,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
             android:background="@drawable/rectangle"
-            android:visibility="gone"
+            android:visibility="visible"
             app:cardCornerRadius="15dp">
 
             <LinearLayout
@@ -537,7 +537,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
             android:background="@drawable/rectangle"
-            android:visibility="visible"
+            android:visibility="gone"
             app:cardCornerRadius="15dp">
 
             <LinearLayout
