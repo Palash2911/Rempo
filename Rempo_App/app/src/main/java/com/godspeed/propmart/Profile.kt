@@ -110,7 +110,7 @@ class Profile : AppCompatActivity() {    private lateinit var binding: ActivityP
             db.collection("Users").document(uid)
                 .set(profile).addOnCompleteListener{task->
                     if (task.isSuccessful){
-                        val intent = Intent(this, Profileverify::class.java)
+                        val intent = Intent(this, Uploadaadhar::class.java)
                         startActivity(intent)
                         finish()
 //                        Toast.makeText(this, "Welcome Champion !! ", Toast.LENGTH_SHORT).show()
