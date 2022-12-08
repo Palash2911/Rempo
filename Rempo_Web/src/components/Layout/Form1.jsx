@@ -11,6 +11,8 @@ const Form1 = () => {
     setCategory,
     desc,
     setDesc,
+    state,
+    setState,
     district,
     setDistrict,
     taluka,
@@ -64,6 +66,27 @@ const Form1 = () => {
             className={classes.input2}
             placeholder="Description of layout"
           ></textarea>
+        </div>
+        <div className={classes.group}>
+          <label for="category">State</label>
+          <input
+            value={state}
+            onChange={(e) => {
+              setState(e.target.value);
+            }}
+            className={classes.input}
+            list="categories"
+            name="category"
+            id="category"
+            placeholder="Select layout State"
+          />
+          <datalist id="categories">
+            <option value="Edge" />
+            <option value="Firefox" />
+            <option value="Chrome" />
+            <option value="Opera" />
+            <option value="Safari" />
+          </datalist>
         </div>
         <div className={classes.group}>
           <label for="category">District</label>

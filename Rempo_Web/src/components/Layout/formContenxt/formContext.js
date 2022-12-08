@@ -1,4 +1,4 @@
-import { useState, useContext, createContext } from "react";
+import { useState, createContext } from "react";
 
 const FormContext = createContext();
 
@@ -6,6 +6,7 @@ export const FormProvider = ({ children }) => {
   const [owner, setOwner] = useState("");
   const [category, setCategory] = useState("");
   const [desc, setDesc] = useState("");
+  const [state, setState] = useState("");
   const [district, setDistrict] = useState("");
   const [taluka, setTaluka] = useState("");
   const [village, setVillage] = useState("");
@@ -25,6 +26,8 @@ export const FormProvider = ({ children }) => {
         setCategory,
         desc,
         setDesc,
+        state,
+        setState,
         district,
         setDistrict,
         taluka,
