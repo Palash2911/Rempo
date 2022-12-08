@@ -33,13 +33,16 @@
                 android:text="Upload"
                 android:textColor="#3C91E6" />
 
-            <ProgressBar
+            <com.sn.lib.NestedProgress
                 android:id="@+id/progressBar"
-                style="?android:attr/progressBarStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:visibility="gone" />
+                android:visibility="gone"
+                app:innerAnimInterpolator="linear"
+                app:outerAnimInterpolator="overshoot"
+                app:outerLoaderAnimDuration="2500" />
 
             <TextView
                 android:id="@+id/deletebtn"

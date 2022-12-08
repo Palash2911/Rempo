@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.HashMap
@@ -28,6 +29,8 @@ class Editprofile : AppCompatActivity() {
     private val db = Firebase.firestore
     lateinit var datepick: Button
     var cal = Calendar.getInstance()
+    val profile:HashMap<String, Any> = HashMap()
+    var doc=0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,8 +41,32 @@ class Editprofile : AppCompatActivity() {
             binding.nameprofileedit.setText(snapshot["Name"] as String);
             binding.phoneedit.setText(snapshot["Phone"] as String);
             binding.Emailedit.setText(snapshot["Email"] as String);
-            binding.dobbtn.setText(snapshot["dob"] as String);
+            binding.dobbtn.text = snapshot["dob"] as String;
+            binding.aadharfield.text = snapshot["Aadhar_No"].toString()
         }
+        binding.deletebtnaadhar.setOnClickListener {
+            binding.deletebtnaadhar.visibility = View.GONE
+            binding.progressBar.visibility = View.VISIBLE
+            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.currentUser?.uid.toString() + "_ID")
+            storageref.delete().addOnSuccessListener {
+                profile["ID"]=""
+                Toast.makeText(this,"Deleted", Toast.LENGTH_SHORT).show()
+                binding.progressBar.visibility = View.GONE
+                binding.uploadbtnaadhar.visibility = View.VISIBLE
+                doc=0
+            }.addOnFailureListener {
+                Toast.makeText(this,"Something Went Wrong", Toast.LENGTH_SHORT).show()
+                binding.deletebtnaadhar.visibility = View.VISIBLE
+                binding.progressBar.visibility = View.GONE
+            }
+        }
+        binding.uploadbtnaadhar.setOnClickListener {
+            var intent = Intent()
+            intent.type = "application/pdf"
+            intent.action = Intent.ACTION_GET_CONTENT
+            startActivityForResult(intent, 1);
+        }
+
         datepick = findViewById(R.id.dobbtn)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar2)
@@ -83,7 +110,6 @@ class Editprofile : AppCompatActivity() {
 
     private fun editprf()
     {
-        val profile:HashMap<String, Any> = HashMap()
         if(binding.nameprofileedit.text.isEmpty()){
             binding.nameprofileedit.error = "Name Required !!"
             return
@@ -98,6 +124,11 @@ class Editprofile : AppCompatActivity() {
         }
         if(binding.dobbtn.text.isEmpty()){
             binding.dobbtn.error = "Date of Birth Required !!"
+            return
+        }
+        if(doc==0)
+        {
+            Toast.makeText(this, "Please Upload ID Proof", Toast.LENGTH_SHORT).show()
             return
         }
         profile["Name"] = binding.nameprofileedit.text.toString()
@@ -123,4 +154,30 @@ class Editprofile : AppCompatActivity() {
                 }
             }
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode==1 && resultCode == RESULT_OK)
+        {
+            binding.uploadbtnaadhar.visibility = View.GONE
+            binding.progressBar.visibility = View.VISIBLE
+            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.currentUser?.uid.toString() + "_ID")
+            storageref.putFile(data?.data!!).addOnSuccessListener {
+                storageref.downloadUrl.addOnSuccessListener{ uri ->
+                    val downloadUrl = uri.toString();
+                    val docs:HashMap<String, Any> = HashMap()
+                    profile["ID"] = downloadUrl
+                    doc = 1
+                    Toast.makeText(this , "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
+                    binding.deletebtnaadhar.visibility = View.VISIBLE
+                    binding.progressBar.visibility = View.GONE
+                }.addOnFailureListener {
+                    Log.d("Inner Error", it.toString())
+                }
+            }.addOnFailureListener{
+                Log.d("Outer Error", it.toString())
+            }
+        }
+    }
+
 }

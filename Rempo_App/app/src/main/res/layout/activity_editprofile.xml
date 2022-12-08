@@ -12,229 +12,294 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="80dp"
         android:layout_marginRight="15dp"
         app:cardCornerRadius="18dp"
-        app:layout_constraintBottom_toTopOf="@+id/editprfbtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="25dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar2">
+            android:layout_height="match_parent">
 
             <LinearLayout
-                android:id="@+id/linearLayout2"
+                android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:orientation="vertical">
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="25dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar2">
 
-                <TextView
-                    android:id="@+id/field_lable"
-                    android:layout_width="120dp"
-                    android:layout_height="18dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="25dp"
-                    android:fontFamily="@font/roboto"
-                    android:gravity="top"
-                    android:lineSpacingExtra="3sp"
-                    android:text="Aadhar Number"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:translationY="-1.69sp" />
-
-                <TextView
-                    android:id="@+id/aadharfield"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_marginTop="12dp"
-                    android:background="@drawable/rectangle"
-                    android:fontFamily="@font/roboto"
-                    android:gravity="center_vertical"
-                    android:paddingStart="20dp"
-                    android:text="1234-5678-9000"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/field_lable2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="18dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="25dp"
-                    android:fontFamily="@font/roboto"
-                    android:gravity="top"
-                    android:lineSpacingExtra="3sp"
-                    android:text="Name (as on Aadhar Card)*"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:translationY="-1.69sp" />
-
-                <EditText
-                    android:id="@+id/nameprofileedit"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_marginTop="12dp"
-                    android:background="@drawable/rectangle"
-                    android:ems="10"
-                    android:fontFamily="@font/roboto"
-                    android:hint="Enter Your Name"
-                    android:inputType="textPersonName"
-                    android:paddingStart="20dp"
-                    android:textSize="16sp"
-                    tools:ignore="TouchTargetSizeCheck" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/field_lable3"
-                    android:layout_width="165dp"
-                    android:layout_height="18dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="25dp"
-                    android:fontFamily="@font/roboto"
-                    android:gravity="top"
-                    android:lineSpacingExtra="3sp"
-                    android:text="Date of Birth"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:translationY="-1.69sp" />
-
-                <Button
-                    android:id="@+id/dobbtn"
-                    style="?android:spinnerStyle"
+                <LinearLayout
+                    android:id="@+id/linearLayout2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="June 11 2022"
-                    android:textColor="@color/black"
-                    android:textSize="16dp" />
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:orientation="vertical">
 
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/field_lable"
+                        android:layout_width="120dp"
+                        android:layout_height="18dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="25dp"
+                        android:fontFamily="@font/roboto"
+                        android:gravity="top"
+                        android:lineSpacingExtra="3sp"
+                        android:text="Aadhar Number"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:translationY="-1.69sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/aadharfield"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="2dp"
+                        android:background="@drawable/rectangle"
+                        android:fontFamily="@font/roboto"
+                        android:gravity="center_vertical"
+                        android:paddingStart="20dp"
+                        android:text="1234-5678-9000"
+                        android:textSize="16sp" />
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/field_lable4"
-                    android:layout_width="165dp"
-                    android:layout_height="18dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="25dp"
-                    android:fontFamily="@font/roboto"
-                    android:gravity="top"
-                    android:lineSpacingExtra="3sp"
-                    android:text="Mobile Number"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:translationY="-1.69sp" />
-
-                <EditText
-                    android:id="@+id/phoneedit"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
                     android:background="@drawable/rectangle"
-                    android:ems="10"
-                    android:fontFamily="@font/roboto"
-                    android:hint="Enter Your Number"
-                    android:inputType="number"
-                    android:paddingStart="20dp"
-                    android:textSize="16sp"
-                    tools:ignore="TouchTargetSizeCheck" />
-            </LinearLayout>
+                    android:orientation="horizontal"
+                    android:padding="16dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/document_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="0dp"
+                        android:layout_weight="1"
+                        android:text="Identity Proof"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/field_lable5"
-                    android:layout_width="165dp"
-                    android:layout_height="18dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="25dp"
-                    android:fontFamily="@font/roboto"
-                    android:gravity="top"
-                    android:lineSpacingExtra="3sp"
-                    android:text="Email"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:translationY="-1.69sp" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/Emailedit"
+                        <TextView
+                            android:id="@+id/uploadbtnaadhar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="15dp"
+                            android:text="Upload"
+                            android:textColor="#3C91E6"
+                            android:textSize="18sp"
+                            android:visibility="gone" />
+
+                        <com.sn.lib.NestedProgress
+                            android:id="@+id/progressBar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:visibility="gone"
+                            app:innerAnimInterpolator="linear"
+                            app:outerAnimInterpolator="overshoot"
+                            app:outerLoaderAnimDuration="2500" />
+
+                        <TextView
+                            android:id="@+id/deletebtnaadhar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:drawableRight="@drawable/ic_baseline_delete_24"
+                            android:text="Delete"
+                            android:textSize="18sp"
+                            android:visibility="visible" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_marginTop="12dp"
-                    android:background="@drawable/rectangle"
-                    android:ems="10"
-                    android:fontFamily="@font/roboto"
-                    android:hint="Enter Your Email-ID"
-                    android:inputType="textEmailAddress"
-                    android:paddingStart="20dp"
-                    android:textSize="16sp"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/field_lable2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="25dp"
+                        android:fontFamily="@font/roboto"
+                        android:gravity="top"
+                        android:lineSpacingExtra="3sp"
+                        android:text="Name (as on Aadhar Card)*"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:translationY="-1.69sp" />
+
+                    <EditText
+                        android:id="@+id/nameprofileedit"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="2dp"
+                        android:background="@drawable/rectangle"
+                        android:ems="10"
+                        android:fontFamily="@font/roboto"
+                        android:hint="Enter Your Name"
+                        android:inputType="textPersonName"
+                        android:paddingStart="20dp"
+                        android:textSize="16sp"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/field_lable3"
+                        android:layout_width="165dp"
+                        android:layout_height="18dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="25dp"
+                        android:fontFamily="@font/roboto"
+                        android:gravity="top"
+                        android:lineSpacingExtra="3sp"
+                        android:text="Date of Birth"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:translationY="-1.69sp" />
+
+                    <Button
+                        android:id="@+id/dobbtn"
+                        style="?android:spinnerStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="June 11 2022"
+                        android:textColor="@color/black"
+                        android:textSize="16dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/field_lable4"
+                        android:layout_width="165dp"
+                        android:layout_height="18dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="25dp"
+                        android:fontFamily="@font/roboto"
+                        android:gravity="top"
+                        android:lineSpacingExtra="3sp"
+                        android:text="Mobile Number"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:translationY="-1.69sp" />
+
+                    <EditText
+                        android:id="@+id/phoneedit"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="2dp"
+                        android:background="@drawable/rectangle"
+                        android:ems="10"
+                        android:fontFamily="@font/roboto"
+                        android:hint="Enter Your Number"
+                        android:inputType="number"
+                        android:paddingStart="20dp"
+                        android:textSize="16sp"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/field_lable5"
+                        android:layout_width="165dp"
+                        android:layout_height="18dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="25dp"
+                        android:fontFamily="@font/roboto"
+                        android:gravity="top"
+                        android:lineSpacingExtra="3sp"
+                        android:text="Email"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:translationY="-1.69sp" />
+
+                    <EditText
+                        android:id="@+id/Emailedit"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="2dp"
+                        android:background="@drawable/rectangle"
+                        android:ems="10"
+                        android:fontFamily="@font/roboto"
+                        android:hint="Enter Your Email-ID"
+                        android:inputType="textEmailAddress"
+                        android:paddingStart="20dp"
+                        android:textSize="16sp"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </LinearLayout>
+
+
+
+                <Button
+                    android:id="@+id/editprfbtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="Save"
+                    android:textColor="#FFFFFF" />
+
             </LinearLayout>
+        </ScrollView>
 
-
-        </LinearLayout>
     </androidx.cardview.widget.CardView>
-
-    <Button
-        android:id="@+id/editprfbtn"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="15dp"
-        android:text="Save"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
