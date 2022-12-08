@@ -78,6 +78,7 @@ function App() {
                       name="plotNo"
                       value={form.plotNo}
                       onChange={(event) => handleFormChange(event, index)}
+                      required={true}
                     />
                     <div className={classes.group3}>
                       <Input
@@ -87,6 +88,8 @@ function App() {
                         name="area"
                         value={form.area}
                         onChange={(event) => handleFormChange(event, index)}
+                        required={true}
+                        type="number"
                       />
                       <input
                         className={classes.input}
@@ -97,6 +100,7 @@ function App() {
                         value={form.areaUnit}
                         onChange={(event) => handleFormChange(event, index)}
                         style={{ width: "150px" }}
+                        required={true}
                       />
                       <datalist id="categories">
                         <option value="Edge" />
@@ -115,6 +119,8 @@ function App() {
                         name="front"
                         value={form.front}
                         onChange={(event) => handleFormChange(event, index)}
+                        required={true}
+                        type="number"
                       />
                       <input
                         className={classes.input}
@@ -125,43 +131,27 @@ function App() {
                         value={form.frontUnit}
                         onChange={(event) => handleFormChange(event, index)}
                         style={{ width: "150px" }}
+                        required={true}
                       />
                       <datalist id="categories">
-                        <option value="Edge" />
-                        <option value="Firefox" />
-                        <option value="Chrome" />
-                        <option value="Opera" />
-                        <option value="Safari" />
+                        <option value="Edge">m</option>
+                        <option value="Firefox">m</option>
+                        <option value="Chrome">m</option>
+                        <option value="Opera">m</option>
+                        <option value="Safari">m</option>
                       </datalist>
                     </div>
 
-                    <div className={classes.group3}>
-                      <Input
-                        width="150px"
-                        label="Depth"
-                        placeholder=""
-                        name="depth"
-                        value={form.depth}
-                        onChange={(event) => handleFormChange(event, index)}
-                      />
-                      <input
-                        className={classes.input}
-                        list="depthUnit"
-                        name="depthUnit"
-                        id="depthUnit"
-                        placeholder="depthUnit"
-                        value={form.depthUnit}
-                        onChange={(event) => handleFormChange(event, index)}
-                        style={{ width: "150px" }}
-                      />
-                      <datalist id="categories">
-                        <option value="Edge" />
-                        <option value="Firefox" />
-                        <option value="Chrome" />
-                        <option value="Opera" />
-                        <option value="Safari" />
-                      </datalist>
-                    </div>
+                    <Input
+                      width="150px"
+                      label="Depth"
+                      placeholder=""
+                      name="depth"
+                      value={form.depth}
+                      onChange={(event) => handleFormChange(event, index)}
+                      required={true}
+                      type="number"
+                    />
 
                     <Input
                       width="150px"
@@ -170,6 +160,8 @@ function App() {
                       name="meter"
                       value={form.meter}
                       onChange={(event) => handleFormChange(event, index)}
+                      required={true}
+                      type="number"
                     />
                     <Input
                       width="150px"
@@ -178,6 +170,8 @@ function App() {
                       name="sellingPrice"
                       value={form.sellingPrice}
                       onChange={(event) => handleFormChange(event, index)}
+                      required={true}
+                      type="number"
                     />
                     <Input
                       width="150px"
@@ -186,6 +180,7 @@ function App() {
                       name="plotStatus"
                       value={form.plotStatus}
                       onChange={(event) => handleFormChange(event, index)}
+                      required={true}
                     />
                   </div>
                 </div>

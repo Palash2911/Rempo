@@ -57,9 +57,10 @@
   background-color: #f3f3f4;
   color: #0d0c22;
   transition: 0.3s ease;
+  font-size: 18px;
 }
 .input2 {
-  height: 160px;
+  height: 120px;
 }
 .input::placeholder,
 .input2::placeholder {
@@ -84,6 +85,7 @@ textarea:hover {
 .file_label {
   width: 100px;
   margin-right: 50px;
+  font-size: 13px;
 }
 .cutom_file_input::-webkit-file-upload-button {
   visibility: hidden;
@@ -142,4 +144,9 @@ textarea:hover {
   width: 100%;
   text-align: center;
   margin-top: 20px;
+}
+@media screen and (max-width: 768px) {
+  .group {
+    width: 400px;
+  }
 }

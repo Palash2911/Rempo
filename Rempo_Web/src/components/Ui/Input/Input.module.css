@@ -23,6 +23,7 @@
   background-color: #f3f3f4;
   color: #0d0c22;
   transition: 0.3s ease;
+  font-size: 18px;
 }
 
 .input::placeholder {
@@ -38,4 +39,9 @@ input:hover {
   border-color: #3c91e6;
   background-color: #fff;
   box-shadow: 0 0 0 4px rgba(67, 246, 255, 0.1);
+}
+@media screen and (max-width: 768px) {
+  .group {
+    width: 400px;
+  }
 }
