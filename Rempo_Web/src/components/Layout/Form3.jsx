@@ -1,4 +1,4 @@
-import React, { useState, useContext  } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import classes from "./Layout.module.css";
 import { Button, Card, Input } from "../Ui";
 import useScreenType from "react-screentype-hook";
@@ -7,107 +7,95 @@ import app, { db } from "../firebase_config";
 import { collection, doc, setDoc, getDoc, addDoc } from "firebase/firestore";
 import FormContext from "./formContenxt/formContext";
 
-const auth = getAuth(app);
-
-const inputArr = [
-  {
-    type: "text",
-    id: 1,
-    value: "",
-  },
-];
-
-const Form3 = () => {
-  const [arr, setArr] = useState(inputArr);
+function App() {
   const screenType = useScreenType();
+  useEffect(() => {
+    console.log(formFields);
+  });
+  const [formFields, setFormFields] = useState([
+    {
+      plotNo: "",
+      area: "",
+      areaUnit: "",
+      front: "",
+      frontUnit: "",
+      depth: "",
+      depthUnit: "",
+      meter: "",
+      sellingPrice: "",
+      plotStatus: "",
+    },
+  ]);
 
-  const {
-    owner,
-    setOwner,
-    category,
-    setCategory,
-    desc,
-    setDesc,
-    district,
-    setDistrict,
-    taluka,
-    setTaluka,
-    village,
-    setVillage,
-  } = useContext(FormContext);
-
-  
-  const handleClick = async (e) => {
-    e.preventDefault();
-      try {
-        const docid = await addDoc(collection(db, "Layouts"), {
-          address: district,
-          availabelPlots: 2,
-          district: district,
-          layoutId: "adsf",
-          location: "1234-5678-9000",
-          sellerId: auth.currentUser.uid,
-          sellerName: owner,
-          soldPlots: 1,
-          State: "Goa",
-          taluka: taluka,
-          title: "TITLE",
-          totalPlots: 3,
-        });
-        console.log("asdf", docid.id)
-      } catch (e) {
-        console.log("Error", e);
-        alert(e);
-      }
+  const handleFormChange = (event, index) => {
+    let data = [...formFields];
+    data[index][event.target.name] = event.target.value;
+    setFormFields(data);
   };
 
-  const addInput = () => {
-    setArr((s) => {
-      return [
-        ...s,
-        {
-          type: "text",
-          value: "",
-        },
-      ];
-    });
+  const submit = (e) => {
+    e.preventDefault();
+    console.log(formFields);
   };
 
-  const handleChange = (e) => {
-    e.preventDefault();
+  const addFields = () => {
+    let object = {
+      plotNo: "",
+      area: "",
+      areaUnit: "",
+      front: "",
+      frontUnit: "",
+      depth: "",
+      depthUnit: "",
+      meter: "",
+      sellingPrice: "",
+      plotStatus: "",
+    };
 
-    const index = e.target.id;
-    setArr((s) => {
-      const newArr = s.slice();
-      newArr[index].value = e.target.value;
+    setFormFields([...formFields, object]);
+  };
 
-      return newArr;
-    });
+  const removeFields = (index) => {
+    let data = [...formFields];
+    data.splice(index, 1);
+    setFormFields(data);
   };
 
   return (
-    <>
-      <div>
-        {arr.map((item, i) => {
+    <div className="App">
+      <form onSubmit={submit}>
+        {formFields.map((form, index) => {
           return (
-            <div className={classes.cards}>
+            <div className={classes.cards} key={index}>
               <Card width={screenType.isMobile ? "87vw" : "67vw"} height="auto">
                 <div className={classes.plot_container}>
-                  <h3 className={classes.plot_no}>Plot {i + 1}</h3>
+                  <h3 className={classes.plot_no}>Plot {index + 1}</h3>
                   <div className={classes.plot_data}>
                     <Input
                       width="150px"
                       label="Plot number"
                       placeholder="Plot 1"
+                      name="plotNo"
+                      value={form.plotNo}
+                      onChange={(event) => handleFormChange(event, index)}
                     />
                     <div className={classes.group3}>
-                      <Input width="150px" label="Area Size" placeholder="" />
+                      <Input
+                        width="150px"
+                        label="Area Size"
+                        placeholder=""
+                        name="area"
+                        value={form.area}
+                        onChange={(event) => handleFormChange(event, index)}
+                      />
                       <input
                         className={classes.input}
-                        list="categories"
-                        name="category"
-                        id="category"
+                        list="areaUnit"
+                        name="areaUnit"
+                        id="areaUnit"
                         placeholder="unit"
+                        value={form.areaUnit}
+                        onChange={(event) => handleFormChange(event, index)}
                         style={{ width: "150px" }}
                       />
                       <datalist id="categories">
@@ -120,13 +108,22 @@ const Form3 = () => {
                     </div>
 
                     <div className={classes.group3}>
-                      <Input width="150px" label="Front" placeholder="" />
+                      <Input
+                        width="150px"
+                        label="Front"
+                        placeholder=""
+                        name="front"
+                        value={form.front}
+                        onChange={(event) => handleFormChange(event, index)}
+                      />
                       <input
                         className={classes.input}
-                        list="categories"
-                        name="category"
-                        id="category"
-                        placeholder="unit"
+                        list="frontUnit"
+                        name="frontUnit"
+                        id="frontUnit"
+                        placeholder="frontUnit"
+                        value={form.frontUnit}
+                        onChange={(event) => handleFormChange(event, index)}
                         style={{ width: "150px" }}
                       />
                       <datalist id="categories">
@@ -139,13 +136,22 @@ const Form3 = () => {
                     </div>
 
                     <div className={classes.group3}>
-                      <Input width="150px" label="Depth" placeholder="" />
+                      <Input
+                        width="150px"
+                        label="Depth"
+                        placeholder=""
+                        name="depth"
+                        value={form.depth}
+                        onChange={(event) => handleFormChange(event, index)}
+                      />
                       <input
                         className={classes.input}
-                        list="categories"
-                        name="category"
-                        id="category"
-                        placeholder="unit"
+                        list="depthUnit"
+                        name="depthUnit"
+                        id="depthUnit"
+                        placeholder="depthUnit"
+                        value={form.depthUnit}
+                        onChange={(event) => handleFormChange(event, index)}
                         style={{ width: "150px" }}
                       />
                       <datalist id="categories">
@@ -157,28 +163,44 @@ const Form3 = () => {
                       </datalist>
                     </div>
 
-                    <Input width="150px" label="Road" placeholder="meter" />
+                    <Input
+                      width="150px"
+                      label="Road"
+                      placeholder="meter"
+                      name="meter"
+                      value={form.meter}
+                      onChange={(event) => handleFormChange(event, index)}
+                    />
                     <Input
                       width="150px"
                       label=" Selling Price"
                       placeholder="456456"
+                      name="sellingPrice"
+                      value={form.sellingPrice}
+                      onChange={(event) => handleFormChange(event, index)}
                     />
-                    <Input width="150px" label="Status" placeholder="Sold" />
+                    <Input
+                      width="150px"
+                      label="Status"
+                      placeholder="Sold"
+                      name="plotStatus"
+                      value={form.plotStatus}
+                      onChange={(event) => handleFormChange(event, index)}
+                    />
                   </div>
                 </div>
               </Card>
             </div>
           );
         })}
+      </form>
+      <div className={classes.addPlotBtn}>
+        <Button label="Add Plot" type="1" onClick={addFields}>
+          Add Plot
+        </Button>
       </div>
-      <Button label="Add Plot" type="1" onClick={addInput}>
-        Add Plot
-      </Button>
-      <Button label="NEXT" type="1" onClick={handleClick}>
-        Next
-      </Button>
-    </>
+    </div>
   );
-};
+}
 
-export default Form3;
+export default App;
