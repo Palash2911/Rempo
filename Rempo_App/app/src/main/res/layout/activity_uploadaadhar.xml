@@ -40,102 +40,147 @@
         android:layout_marginRight="16dp"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:textSize="14dp"
-            android:text="Enter Aadhar Number"
-            android:textColor="@color/black"
-            android:textFontWeight="500" />
-
-        <EditText
+        <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/field_lable"
+                android:layout_width="120dp"
+                android:layout_height="18dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="top"
+                android:lineSpacingExtra="3sp"
+                android:text="Aadhar Number"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:translationY="-1.69sp" />
+
+            <EditText
+                android:id="@+id/aadharfield"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/rectangle"
+                android:fontFamily="@font/roboto"
+                android:gravity="center_vertical"
+                android:hint="1234-5678-9000"
+                android:inputType="number"
+                android:maxLength="12"
+                android:paddingStart="20dp"
+                android:textColor="#090909"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Upload Identity Proof"
+                android:textColor="@color/black"
+                android:textFontWeight="500"
+                android:textSize="16dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="3dp"
+                android:src="@drawable/info"
+                android:tintMode="multiply"
+                app:tint="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:hint="12 digit Aadhar Number"
-            android:textSize="16dp"
-            android:paddingLeft="10dp"
-            android:background="@drawable/rectangle"
-            android:id="@+id/aadhar_number"
-            />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:padding="30dp">
+
             <TextView
+                android:id="@+id/document_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Upload Aadhar Front for KYC"
-                android:textSize="14dp"
-                android:textFontWeight="500"
+                android:layout_gravity="center"
+                android:layout_marginStart="0dp"
+                android:layout_weight="1"
                 android:textColor="@color/black"
-                android:layout_marginTop="20dp"/>
-            <ImageView
+                android:textSize="18sp"
+                android:text="Identity Proof" />
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/info"
-                app:tint="@color/black"
-                android:tintMode="multiply"
-                android:layout_gravity="bottom"
-                android:layout_marginLeft="5dp"
-                android:layout_marginBottom="3dp"/>
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/uploadbtnaadhar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="15dp"
+                    android:text="Upload"
+                    android:textSize="18sp"
+                    android:textColor="#3C91E6" />
+
+                <com.sn.lib.NestedProgress
+                    android:id="@+id/progressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:visibility="gone"
+                    app:innerAnimInterpolator="linear"
+                    app:outerAnimInterpolator="overshoot"
+                    app:outerLoaderAnimDuration="2500" />
+
+                <TextView
+                    android:id="@+id/deletebtnaadhar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:drawableRight="@drawable/ic_baseline_delete_24"
+                    android:text="Delete"
+                    android:textSize="18sp"
+                    android:visibility="gone" />
+
+            </LinearLayout>
         </LinearLayout>
 
 
-        <ImageView
-            android:id="@+id/aadhar_front"
-            android:layout_width="match_parent"
-            android:scaleType="centerCrop"
-            android:layout_height="186dp"
-            android:src="@drawable/aadhar_front"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Upload Aadhar Back for KYC"
-                android:textSize="14dp"
-                android:textFontWeight="500"
-                android:textColor="@color/black"
-                android:layout_marginTop="20dp"/>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/info"
-                app:tint="@color/black"
-                android:tintMode="multiply"
-                android:layout_gravity="bottom"
-                android:layout_marginLeft="5dp"
-                android:layout_marginBottom="3dp"/>
-        </LinearLayout>
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:scaleType="centerCrop"
-            android:layout_height="186dp"
-            android:src="@drawable/aadhar_back"
-            android:layout_gravity="center"
-            android:id="@+id/aadhar_back"
-            android:layout_marginTop="10dp"/>
     </LinearLayout>
 
     <Button
         android:id="@+id/proceedBtn"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="48dp"
-        android:text="Proceed"
+        android:layout_marginBottom="70dp"
+        android:layout_marginTop="350dp"
+        android:textSize="18sp"
+        android:text="Create Profile"
         android:textAllCaps="false"
         android:textColor="#FFFFFF" />
-
 
 </RelativeLayout>

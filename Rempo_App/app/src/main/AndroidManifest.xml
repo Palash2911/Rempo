@@ -20,20 +20,14 @@
         <activity
             android:name=".Contact"
             android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
         </activity>
         <activity
             android:name=".Visitweb"
             android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
         </activity>
         <activity
             android:name=".Allbids"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".EditPlotActivity"
             android:exported="false" />

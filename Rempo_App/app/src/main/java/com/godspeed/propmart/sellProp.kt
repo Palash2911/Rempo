@@ -682,7 +682,11 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                     Toast.makeText(this , "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
                     binding.deletebtn1.visibility = VISIBLE
                     binding.progressBar4.visibility = GONE
+                }.addOnFailureListener {
+                    Log.d("Inner Error", it.toString())
                 }
+            }.addOnFailureListener{
+                Log.d("Outer Error", it.toString())
             }
         }
         else if(requestCode==2 && resultCode == RESULT_OK)
@@ -698,7 +702,11 @@ class sellProp : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                     Toast.makeText(this , "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
                     binding.deletebtn2.visibility = VISIBLE
                     binding.progressBar5.visibility = GONE
+                }.addOnFailureListener {
+                    Log.d("Inner Error", it.toString())
                 }
+            }.addOnFailureListener{
+                Log.d("Outer Error", it.toString())
             }
         }
         else if(requestCode==3 && resultCode == RESULT_OK)

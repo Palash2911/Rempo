@@ -36,7 +36,7 @@ class Profile : AppCompatActivity() {    private lateinit var binding: ActivityP
         setContentView(binding.root)
 
         num = intent.extras?.get("Number").toString()
-        binding.phone.text = num
+        binding.phone.text = "+91 $num"
 
         val mDialog = DatePickerDialog(this, { view, year, monthOfYear, dayOfMonth ->
             cal.set(Calendar.YEAR, year)
@@ -84,60 +84,24 @@ class Profile : AppCompatActivity() {    private lateinit var binding: ActivityP
         }
         profile["Name"] = binding.nameprofile.text.toString()
         profile["Phone"] = binding.phone.text.toString()
-        profile["Aadhar"] = binding.aadharfield.text.toString()
         profile["Email"] = binding.Email.text.toString()
         profile["dob"] = binding.dobbtn2.text.toString()
         profile["profilePicture"] = "downloadurl"
         profile["Uid"] = Firebase.auth.uid.toString()
         profile["Account"] = "Buyer"
         profile["Verified"] = true
-        var flag = true
-        var uid = ""
-        db.collection("Users").get().addOnSuccessListener { snapsnot->
-            for(users in snapsnot)
-            {
-                Log.d(TAG, users["Phone"].toString() )
-                if(profile["Phone"] == users["Phone"].toString())
-                {
-                    flag=false;
-                    uid = users["uid"].toString()
-                    break;
+        db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
+            .set(profile).addOnCompleteListener{task->
+                if (task.isSuccessful){
+                    val intent = Intent(this, Uploadaadhar::class.java)
+                    startActivity(intent)
+                    finish()
+//                        Toast.makeText(this, "Welcome Champion !! ", Toast.LENGTH_SHORT).show()
+                } else {
+                    Log.d(TAG, "Error saving profile! ", task.exception)
+                    Toast.makeText(applicationContext, "Something went wrong!!", Toast.LENGTH_SHORT).show()
                 }
             }
-        }
-        if(!flag)
-        {
-            db.collection("Users").document(uid)
-                .set(profile).addOnCompleteListener{task->
-                    if (task.isSuccessful){
-                        val intent = Intent(this, Uploadaadhar::class.java)
-                        startActivity(intent)
-                        finish()
-//                        Toast.makeText(this, "Welcome Champion !! ", Toast.LENGTH_SHORT).show()
-                    } else {
-                        Log.d(TAG, "Error saving profile! ", task.exception)
-                        Toast.makeText(applicationContext, "Something went wrong!!", Toast.LENGTH_SHORT).show()
-                    }
-                }
-            db.collection("Users").document(uid).update(uid, Firebase.auth.currentUser.toString())
-                .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully updated!") }
-                .addOnFailureListener { e -> Log.w(TAG, "Error updating document", e) }
-        }
-        else
-        {
-            db.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
-                .set(profile).addOnCompleteListener{task->
-                    if (task.isSuccessful){
-                        val intent = Intent(this, SelectType::class.java)
-                        startActivity(intent)
-                        finish()
-//                        Toast.makeText(this, "Welcome Champion !! ", Toast.LENGTH_SHORT).show()
-                    } else {
-                        Log.d(TAG, "Error saving profile! ", task.exception)
-                        Toast.makeText(applicationContext, "Something went wrong!!", Toast.LENGTH_SHORT).show()
-                    }
-                }
-        }
     }
 
     fun openDatepicker(view: View) {
