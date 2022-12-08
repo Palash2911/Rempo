@@ -63,8 +63,23 @@
   height: 120px;
 }
 .input::placeholder,
-.input2::placeholder {
+.input2::placeholder,.inputsbidselect::placeholder {
   color: #9e9ea7;
+}
+.inputsbidselect{
+  width: 9%;
+  height: 40px;
+  line-height: 28px;
+  padding: 0 1rem;
+  padding-left: 1rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  outline: none;
+  background-color: #f3f3f4;
+  color: #0d0c22;
+  transition: 0.3s ease;
+  font-size: 18px;
+  margin-top:27px;
 }
 
 .input:focus,

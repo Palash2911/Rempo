@@ -34,7 +34,7 @@ const Form1 = () => {
         />
         <div className={classes.group}>
           <label for="category">Layout Category</label>
-          <input
+          {/* <input
             value={category}
             onChange={(e) => {
               setCategory(e.target.value);
@@ -45,14 +45,12 @@ const Form1 = () => {
             id="category"
             placeholder="Select layout category"
             required={true}
-          />
-          <datalist id="categories">
-            <option value="Edge" />
-            <option value="Firefox" />
-            <option value="Chrome" />
-            <option value="Opera" />
-            <option value="Safari" />
-          </datalist>
+          /> */}
+          <select value={category} className={classes.input} id="categories" onChange={(e) => {setCategory(e.target.value);}}>
+          <option>Select Property Catergory</option>
+          <option>Agicultural Land</option>
+          <option>NA Land</option>
+          </select>
         </div>
         <div className={classes.group}>
           <label for="description">Layout Description</label>
@@ -72,25 +70,47 @@ const Form1 = () => {
         </div>
         <div className={classes.group}>
           <label for="category">State</label>
-          <input
-            value={state}
-            onChange={(e) => {
+          <select value={state} className={classes.input} id="categories" onChange={(e) => {
               setState(e.target.value);
-            }}
-            className={classes.input}
-            list="categories"
-            name="category"
-            id="category"
-            placeholder="Select layout State"
-            required={true}
-          />
-          <datalist id="categories">
-            <option value="Edge" />
-            <option value="Firefox" />
-            <option value="Chrome" />
-            <option value="Opera" />
-            <option value="Safari" />
-          </datalist>
+            }}>
+          <option value="Andhra Pradesh">Select State</option>
+          <option value="Andhra Pradesh">Andhra Pradesh</option>
+          <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+          <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+          <option value="Assam">Assam</option>
+          <option value="Bihar">Bihar</option>
+          <option value="Chandigarh">Chandigarh</option>
+          <option value="Chhattisgarh">Chhattisgarh</option>
+          <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+          <option value="Daman and Diu">Daman and Diu</option>
+          <option value="Delhi">Delhi</option>
+          <option value="Lakshadweep">Lakshadweep</option>
+          <option value="Puducherry">Puducherry</option>
+          <option value="Goa">Goa</option>
+          <option value="Gujarat">Gujarat</option>
+          <option value="Haryana">Haryana</option>
+          <option value="Himachal Pradesh">Himachal Pradesh</option>
+          <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+          <option value="Jharkhand">Jharkhand</option>
+          <option value="Karnataka">Karnataka</option>
+          <option value="Kerala">Kerala</option>
+          <option value="Madhya Pradesh">Madhya Pradesh</option>
+          <option value="Maharashtra">Maharashtra</option>
+          <option value="Manipur">Manipur</option>
+          <option value="Meghalaya">Meghalaya</option>
+          <option value="Mizoram">Mizoram</option>
+          <option value="Nagaland">Nagaland</option>
+          <option value="Odisha">Odisha</option>
+          <option value="Punjab">Punjab</option>
+          <option value="Rajasthan">Rajasthan</option>
+          <option value="Sikkim">Sikkim</option>
+          <option value="Tamil Nadu">Tamil Nadu</option>
+          <option value="Telangana">Telangana</option>
+          <option value="Tripura">Tripura</option>
+          <option value="Uttar Pradesh">Uttar Pradesh</option>
+          <option value="Uttarakhand">Uttarakhand</option>
+          <option value="West Bengal">West Bengal</option>
+        </select>
         </div>
         <div className={classes.group}>
           <label for="category">District</label>
@@ -103,16 +123,9 @@ const Form1 = () => {
             list="categories"
             name="category"
             id="category"
-            placeholder="Select layout District"
+            placeholder="Enter layout District"
             required={true}
           />
-          <datalist id="categories">
-            <option value="Edge" />
-            <option value="Firefox" />
-            <option value="Chrome" />
-            <option value="Opera" />
-            <option value="Safari" />
-          </datalist>
         </div>
         <div className={classes.group}>
           <label for="category">Taluka</label>
@@ -125,16 +138,9 @@ const Form1 = () => {
             list="categories"
             name="category"
             id="category"
-            placeholder="Select layout Taluka"
+            placeholder="Enter layout Taluka"
             required={true}
           />
-          <datalist id="categories">
-            <option value="Edge" />
-            <option value="Firefox" />
-            <option value="Chrome" />
-            <option value="Opera" />
-            <option value="Safari" />
-          </datalist>
         </div>
         <div className={classes.group}>
           <label for="category">Village</label>
@@ -147,7 +153,7 @@ const Form1 = () => {
             list="categories"
             name="category"
             id="category"
-            placeholder="Select layout Village"
+            placeholder="Enter layout Village"
             required={true}
           />
           <datalist id="categories">

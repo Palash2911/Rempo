@@ -2,30 +2,14 @@ import React, { useState, useEffect, useContext } from "react";
 import classes from "./Layout.module.css";
 import { Button, Card, Input } from "../Ui";
 import useScreenType from "react-screentype-hook";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import app, { db } from "../firebase_config";
-import { collection, doc, setDoc, getDoc, addDoc } from "firebase/firestore";
 import FormContext from "./formContenxt/formContext";
 
 function App() {
   const screenType = useScreenType();
-  useEffect(() => {
-    console.log(formFields);
-  });
-  const [formFields, setFormFields] = useState([
-    {
-      plotNo: "",
-      area: "",
-      areaUnit: "",
-      front: "",
-      frontUnit: "",
-      depth: "",
-      depthUnit: "",
-      meter: "",
-      sellingPrice: "",
-      plotStatus: "",
-    },
-  ]);
+  const {
+    formFields,
+    setFormFields
+  } = useContext(FormContext);
 
   const handleFormChange = (event, index) => {
     let data = [...formFields];
@@ -84,68 +68,44 @@ function App() {
                       <Input
                         width="150px"
                         label="Area Size"
-                        placeholder=""
+                        placeholder="123"
                         name="area"
                         value={form.area}
                         onChange={(event) => handleFormChange(event, index)}
                         required={true}
                         type="number"
                       />
-                      <input
-                        className={classes.input}
-                        list="areaUnit"
-                        name="areaUnit"
-                        id="areaUnit"
-                        placeholder="unit"
-                        value={form.areaUnit}
-                        onChange={(event) => handleFormChange(event, index)}
-                        style={{ width: "150px" }}
-                        required={true}
-                      />
-                      <datalist id="categories">
-                        <option value="Edge" />
-                        <option value="Firefox" />
-                        <option value="Chrome" />
-                        <option value="Opera" />
-                        <option value="Safari" />
-                      </datalist>
+                      <select className={classes.input}  id="areaUnit">
+                        <option>Select Unit</option>
+                        <option>Sq Ft</option>
+                        <option>H.R</option>
+                        <option>Sq Mt</option>
+                        <option>Acres</option>
+                      </select>
                     </div>
 
                     <div className={classes.group3}>
                       <Input
                         width="150px"
                         label="Front"
-                        placeholder=""
+                        placeholder="123"
                         name="front"
                         value={form.front}
                         onChange={(event) => handleFormChange(event, index)}
                         required={true}
                         type="number"
                       />
-                      <input
-                        className={classes.input}
-                        list="frontUnit"
-                        name="frontUnit"
-                        id="frontUnit"
-                        placeholder="frontUnit"
-                        value={form.frontUnit}
-                        onChange={(event) => handleFormChange(event, index)}
-                        style={{ width: "150px" }}
-                        required={true}
-                      />
-                      <datalist id="categories">
-                        <option value="Edge">m</option>
-                        <option value="Firefox">m</option>
-                        <option value="Chrome">m</option>
-                        <option value="Opera">m</option>
-                        <option value="Safari">m</option>
-                      </datalist>
+                      <select className={classes.input}  id="frontUnit">
+                        <option>Select Unit</option>
+                        <option>Ft</option>
+                        <option>Mt</option>
+                      </select>
                     </div>
 
                     <Input
                       width="150px"
                       label="Depth"
-                      placeholder=""
+                      placeholder="12"
                       name="depth"
                       value={form.depth}
                       onChange={(event) => handleFormChange(event, index)}
@@ -166,13 +126,17 @@ function App() {
                     <Input
                       width="150px"
                       label=" Selling Price"
-                      placeholder="456456"
+                      placeholder="456"
                       name="sellingPrice"
                       value={form.sellingPrice}
                       onChange={(event) => handleFormChange(event, index)}
                       required={true}
                       type="number"
                     />
+                    <select className={classes.inputsbidselect}  id="frontUnit">
+                      <option>Ft</option>
+                      <option>Mt</option>
+                    </select>
                     <Input
                       width="150px"
                       label="Status"

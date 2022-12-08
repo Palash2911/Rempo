@@ -25,7 +25,15 @@
   transition: 0.3s ease;
   font-size: 18px;
 }
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
+input[type=number] {
+  -moz-appearance: textfield;
+}
 .input::placeholder {
   color: #9e9ea7;
 }
