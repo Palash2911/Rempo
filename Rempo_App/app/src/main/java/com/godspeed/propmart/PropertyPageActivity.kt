@@ -87,7 +87,7 @@ class PropertyPageActivity : AppCompatActivity() {
                             plotImage, plotnumber, "", "","");
                     firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
                         .collection("saved")
-                        .document("Layout_"+layoutIds).set(card).addOnSuccessListener {
+                        .document("Layout_$layoutIds").set(card).addOnSuccessListener {
                             binding.bookmarkpropertypage.visibility = View.GONE;
                             binding.bookmarksaved.visibility = View.VISIBLE;
 //                       Toast.make(this,"Added to Bookmarks", Toast.LENGTH_SHORT).show();
@@ -95,9 +95,41 @@ class PropertyPageActivity : AppCompatActivity() {
                     adapter.notifyDataSetChanged();
                 }
             }
+            db.collection("Layouts").document(layoutIds).get().addOnSuccessListener {
+                if(it["Nakasha"].toString().isNotEmpty())
+                {
+                    val docname = "Nakasha"
+                    val docurl = it["Nakasha"].toString()
+                    val docCard = DocumentModel(docname, docurl)
+                    documentList.add(docCard)
+                }
+                if(it["712"].toString().isNotEmpty())
+                {
+                    val docname = "7/12"
+                    val docurl = it["712"].toString()
+                    val docCard = DocumentModel(docname, docurl)
+                    documentList.add(docCard)
+                }
+                if(it["NA_Order"].toString().isNotEmpty())
+                {
+                    val docname = "NA Order"
+                    val docurl = it["NA_Order"].toString()
+                    val docCard = DocumentModel(docname, docurl)
+                    documentList.add(docCard)
+                }
+                if(it["Other"].toString().isNotEmpty())
+                {
+                    val docname = "Other"
+                    val docurl = it["Other"].toString()
+                    val docCard = DocumentModel(docname, docurl)
+                    documentList.add(docCard)
+                }
+                adapter.notifyDataSetChanged()
+            }
+
             binding.bookmarksaved.setOnClickListener {
                 firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString()).collection("saved")
-                    .document("Layout_"+layoutIds).delete().addOnSuccessListener {
+                    .document("Layout_$layoutIds").delete().addOnSuccessListener {
                         binding.bookmarksaved.visibility = View.GONE;
                         binding.bookmarkpropertypage.visibility = View.VISIBLE;
 //                    Snackbar.make(binding.root,"Removed from Bookmarks, Visit Homepage to Update",Snackbar.LENGTH_LONG).show();
@@ -121,6 +153,39 @@ class PropertyPageActivity : AppCompatActivity() {
                 }.addOnFailureListener {
                     Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
                 }
+
+            db.collection("Plots").document(plotId).get().addOnSuccessListener {
+                if(it["Nakasha"].toString().isNotEmpty())
+                {
+                    val docname = "Nakasha"
+                    val docurl = it["Nakasha"].toString()
+                    val docCard = DocumentModel(docname, docurl)
+                    documentList.add(docCard)
+                }
+                if(it["712"].toString().isNotEmpty())
+                {
+                    val docname = "7/12"
+                    val docurl = it["712"].toString()
+                    val docCard = DocumentModel(docname, docurl)
+                    documentList.add(docCard)
+                }
+                if(it["NA Order"].toString().isNotEmpty())
+                {
+                    val docname = "NA Order"
+                    val docurl = it["NA Order"].toString()
+                    val docCard = DocumentModel(docname, docurl)
+                    documentList.add(docCard)
+                }
+                if(it["Other"].toString().isNotEmpty())
+                {
+                    val docname = "Other"
+                    val docurl = it["Other"].toString()
+                    val docCard = DocumentModel(docname, docurl)
+                    documentList.add(docCard)
+                }
+                adapter.notifyDataSetChanged()
+            }
+
             binding.bookmarkpropertypage.setOnClickListener {
                 db.collection("Plots").document(plotId).get().addOnSuccessListener{
 //                val title:String = documentSnapshot.get("Area") as String;
@@ -177,39 +242,7 @@ class PropertyPageActivity : AppCompatActivity() {
         ,RecyclerView.VERTICAL,false);
         binding.documentRv.adapter = adapter;
 
-        // PLOT ID TO REPLACE
-        db.collection("Plots").document(plotId).get().addOnSuccessListener {
-            if(it["Nakasha"].toString().isNotEmpty())
-            {
-                val docname = "Nakasha"
-                val docurl = it["Nakasha"].toString()
-                val docCard = DocumentModel(docname, docurl)
-                documentList.add(docCard)
-            }
-            if(it["712"].toString().isNotEmpty())
-            {
-                val docname = "7/12"
-                val docurl = it["712"].toString()
-                val docCard = DocumentModel(docname, docurl)
-                documentList.add(docCard)
-            }
-            if(it["NA Order"].toString().isNotEmpty())
-            {
-                val docname = "NA Order"
-                val docurl = it["NA Order"].toString()
-                val docCard = DocumentModel(docname, docurl)
-                documentList.add(docCard)
-            }
-            if(it["Other"].toString().isNotEmpty())
-            {
-                val docname = "Other"
-                val docurl = it["Other"].toString()
-                val docCard = DocumentModel(docname, docurl)
-                documentList.add(docCard)
-            }
-            Log.d("DOCUMS", documentList.toString())
-            adapter.notifyDataSetChanged()
-        }
+
 
         //Getting List of Documents
 //        val ref:CollectionReference = firebase.collection("Plots")
