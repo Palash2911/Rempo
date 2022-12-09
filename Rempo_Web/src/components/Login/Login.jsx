@@ -12,7 +12,7 @@ import {
 } from "firebase/auth";
 import app , { db } from "../firebase_config";
 import OtpInput from "react-otp-input";
-import { collection, doc, getDoc} from "firebase/firestore";
+import { doc, getDoc} from "firebase/firestore";
 
 const auth = getAuth(app);
 

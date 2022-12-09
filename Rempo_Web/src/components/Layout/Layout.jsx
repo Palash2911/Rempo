@@ -1,14 +1,14 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import classes from "./Layout.module.css";
 import { Button, Card } from "../Ui";
 import Form1 from "./Form1";
 import Form2 from "./Form2";
 import Form3 from "./Form3";
 import useScreenType from "react-screentype-hook";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import app, { db } from "../firebase_config";
-import { collection, doc, setDoc, getDoc, addDoc } from "firebase/firestore";
+import { collection, doc, setDoc, addDoc } from "firebase/firestore";
 import FormContext from "./formContenxt/formContext";
 
 const auth = getAuth(app);
@@ -26,8 +26,20 @@ const Layout = () => {
     taluka,
     village,
     formFields,
+    Doc1, 
+    setDoc1,
+    Doc2, 
+    setDoc2,
+    Doc3, 
+    setDoc3,
+    Doc4, 
+    setDoc4,
   } = useContext(FormContext);
   
+  const uploadFile = async (e) => {
+    e.preventDefault();
+    console.log("hell")
+  }
   const handleClick = async (e) => {
     e.preventDefault();
     try {
@@ -95,6 +107,10 @@ const Layout = () => {
                   onClick={() => {
                     let pg = formNo;
                     setFormNo(pg + 1);
+                    if(formNo==2)
+                    {
+                        uploadFile()
+                    }
                   }}
                   type="2"
                   filled

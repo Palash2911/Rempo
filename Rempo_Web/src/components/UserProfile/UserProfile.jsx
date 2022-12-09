@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import classes from "./UserProfile.module.css";
 import profileBanner from "../../assets/profileBanner.png";
 import Card from "../Ui/Card/Card";
-import { collection, doc, setDoc, getDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import app, { db } from "../firebase_config";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 
 const auth = getAuth(app);
 

@@ -68,7 +68,7 @@ const Form2 = () => {
                 id=""
                 value={Doc2}
                 onChange={(e) => {
-                  setDoc3(e.target.value);
+                  setDoc2(e.target.value);
                 }}
           required={true}
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import classes from "./Layout.module.css";
 import { Button, Card, Input } from "../Ui";
 import useScreenType from "react-screentype-hook";
@@ -156,6 +156,9 @@ function App() {
       <div className={classes.addPlotBtn}>
         <Button label="Add Plot" type="1" onClick={addFields}>
           Add Plot
+        </Button>
+        <Button label="Remove Plot" type="2" onClick={removeFields}>
+          Remove Plot
         </Button>
       </div>
     </div>
