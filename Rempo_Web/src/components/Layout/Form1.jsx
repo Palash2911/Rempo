@@ -5,6 +5,7 @@ import classes from "./Layout.module.css";
 import { Button } from "../Ui";
 
 const Form1 = ({ formNo, setFormNo }) => {
+
   const {
     owner,
     setOwner,
@@ -21,6 +22,21 @@ const Form1 = ({ formNo, setFormNo }) => {
     village,
     setVillage,
   } = useContext(FormContext);
+
+  const handleClick=()=>{
+    // if(!owner || state=="Select State" || category=="Select Property Category" || !district || !taluka || !village || !desc)
+    // {
+    //     alert("Please Enter All Details")
+    // }
+    // else
+    // {
+    //    let pg = formNo;
+    //    setFormNo(pg + 1);
+    // }
+    let pg = formNo;
+    setFormNo(pg + 1);
+  }
+
   const uploadFile = async (e) => {
     e.preventDefault();
     console.log("hell");
@@ -187,13 +203,7 @@ const Form1 = ({ formNo, setFormNo }) => {
         </div>
         {formNo < 3 && (
           <Button
-            onClick={() => {
-              let pg = formNo;
-              setFormNo(pg + 1);
-              if (formNo == 2) {
-                uploadFile();
-              }
-            }}
+            onClick={handleClick}
             type="2"
             filled
             label="Next"

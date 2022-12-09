@@ -12,10 +12,14 @@ export const FormProvider = ({ children }) => {
   const [village, setVillage] = useState("");
   const [surveyNo, setSurveyNo] = useState("");
   const [layoutLocation, setLayoutLocation] = useState("");
-  const [Doc1, setDoc1] = useState("");
-  const [Doc2, setDoc2] = useState("");
-  const [Doc3, setDoc3] = useState("");
-  const [Doc4, setDoc4] = useState("");
+  const [Doc1, setDoc1] = useState(null);
+  const [Doc2, setDoc2] = useState(null);
+  const [Doc3, setDoc3] = useState(null);
+  const [Doc4, setDoc4] = useState(null);
+  const [Doc1url, setDoc1url] = useState("");
+  const [Doc2url, setDoc2url] = useState("");
+  const [Doc3url, setDoc3url] = useState("");
+  const [Doc4url, setDoc4url] = useState("");
   const [formFields, setFormFields] = useState([
     {
       plotNo: "",
@@ -62,6 +66,14 @@ export const FormProvider = ({ children }) => {
         setDoc4,
         formFields,
         setFormFields,
+        Doc1url, 
+        setDoc1url,
+        Doc2url, 
+        setDoc2url,
+        Doc3url, 
+        setDoc3url,
+        Doc4url, 
+        setDoc4url,
       }}
     >
       {children}

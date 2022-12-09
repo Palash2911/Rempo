@@ -3,6 +3,18 @@ import FormContext from "./formContenxt/formContext";
 import { Input } from "../Ui";
 import classes from "./Layout.module.css";
 import { Button } from "../Ui";
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+} from "firebase/storage";
+import  app, { db } from "../firebase_config"
+import { getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
+import { collection, doc, setDoc, addDoc } from "firebase/firestore";
+
+const auth = getAuth(app);
+const storage = getStorage(app);
 
 const Form2 = ({ formNo, setFormNo }) => {
   const {
@@ -18,11 +30,40 @@ const Form2 = ({ formNo, setFormNo }) => {
     setDoc3,
     Doc4,
     setDoc4,
+    Doc1url, 
+    setDoc1url,
+    Doc2url, 
+    setDoc2url,
+    Doc3url, 
+    setDoc3url,
+    Doc4url, 
+    setDoc4url,
   } = useContext(FormContext);
+
   const uploadFile = async (e) => {
     e.preventDefault();
-    console.log("hell");
+    const docListRef = ref(storage, "Documents/"+auth.currentUser.uid+"_doc1_"+surveyNo);
+    if(!surveyNo || !layoutLocation || !Doc1)
+    {
+        alert("Please Enter All Details")
+    }
+    else
+    { 
+        if(Doc1!=null)
+        {
+          const upf = uploadBytes(docListRef, Doc1)
+          upf.then((snapshot) => {
+            getDownloadURL(snapshot.ref).then((url)=>{
+              setDoc1url((e)=>url)
+              console.log(Doc1url)
+            })
+          })
+        }
+        let pg = formNo;
+        setFormNo(pg + 1);
+    }
   };
+
   return (
     <>
       <div className={classes.form_group}>
@@ -54,9 +95,8 @@ const Form2 = ({ formNo, setFormNo }) => {
                 type="file"
                 name="doc1"
                 id=""
-                value={Doc1}
                 onChange={(e) => {
-                  setDoc1(e.target.value);
+                  setDoc1(e.target.files[0]);
                 }}
                 required={true}
               />
@@ -68,9 +108,8 @@ const Form2 = ({ formNo, setFormNo }) => {
                 type="file"
                 name="doc2"
                 id=""
-                value={Doc2}
                 onChange={(e) => {
-                  setDoc2(e.target.value);
+                  setDoc2(e.target.files[0]);
                 }}
                 required={true}
               />
@@ -82,9 +121,8 @@ const Form2 = ({ formNo, setFormNo }) => {
                 type="file"
                 name="doc3"
                 id=""
-                value={Doc3}
                 onChange={(e) => {
-                  setDoc3(e.target.value);
+                  setDoc3(e.target.files[0]);
                 }}
                 required={true}
               />
@@ -96,9 +134,8 @@ const Form2 = ({ formNo, setFormNo }) => {
                 type="file"
                 name="doc4"
                 id=""
-                value={Doc4}
                 onChange={(e) => {
-                  setDoc4(e.target.value);
+                  setDoc4(e.target.files[0]);
                 }}
                 required={true}
               />
@@ -107,13 +144,7 @@ const Form2 = ({ formNo, setFormNo }) => {
         </div>
         {formNo < 3 && (
           <Button
-            onClick={() => {
-              let pg = formNo;
-              setFormNo(pg + 1);
-              if (formNo == 2) {
-                uploadFile();
-              }
-            }}
+            onClick={uploadFile}
             type="2"
             filled
             label="Next"
