@@ -2,13 +2,11 @@ package com.godspeed.propmart.ui.Location
 
 import android.app.ProgressDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import android.widget.TextView
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -319,80 +317,84 @@ class LocationFragment : Fragment() {
                 var query1:Query = firestore.collection("Plots");
                 if(binding.state.text.isNotBlank() && binding.district.text.isNotBlank() && binding.taluka.text.isNotBlank()){
                     query = firestore.collection("Layouts")
-                        .whereEqualTo("state",binding.state.text.toString())
-                        .whereEqualTo("district",binding.district.text.toString())
+                        .whereEqualTo("State",binding.state.text.toString())
+                        .whereEqualTo("District",binding.district.text.toString())
                         .whereEqualTo("taluka",binding.taluka.text.toString());
 
                     query1 = firestore.collection("Plots")
-                        .whereEqualTo("state",binding.state.text.toString())
-                        .whereEqualTo("district",binding.district.text.toString())
-                        .whereEqualTo("taluka",binding.taluka.text.toString());
+                        .whereEqualTo("State",binding.state.text.toString())
+                        .whereEqualTo("District",binding.district.text.toString())
+                        .whereEqualTo("Taluka",binding.taluka.text.toString());
+                }
+                else if(binding.state.text.isNotBlank() &&  binding.district.text.isNotBlank()){
+
+                    query1 = firestore.collection("Plots")
+                        .whereEqualTo("State",binding.state.text.toString())
+                        .whereEqualTo("District",binding.district.text.toString());
+
+                    query = firestore.collection("Layouts")
+                        .whereEqualTo("State",binding.state.text.toString())
+                        .whereEqualTo("District",binding.district.text.toString());
                 }
                 else if(binding.state.text.isNotBlank()){
                     query = firestore.collection("Layouts")
-                        .whereEqualTo("state",binding.state.text.toString());
+                        .whereEqualTo("State",binding.state.text.toString());
                     query1 = firestore.collection("Plots")
-                        .whereEqualTo("state",binding.state.text.toString())
-
+                        .whereEqualTo("State",binding.state.text.toString())
                 }
-                else if(binding.state.text.isNotBlank() &&  binding.district.text.isNotBlank()){
-                    query = firestore.collection("Layouts")
-                        .whereEqualTo("state",binding.state.text.toString())
-                        .whereEqualTo("district",binding.district.text.toString());
-
-                    query1 = firestore.collection("Plots")
-                        .whereEqualTo("state",binding.state.text.toString())
-                        .whereEqualTo("district",binding.district.text.toString());
-
+                else
+                {
+                    Toast.makeText(requireContext(), "Please Enter Location", Toast.LENGTH_SHORT).show()
                 }
+
+            query1.get().addOnSuccessListener {
+                Log.d("HELLLL", it.size().toString())
+                it.documents.iterator().forEach { documentSnapshot ->
+                    val title:String = "Plot No " + documentSnapshot.get("Plot No").toString() + " At S.No " + documentSnapshot.get("Survey No").toString()
+                    val seller:String = documentSnapshot.get("Owner Name").toString()
+                    val taluka:String = documentSnapshot.get("Taluka").toString();
+                    val address:String = documentSnapshot.get("District").toString()
+//                            val longitude:String = documentSnapshot.get("longitude") as String;
+//                            val latitude:String = documentSnapshot.get("latitude") as String;
+//                            PropertyCardModel("Null",documentSnapshot.id, title, seller, address,
+//                                plotImage, "Null", "", "", taluka);
+                    val card:PropertyCardModel =
+                        PropertyCardModel("Null",documentSnapshot.id,
+                            title,seller,address,"","Null","","",taluka);
+
+                    cards.add(card);
+                    Log.d("HELLLLL", card.toString())
+                }
+                adapter.notifyDataSetChanged();
+                pDailog.dismiss();
+            }.addOnFailureListener {
+                Log.d("HELLLLL", it.toString())
+            }
 
                 query.get().addOnSuccessListener {
                     it.documents.iterator().forEach { documentSnapshot ->
                         val title:String = documentSnapshot.get("title") as String;
                         val seller:String = documentSnapshot.get("sellerName") as String;
-                        val totalPlots:String = documentSnapshot.get("totalPlots") as String;
+                        val totalPlots:String = documentSnapshot.get("totalPlots").toString();
                         val address:String = documentSnapshot.get("address") as String;
-                        val longitude:String = documentSnapshot.get("longitude") as String;
-                        val latitude:String = documentSnapshot.get("latitude") as String;
+                        val longitude:String = "documentSnapshot.get() as String";
+                        val latitude:String = "documentSnapshot.get() as String";
 
                         val card:PropertyCardModel =
-                            PropertyCardModel(documentSnapshot.id.toString(), "Null",
+                            PropertyCardModel(documentSnapshot.id, "Null",
                                 title,seller,address,"",totalPlots,latitude,longitude,"");
 
                         cards.add(card);
                     }
-
                     adapter.notifyDataSetChanged();
-
-
-                    pDailog.dismiss();
-                }.addOnSuccessListener {
-                    query1.get().addOnSuccessListener {
-                        it.documents.iterator().forEach { documentSnapshot ->
-                            val title:String = documentSnapshot.get("title") as String;
-                            val seller:String = documentSnapshot.get("sellerName") as String;
-                            val totalPlots:String = documentSnapshot.get("totalPlots") as String;
-                            val address:String = documentSnapshot.get("address") as String;
-                            val longitude:String = documentSnapshot.get("longitude") as String;
-                            val latitude:String = documentSnapshot.get("latitude") as String;
-
-
-                            val card:PropertyCardModel =
-                                PropertyCardModel(documentSnapshot.id.toString(), "Null",
-                                    title,seller,address,"",totalPlots,latitude,longitude,"");
-
-                            cards.add(card);
-                        }
-
-                        adapter.notifyDataSetChanged();
-
-                        binding.locationRv.visibility = View.VISIBLE;
-                        binding.searchLayout.visibility = View.GONE;
-                        binding.explore.visibility = View.GONE;
-                        binding.toolbar.visibility = View.VISIBLE;
-                    }
                 }
-        }
+
+                    binding.locationRv.visibility = View.VISIBLE;
+                    binding.searchLayout.visibility = View.GONE;
+                    binding.explore.visibility = View.GONE;
+                    binding.toolbar.visibility = View.VISIBLE;
+                }
+
 
         binding.backButton.setOnClickListener{
             cards.clear();

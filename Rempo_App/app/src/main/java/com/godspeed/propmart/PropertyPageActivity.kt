@@ -154,9 +154,8 @@ class PropertyPageActivity : AppCompatActivity() {
         }
 
 //        Log.d("plotList",Arrays.toString(plotList.toArray()));
-
         //Initializing Dropdown Select
-        val plotRef:CollectionReference = firebase.collection("Layouts").document(layoutIds).collection("plots");
+        val plotRef:CollectionReference = firebase.collection("Layouts").document(layoutIds).collection("Plots");
         val q: Query = plotRef.orderBy("index");
         q.get().addOnSuccessListener {
             val list:ArrayList<String> = ArrayList<String>()
@@ -164,12 +163,10 @@ class PropertyPageActivity : AppCompatActivity() {
             it.documents.iterator().forEach { document ->
                 list.add(document.id);
                 map[document.id] = document.id;
-
             }
             val plotAdapter = ArrayAdapter(this,R.layout.plot_dropdown_item,list);
             binding.plotDropdown.setAdapter(plotAdapter);
             binding.plotDropdown.addTextChangedListener {
-
                 selectedId =  map.get(binding.plotDropdown.text.toString()).toString();
             }
             plotAdapter.notifyDataSetChanged();
@@ -251,11 +248,11 @@ class PropertyPageActivity : AppCompatActivity() {
                 else {
                     var availability: String
                     db.collection("Layouts").document(layoutIds)
-                        .collection("plots")
-                        .document("plot" + binding.plotDropdown.text.toString().substring(4))
+                        .collection("Plots")
+                        .document("Plot" + binding.plotDropdown.text.toString().substring(4))
                         .get().addOnSuccessListener { snapshot ->
                             availability = snapshot["available"].toString()
-                            if (availability == "true") {
+                            if (availability == "available") {
                                 val intent = Intent(this, Plotpage::class.java);
                                 intent.putExtra("plotId", binding.plotDropdown.text.toString());
                                 intent.putExtra("layoutId", layoutIds);
