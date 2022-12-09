@@ -78,13 +78,14 @@ class PropertyPageActivity : AppCompatActivity() {
                     val title:String = "Layout At " + it["surveyNo"].toString();
                     val seller:String = it["sellerName"].toString();
                     val plotnumber:String = it["totalPlots"].toString();
-                    val address:String = it["address"] as String;
+                    val address:String = it["District"].toString();
+                    val talkua:String = it["Taluka"].toString();
 //                val longitude:String = documentSnapshot.get("longitude") as String;
 //                val latitude:String = documentSnapshot.get("latitude") as String;
                     val plotImage:String = it["soldPlots"].toString();
                     val card =
-                        PropertyCardModel(layoutIds, "Null", "title", seller, address,
-                            plotImage, plotnumber, "", "","");
+                        PropertyCardModel(layoutIds, "Null", title, seller, address,
+                            plotImage, plotnumber, "", "",talkua);
                     firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
                         .collection("saved")
                         .document("Layout_$layoutIds").set(card).addOnSuccessListener {
@@ -191,13 +192,14 @@ class PropertyPageActivity : AppCompatActivity() {
 //                val title:String = documentSnapshot.get("Area") as String;
                     val seller:String = it["Owner Name"] as String;
                     val plotnumber:String = it["Plot No"].toString();
-                    val address:String = it["Road"] as String;
+                    val address:String = it["District"] as String;
+                    val taluka = it["Taluka"].toString()
 //                val longitude:String = documentSnapshot.get("longitude") as String;
 //                val latitude:String = documentSnapshot.get("latitude") as String;
                     val plotImage:String = it["Uid"].toString();
                     val card =
                         PropertyCardModel("Null", plotId, "title", seller, address,
-                            plotImage, plotnumber, "", "", "");
+                            plotImage, plotnumber, "", "", taluka);
                     firestore.collection("Users").document(Firebase.auth.currentUser?.uid.toString())
                         .collection("saved")
                         .document("Plot_$plotId").set(card).addOnSuccessListener {

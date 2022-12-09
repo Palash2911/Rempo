@@ -45,7 +45,6 @@ class plotBuyer : Fragment() {
                     val seller:String = documentSnapshot.get("Owner Name").toString()
                     val taluka:String = documentSnapshot.get("Taluka").toString();
                     val address:String = documentSnapshot.get("District").toString()
-
 //                val longitude:String = documentSnapshot.get("longitude") as String;
 //                val latitude:String = documentSnapshot.get("latitude") as String;
                     val plotImage:String = documentSnapshot.get("Taluka").toString();
