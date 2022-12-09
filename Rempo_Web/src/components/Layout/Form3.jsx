@@ -6,10 +6,7 @@ import FormContext from "./formContenxt/formContext";
 
 function App() {
   const screenType = useScreenType();
-  const {
-    formFields,
-    setFormFields
-  } = useContext(FormContext);
+  const { formFields, setFormFields } = useContext(FormContext);
 
   const handleFormChange = (event, index) => {
     let data = [...formFields];
@@ -75,12 +72,12 @@ function App() {
                         required={true}
                         type="number"
                       />
-                      <select className={classes.input}  id="areaUnit">
+                      <select className={classes.input} id="areaUnit">
                         <option>Select Unit</option>
-                        <option>Sq Ft</option>
-                        <option>H.R</option>
-                        <option>Sq Mt</option>
-                        <option>Acres</option>
+                        <option value="Sq Ft">Sq Ft</option>
+                        <option value="H.R">H.R</option>
+                        <option value="Sq Mt">Sq Mt</option>
+                        <option value="Acres">Acres</option>
                       </select>
                     </div>
 
@@ -95,10 +92,10 @@ function App() {
                         required={true}
                         type="number"
                       />
-                      <select className={classes.input}  id="frontUnit">
+                      <select className={classes.input} id="frontUnit">
                         <option>Select Unit</option>
-                        <option>Ft</option>
-                        <option>Mt</option>
+                        <option value="Ft">Ft</option>
+                        <option value="Mt">Mt</option>
                       </select>
                     </div>
 
@@ -133,9 +130,9 @@ function App() {
                       required={true}
                       type="number"
                     />
-                    <select className={classes.inputsbidselect}  id="frontUnit">
-                      <option>Ft</option>
-                      <option>Mt</option>
+                    <select className={classes.inputsbidselect} id="frontUnit">
+                      <option value="Ft">Ft</option>
+                      <option value="Mt">Mt</option>
                     </select>
                     <Input
                       width="150px"
@@ -147,6 +144,15 @@ function App() {
                       required={true}
                     />
                   </div>
+                  <div style={{ marginTop: "20px" }}>
+                    <Button
+                      label="Remove Plot"
+                      type="2"
+                      onClick={() => removeFields(index)}
+                    >
+                      Remove Plot
+                    </Button>
+                  </div>
                 </div>
               </Card>
             </div>
@@ -156,9 +162,6 @@ function App() {
       <div className={classes.addPlotBtn}>
         <Button label="Add Plot" type="1" onClick={addFields}>
           Add Plot
-        </Button>
-        <Button label="Remove Plot" type="2" onClick={removeFields}>
-          Remove Plot
         </Button>
       </div>
     </div>

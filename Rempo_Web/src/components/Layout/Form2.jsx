@@ -2,8 +2,9 @@ import React, { useContext } from "react";
 import FormContext from "./formContenxt/formContext";
 import { Input } from "../Ui";
 import classes from "./Layout.module.css";
+import { Button } from "../Ui";
 
-const Form2 = () => {
+const Form2 = ({ formNo, setFormNo }) => {
   const {
     surveyNo,
     setSurveyNo,
@@ -18,6 +19,10 @@ const Form2 = () => {
     Doc4,
     setDoc4,
   } = useContext(FormContext);
+  const uploadFile = async (e) => {
+    e.preventDefault();
+    console.log("hell");
+  };
   return (
     <>
       <div className={classes.form_group}>
@@ -29,7 +34,6 @@ const Form2 = () => {
           placeholder="11/22/3 A"
           label="Survey Number"
           required={true}
-
         />
         <Input
           value={layoutLocation}
@@ -39,7 +43,6 @@ const Form2 = () => {
           placeholder="Layout Location"
           label="Location"
           required={true}
-
         />
         <div className={classes.form_group}>
           <h6 className={classes.file_label}>Upload Document</h6>
@@ -55,8 +58,7 @@ const Form2 = () => {
                 onChange={(e) => {
                   setDoc1(e.target.value);
                 }}
-          required={true}
-
+                required={true}
               />
             </div>
             <div className={classes.file_group}>
@@ -70,8 +72,7 @@ const Form2 = () => {
                 onChange={(e) => {
                   setDoc2(e.target.value);
                 }}
-          required={true}
-
+                required={true}
               />
             </div>
             <div className={classes.file_group}>
@@ -85,8 +86,7 @@ const Form2 = () => {
                 onChange={(e) => {
                   setDoc3(e.target.value);
                 }}
-          required={true}
-
+                required={true}
               />
             </div>
             <div className={classes.file_group}>
@@ -100,12 +100,26 @@ const Form2 = () => {
                 onChange={(e) => {
                   setDoc4(e.target.value);
                 }}
-          required={true}
-
+                required={true}
               />
             </div>
           </div>
         </div>
+        {formNo < 3 && (
+          <Button
+            onClick={() => {
+              let pg = formNo;
+              setFormNo(pg + 1);
+              if (formNo == 2) {
+                uploadFile();
+              }
+            }}
+            type="2"
+            filled
+            label="Next"
+            radius="4px"
+          />
+        )}
       </div>
     </>
   );
