@@ -64,7 +64,7 @@ class PropertyPageActivity : AppCompatActivity() {
         {
             firebase.collection("Layouts").document(layoutIds).get()
                 .addOnSuccessListener { snapshot ->
-                    binding.availablePlots.text = snapshot.get("availablePlots").toString()
+                    binding.availablePlots.text = snapshot.get("availablePlots").toString();
                     binding.address.text = snapshot.get("address").toString();
                     binding.soldPlots.text = snapshot.get("soldPlots").toString();
                     binding.sellerName.text = snapshot.get("sellerName").toString();
@@ -75,8 +75,8 @@ class PropertyPageActivity : AppCompatActivity() {
                 }
             binding.bookmarkpropertypage.setOnClickListener {
                 db.collection("Layouts").document(layoutIds).get().addOnSuccessListener{
-//                val title:String = documentSnapshot.get("Area") as String;
-                    val seller:String = it["sellerName"] as String;
+                    val title:String = "Layout At " + it["surveyNo"].toString();
+                    val seller:String = it["sellerName"].toString();
                     val plotnumber:String = it["totalPlots"].toString();
                     val address:String = it["address"] as String;
 //                val longitude:String = documentSnapshot.get("longitude") as String;
@@ -285,7 +285,7 @@ class PropertyPageActivity : AppCompatActivity() {
                         .document("Plot" + binding.plotDropdown.text.toString().substring(4))
                         .get().addOnSuccessListener { snapshot ->
                             availability = snapshot["available"].toString()
-                            if (availability == "available") {
+                            if (availability == "Available") {
                                 val intent = Intent(this, Plotpage::class.java);
                                 intent.putExtra("plotId", binding.plotDropdown.text.toString());
                                 intent.putExtra("layoutId", layoutIds);

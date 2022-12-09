@@ -30,25 +30,40 @@ const Layout = () => {
     Doc2url, 
     Doc3url, 
     Doc4url, 
+    surveyNo,
+    layoutLocation,
   } = useContext(FormContext);
 
   const handleClick = async (e) => {
     e.preventDefault();
+    let avp = 0
+    let sop = 0 
     try {
-      const docid = await addDoc(collection(db, "Layouts"), {
+        for (let i = 0; i < formFields.length; i++){
+          if(formFields[i].plotStatus==="Available")
+          {
+            avp++;
+          }
+          else
+          {
+            sop++;
+          }
+        }
+        const docid = await addDoc(collection(db, "Layouts"), {
         address: district,
-        availabelPlots: 2,
+        availablePlots: avp,
         District: district,
         layout_desc: desc,
-        location: "1234-5678-9000",
         sellerId: auth.currentUser.uid,
         sellerName: owner,
-        soldPlots: 1,
+        soldPlots: sop,
         State: state,
-        taluka: taluka,
+        Taluka: taluka,
         village: village,
         title: "TITLE",
         totalPlots: formFields.length,
+        surveyNo: surveyNo,
+        location: layoutLocation,
         "712": Doc1url,
         "Nakasha": Doc2url,
         "NA_Order": Doc3url,
@@ -69,7 +84,7 @@ const Layout = () => {
             formFields[i].depth +
             " " +
             formFields[i].frontUnit,
-          index: i,
+          index: i+1,
           layoutcategory: category,
           layout_id: docid.id,
           rate: formFields[i].sellingPrice,

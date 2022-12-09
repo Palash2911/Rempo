@@ -131,18 +131,15 @@ function App() {
                       type="number"
                     />
                     <select className={classes.inputsbidselect} name="bidUnit" onChange={(event) => handleFormChange(event, index)}>
+                      <option>Select Unit</option>
                       <option value="Ft">Ft</option>
                       <option value="Mt">Mt</option>
                     </select>
-                    <Input
-                      width="150px"
-                      label="Status"
-                      placeholder="Sold"
-                      name="plotStatus"
-                      value={form.plotStatus}
-                      onChange={(event) => handleFormChange(event, index)}
-                      required={true}
-                    />
+                    <select className={classes.inputsbidselect} name="plotStatus" onChange={(event) => handleFormChange(event, index)}>
+                      <option>Select Availability</option>
+                      <option value="Available">Available</option>
+                      <option value="Sold">Sold</option>
+                    </select>
                   </div>
                   <div style={{ marginTop: "20px" }}>
                     <Button

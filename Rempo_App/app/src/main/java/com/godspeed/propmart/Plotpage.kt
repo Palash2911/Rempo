@@ -44,17 +44,16 @@ class Plotpage : AppCompatActivity() {
         var plotno = ""
         val placebtn = findViewById<Button>(R.id.placebidbtn)
         val bidamt = findViewById<EditText>(R.id.bid_amount)
-        Toast.makeText(this, plotid, Toast.LENGTH_SHORT).show()
         if(layoutid!="Null")
         {
             db.collection("Layouts").document(layoutid.toString()).collection("Plots")
                 .document(plotid).get().addOnSuccessListener { snapshot ->
                     bidhead.text = "Bid on Plot " + snapshot["title"].toString().substring(4)
-                    totarea.text =  snapshot["totalArea"].toString() + snapshot["Area_Un"].toString()
+                    totarea.text =  snapshot["totalArea"].toString()
                     desc.text = snapshot["description"].toString()
-                    rate.text = "Rate : " + snapshot["rate"].toString() + "Rs./" + snapshot["Bids_Un"].toString()
+                    rate.text = "Rate : " + snapshot["rate"].toString() + "Rs./" + snapshot["bidun"].toString()
                     dim.text = snapshot["dimension"].toString()
-                    wp.text = "Current rate at this site is" + snapshot["rate"].toString() + "₹/sq.m. Kindly place your bid by considering current property rate"
+                    wp.text = "Current rate at this site is " + snapshot["rate"].toString() + "₹/sq.m. Kindly place your bid by considering current property rate"
                 }
         }
         else
