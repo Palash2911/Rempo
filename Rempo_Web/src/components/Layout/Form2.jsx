@@ -8,10 +8,9 @@ import {
   uploadBytes,
   getDownloadURL,
 } from "firebase/storage";
-import  app, { db } from "../firebase_config"
+import  app from "../firebase_config"
 import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
-import { collection, doc, setDoc, addDoc } from "firebase/firestore";
 
 const auth = getAuth(app);
 const storage = getStorage(app);
@@ -30,20 +29,15 @@ const Form2 = ({ formNo, setFormNo }) => {
     setDoc3,
     Doc4,
     setDoc4,
-    Doc1url, 
     setDoc1url,
-    Doc2url, 
     setDoc2url,
-    Doc3url, 
     setDoc3url,
-    Doc4url, 
     setDoc4url,
   } = useContext(FormContext);
 
   const uploadFile = async (e) => {
     e.preventDefault();
-    const docListRef = ref(storage, "Documents/"+auth.currentUser.uid+"_doc1_"+surveyNo);
-    if(!surveyNo || !layoutLocation || !Doc1)
+    if(!surveyNo || !layoutLocation)
     {
         alert("Please Enter All Details")
     }
@@ -51,11 +45,41 @@ const Form2 = ({ formNo, setFormNo }) => {
     { 
         if(Doc1!=null)
         {
-          const upf = uploadBytes(docListRef, Doc1)
-          upf.then((snapshot) => {
+          const d1 = ref(storage, "Documents/"+auth.currentUser.uid+"_doc1_"+surveyNo);
+          const upf = uploadBytes(d1, Doc1)
+          upf.then(async (snapshot) => {
             getDownloadURL(snapshot.ref).then((url)=>{
-              setDoc1url((e)=>url)
-              console.log(Doc1url)
+              setDoc1url(url.toString())
+            })
+          })
+        }
+        if(Doc2!=null)
+        {
+          const d2 = ref(storage, "Documents/"+auth.currentUser.uid+"_doc2_"+surveyNo);
+          const upf = uploadBytes(d2, Doc2)
+          upf.then(async (snapshot) => {
+            getDownloadURL(snapshot.ref).then((url)=>{
+              setDoc2url(url.toString())
+            })
+          })
+        }
+        if(Doc3!=null)
+        {
+          const d3 = ref(storage, "Documents/"+auth.currentUser.uid+"_doc3_"+surveyNo);
+          const upf = uploadBytes(d3, Doc3)
+          upf.then(async (snapshot) => {
+            getDownloadURL(snapshot.ref).then((url)=>{
+              setDoc3url(url.toString())
+            })
+          })
+        }
+        if(Doc4!=null)
+        {
+          const d4 = ref(storage, "Documents/"+auth.currentUser.uid+"_doc4_"+surveyNo);
+          const upf = uploadBytes(d4, Doc4)
+          upf.then(async (snapshot) => {
+            getDownloadURL(snapshot.ref).then((url)=>{
+              setDoc4url(url.toString())
             })
           })
         }

@@ -37,10 +37,6 @@ const Form1 = ({ formNo, setFormNo }) => {
     setFormNo(pg + 1);
   }
 
-  const uploadFile = async (e) => {
-    e.preventDefault();
-    console.log("hell");
-  };
   return (
     <>
       <div className={classes.form_group}>

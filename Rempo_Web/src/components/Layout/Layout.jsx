@@ -26,20 +26,12 @@ const Layout = () => {
     taluka,
     village,
     formFields,
-    Doc1,
-    setDoc1,
-    Doc2,
-    setDoc2,
-    Doc3,
-    setDoc3,
-    Doc4,
-    setDoc4,
+    Doc1url, 
+    Doc2url, 
+    Doc3url, 
+    Doc4url, 
   } = useContext(FormContext);
 
-  const uploadFile = async (e) => {
-    e.preventDefault();
-    console.log("hell");
-  };
   const handleClick = async (e) => {
     e.preventDefault();
     try {
@@ -57,6 +49,10 @@ const Layout = () => {
         village: village,
         title: "TITLE",
         totalPlots: formFields.length,
+        "712": Doc1url,
+        "Nakasha": Doc2url,
+        "NA_Order": Doc3url,
+        "Other": Doc4url,
       });
 
       const dr = collection(db, "Layouts", docid.id, "Plots");
@@ -78,6 +74,7 @@ const Layout = () => {
           layout_id: docid.id,
           rate: formFields[i].sellingPrice,
           totalArea: formFields[i].area + " " + formFields[i].areaUnit,
+          bidun: formFields[i].bidUnit,
         });
       }
       histo("/");
@@ -115,21 +112,6 @@ const Layout = () => {
                   radius="4px"
                 />
               )}
-              {/* {formNo < 3 && (
-                <Button
-                  onClick={() => {
-                    let pg = formNo;
-                    setFormNo(pg + 1);
-                    if (formNo == 2) {
-                      uploadFile();
-                    }
-                  }}
-                  type="2"
-                  filled
-                  label="Next"
-                  radius="4px"
-                />
-              )} */}
               {formNo === 3 && (
                 <Button filled label="Submit" type="1" onClick={handleClick} />
               )}

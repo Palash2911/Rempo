@@ -27,10 +27,10 @@ function App() {
       front: "",
       frontUnit: "",
       depth: "",
-      depthUnit: "",
       meter: "",
       sellingPrice: "",
       plotStatus: "",
+      bidUnit: "",
     };
 
     setFormFields([...formFields, object]);
@@ -72,7 +72,7 @@ function App() {
                         required={true}
                         type="number"
                       />
-                      <select className={classes.input} id="areaUnit">
+                      <select className={classes.input} name="areaUnit" onChange={(event) => handleFormChange(event, index)}>
                         <option>Select Unit</option>
                         <option value="Sq Ft">Sq Ft</option>
                         <option value="H.R">H.R</option>
@@ -92,7 +92,7 @@ function App() {
                         required={true}
                         type="number"
                       />
-                      <select className={classes.input} id="frontUnit">
+                      <select className={classes.input} name="frontUnit" onChange={(event) => handleFormChange(event, index)}>
                         <option>Select Unit</option>
                         <option value="Ft">Ft</option>
                         <option value="Mt">Mt</option>
@@ -130,7 +130,7 @@ function App() {
                       required={true}
                       type="number"
                     />
-                    <select className={classes.inputsbidselect} id="frontUnit">
+                    <select className={classes.inputsbidselect} name="bidUnit" onChange={(event) => handleFormChange(event, index)}>
                       <option value="Ft">Ft</option>
                       <option value="Mt">Mt</option>
                     </select>
