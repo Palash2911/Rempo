@@ -26,20 +26,20 @@ const Layout = () => {
     taluka,
     village,
     formFields,
-    Doc1, 
+    Doc1,
     setDoc1,
-    Doc2, 
+    Doc2,
     setDoc2,
-    Doc3, 
+    Doc3,
     setDoc3,
-    Doc4, 
+    Doc4,
     setDoc4,
   } = useContext(FormContext);
-  
+
   const uploadFile = async (e) => {
     e.preventDefault();
-    console.log("hell")
-  }
+    console.log("hell");
+  };
   const handleClick = async (e) => {
     e.preventDefault();
     try {
@@ -60,20 +60,27 @@ const Layout = () => {
       });
 
       const dr = collection(db, "Layouts", docid.id, "Plots");
-      
-      for (let i = 0; i < formFields.length; i++) {  
-        await setDoc(doc(dr, `Plot${i+1}`), {
+
+      for (let i = 0; i < formFields.length; i++) {
+        await setDoc(doc(dr, `Plot${i + 1}`), {
           available: formFields[i].plotStatus,
           description: desc,
-          dimension: formFields[i].front + " " + formFields[i].frontUnit + " x " + formFields[i].depth + " " + formFields[i].frontUnit,
+          dimension:
+            formFields[i].front +
+            " " +
+            formFields[i].frontUnit +
+            " x " +
+            formFields[i].depth +
+            " " +
+            formFields[i].frontUnit,
           index: i,
           layoutcategory: category,
           layout_id: docid.id,
           rate: formFields[i].sellingPrice,
-          totalArea: formFields[i].area + " " + formFields[i].areaUnit
+          totalArea: formFields[i].area + " " + formFields[i].areaUnit,
         });
       }
-      histo("/")
+      histo("/");
     } catch (e) {
       console.log("Error", e);
       alert(e);
@@ -89,7 +96,13 @@ const Layout = () => {
         >
           <div className={classes.form_inner_container}>
             {formNo === 3 ? <h1>Plot Details</h1> : <h1>Layout Details</h1>}
-            {formNo === 1 ? <Form1 /> : formNo === 2 ? <Form2 /> : <Form3 />}
+            {formNo === 1 ? (
+              <Form1 formNo={formNo} setFormNo={setFormNo} />
+            ) : formNo === 2 ? (
+              <Form2 formNo={formNo} setFormNo={setFormNo} />
+            ) : (
+              <Form3 formNo={formNo} setFormNo={setFormNo} />
+            )}
             <div className={classes.btn_containers}>
               {formNo > 1 && (
                 <Button
@@ -102,14 +115,13 @@ const Layout = () => {
                   radius="4px"
                 />
               )}
-              {formNo < 3 && (
+              {/* {formNo < 3 && (
                 <Button
                   onClick={() => {
                     let pg = formNo;
                     setFormNo(pg + 1);
-                    if(formNo==2)
-                    {
-                        uploadFile()
+                    if (formNo == 2) {
+                      uploadFile();
                     }
                   }}
                   type="2"
@@ -117,7 +129,7 @@ const Layout = () => {
                   label="Next"
                   radius="4px"
                 />
-              )}
+              )} */}
               {formNo === 3 && (
                 <Button filled label="Submit" type="1" onClick={handleClick} />
               )}
