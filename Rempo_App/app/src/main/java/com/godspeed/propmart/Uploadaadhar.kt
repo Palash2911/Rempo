@@ -2,9 +2,11 @@ package com.godspeed.propmart
 
 import android.content.ContentValues
 import android.content.Intent
+import android.graphics.Bitmap
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -39,9 +41,8 @@ class Uploadaadhar : AppCompatActivity() {
 
         val prbtn = findViewById<Button>(R.id.proceedBtn)
         binding.uploadbtnaadhar.setOnClickListener {
-            var intent = Intent()
-            intent.type = "application/pdf"
-            intent.action = Intent.ACTION_GET_CONTENT
+            var intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+
             startActivityForResult(intent, 1);
         }
 
@@ -99,9 +100,13 @@ class Uploadaadhar : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode==1 && resultCode == RESULT_OK)
         {
+            val img = data!!.extras!!.get("data") as Bitmap;
+            binding.documentPreview.visibility = View.VISIBLE;
+            binding.documentPreview.setImageBitmap(img);
+
             binding.uploadbtnaadhar.visibility = View.GONE
             binding.progressBar.visibility = View.VISIBLE
-            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.currentUser?.uid.toString() + "_ID")
+            val storageref = FirebaseStorage.getInstance().getReference("IdentityProof/" + auth.currentUser?.uid.toString() + "_ID")
             storageref.putFile(data?.data!!).addOnSuccessListener {
                 storageref.downloadUrl.addOnSuccessListener{ uri ->
                     val downloadUrl = uri.toString();

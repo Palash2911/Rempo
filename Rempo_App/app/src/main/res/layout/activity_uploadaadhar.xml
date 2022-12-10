@@ -38,6 +38,7 @@
         android:layout_below="@id/toolbar"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
+        android:id="@+id/layout1"
         android:orientation="vertical">
 
         <LinearLayout
@@ -107,6 +108,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linear_id_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
@@ -168,6 +170,15 @@
             </LinearLayout>
         </LinearLayout>
 
+        <ImageView
+            android:id="@+id/document_preview"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:visibility="gone"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+
+
 
     </LinearLayout>
 
@@ -176,12 +187,12 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="16dp"
+        android:layout_below="@id/layout1"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="70dp"
-        android:layout_marginTop="350dp"
-        android:textSize="18sp"
         android:text="Create Profile"
         android:textAllCaps="false"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
 
 </RelativeLayout>
