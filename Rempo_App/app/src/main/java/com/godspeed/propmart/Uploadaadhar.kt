@@ -19,6 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import java.io.ByteArrayOutputStream
 
 class Uploadaadhar : AppCompatActivity() {
 
@@ -42,14 +43,13 @@ class Uploadaadhar : AppCompatActivity() {
         val prbtn = findViewById<Button>(R.id.proceedBtn)
         binding.uploadbtnaadhar.setOnClickListener {
             var intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-
             startActivityForResult(intent, 1);
         }
 
         binding.deletebtnaadhar.setOnClickListener {
             binding.deletebtnaadhar.visibility = View.GONE
             binding.progressBar.visibility = View.VISIBLE
-            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.currentUser?.uid.toString() + "_ID")
+            val storageref = FirebaseStorage.getInstance().getReference("ID_Proof/" + auth.currentUser?.uid.toString() + "_ID")
             storageref.delete().addOnSuccessListener {
                 aadhar["ID"]=""
                 Toast.makeText(this,"Deleted", Toast.LENGTH_SHORT).show()
@@ -100,14 +100,18 @@ class Uploadaadhar : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode==1 && resultCode == RESULT_OK)
         {
-            val img = data!!.extras!!.get("data") as Bitmap;
-            binding.documentPreview.visibility = View.VISIBLE;
-            binding.documentPreview.setImageBitmap(img);
+            val imageUriRaw = data?.extras?.get("data") as Bitmap
+            val bytes = ByteArrayOutputStream()
+            val path = MediaStore.Images.Media.insertImage(this.contentResolver, imageUriRaw, "Title", null)
+            val imageUriToUpload = Uri.parse(path.toString())
 
+            binding.documentPreview.visibility = View.VISIBLE;
+            binding.documentPreview.setImageBitmap(imageUriRaw);
             binding.uploadbtnaadhar.visibility = View.GONE
             binding.progressBar.visibility = View.VISIBLE
-            val storageref = FirebaseStorage.getInstance().getReference("IdentityProof/" + auth.currentUser?.uid.toString() + "_ID")
-            storageref.putFile(data?.data!!).addOnSuccessListener {
+
+            val storageref = FirebaseStorage.getInstance().getReference("ID_Proof/" + auth.currentUser?.uid.toString() + "_ID")
+            storageref.putFile(imageUriToUpload).addOnSuccessListener {
                 storageref.downloadUrl.addOnSuccessListener{ uri ->
                     val downloadUrl = uri.toString();
                     val docs:HashMap<String, Any> = HashMap()
@@ -117,10 +121,10 @@ class Uploadaadhar : AppCompatActivity() {
                     binding.deletebtnaadhar.visibility = View.VISIBLE
                     binding.progressBar.visibility = View.GONE
                 }.addOnFailureListener {
-                    Log.d("Inner Error", it.toString())
+                    Log.d("Errorinner", it.toString())
                 }
             }.addOnFailureListener{
-                Log.d("Outer Error", it.toString())
+                Log.d("Errorsouter", it.toString())
             }
         }
     }

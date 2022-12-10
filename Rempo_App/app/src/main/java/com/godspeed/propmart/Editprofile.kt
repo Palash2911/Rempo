@@ -3,13 +3,17 @@ package com.godspeed.propmart
 import android.app.DatePickerDialog
 import android.content.ContentValues.TAG
 import android.content.Intent
+import android.graphics.Bitmap
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.DatePicker
 import android.widget.Toast
+import androidx.compose.animation.core.snap
 import androidx.core.content.ContextCompat
 import com.godspeed.propmart.databinding.ActivityEditprofileBinding
 import com.godspeed.propmart.databinding.ActivityProfileBinding
@@ -18,6 +22,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import java.io.ByteArrayOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.HashMap
@@ -35,7 +40,6 @@ class Editprofile : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_editprofile)
-
         binding = ActivityEditprofileBinding.inflate(layoutInflater)
         db.collection("Users").document(Firebase.auth.currentUser?.uid.toString()).get().addOnSuccessListener { snapshot ->
             binding.nameprofileedit.setText(snapshot["Name"] as String);
@@ -43,11 +47,16 @@ class Editprofile : AppCompatActivity() {
             binding.Emailedit.setText(snapshot["Email"] as String);
             binding.dobbtn.text = snapshot["dob"] as String;
             binding.aadharfield.text = snapshot["Aadhar_No"].toString()
+            if(snapshot["ID"].toString().isEmpty())
+            {
+                binding.uploadbtnaadhar.visibility = View.VISIBLE
+                binding.deletebtnaadhar.visibility = View.GONE
+            }
         }
         binding.deletebtnaadhar.setOnClickListener {
             binding.deletebtnaadhar.visibility = View.GONE
             binding.progressBar.visibility = View.VISIBLE
-            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.currentUser?.uid.toString() + "_ID")
+            val storageref = FirebaseStorage.getInstance().getReference("ID_Proof/" + auth.currentUser?.uid.toString() + "_ID")
             storageref.delete().addOnSuccessListener {
                 profile["ID"]=""
                 Toast.makeText(this,"Deleted", Toast.LENGTH_SHORT).show()
@@ -61,9 +70,7 @@ class Editprofile : AppCompatActivity() {
             }
         }
         binding.uploadbtnaadhar.setOnClickListener {
-            var intent = Intent()
-            intent.type = "application/pdf"
-            intent.action = Intent.ACTION_GET_CONTENT
+            var intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             startActivityForResult(intent, 1);
         }
 
@@ -161,8 +168,12 @@ class Editprofile : AppCompatActivity() {
         {
             binding.uploadbtnaadhar.visibility = View.GONE
             binding.progressBar.visibility = View.VISIBLE
-            val storageref = FirebaseStorage.getInstance().getReference("Documents/" + auth.currentUser?.uid.toString() + "_ID")
-            storageref.putFile(data?.data!!).addOnSuccessListener {
+            val imageUriRaw = data?.extras?.get("data") as Bitmap
+            val bytes = ByteArrayOutputStream()
+            val path = MediaStore.Images.Media.insertImage(this.contentResolver, imageUriRaw, "Title", null)
+            val imageUriToUpload = Uri.parse(path.toString())
+            val storageref = FirebaseStorage.getInstance().getReference("ID_Proof/" + auth.currentUser?.uid.toString() + "_ID")
+            storageref.putFile(imageUriToUpload).addOnSuccessListener {
                 storageref.downloadUrl.addOnSuccessListener{ uri ->
                     val downloadUrl = uri.toString();
                     val docs:HashMap<String, Any> = HashMap()
