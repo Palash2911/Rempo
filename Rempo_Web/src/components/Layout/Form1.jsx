@@ -24,17 +24,15 @@ const Form1 = ({ formNo, setFormNo }) => {
   } = useContext(FormContext);
 
   const handleClick=()=>{
-    // if(!owner || state=="Select State" || category=="Select Property Category" || !district || !taluka || !village || !desc)
-    // {
-    //     alert("Please Enter All Details")
-    // }
-    // else
-    // {
-    //    let pg = formNo;
-    //    setFormNo(pg + 1);
-    // }
-    let pg = formNo;
-    setFormNo(pg + 1);
+    if(!owner || state=="Select State" || category=="Select Property Category" || !district || !taluka || !village || !desc)
+    {
+        alert("Please Enter All Details")
+    }
+    else
+    {
+       let pg = formNo;
+       setFormNo(pg + 1);
+    }
   }
 
   return (
