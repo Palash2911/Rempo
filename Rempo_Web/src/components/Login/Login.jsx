@@ -48,7 +48,7 @@ const Login = () => {
   const onSignInSubmit = () => {
     onCaptchVerify();
     setFlag({ flag: 1 });
-    const phoneNumber = "+91" + state.phone.toString().substring(2);
+    const phoneNumber = "+91 " + state.phone.toString().substring(2);
     const appVerifier = window.recaptchaVerifier;
     signInWithPhoneNumber(auth, phoneNumber, appVerifier)
       .then((confirmationResult) => {
