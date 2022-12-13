@@ -41,7 +41,6 @@ const Login = () => {
   const [flagstate, setFlag] = useState({ flag: 0 });
   // To check whether the number is correct or not.
   useEffect(() => {
-    console.log(state.phone);
     console.log(otpstate.otp);
   });
 
@@ -50,6 +49,7 @@ const Login = () => {
     setFlag({ flag: 1 });
     const phoneNumber = "+91 " + state.phone.toString().substring(2);
     const appVerifier = window.recaptchaVerifier;
+    console.log(phoneNumber)
     signInWithPhoneNumber(auth, phoneNumber, appVerifier)
       .then((confirmationResult) => {
         window.confirmationResult = confirmationResult;
