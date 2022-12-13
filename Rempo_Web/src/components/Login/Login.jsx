@@ -26,7 +26,7 @@ const Login = () => {
     window.recaptchaVerifier = new RecaptchaVerifier(
       "recaptcha-container",
       {
-        size: "normal",
+        size: "invisible",
         callback: (response) => {
           onSignInSubmit();
           // reCAPTCHA solved, allow signInWithPhoneNumber.
